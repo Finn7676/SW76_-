@@ -74,6 +74,45 @@ std::optional<std::vector<Direction>> bfs(Controller& ct, std::unordered_set<Pos
     if (!found) return std::nullopt; std::vector<Direction> path; Position cur = *found; while (!(cur == start)) { auto [parent, d] = prev.at(cur); path.push_back(d); cur = parent; } std::reverse(path.begin(), path.end()); return path;
 }
 
+// A minimum-size dragon may trade itself for a visibly longer enemy dragon.
+// Only the target head is removed from the obstacle set for this intentional
+// final step; all other enemy segments remain forbidden.
+bool try_short_dragon_intercept(Controller& ct, std::unordered_set<Position, PosHash> const& occupied) {
+    if (ct.get_length() > 2 || ct.get_unit_count() <= 1) return false;
+    struct EnemyHead { Position position; int id; int visible_length; Direction direction; };
+    std::unordered_map<int, int> visible_lengths;
+    std::vector<EnemyHead> heads;
+    for (auto const& tile : ct.get_tiles()) {
+        auto const* part = tile.get_dragon();
+        if (!part || part->get_team() == ct.get_team()) continue;
+        ++visible_lengths[part->get_id()];
+        if (part->is_head()) heads.push_back({tile.get_position(), part->get_id(), 0, part->get_dir()});
+    }
+    std::sort(heads.begin(), heads.end(), [&](EnemyHead const& a, EnemyHead const& b) {
+        return visible_lengths[a.id] > visible_lengths[b.id];
+    });
+    for (auto enemy : heads) {
+        enemy.visible_length = visible_lengths[enemy.id];
+        // Vision may show only part of a dragon, so this is a conservative
+        // lower-bound test: the visible part must already be longer than us.
+        if (enemy.visible_length <= ct.get_length()) continue;
+        std::unordered_set<Position, PosHash> attack_obstacles = occupied;
+        attack_obstacles.erase(enemy.position);
+        auto path = bfs(ct, attack_obstacles, {enemy.position}, true);
+        // A multi-step chase is too easy to invalidate because the enemy also
+        // moves. Only a currently adjacent head is a deterministic exchange.
+        if (!path || path->size() != 1) continue;
+        Direction move = path->front();
+        int eats = 0; bool unknown = false; std::vector<Position> next;
+        if (!simulate(ct, {move}, attack_obstacles, &next, &eats, &unknown)) continue;
+        ct.set_indicator_string("intercept " + std::to_string(enemy.visible_length));
+        ct.make_move(move);
+        mem.body = std::move(next);
+        return true;
+    }
+    return false;
+}
+
 std::optional<Position> nearest(Position from, std::unordered_set<Position, PosHash> const& goals) {
     if (goals.empty()) return std::nullopt; return *std::min_element(goals.begin(), goals.end(), [&](Position a, Position b) { return std::pair{mem.dist(from, a), a.x * mem.h + a.y} < std::pair{mem.dist(from, b), b.x * mem.h + b.y}; });
 }
@@ -125,6 +164,7 @@ void execute(Controller& ct, Game& game) {
     bool expansion_phase = game.get_round_num() < 320 || ct.get_unit_count() < 20;
     bool late_game = !expansion_phase;
     std::string reason; auto [goals, target] = choose_target(ct, reason); auto path = goals.empty() ? std::optional<std::vector<Direction>>{} : bfs(ct, occupied, goals, true); auto all = candidates(ct, occupied, target, path); std::vector<Candidate> open, dead; for (auto const& c : all) (c.dead ? dead : open).push_back(c);
+    if (try_short_dragon_intercept(ct, occupied)) return;
     // Tyhh deliberately turns every newly legal long dragon into two scouts first.
     // This is the experiment that differs from xxqz_cpp's conservative population cap.
     // Only short and medium dragons are scouts. Long dragons are the score reserve.
