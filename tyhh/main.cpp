@@ -116,11 +116,36 @@ bool try_short_dragon_intercept(Controller& ct, std::unordered_set<Position, Pos
 std::optional<Position> nearest(Position from, std::unordered_set<Position, PosHash> const& goals) {
     if (goals.empty()) return std::nullopt; return *std::min_element(goals.begin(), goals.end(), [&](Position a, Position b) { return std::pair{mem.dist(from, a), a.x * mem.h + a.y} < std::pair{mem.dist(from, b), b.x * mem.h + b.y}; });
 }
+bool is_explorer(Controller const& ct, Game const& game) {
+    return game.get_map_size().first * game.get_map_size().second >= 900 && (ct.get_id() % 4) >= 2;
+}
+bool is_flagship(Controller const& ct) { return (ct.get_id() % 4) == 0; }
+bool crowded(Controller const& ct) {
+    int area = mem.w * mem.h;
+    int threshold = area >= 3000 ? 6 : area >= 900 ? 5 : 4;
+    return ct.get_unit_count() >= threshold;
+}
+bool assigned_pearl(Position p, Controller const& ct) {
+    return ((p.x * 31 + p.y * 17) & 3) == (ct.get_id() & 3);
+}
+Direction sector_direction(Controller const& ct) {
+    return Direction::get_direction_list()[static_cast<std::size_t>(ct.get_id() & 3)];
+}
+std::unordered_set<Position, PosHash> frontier_targets(Controller& ct) {
+    std::unordered_set<Position, PosHash> frontier;
+    for (Position p : mem.seen) for (Direction d : Direction::get_direction_list()) {
+        auto [kind, dest] = mem.transit(ct, p, d);
+        if (dest && kind != "kelp" && kind != "unknown_portal" && !mem.seen.count(*dest)) frontier.insert(*dest);
+    }
+    return frontier;
+}
 std::pair<std::unordered_set<Position, PosHash>, std::optional<Position>> choose_target(Controller& ct, std::string& reason) {
-    std::unordered_set<Position, PosHash> visible; for (auto const& t : ct.get_tiles()) if (t.has_pearl()) visible.insert(t.get_position()); Position head = ct.get_position();
-    if (!visible.empty()) { reason = "pearl"; return {visible, nearest(head, visible)}; } if (!mem.pearls.empty()) { reason = "memory-pearl"; return {mem.pearls, nearest(head, mem.pearls)}; }
+    std::unordered_set<Position, PosHash> visible, assigned; for (auto const& t : ct.get_tiles()) if (t.has_pearl()) { visible.insert(t.get_position()); if (assigned_pearl(t.get_position(), ct)) assigned.insert(t.get_position()); } Position head = ct.get_position();
+    if (is_explorer(ct, *game)) { auto frontier = frontier_targets(ct); if (!frontier.empty()) { reason = "scout-frontier"; return {frontier, nearest(head, frontier)}; } }
+    if (crowded(ct) && !assigned.empty()) { reason = "assigned-pearl"; return {assigned, nearest(head, assigned)}; }
+    if (!visible.empty()) { reason = "pearl"; return {visible, nearest(head, visible)}; } if (!mem.pearls.empty()) { std::unordered_set<Position, PosHash> assigned_memory; for (Position p : mem.pearls) if (assigned_pearl(p, ct)) assigned_memory.insert(p); if (crowded(ct) && !assigned_memory.empty()) { reason = "assigned-memory-pearl"; return {assigned_memory, nearest(head, assigned_memory)}; } reason = "memory-pearl"; return {mem.pearls, nearest(head, mem.pearls)}; }
     std::unordered_set<Position, PosHash> soon; for (auto const& [p, eta] : mem.eta) if (eta >= 0 && eta <= 8) soon.insert(p); if (!soon.empty()) { reason = "soon"; return {soon, nearest(head, soon)}; }
-    std::unordered_set<Position, PosHash> frontier; for (Position p : mem.seen) for (Direction d : Direction::get_direction_list()) { auto [kind, dest] = mem.transit(ct, p, d); if (dest && kind != "kelp" && kind != "unknown_portal" && !mem.seen.count(*dest)) frontier.insert(*dest); } if (!frontier.empty()) { reason = "explore"; return {frontier, nearest(head, frontier)}; }
+    auto frontier = frontier_targets(ct); if (!frontier.empty()) { reason = "explore"; return {frontier, nearest(head, frontier)}; }
     reason = "wander"; return {{}, std::nullopt};
 }
 
@@ -135,7 +160,7 @@ int enemy_head_risk(Controller& ct, Position dest) {
     int penalty = 0;
     for (auto const& tile : ct.get_tiles()) {
         auto const* part = tile.get_dragon();
-        if (!part || part->get_id() == ct.get_id() || !part->is_head()) continue;
+        if (!part || part->get_team() == ct.get_team() || !part->is_head()) continue;
         Position enemy = tile.get_position();
         int distance = mem.dist(dest, enemy);
         if (distance == 1) penalty += 70;
@@ -145,19 +170,56 @@ int enemy_head_risk(Controller& ct, Position dest) {
     }
     return penalty;
 }
+int friendly_head_risk(Controller& ct, Position dest) {
+    int penalty = 0;
+    for (auto const& tile : ct.get_tiles()) {
+        auto const* part = tile.get_dragon();
+        if (!part || part->get_id() == ct.get_id() || part->get_team() != ct.get_team() || !part->is_head()) continue;
+        int distance = mem.dist(dest, tile.get_position());
+        if (distance == 1) penalty += 100;
+        else if (distance == 2) penalty += 30;
+    }
+    return penalty;
+}
 std::vector<Candidate> candidates(Controller& ct, std::unordered_set<Position, PosHash> const& others, std::optional<Position> target, std::optional<std::vector<Direction>> const& path) {
     std::vector<Candidate> out; Position head = ct.get_position(); if (!ct.get_tile(head)) return out; std::unordered_set<Position, PosHash> blocked = others; for (Position p : mem.body) blocked.insert(p);
     for (Direction d : Direction::get_direction_list()) { auto [kind, dest_opt] = mem.transit(ct, head, d); if (!dest_opt || kind == "kelp" || kind == "portal" || kind == "unknown_portal") continue; Position dest = *dest_opt; Tile const* dt = ct.get_tile(dest); if (dt && dt->get_dragon()) continue; if (std::find(mem.body.begin(), mem.body.end(), dest) != mem.body.end()) continue;
-        int score = 0; for (Direction around : Direction::get_direction_list()) { auto [k, q] = mem.transit(ct, dest, around); if (q && k != "kelp" && k != "unknown_portal" && !blocked.count(*q)) score += 4; } if (mem.pearls.count(dest)) score += 1400; auto it = mem.eta.find(dest); if (it != mem.eta.end() && it->second >= 0 && it->second <= 6) score += 70 - it->second * 5; if (!mem.seen.count(dest)) score += 30; if (d == ct.get_dir().get_opposite()) score -= 25; if (target) score -= mem.dist(dest, *target) * 8; if (path && !path->empty() && d == path->front()) score += 55; if (mem.w * mem.h > 200) score -= enemy_head_risk(ct, dest); int eats = 0; bool unknown = false; if (!simulate(ct, {d}, others, nullptr, &eats, &unknown)) score -= 80; if (eats) score += 300; if (unknown) score -= 80; out.push_back({d, dest, score, dead_end(ct, dest, blocked)});
+        bool big_empty = mem.w == 64 && mem.h == 64; bool explorer = is_explorer(ct, *game); bool dense = crowded(ct); bool flagship = is_flagship(ct);
+        int openness_weight = dense ? 12 : explorer ? 7 : flagship ? 8 : 4; int score = 0;
+        for (Direction around : Direction::get_direction_list()) { auto [k, q] = mem.transit(ct, dest, around); if (q && k != "kelp" && k != "unknown_portal" && !blocked.count(*q)) score += openness_weight; }
+        if (mem.pearls.count(dest)) score += explorer ? 400 : dense ? 550 : flagship ? 750 : (big_empty ? 800 : 1400);
+        auto it = mem.eta.find(dest); if (it != mem.eta.end() && it->second >= 0 && it->second <= 6) score += (explorer || dense) ? (25 - it->second * 2) : (big_empty ? (40 - it->second * 4) : (70 - it->second * 5));
+        if (!mem.seen.count(dest)) score += explorer ? 140 : flagship ? 5 : (big_empty ? 18 : 30);
+        if ((explorer || dense) && d == sector_direction(ct)) score += 30;
+        if (d == ct.get_dir().get_opposite()) score -= flagship ? 40 : 25;
+        if (target) score -= mem.dist(dest, *target) * (explorer ? 4 : dense ? 5 : (big_empty ? 6 : 8));
+        if (path && !path->empty() && d == path->front()) score += explorer ? 80 : (big_empty ? 40 : 55);
+        if (mem.w * mem.h > 200) score -= (dense || flagship ? 2 : 1) * enemy_head_risk(ct, dest);
+        if (dense || ct.get_length() <= 3) score -= friendly_head_risk(ct, dest);
+        bool is_dead = dead_end(ct, dest, blocked); if (flagship && is_dead) score -= 180;
+        int eats = 0; bool unknown = false; if (!simulate(ct, {d}, others, nullptr, &eats, &unknown)) score -= 80; if (eats) score += explorer ? 100 : dense ? 120 : (big_empty ? 200 : 300); if (unknown) score -= flagship ? 180 : 80; out.push_back({d, dest, score, is_dead});
     }
     std::sort(out.begin(), out.end(), [](Candidate const& a, Candidate const& b) { return a.score > b.score; }); return out;
 }
 
 bool want_split(Controller& ct, std::unordered_set<Position, PosHash> const& others, std::optional<std::vector<Direction>> const& path) {
-    int area = mem.w * mem.h, cap = area <= 200 ? 4 : area <= 900 ? 5 : 8, minimum = area <= 200 ? 6 : 8; if (ct.get_length() < minimum || ct.get_unit_count() >= cap || !ct.can_split(2) || (path && path->size() == 1)) return false; int safe = 0; for (Direction d : Direction::get_direction_list()) if (simulate(ct, {d}, others)) ++safe; return safe >= 2;
+    if (crowded(ct)) return false; int area = mem.w * mem.h, cap = area <= 200 ? 4 : area <= 900 ? 5 : 8, minimum = area <= 200 ? 6 : 8; if (ct.get_length() < minimum || ct.get_unit_count() >= cap || !ct.can_split(2) || (path && path->size() == 1)) return false; int safe = 0; for (Direction d : Direction::get_direction_list()) if (simulate(ct, {d}, others)) ++safe; return safe >= 2;
 }
 void fallback(Controller& ct) { auto c = candidates(ct, {}, std::nullopt, std::nullopt); ct.make_move(c.empty() ? Direction::NORTH : c.front().d); }
+// Big Empty is a fully open, pearl-dense 64x64 torus.  Its reliable policy is
+// the conservative baseline scoring and split cadence; the extra head-risk
+// penalty used elsewhere makes this map lose units too early.
+void execute_big_empty(Controller& ct, Game& game) {
+    std::unordered_set<Position, PosHash> occupied; std::vector<Position> own; observe(ct, game, occupied, own);
+    std::string reason; auto [goals, target] = choose_target(ct, reason); auto path = goals.empty() ? std::optional<std::vector<Direction>>{} : bfs(ct, occupied, goals, true); auto all = candidates(ct, occupied, target, path); std::vector<Candidate> open, dead; for (auto const& c : all) (c.dead ? dead : open).push_back(c);
+    if (is_explorer(ct, game) && !crowded(ct) && ct.get_unit_count() < 12 && ct.get_length() >= 6 && ct.can_split(2) && open.size() >= 2) { ct.do_split(2); if (mem.body.size() > 2) mem.body.resize(mem.body.size() - 2); return; }
+    if (want_split(ct, occupied, path) && !open.empty()) { int child = ct.get_length() >= 10 && ct.can_split(3) ? 3 : 2; ct.do_split(child); if (mem.body.size() > static_cast<std::size_t>(child)) mem.body.resize(mem.body.size() - child); return; }
+    if (open.empty() && ct.can_split(2) && ct.get_length() >= 4) { int child = ct.get_length() - 2; if (child < 2 || !ct.can_split(child)) child = 2; if (ct.can_split(child)) { ct.do_split(child); if (mem.body.size() > static_cast<std::size_t>(child)) mem.body.resize(mem.body.size() - child); return; } }
+    auto& choices = open.empty() ? dead : open; if (choices.empty()) { fallback(ct); return; }
+    Candidate c = choices.front(); ct.set_indicator_string(reason + " " + std::string(1, c.d.value)); if (mem.pearls.count(c.dest)) ct.draw_indicator_dot(c.dest, 255, 210, 40); ct.make_move(c.d); std::vector<Position> next; int eats = 0; bool unknown = false; if (simulate(ct, {c.d}, occupied, &next, &eats, &unknown)) mem.body = std::move(next); mem.pearls.erase(c.dest);
+}
 void execute(Controller& ct, Game& game) {
+    if (game.get_map_size() == std::pair<int, int>{64, 64}) { execute_big_empty(ct, game); return; }
     std::unordered_set<Position, PosHash> occupied; std::vector<Position> own; observe(ct, game, occupied, own);
     // Keep a scouting floor before switching to pure survival. On default.map,
     // stopping at round 180 left tyhh badly outnumbered by xxqz_cpp.
@@ -165,6 +227,7 @@ void execute(Controller& ct, Game& game) {
     bool late_game = !expansion_phase;
     std::string reason; auto [goals, target] = choose_target(ct, reason); auto path = goals.empty() ? std::optional<std::vector<Direction>>{} : bfs(ct, occupied, goals, true); auto all = candidates(ct, occupied, target, path); std::vector<Candidate> open, dead; for (auto const& c : all) (c.dead ? dead : open).push_back(c);
     if (try_short_dragon_intercept(ct, occupied)) return;
+    if (is_explorer(ct, game) && expansion_phase && !crowded(ct) && ct.get_unit_count() < 12 && ct.get_length() >= 6 && ct.can_split(2) && open.size() >= 2) { ct.do_split(2); if (mem.body.size() > 2) mem.body.resize(mem.body.size() - 2); return; }
     // Tyhh deliberately turns every newly legal long dragon into two scouts first.
     // This is the experiment that differs from xxqz_cpp's conservative population cap.
     // Only short and medium dragons are scouts. Long dragons are the score reserve.
