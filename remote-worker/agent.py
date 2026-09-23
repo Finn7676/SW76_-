@@ -159,18 +159,31 @@ class Worker:
             return self._version_locks.setdefault(vid, threading.Lock())
 
     def project_dir(self, version_id: int) -> Path:
-        """Return a cached, ready-to-run project dir for a version (download once)."""
+        """Return a cached, ready-to-run project dir for a version (download once).
+
+        Validates the cache: a truncated download (e.g. a dropped connection) would
+        otherwise leave a partial project with no bot.toml cached forever, so every
+        game for that version fails "not a runnable bot". We check the project root has
+        a bot.toml and re-download if not, extract to a per-process temp dir (so the
+        several agents sharing this cache don't clobber one shared .tmp), and only
+        publish a download that actually looks like a bot."""
         dest = self.versions_dir / str(version_id)
         with self._version_lock(version_id):
             if dest.exists() and any(dest.iterdir()):
-                return _project_root(dest)
-            tmp = dest.with_suffix(".tmp")
+                root = _project_root(dest)
+                if _is_valid_project(root):
+                    return root
+                shutil.rmtree(dest)  # poisoned / partial cache -> re-download
+            tmp = dest.with_suffix(f".tmp.{os.getpid()}")
             if tmp.exists():
                 shutil.rmtree(tmp)
             tmp.mkdir(parents=True)
             data = self.arena.download_version(version_id)
             with zipfile.ZipFile(io.BytesIO(data)) as zf:
                 zf.extractall(tmp)
+            if not _is_valid_project(_project_root(tmp)):
+                shutil.rmtree(tmp)
+                raise RuntimeError(f"version {version_id}: downloaded project has no bot.toml (incomplete?)")
             if dest.exists():
                 shutil.rmtree(dest)
             tmp.rename(dest)
@@ -274,6 +287,12 @@ def _project_root(dest: Path) -> Path:
     if len(entries) == 1 and entries[0].is_dir():
         return entries[0]
     return dest
+
+
+def _is_valid_project(root: Path) -> bool:
+    """A runnable bot project has a bot.toml at its root. Guards against a truncated
+    download being cached as a permanently-broken ('not a runnable bot') project."""
+    return (root / "bot.toml").is_file()
 
 
 def main():
