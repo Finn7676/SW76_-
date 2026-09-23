@@ -28,6 +28,7 @@ import json
 import os
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import tempfile
@@ -69,14 +70,20 @@ def clean_log(raw: str) -> str:
 class Arena:
     """Tiny HTTP client for the arena API with preemptive Basic auth."""
 
-    def __init__(self, base_url: str, user: str, password: str):
+    def __init__(self, base_url: str, user: str, password: str,
+                 worker_name: str = "", concurrency: int = 0):
         self.base = base_url.rstrip("/")
         self._auth = "Basic " + base64.b64encode(f"{user}:{password}".encode()).decode()
+        self._worker = worker_name
+        self._conc = concurrency
 
     def _req(self, method: str, path: str, *, body: bytes | None = None,
              content_type: str | None = None, timeout: int = 60):
         req = urllib.request.Request(self.base + path, data=body, method=method)
         req.add_header("Authorization", self._auth)
+        if self._worker:  # identify this machine in the arena's compute view
+            req.add_header("X-Worker", self._worker)
+            req.add_header("X-Worker-Concurrency", str(self._conc))
         if content_type:
             req.add_header("Content-Type", content_type)
         return urllib.request.urlopen(req, timeout=timeout)
@@ -122,7 +129,8 @@ def _multipart(fields: dict, files: dict):
 class Worker:
     def __init__(self, args):
         self.args = args
-        self.arena = Arena(args.url, args.user, args.password)
+        self.arena = Arena(args.url, args.user, args.password,
+                           worker_name=args.name, concurrency=args.concurrency)
         self.workdir = Path(args.workdir).expanduser()
         self.versions_dir = self.workdir / "versions"
         self.maps_dir = self.workdir / "maps"
@@ -278,6 +286,8 @@ def main():
     p.add_argument("--timeout", type=int, default=int(os.environ.get("BC_GAME_TIMEOUT", "300")))
     p.add_argument("--poll-idle", type=float, default=3.0, help="seconds to wait when the queue is empty")
     p.add_argument("--workdir", default=os.environ.get("BC_WORKER_DIR", "~/.battlecode-arena-worker"))
+    p.add_argument("--name", default=os.environ.get("BC_WORKER_NAME") or socket.gethostname(),
+                   help="worker name shown on the arena's compute page (default: hostname)")
     args = p.parse_args()
 
     if not args.user or not args.password:
