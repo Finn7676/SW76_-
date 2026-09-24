@@ -1,0 +1,56 @@
+# tyhh / sonar2 能力接入说明
+
+本版以 xxqz-c47v1 为主线，保留其 View / StepInfo / Memory / Pick 接口和多步攻击搜索，吸收另外两个 bot 的可复用能力。
+
+## 原 bot 的优点与接入方式
+
+| 来源 | 优点 | 接入结果 |
+|---|---|---|
+| tyhh | 长度 2 的龙只在有其他队友、敌方可见长度更大时相邻兑子 | `tactics.hpp::short_trade`，放在原攻击搜索之前，禁止隔墙兑子和最后一条龙自杀 |
+| tyhh | 识别敌方头部附近和朝向前方的风险 | `tactics.hpp::tactical_score`，使用 View 快照；考虑海带阻隔，仅针对敌方，队友仍走原有拥挤评分 |
+| tyhh | 优先可见珍珠，再考虑记忆和生成点，局部 BFS 绕障碍 | 与 sonar2 的有界 BFS 合并为 `navigation.hpp::find_forage_route` |
+| tyhh | 身体模拟、核心长龙保护 | 复用 xxqz 已有的身体重建、多步攻击模拟和长度保护；不移植存在弯曲身体重建问题的旧模拟器 |
+| sonar2 | 有界 BFS 返回第一步，能规划视野外的采集与探索 | 单次 BFS 默认深度 24、最多发现 320 个节点；优先级分层，第一步限制在 xxqz 已选安全等级内 |
+| sonar2 | 队友共享珍珠目击，扩大资源信息覆盖 | `sonar.hpp`：带时间戳的新协议，过期清理、当前观察优先、仅广播直接看见且未准备吃掉的珍珠 |
+| sonar2 | 小图对受困敌头施压，大图避险 | 合并到 `tactical_score`；仅有队友的短龙在小图围堵，未知传送门出口仍算可能逃生通道 |
+| sonar2 | 空间容量与拥挤评分 | 复用 xxqz 的 pocket、hard/soft trap 分级及 ally_heads 评分，避免重复计权 |
+| sonar2 | 后期停止主动分裂，保留增长 | xxqz 已在 round >350 停止主动分裂，比 sonar2 的大图 round >=440 更早；保持现有政策和紧急分裂 |
+
+不直接接入 tyhh 的传送门移动：其常规候选本身也排除了 portal；三个原版都没有可直接复用且验证完整的通用传送门移动策略。
+
+## 接口与调用顺序
+
+- `StrategyConfig` 位于 `strategy.hpp`。routing、sonar、head_risk、corner_pressure、short_trade 五个开关默认开启，可分别关闭做消融。
+- `Memory::observe(ct, game, config)` 保存直接观察时间，生成倒计时与已有珍珠分开过期。直接珍珠记忆保留最多 32 回合，声呐报告最多 8 回合。
+- `receive_sonar(ct, game, memory, config)` 仅接收新协议，拒绝未来、越界、过期和被更新的本地观察否定的消息。消息抵达时间不刷新观测年龄。
+- `find_forage_route(view, memory, allowed_first, config)` 返回 `Route{goal, first, distance, kind}`。目标顺序：可见珍珠、直接记忆珍珠、声呐珍珠、即将生成点、探索边界。同层按 BFS 最短路与固定方向顺序选择。
+- `tactical_score(ct, view, step, config)` 返回附加评分。它不会放行不安全候选，也不会更改原有 hard/soft trap 分级。
+- `short_trade(ct, view, config)` 返回可选的相邻攻击方向。
+- `choose(ct, view, memory, config)` 返回原有 Pick，增加 routed 标记；搜索攻击目标时保留原 stalk 逻辑。
+- `act(ct, game, config)`：观察/接收 → 相邻短龙兑子 → 原多步攻击 → 原分裂政策 → 寻路与风险评分 → 输出/广播 → 兜底。
+
+声呐 32 位编码：高 8 位签名 0xA7，3 位保留位，9 位绝对 round，6 位 x，6 位 y。覆盖 500 round、64×64 地图。只传播亲眼所见，不转发消息；原 sonar2 的裸坐标协议不兼容。团队统一运行本版时使用新协议。
+
+未知地形只用于规划假设，执行仍限制为当前可见、无占用、EMPTY 边的安全第一步。常规寻路不跨传送门。声呐开关关闭后，不发送、不接收、不把共享报告加入寻路目标。routing 关闭则恢复原距离式目标选择；记忆修复独立保留，因此关闭所有新策略不等于字节级原版。
+
+## 验证
+
+在本目录运行：
+
+```sh
+python3 tests/run.py --sanitize
+clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic -Werror main.cpp -o /tmp/xxqz-integrated
+```
+
+49 项行为检查覆盖绕障碍、不可达资源、搜索预算、安全第一步约束、环面边界、弯曲身体、声呐编码边界与过期、可见空格优先、旧报告不复活、兑子限制、墙后敌头、长短龙区别，以及 act 输出和广播。通过 AddressSanitizer、UndefinedBehaviorSanitizer 和严格编译警告检查。
+
+使用本机 unswbc，将改版与接入前的 xxqz 原版在四张 maps_BeforeSprinter 地图各交换 A/B 一次：
+
+| 地图 | 改版 A | 改版 B |
+|---|---|---|
+| arena | 胜，51 round | 负，130 round |
+| default | 胜，500 round | 胜，500 round |
+| big_empty | 胜，500 round | 负，500 round |
+| schooltime | 负，500 round | 胜，500 round |
+
+合计 5 胜 3 负，没有观察到进程退出、超时、非法动作或协议警告。详细结果见 tests/validation.json。这是小样本运行回归，不是稳定胜率结论，也没有证明每个新增模块单独提升胜率。C++ 使用本机 runner，尚未验证赛事环境的计算点数预算。

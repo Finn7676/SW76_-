@@ -46,9 +46,12 @@ struct Config {
     static constexpr int horizon = 10;
     static constexpr int maxSprint = 3;
     static constexpr int floodLimit = 512;
-    static constexpr int maxPopulation = 3;
-    static constexpr int reserveSplitLength = 18;
-    static constexpr int splitStopRound = 300;
+    // Match the bounded population strategy used by the stronger rule-based
+    // variants. The policy still decides targets; splitting remains guarded
+    // by visible food, space, and escape checks in Strategy::shouldSplit.
+    static constexpr int maxPopulation = 8;
+    static constexpr int reserveSplitLength = 10;
+    static constexpr int splitStopRound = 320;
     static constexpr bool sonarEnabled = false;
 };
 }
