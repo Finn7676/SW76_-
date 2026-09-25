@@ -1,0 +1,205 @@
+#include "observer.hpp"
+#include "sonar.hpp"
+#include "planner.hpp"
+#include "action.hpp"
+#include <cassert>
+#include <sstream>
+#include <iostream>
+using namespace bot;
+struct Fixture {
+    GameConfig config{11,11}; TurnState turn; WorldModel world{config};
+    Topology topology{config,world}; OccupancyModel occupancy{config,turn};
+    BodyMemory body{turn,topology,occupancy}; Observer observer{turn,world,topology,occupancy,body};
+    Search search{config,turn,topology,occupancy}; Sonar sonar{config,turn,world,topology,occupancy};
+    Planner planner{config,turn,world,topology,occupancy,search,body};
+    Controller ct{7,Team::A,Direction::NORTH,Vision{},64}; Executor executor{ct,turn,world,topology,body};
+    Fixture() {
+        turn.here=60;turn.length=3;turn.population=10;turn.myId=7;turn.round=10;
+        ct.length=3;ct.unit_count=10;ct.sonar_protocol3=true;
+        occupancy.beginTurn();
+        std::fill(world.edgeT.begin(),world.edgeT.end(),E_OPEN);
+        std::fill(world.seenRound.begin(),world.seenRound.end(),1);
+    }
+    void portal(int c=60,int pid=23) { topology.setEdge(c,1,E_PORTAL,pid); }
+    void receive(uint64_t raw) { ct.sonar_messages={raw};sonar.receive(ct); }
+};
+int cases=0;
+#define CHECK_TEST(name, ...) do { __VA_ARGS__; ++cases; std::cerr << "PASS " << name << '\n'; } while(0)
+int main() {
+    std::ostringstream output; auto *previous=std::cout.rdbuf(output.rdbuf());
+    CHECK_TEST("observing endpoints is not crossing", {
+        Fixture f; f.portal();f.portal(90);assert(f.topology.unexploredPortal(60,1));assert(f.world.exploredPortals.empty());
+    });
+    CHECK_TEST("prioritize adjacent unresolved portal", {
+        Fixture f;f.portal();auto a=f.planner.choose(f.ct);assert(a.type==ActionType::MOVE && a.dirs[0]==1);
+    });
+    CHECK_TEST("route to distant portal before pearls", {
+        Fixture f;f.portal(63);f.turn.visPearls={49};f.world.pearlDue[49]=10;
+        auto a=f.planner.choose(f.ct);assert(a.type==ActionType::MOVE && a.dirs[0]==1);
+    });
+    CHECK_TEST("length two can scout portals", {
+        Fixture f;f.portal();f.turn.length=f.ct.length=2;assert(f.search.unexploredPortalDir(15)==1);
+        auto a=f.planner.choose(f.ct);assert(a.type==ActionType::MOVE && a.dirs[0]==1);
+    });
+    CHECK_TEST("crossing confirmed next turn only", {
+        Fixture f;f.portal();f.executor.execute(Action::move(1));assert(f.world.exploredPortals.empty());
+        f.topology.resolvePendingLanding(90);f.topology.confirmExploration(7,90);
+        assert(!f.topology.unexploredPortal(60,1));assert(f.world.learnedExit[241]==90);
+        f.portal(90);assert(!f.topology.unexploredPortal(90,1));
+        assert(f.search.unexploredPortalDir(15)==-1);
+    });
+    CHECK_TEST("new dragon cannot confirm inherited pending move", {
+        Fixture f;f.portal();f.executor.execute(Action::move(1));f.topology.confirmExploration(8,90);
+        assert(f.world.exploredPortals.empty());
+    });
+    CHECK_TEST("sprint crossing recorded and confirmed", {
+        Fixture f;f.portal();f.portal(90);f.executor.execute(Action::sprint2(1,2));
+        assert(f.world.exploredPortals.empty());f.topology.confirmExploration(7,102);
+        assert(f.world.exploredPortals.count(23));
+    });
+    CHECK_TEST("mismatched sprint landing not confirmed", {
+        Fixture f;f.portal();f.portal(90);f.executor.execute(Action::sprint2(1,2));
+        f.topology.confirmExploration(7,101);assert(f.world.exploredPortals.empty());
+    });
+    CHECK_TEST("unexplored report does not mark explored", {
+        Fixture f;Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);f.portal();f.portal(90);g.receive(f.sonar.portalMessage(241));
+        assert(g.topology.unexploredPortal(60,1));assert(g.world.exploredPortals.empty());
+    });
+    CHECK_TEST("teammate report stops exploration and relays", {
+        Fixture f;Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);Fixture h;std::fill(h.world.edgeT.begin(),h.world.edgeT.end(),E_UNKNOWN);f.portal();f.portal(90);f.world.exploredPortals.insert(23);
+        g.receive(f.sonar.portalMessage(241));
+        assert(!g.topology.unexploredPortal(60,1));assert(g.search.unexploredPortalDir(15)==-1);
+        assert(g.topology.step(60,1)==91);assert(g.topology.step(91,3)==60);
+        h.receive(g.sonar.portalMessage(241));assert(h.world.exploredPortals.count(23));
+    });
+    CHECK_TEST("opponent and legacy messages ignored", {
+        Fixture f;Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);f.portal();f.portal(90);f.world.exploredPortals.insert(23);f.turn.myTeam=Team::B;
+        auto msg=f.sonar.portalMessage(241);g.receive(msg);g.receive(f.sonar.wireMessage(f.sonar.pack(Sonar::M_EXPLORED_PORTAL,60,46)));
+        assert(g.world.exploredPortals.empty());assert(g.world.portalKeys.empty());
+    });
+    CHECK_TEST("invalid tag and off-map report ignored", {
+        Fixture f;Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);f.portal();f.portal(90);f.world.exploredPortals.insert(23);
+        g.receive(f.sonar.portalMessage(241)^(1ull<<28));assert(g.world.exploredPortals.empty());
+        uint32_t low=63u | (63u<<6) | (46u<<12) | (3u<<26);
+        g.receive(f.sonar.wireMessage(low|(f.sonar.tagOf(low)<<28)));assert(g.world.exploredPortals.empty());
+    });
+    CHECK_TEST("confirmed status survives old endpoint reports", {
+        Fixture f;f.portal();f.world.exploredPortals.insert(23);
+        f.receive(f.sonar.wireMessage(f.sonar.pack(Sonar::M_PORTAL,60,46)));assert(f.world.exploredPortals.count(23));
+    });
+    CHECK_TEST("portal id encoding boundary", {
+        Fixture f;Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);f.portal(60,8191);f.portal(90,8191);f.world.exploredPortals.insert(8191);
+        g.receive(f.sonar.portalMessage(241));assert(g.world.exploredPortals.count(8191));
+        f.portal(60,8192);assert(f.sonar.portalMessage(241)==0);
+    });
+    CHECK_TEST("four directional 64-bit reports", {
+        Fixture f;f.portal();f.portal(90);f.world.exploredPortals.insert(23);f.world.urgentPortalReport=241;
+        output.str("");f.sonar.send(f.ct);std::istringstream lines(output.str());
+        for(char d:std::string("NESW")) {std::string cmd;char got;uint64_t msg;lines>>cmd>>got>>msg;
+            assert(cmd=="SONAR" && got==d && msg>UINT32_MAX);}
+        std::string extra;assert(!(lines>>extra));
+    });
+    CHECK_TEST("duplicate beam receipts coalesced", {
+        Fixture f;auto msg=f.sonar.wireMessage(f.sonar.pack(Sonar::M_ENEMY,60,10|(5<<9)));
+        f.ct.sonar_messages={msg,msg,msg,msg};f.sonar.receive(f.ct);assert(f.world.sightings.size()==1);
+    });
+    CHECK_TEST("portal relay cannot starve during combat", {
+        Fixture f;f.portal();f.portal(90);f.world.exploredPortals.insert(23);f.turn.round=9;
+        f.turn.enemyHeads={49};f.turn.enemyHeadLen={7};auto msg=f.sonar.chooseMessage();assert(((msg>>40)&255)==Sonar::PAIR_MAGIC && ((msg>>38)&1));
+    });
+    CHECK_TEST("explored portal stays traversable", {
+        Fixture f;f.portal();f.portal(90);f.world.exploredPortals.insert(23);
+        assert(f.topology.step(60,1)==91);assert(f.search.bfsFirstDir([](int q){return q==91;},24,320)==1);
+    });
+    CHECK_TEST("blocked known landing is rejected", {
+        Fixture f;f.portal();f.portal(90);
+        f.body.trail={91,60};f.body.reconstructHidden();assert(f.occupancy.blockedAt(91,1));
+        assert(f.search.unexploredPortalDir(2,1)==-1);assert(f.planner.choose(f.ct).dirs[0]!=1);
+    });
+    CHECK_TEST("closed first-step mask and depth limit", {
+        Fixture f;f.portal(63);assert(f.search.unexploredPortalDir(0)==-1);
+        assert(f.search.unexploredPortalDir(15,2)==-1);assert(f.search.unexploredPortalDir(15,4)==1);
+    });
+    CHECK_TEST("unknown cells cannot invent portal routes", {
+        Fixture f;std::fill(f.world.edgeT.begin(),f.world.edgeT.end(),E_UNKNOWN);f.portal(63);
+        assert(f.search.unexploredPortalDir(15)==-1);
+    });
+    CHECK_TEST("no exploration bonus after teammate report", {
+        Fixture f;f.portal();f.world.exploredPortals.insert(23);assert(f.planner.choose(f.ct).dirs[0]!=1);
+    });
+    CHECK_TEST("length two routes through known portal", {
+        Fixture f;f.turn.length=f.ct.length=2;f.portal();f.portal(90);
+        assert(f.search.bfsFirstDir([](int q){return q==91;},24,320)==1);
+    });
+    CHECK_TEST("length two can use explored portal in normal scoring", {
+        Fixture f;f.turn.length=f.ct.length=2;f.portal();f.portal(90);f.world.exploredPortals.insert(23);
+        for(int d:{0,2,3})f.topology.setEdge(60,d,E_KELP,-1);
+        auto a=f.planner.choose(f.ct);assert(a.type==ActionType::MOVE && a.dirs[0]==1);
+    });
+    CHECK_TEST("length two still rejects occupied portal landing", {
+        Fixture f;f.turn.length=f.ct.length=2;f.portal();f.portal(90);
+        f.body.trail={91,60};f.body.reconstructHidden();
+        assert(f.search.unexploredPortalDir(2,1)==-1);
+        assert(f.planner.choose(f.ct).dirs[0]!=1);
+    });
+    CHECK_TEST("splitting may leave a length two dragon across portal", {
+        Fixture f;f.turn.length=f.ct.length=4;f.body.trail={20,21,90,60};
+        auto a=f.planner.choose(f.ct);assert(a.type==ActionType::SPLIT && a.splitSize==2);
+        f.body.trail={20,90,59,60};a=f.planner.choose(f.ct);
+        assert(a.type==ActionType::SPLIT && a.splitSize==2);
+    });
+    CHECK_TEST("length two does not sprint toward distant enemy", {
+        Fixture f;f.turn.length=f.ct.length=2;f.turn.enemyHeads={62};f.turn.enemyHeadLen={7};
+        assert(f.planner.choose(f.ct).type==ActionType::MOVE);
+    });
+    CHECK_TEST("incomplete portal never produces a report", {
+        Fixture f;f.portal();assert(f.sonar.portalMessage(241)==0);
+    });
+    CHECK_TEST("pair corruption rejected at every bit", {
+        Fixture f;f.portal();f.portal(90);auto msg=f.sonar.portalMessage(241);
+        for(int bit=0;bit<64;++bit) {
+            Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);
+            g.receive(msg^(1ull<<bit));assert(g.world.portalKeys.empty());
+        }
+    });
+    CHECK_TEST("conflict rejects whole pair without partial writes", {
+        Fixture f;f.portal();f.portal(90);Fixture g;
+        std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);
+        g.topology.setEdge(90,1,E_KELP,-1);g.receive(f.sonar.portalMessage(241));
+        assert(g.world.portalKeys.empty());assert(g.topology.edgeTypeAt(241)==E_UNKNOWN);
+    });
+    CHECK_TEST("horizontal pair works from both sides", {
+        Fixture f;f.topology.setEdge(60,2,E_PORTAL,7);f.topology.setEdge(90,2,E_PORTAL,7);
+        Fixture g;std::fill(g.world.edgeT.begin(),g.world.edgeT.end(),E_UNKNOWN);
+        g.receive(f.sonar.portalMessage(242));assert(g.topology.step(60,2)==101);
+        assert(g.topology.step(101,0)==60);assert(g.topology.step(71,0)==90);
+        assert(g.topology.step(90,2)==71);
+    });
+    CHECK_TEST("old single-endpoint frame cannot mark explored", {
+        Fixture f;f.receive(f.sonar.wireMessage(f.sonar.pack(Sonar::M_EXPLORED_PORTAL,60,46)));
+        assert(f.world.portalKeys.empty());assert(f.world.exploredPortals.empty());
+    });
+    CHECK_TEST("enemy and pearl frames remain compatible", {
+        Fixture f;Fixture g;f.turn.enemyHeads={49};f.turn.enemyHeadLen={7};
+        g.receive(f.sonar.chooseMessage());assert(g.world.sightings.size()==1);
+        assert(g.world.sightings[0].c==49 && g.world.sightings[0].len==7);
+        f.turn.enemyHeads.clear();f.turn.visibleCount=1;f.turn.visibleCells[0]=49;
+        f.world.pearlDue[49]=15;g.receive(f.sonar.chooseMessage());assert(g.world.pearlDue[49]==15);
+    });
+    CHECK_TEST("legacy engine sends 32-bit sonar without direction", {
+        Fixture f;f.ct.sonar_protocol3=false;f.portal();f.portal(90);
+        f.world.exploredPortals.insert(23);f.turn.enemyHeads={49};f.turn.enemyHeadLen={7};
+        output.str("");f.sonar.send(f.ct);std::istringstream lines(output.str());
+        std::string cmd;uint64_t msg;lines>>cmd>>msg;assert(cmd=="SONAR" && msg<=UINT32_MAX);
+        std::string extra;assert(!(lines>>extra));
+        Fixture g;g.ct.sonar_messages={msg};g.sonar.receive(g.ct);
+        assert(g.world.sightings.size()==1 && g.world.sightings[0].c==49);
+        assert(g.world.portalKeys.empty());
+    });
+    CHECK_TEST("legacy engine never sends incomplete portal facts", {
+        Fixture f;f.ct.sonar_protocol3=false;f.portal();f.portal(90);
+        f.world.exploredPortals.insert(23);output.str("");f.sonar.send(f.ct);
+        assert(output.str().empty() && f.world.portalKeys.size()==2);
+    });
+    std::cout.rdbuf(previous);std::cout<<cases<<" portal tests passed\n";
+}

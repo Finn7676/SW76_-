@@ -1,0 +1,190 @@
+#pragma once
+
+#include "topology.hpp"
+#include "occupancy.hpp"
+
+namespace bot {
+
+class Sonar {
+    GameConfig const &config;
+    TurnState const &turn;
+    WorldModel &world;
+    Topology &topology;
+    OccupancyModel const &occupancy;
+
+  public:
+    Sonar(GameConfig const &config, TurnState const &turn, WorldModel &world, Topology &topology,
+          OccupancyModel const &occupancy)
+        : config(config), turn(turn), world(world), topology(topology), occupancy(occupancy) {}
+
+    static constexpr uint32_t SALT = 0x5A17C3E1u;
+    uint32_t tagOf(uint32_t low) { return ((low ^ SALT) * 0x9E3779B1u) >> 28; }
+    uint32_t pack(int type, int c, int payload) {
+        uint32_t low = (uint32_t)topology.cx(c) | ((uint32_t)topology.cy(c) << 6) |
+                       ((uint32_t)(payload & 0x3FFF) << 12) | ((uint32_t)type << 26);
+        return low | (tagOf(low) << 28);
+    }
+    enum { M_PEARL = 0, M_ENEMY = 1, M_PORTAL = 2, M_EXPLORED_PORTAL = 3 };
+
+    // A team discriminator avoids accepting the opposing copy of this bot's reports.
+    // This is protocol identification, not authentication of an arbitrary sender.
+    uint32_t wireMarker() const { return 0x58515030u | (turn.myTeam == Team::B ? 1u : 0u); }
+    uint64_t wireMessage(uint32_t message) const { return (uint64_t(wireMarker()) << 32) | message; }
+    void send(Controller &ct) {
+        if (!ct.sonar_protocol3) {
+            // Protocol 2 engines reject directional SONAR and discard 64-bit input.
+            // A complete portal pair cannot fit in their 32-bit message.
+            if (uint32_t legacy = chooseLegacyMessage()) ct.send_sonar(legacy);
+            return;
+        }
+        if (uint64_t wire = chooseMessage())
+            for (int d = 0; d < 4; ++d) ct.send_sonar(Direction(DCH[d]), wire);
+    }
+    void receive(Controller const &ct) {
+        std::set<uint64_t> received;
+        for (auto raw64 : ct.get_sonar_messages()) {
+            if (!received.insert(raw64).second) continue;
+            if (((raw64 >> 40) & 255) == PAIR_MAGIC) {
+                receivePortalPair(raw64);
+                continue;
+            }
+            if (raw64 > UINT32_MAX && (raw64 >> 32) != wireMarker()) continue;
+            uint32_t raw = (uint32_t)raw64, low = raw & 0x0FFFFFFFu;
+            if ((raw >> 28) != tagOf(low)) continue;
+            int x = low & 63, y = (low >> 6) & 63, payload = (low >> 12) & 0x3FFF, type = (low >> 26) & 3;
+            if (x >= config.width || y >= config.height) continue;
+            int c = topology.cid(x, y);
+            if (type == M_PEARL) {
+                int due = payload & 511;
+                if (world.pearlInfo[c] < turn.round - 1) {
+                    world.pearlDue[c] = due;
+                    world.pearlInfo[c] = turn.round - 1;
+                }
+            } else if (type == M_ENEMY) {
+                int r = payload & 511, l = payload >> 9;
+                if (turn.round - r > 6 || r > turn.round) continue;
+                world.sightings.push_back({c, r, l});
+
+            }
+        }
+        world.sightings.erase(std::remove_if(world.sightings.begin(), world.sightings.end(),
+                                             [&](Sighting const &s) { return turn.round - s.round > 6; }),
+                              world.sightings.end());
+        if (world.sightings.size() > 24) world.sightings.erase(world.sightings.begin(), world.sightings.end() - 24);
+    }
+
+    // Pair format: x1,y1,x2,y2 (6 bits each), id (13), orientation (1),
+    // explored (1), team (1), magic/version (8), checksum (16). Total: 64.
+    // Canonical edges are E or S; both ends have the same orientation.
+    static constexpr uint64_t PAIR_MAGIC = 0xB7;
+    static uint16_t pairTag(uint64_t low) {
+        uint32_t hash = 2166136261u ^ SALT;
+        for (int i = 0; i < 6; ++i) {
+            hash = (hash ^ uint8_t(low >> (8 * i))) * 16777619u;
+        }
+        return uint16_t(hash ^ (hash >> 16));
+    }
+    uint64_t portalMessage(int key) {
+        int pid = topology.portalIdAt(key);
+        auto it = world.portalEnds.find(pid);
+        if (pid < 0 || pid >= 8192 || it == world.portalEnds.end() || it->second.size() != 2) return 0;
+        int a = std::min(it->second[0], it->second[1]);
+        int b = std::max(it->second[0], it->second[1]);
+        int d = a % 4;
+        if (a == b || (d != 1 && d != 2) || b % 4 != d) return 0;
+        if (topology.edgeTypeAt(a) != E_PORTAL || topology.edgeTypeAt(b) != E_PORTAL ||
+            topology.portalIdAt(a) != pid || topology.portalIdAt(b) != pid) return 0;
+        int x1 = topology.cx(a / 4), y1 = topology.cy(a / 4);
+        int x2 = topology.cx(b / 4), y2 = topology.cy(b / 4);
+        if (x1 >= 64 || y1 >= 64 || x2 >= 64 || y2 >= 64) return 0;
+        uint64_t low = uint64_t(x1) | (uint64_t(y1) << 6) | (uint64_t(x2) << 12) |
+                       (uint64_t(y2) << 18) | (uint64_t(pid) << 24) | (uint64_t(d == 2) << 37) |
+                       (uint64_t(FEAT_PORTAL_EXPLORE && world.exploredPortals.count(pid)) << 38) |
+                       (uint64_t(turn.myTeam == Team::B) << 39) | (PAIR_MAGIC << 40);
+        return low | (uint64_t(pairTag(low)) << 48);
+    }
+    void receivePortalPair(uint64_t raw) {
+        uint64_t low = raw & ((1ull << 48) - 1);
+        if ((raw >> 48) != pairTag(low) || ((low >> 40) & 255) != PAIR_MAGIC ||
+            ((low >> 39) & 1) != uint64_t(turn.myTeam == Team::B)) return;
+        int x1 = low & 63, y1 = (low >> 6) & 63, x2 = (low >> 12) & 63, y2 = (low >> 18) & 63;
+        if (x1 >= config.width || x2 >= config.width || y1 >= config.height || y2 >= config.height) return;
+        int pid = (low >> 24) & 8191, d = ((low >> 37) & 1) ? 2 : 1;
+        int a = topology.cid(x1, y1) * 4 + d, b = topology.cid(x2, y2) * 4 + d;
+        if (a >= b) return;
+        // Validate both ends before changing either. Never replace conflicting terrain.
+        for (int key : {a, b}) {
+            int type = topology.edgeTypeAt(key);
+            if (type != E_UNKNOWN && (type != E_PORTAL || topology.portalIdAt(key) != pid)) return;
+        }
+        auto it = world.portalEnds.find(pid);
+        if (it != world.portalEnds.end())
+            for (int key : it->second)
+                if (key != a && key != b) return;
+        topology.setEdge(a / 4, d, E_PORTAL, pid);
+        topology.setEdge(b / 4, d, E_PORTAL, pid);
+        if (FEAT_PORTAL_EXPLORE && ((low >> 38) & 1)) world.exploredPortals.insert(pid);
+    }
+    uint32_t chooseLegacyMessage() {
+        if (!turn.enemyHeads.empty()) {
+            int best = 0;
+            for (size_t i = 1; i < turn.enemyHeads.size(); ++i)
+                if (turn.enemyHeadLen[i] > turn.enemyHeadLen[best]) best = (int)i;
+            return pack(M_ENEMY, turn.enemyHeads[best],
+                        (turn.round & 511) | (std::min(turn.enemyHeadLen[best], 31) << 9));
+        }
+        ++world.sonarCursor;
+        int bestC = -1, bestDue = INF;
+        for (int i = 0; i < turn.visibleCount; ++i) {
+            int c = turn.visibleCells[i], due = world.pearlDue[c];
+            if (due < 0 || due >= INF || due > 511) continue;
+            if (due < turn.round && !occupancy.hasPearl(c)) continue;
+            int key = due * 64 + ((c * 37 + world.sonarCursor * 11) & 63);
+            if (key < bestDue) { bestDue = key; bestC = c; }
+        }
+        return bestC < 0 ? 0 : pack(M_PEARL, bestC, world.pearlDue[bestC]);
+    }
+    uint64_t chooseMessage() {
+#if FEAT_PORTAL_EXPLORE
+        if (world.urgentPortalReport >= 0) {
+            int key = world.urgentPortalReport;
+            world.urgentPortalReport = -1;
+            if (uint64_t msg = portalMessage(key)) return msg;
+        }
+        // Reserve a periodic relay even during combat so new dragons can catch up.
+        if (!world.portalKeys.empty() && ((turn.round + turn.myId) & 7) == 0) {
+            int key = world.portalKeys[world.portalRelayCursor++ % world.portalKeys.size()];
+            if (uint64_t msg = portalMessage(key)) return msg;
+        }
+#endif
+        if (!turn.enemyHeads.empty()) {
+            int best = 0;
+            for (size_t i = 1; i < turn.enemyHeads.size(); ++i)
+                if (turn.enemyHeadLen[i] > turn.enemyHeadLen[best]) best = (int)i;
+            return wireMessage(pack(M_ENEMY, turn.enemyHeads[best],
+                        (turn.round & 511) | (std::min(turn.enemyHeadLen[best], 31) << 9)));
+        }
+        ++world.sonarCursor;
+        if (!world.portalKeys.empty() && (world.sonarCursor & 1)) {
+            int key = world.portalKeys[(world.sonarCursor / 2) % world.portalKeys.size()];
+            if (uint64_t msg = portalMessage(key)) return msg;
+        }
+        // a pearl tile in view that will be ripe soon
+        int bestC = -1, bestDue = INF;
+        for (int i = 0; i < turn.visibleCount; ++i) {
+            int c = turn.visibleCells[i];
+            int due = world.pearlDue[c];
+            if (due < 0 || due >= INF || due > 511) continue;
+            if (due < turn.round && !occupancy.hasPearl(c)) continue;
+            int key = due * 64 + ((c * 37 + world.sonarCursor * 11) & 63);
+            if (key < bestDue) {
+                bestDue = key;
+                bestC = c;
+            }
+        }
+        if (bestC >= 0) return wireMessage(pack(M_PEARL, bestC, world.pearlDue[bestC]));
+        return 0;
+    }
+};
+
+} // namespace bot
