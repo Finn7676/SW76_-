@@ -1,0 +1,126 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <iostream>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Observer observer{turn, world, topology, occupancy, body};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+
+    void observe(int enemyDistance, std::initializer_list<int> pearls, int ownLength = 2,
+                 int ownId = 7, int population = 10, bool ownNeckEast = false) {
+        turn.round = 302;
+        turn.myId = ct.head.dragon_id = ownId;
+        turn.here = 60;
+        turn.length = ct.length = ownLength;
+        turn.population = ct.unit_count = population;
+        std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+        std::vector<int> enemy{60 + enemyDistance};
+        for (int x = 6 + enemyDistance; x <= 8; ++x) enemy.push_back(55 + x);
+        for (int y = 6; y <= 8; ++y) enemy.push_back(y * 11 + 8);
+        for (int x = 7; x >= 2 && enemy.size() < 11; --x) enemy.push_back(88 + x);
+        if (enemy.size() < 11) enemy.push_back(79);
+        assert(enemy.size() >= 11);
+        enemy.resize(11);
+        std::vector<Tile> tiles;
+        for (int y = 2; y <= 8; ++y)
+            for (int x = 2; x <= 8; ++x) {
+                int c = y * 11 + x;
+                std::optional<DragonPart> part;
+                if (c == turn.here)
+                    part.emplace(Position{x,y}, ownId, Team::A, Direction::EAST, true);
+                for (int i = 1; i < ownLength; ++i) {
+                    int own = ownNeckEast ? 60 + i : 60 - i;
+                    if (c == own) part.emplace(Position{x,y}, ownId, Team::A,
+                                               ownNeckEast ? Direction::WEST : Direction::EAST, false);
+                }
+                for (int i = 0; i < 11; ++i) {
+                    if (c != enemy[i]) continue;
+                    int prev = i ? enemy[i-1] : enemy[0] - 1;
+                    int d = prev == c - 1 ? 3 : prev == c + 1 ? 1 : prev == c - 11 ? 0 : 2;
+                    part.emplace(Position{x,y}, 3, Team::B, Direction(DCH[d]), i == 0);
+                }
+                tiles.emplace_back(Position{x,y}, part, -1,
+                    std::find(pearls.begin(), pearls.end(), c) != pearls.end());
+            }
+        ct.vision = Vision(std::move(tiles));
+        body.beginTurn();
+        observer.observe(ct);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    }
+    Action choose() { return planner.avoidTeammateHead(planner.choose(ct)); }
+};
+
+int main() {
+    {
+        Fixture f;
+        f.observe(1, {49});
+        Action a = f.choose();
+        std::cerr << "round302 adjacent: type=" << int(a.type) << " dir=" << int(a.dirs[0]) << '\n';
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+        assert(f.planner.behavior() == BehaviorState::COMBAT);
+    }
+    {
+        Fixture f;
+        f.observe(1, {49}, 2, 8); // an ID-selected Champion must not reserve a length-2 dragon
+        Action a = f.choose();
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+    }
+    {
+        Fixture f;
+        f.observe(1, {49}, 2, 7, 2);
+        Action a = f.choose();
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+    }
+    {
+        Fixture f;
+        f.observe(1, {49}, 2, 7, 1); // preserve the final dragon
+        Action a = f.choose();
+        assert(!(a.type == ActionType::MOVE && a.dirs[0] == 1));
+    }
+    {
+        Fixture f;
+        f.observe(2, {61}); // first pearl supplies the second step
+        Action a = f.choose();
+        assert(a.type == ActionType::SPRINT && a.steps == 2 && a.dirs[0] == 1 && a.dirs[1] == 1);
+    }
+    {
+        Fixture f;
+        f.observe(2, {}); // length 2 cannot pay an unassisted extra step
+        assert(f.choose().type != ActionType::SPRINT);
+    }
+    {
+        Fixture f;
+        f.observe(3, {62}); // a pearl on step 2 cannot pay for starting step 2
+        assert(f.choose().type != ActionType::SPRINT);
+    }
+    {
+        Fixture f;
+        f.observe(3, {61,62}); // successive pearls supply a third-step attack
+        Action a = f.choose();
+        assert(a.type == ActionType::SPRINT && a.steps == 3);
+        assert(a.dirs[0] == 1 && a.dirs[1] == 1 && a.dirs[2] == 1);
+    }
+    {
+        Fixture f;
+        f.observe(2, {}, 3);
+        Action a = f.choose();
+        assert(a.type == ActionType::SPRINT && a.steps == 2);
+    }
+    {
+        Fixture f;
+        f.observe(3, {}, 3, 7, 10, true); // do not sprint through the current neck
+        assert(f.choose().type != ActionType::SPRINT);
+    }
+    std::cout << "combat priority and pearl-funded sprint checks passed\n";
+}
