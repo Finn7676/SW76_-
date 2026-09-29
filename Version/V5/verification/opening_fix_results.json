@@ -1,0 +1,207 @@
+{
+  "baseline": "f2a20e1",
+  "version_tag": "v4-opening-fix-20260929",
+  "source_fingerprint": "4dbab2c7244b814dfb5a738b336d8216f0e1aafba3e40b185319a182053f0d7d",
+  "protocol_wasm": [
+    {
+      "version": "before",
+      "case": "dilemma_long_A_round0",
+      "action": "MOVE N"
+    },
+    {
+      "version": "before",
+      "case": "dilemma_long_B_round0",
+      "action": "MOVE S"
+    },
+    {
+      "version": "before",
+      "case": "devil_released_pearl_priority",
+      "action": "MOVE N"
+    },
+    {
+      "version": "before",
+      "case": "devil_screenshot_reconstruction",
+      "action": "MOVE W"
+    },
+    {
+      "version": "fixed",
+      "case": "dilemma_long_A_round0",
+      "action": "SPLIT 2"
+    },
+    {
+      "version": "fixed",
+      "case": "dilemma_long_B_round0",
+      "action": "SPLIT 2"
+    },
+    {
+      "version": "fixed",
+      "case": "devil_released_pearl_priority",
+      "action": "MOVE S"
+    },
+    {
+      "version": "fixed",
+      "case": "devil_screenshot_reconstruction",
+      "action": "MOVE W"
+    }
+  ],
+  "opening_matches_wasm": [
+    {
+      "map": "dilemma",
+      "side": "A",
+      "seed": 7,
+      "turns": 143,
+      "peak_points": 5420397,
+      "actions": {
+        "SPLIT": 7,
+        "MOVE": 133,
+        "EMPTY": 3
+      },
+      "errors": [],
+      "missed_splits": [],
+      "deaths": [
+        {
+          "id": 6,
+          "round": 4,
+          "reason": "A"
+        },
+        {
+          "id": 0,
+          "round": 7,
+          "reason": "A"
+        },
+        {
+          "id": 12,
+          "round": 11,
+          "reason": "A"
+        }
+      ],
+      "opening_parent": [
+        {
+          "round": 0,
+          "length": 11,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 1,
+          "length": 9,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 2,
+          "length": 7,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 3,
+          "length": 5,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 4,
+          "length": 3,
+          "action": "MOVE N"
+        },
+        {
+          "round": 5,
+          "length": 4,
+          "action": "SPLIT 2"
+        }
+      ]
+    },
+    {
+      "map": "dilemma",
+      "side": "B",
+      "seed": 7,
+      "turns": 143,
+      "peak_points": 5278657,
+      "actions": {
+        "SPLIT": 7,
+        "MOVE": 133,
+        "EMPTY": 3
+      },
+      "errors": [],
+      "missed_splits": [],
+      "deaths": [
+        {
+          "id": 7,
+          "round": 4,
+          "reason": "A"
+        },
+        {
+          "id": 1,
+          "round": 7,
+          "reason": "A"
+        },
+        {
+          "id": 13,
+          "round": 11,
+          "reason": "A"
+        }
+      ],
+      "opening_parent": [
+        {
+          "round": 0,
+          "length": 11,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 1,
+          "length": 9,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 2,
+          "length": 7,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 3,
+          "length": 5,
+          "action": "SPLIT 2"
+        },
+        {
+          "round": 4,
+          "length": 3,
+          "action": "MOVE S"
+        },
+        {
+          "round": 5,
+          "length": 4,
+          "action": "SPLIT 2"
+        }
+      ]
+    },
+    {
+      "map": "devil",
+      "side": "A",
+      "seed": 15470468907592539593,
+      "turns": 120,
+      "peak_points": 5531647,
+      "actions": {
+        "SPLIT": 3,
+        "MOVE": 117
+      },
+      "errors": [],
+      "missed_splits": [],
+      "deaths": []
+    },
+    {
+      "map": "devil",
+      "side": "B",
+      "seed": 15470468907592539593,
+      "turns": 120,
+      "peak_points": 5323384,
+      "actions": {
+        "SPLIT": 3,
+        "MOVE": 117
+      },
+      "errors": [],
+      "missed_splits": [],
+      "deaths": []
+    }
+  ],
+  "match_cutoff_round": 20,
+  "cpp_regression_groups_passed": 8,
+  "sanitizer_protocol_cases_passed": 7,
+  "screenshot_fixture": "devil_screenshot_reconstruction is reconstructed from the screenshot, not its original replay."
+}

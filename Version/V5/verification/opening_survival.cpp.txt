@@ -1,0 +1,113 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <iostream>
+#include <set>
+using namespace bot;
+struct Fixture {
+    GameConfig config{32,16}; TurnState turn; WorldModel world{config};
+    Topology topology{config,world}; OccupancyModel occupancy{config,turn};
+    BodyMemory body{turn,topology,occupancy}; Search search{config,turn,topology,occupancy};
+    Observer observer{turn,world,topology,occupancy,body};
+    Planner planner{config,turn,world,topology,occupancy,search,body};
+    Controller ct{7,Team::A,Direction::WEST,Vision{},64};
+    std::vector<int> segments{250,251}; std::set<int> pearls;
+    Fixture(){turn.myId=7;turn.population=ct.unit_count=6;std::fill(world.edgeT.begin(),world.edgeT.end(),E_OPEN);}
+    int cell(int x,int y)const{return y*32+x;}
+    void wall(int c,int d){topology.setEdge(c,d,E_KELP,-1);}
+    void observe(){
+        turn.here=segments[0];turn.length=ct.length=int(segments.size());
+        ct.head.position=Position{topology.cx(turn.here),topology.cy(turn.here)};
+        std::vector<Tile> tiles;
+        for(int c=0;c<config.cells;++c){
+            if(topology.cheb(c,turn.here)>3)continue;
+            int x=topology.cx(c),y=topology.cy(c);std::optional<DragonPart> part;
+            for(int i=0;i<int(segments.size());++i)if(c==segments[i]){
+                int d=dirIndex(ct.get_dir());
+                if(i)for(int k=0;k<4;++k)if(topology.geo(c,k)==segments[i-1]){d=k;break;}
+                part.emplace(Position{x,y},7,Team::A,Direction(DCH[d]),i==0);
+            }
+            Tile t{Position{x,y},part,-1,pearls.count(c)!=0};
+            for(int d=0;d<4;++d)if(topology.edgeTypeAt(c*4+d)==E_KELP)t.get_edge(Direction(DCH[d]))=Edge(false,EdgeType::KELP);
+            tiles.push_back(t);
+        }
+        ct.vision=Vision(std::move(tiles));body.beginTurn();observer.observe(ct);
+    }
+    Action choose(){return planner.finalizeAction(ct,planner.choose(ct));}
+    void move(Action a){assert(a.type==ActionType::MOVE);int q=topology.step(turn.here,a.dirs[0]);assert(q>=0);
+        if(!pearls.erase(q))segments.pop_back();segments.insert(segments.begin(),q);ct.head.dir=Direction(DCH[a.dirs[0]]);++turn.round;}
+};
+int main(){
+    {Fixture f;assert(f.world.seenRound[0]==-1);f.observe();assert(f.world.seenRound[f.turn.here]==0);}
+    for(int r:{0,19,20,38})for(bool hidden:{false,true}){
+        Fixture f;f.turn.round=r;f.segments={250,251,252,253,254,255};
+        for(int d:{0,2,3})f.wall(250,d);
+        if(!hidden){f.segments={250,251,252,253,285,284};for(int d:{0,2,3})f.wall(284,d);}
+        f.observe();assert(!f.body.tailCanEscape());auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);
+    }
+    {Fixture f;f.segments={250,251,252,253};for(int d=0;d<4;++d)f.wall(250,d);
+        f.observe();auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);}
+    for(int r:{19,20,38}){Fixture f;f.turn.round=r;f.segments={250,251,252,253,285,284};
+        for(int d:{0,2,3})f.wall(250,d);f.observe();assert(f.body.tailCanEscape());auto a=f.choose();
+        assert(a.type==ActionType::SPLIT&&a.splitSize==(r<20?2:4));}
+    // Kelp corridor with two pearls ahead is already a trap, before touching
+    // its end. Peel repeatedly even though the next head move is legal.
+    for(bool openExit:{false,true}) {
+        Fixture f;f.ct.head.dir=Direction::NORTH;
+        f.segments={f.cell(17,2),f.cell(17,3),f.cell(17,4),f.cell(17,5),f.cell(17,6),f.cell(17,7),f.cell(17,8),f.cell(17,9)};
+        for(int y=0;y<=2;++y){f.wall(f.cell(17,y),1);f.wall(f.cell(17,y),3);}
+        f.wall(f.cell(17,0),0);f.pearls={f.cell(17,0),f.cell(17,1)};
+        if(openExit)f.topology.setEdge(f.cell(17,0),1,E_OPEN,-1);
+        f.observe();
+        if(openExit){assert(f.choose().type!=ActionType::SPLIT);}
+        else for(int k=0;k<3;++k){
+            auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);
+            // The final guard must preserve rescue even with a visible safe tail.
+            assert(f.planner.finalizeAction(f.ct,Action::split(f.turn.length-2)).splitSize==2);
+            f.segments.resize(f.segments.size()-2);++f.turn.round;f.observe();
+        }
+    }
+    // Free head, trapped tail: reject routine splitting.
+    {Fixture f;f.segments={250,251,252,253};for(int d:{0,1,2})f.wall(253,d);
+        f.observe();assert(!f.body.tailCanEscape());assert(f.choose().type==ActionType::MOVE);}
+    // Opening navigation must leave expansion reachable.
+    {Fixture f;f.segments={250,251,252,253};f.observe();auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);}
+    // Persistent heading beyond round 2, without upward drift on a clear route.
+    {Fixture f;for(int n=0;n<7;++n){f.observe();auto a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]==3);f.move(a);}}
+    for(int born:{0,2,3}){Fixture f;f.turn.round=born;f.segments[1]=282;f.observe();auto a=f.choose();
+        assert(a.type==ActionType::MOVE&&a.dirs[0]==3);}
+    {Fixture f;f.ct.head.dir=Direction::EAST;f.segments={254,253};f.wall(255,1);
+        f.observe();auto a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]!=1);
+        f.move(a);f.observe();a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]==3);}
+    // Portal scoring used to dereference an empty vector on round zero.
+    {Fixture f;f.observe();f.topology.setEdge(249,3,E_PORTAL,23);assert(f.choose().type==ActionType::MOVE);}
+    {Fixture f;f.observe();BugNav nav(f.config,f.turn,f.topology,f.occupancy);
+        assert(nav.direction(f.cell(5,8),true,7,3)==3);f.wall(f.turn.here,3);
+        int d=nav.direction(f.cell(5,8),true,7,3);assert(d==0||d==2);
+        for(int n=0;n<8;++n){f.move(Action::move(d));f.observe();d=nav.direction(f.cell(5,8),true,7,3);assert(d>=0);}
+        assert(f.topology.cx(f.turn.here)<26);}
+    // The map's long axis selects completion, not the child's initial facing.
+    {Fixture f;f.ct.head.dir=Direction::NORTH;f.segments={250,282};f.observe();
+        auto a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]==0);}
+    // Outward travel continues at a center line and ends in its target's 3x3 box.
+    for(int destination:{239,260}) { // (15,7) center line; (4,8) target neighborhood
+        Fixture f;f.ct.head.dir=Direction::EAST;f.observe();f.choose();assert(f.planner.openingMissionActive());
+        f.turn.round=4;f.segments={destination,destination+1};f.observe();f.choose();
+        assert(f.planner.openingMissionActive() == (destination == 239));
+    }
+    {Fixture f;f.turn.round=59;f.observe();f.choose();assert(f.planner.openingMissionActive());
+        f.turn.round=60;f.observe();f.choose();assert(!f.planner.openingMissionActive());}
+    // An unresolved return portal is occupied by our hidden neck.
+    for(int r:{0,38}) {
+        Fixture f; f.turn.round=r; f.ct.head.dir=Direction::EAST;
+        f.segments={250,400,401,402,403,404}; f.observe();
+        for(int d:{0,1,2})f.wall(250,d);
+        f.topology.setEdge(250,3,E_PORTAL,23);
+        auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);
+    }
+    {Fixture f;f.ct.head.dir=Direction::WEST;f.segments={250,400};f.observe();
+        f.topology.setEdge(250,1,E_PORTAL,23);
+        auto a=f.planner.finalizeAction(f.ct,Action::move(1));
+        assert(a.type==ActionType::MOVE&&a.dirs[0]!=1);}
+    std::cout<<"opening and survival regressions passed\n";
+}

@@ -1,0 +1,152 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <iostream>
+#include <set>
+using namespace bot;
+struct Fixture {
+    GameConfig config; TurnState turn; WorldModel world;
+    Topology topology; OccupancyModel occupancy; BodyMemory body;
+    Search search; Observer observer; Planner planner;
+    Controller ct{2,Team::A,Direction::EAST,Vision{},64};
+    std::vector<int> segments; std::vector<Part> allies; std::set<int> pearls;
+    Fixture(int w=32,int h=16):config(w,h),world(config),topology(config,world),occupancy(config,turn),
+        body(turn,topology,occupancy),search(config,turn,topology,occupancy),
+        observer(turn,world,topology,occupancy,body),planner(config,turn,world,topology,occupancy,search,body) {
+        turn.myId=2;turn.population=ct.unit_count=6;
+        std::fill(world.edgeT.begin(),world.edgeT.end(),E_OPEN);
+        segments={cell(4,2),cell(3,2)};
+    }
+    int cell(int x,int y)const{return y*config.width+x;}
+    void wall(int c,int d){topology.setEdge(c,d,E_KELP,-1);}
+    void observe(){
+        turn.here=segments.front();turn.length=ct.length=int(segments.size());
+        ct.head.position=Position{topology.cx(turn.here),topology.cy(turn.here)};
+        std::vector<Tile> tiles;
+        for(int c=0;c<config.cells;++c){
+            if(topology.cheb(c,turn.here)>3)continue;
+            int x=topology.cx(c),y=topology.cy(c);std::optional<DragonPart> part;
+            for(int i=0;i<int(segments.size());++i)if(c==segments[i]){
+                int d=dirIndex(ct.get_dir());
+                if(i)for(int k=0;k<4;++k)if(topology.geo(c,k)==segments[i-1]){d=k;break;}
+                part.emplace(Position{x,y},turn.myId,Team::A,Direction(DCH[d]),i==0);
+            }
+            for(auto const &a:allies)if(a.c==c)part.emplace(Position{x,y},a.id,a.mine?Team::A:Team::B,Direction(DCH[a.facing]),a.head);
+            Tile t{Position{x,y},part,-1,pearls.count(c)!=0};
+            for(int d=0;d<4;++d){
+                int edge=c*4+d;auto type=topology.edgeTypeAt(edge);
+                if(type==E_KELP)t.get_edge(Direction(DCH[d]))=Edge(false,EdgeType::KELP);
+                if(type==E_PORTAL)t.get_edge(Direction(DCH[d]))=Edge(true,EdgeType::PORTAL,topology.portalIdAt(edge));
+            }
+            tiles.push_back(t);
+        }
+        ct.vision=Vision(std::move(tiles));body.beginTurn();observer.observe(ct);
+    }
+    Action choose(){Action a=planner.finalizeAction(ct,planner.choose(ct));planner.rememberChosenAction(a);return a;}
+    void move(Action a){assert(a.type==ActionType::MOVE);int q=topology.step(turn.here,a.dirs[0]);assert(q>=0);
+        if(!pearls.erase(q))segments.pop_back();segments.insert(segments.begin(),q);ct.head.dir=Direction(DCH[a.dirs[0]]);++turn.round;}
+    void portalArrival(int source,int landing,int pid=23){
+        ++turn.round;segments={landing,source};
+        topology.setEdge(landing,3,E_PORTAL,pid);world.learnedExit[landing*4+3]=source;
+        world.lastExploredPortalKey=topology.canon(landing,3);world.lastExploredPortalSource=source;
+        world.lastExploredPortalOwner=turn.myId;world.lastExploredPortalRound=turn.round;
+    }
+};
+int main(){
+    // Same-facing teammates never override any ID's birth heading.
+    for(int heading:{1,3})for(int id:{2,10,14}){
+        Fixture f;f.turn.myId=id;f.ct.head.dir=Direction(DCH[heading]);
+        f.segments={f.cell(4,2),f.cell(4,3)};
+        int y=0;for(int other:{2,10,14})if(other!=id){
+            f.allies.push_back({f.cell(4,y),other,heading,true,true});y=4;
+        }
+        f.observe();auto a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]==heading);
+    }
+    // Tangent headings behave identically with or without a teammate.
+    for(int id:{2,10}){
+        Fixture solo(31,15),withAlly(31,15);
+        for(Fixture *f:{&solo,&withAlly}){
+            f->turn.myId=id;f->ct.head.dir=Direction::NORTH;
+            f->segments={f->cell(4,7),f->cell(4,8)};
+        }
+        withAlly.allies.push_back({withAlly.cell(6,7),id==2?10:2,2,true,true});
+        solo.observe();withAlly.observe();auto a=solo.choose(),b=withAlly.choose();
+        assert(a.type==ActionType::MOVE&&b.type==a.type&&b.dirs[0]==a.dirs[0]);
+    }
+    // Opposite unambiguous headings preserve the original heading policy.
+    for(int born:{0,2,3}){
+        Fixture f;f.turn.round=born;f.ct.head.dir=Direction::WEST;
+        f.segments={f.cell(4,2),f.cell(4,3)};f.allies.push_back({f.cell(4,4),10,1,true,true});
+        f.observe();auto a=f.choose();assert(a.type==ActionType::MOVE&&a.dirs[0]==(born<3?3:1));
+    }
+    // A center route keeps travelling after only one axis, on either aspect ratio.
+    for(auto dims:{std::pair{32,16},std::pair{16,32},std::pair{31,15}}){
+        Fixture f(dims.first,dims.second);bool oneAxis=false;int steps=0;
+        for(;steps<55;++steps){
+            f.observe();auto a=f.choose();
+            int x=f.topology.cx(f.turn.here),y=f.topology.cy(f.turn.here);
+            bool xCross=x>=f.config.width/2-1,yCross=y>=f.config.height/2-1;
+            if(xCross!=yCross){oneAxis=true;assert(f.planner.openingMissionActive());}
+            if(!f.planner.openingMissionActive()){assert(xCross&&yCross);break;}
+            f.move(a);
+        }
+        assert(oneAxis&&steps<55);
+    }
+    // Being born on an axis and moving along it is not a transverse crossing.
+    for(int height:{15,16}){
+        Fixture f(31,height);f.segments={f.cell(4,height/2),f.cell(3,height/2)};
+        bool sawVertical=false;int step=0;
+        for(;step<40;++step){f.observe();auto a=f.choose();
+            if(!f.planner.openingMissionActive())break;
+            if(a.dirs[0]==0||a.dirs[0]==2)sawVertical=true;
+            f.move(a);
+        }
+        assert(sawVertical&&step<40);
+    }
+    // Outward travel crossing the other center line does not release its task.
+    {Fixture f;f.ct.head.dir=Direction::WEST;f.segments={f.cell(4,2),f.cell(5,2)};
+        f.observe();f.choose();f.segments={f.cell(4,6),f.cell(4,5)};f.ct.head.dir=Direction::SOUTH;
+        for(int n=0;n<4;++n){f.observe();f.planner.rememberChosenAction(Action::move(2));f.move(Action::move(2));}
+        f.observe();f.choose();assert(f.planner.openingMissionActive());
+        f.segments={f.cell(26,12),f.cell(25,12)};f.observe();f.choose();assert(!f.planner.openingMissionActive());}
+    // Open portal exit releases travel, sealed small pocket returns and resumes it.
+    for(bool small:{false,true}){
+        Fixture f;f.observe();f.choose();int source=f.turn.here,landing=f.cell(24,11);
+        f.portalArrival(source,landing);
+        if(small){
+            for(int x=24;x<=25;++x)for(int y=10;y<=11;++y){
+                int c=f.cell(x,y);if(x==24&&y==10)f.wall(c,3);if(x==25)f.wall(c,1);
+                if(y==10)f.wall(c,0);if(y==11)f.wall(c,2);
+            }
+        }
+        f.observe();auto a=f.choose();
+        assert(f.planner.openingMissionActive()==small);
+        if(small){assert(a.type==ActionType::MOVE);
+            ++f.turn.round;f.segments={source,source-1};f.world.lastExploredPortalRound=f.turn.round;
+            f.world.lastExploredPortalOwner=f.turn.myId;f.world.lastExploredPortalSource=landing;
+            f.observe();f.choose();assert(f.planner.openingMissionActive());}
+    }
+    // Screenshot-shaped corner: collect two pearls, then spawn exactly length 3.
+    for(int round:{0,19,20,38,60,302})for(int length:{3,4,8})for(bool safeTail:{false,true}){
+        Fixture f;f.turn.round=round;f.ct.head.dir=Direction::SOUTH;f.segments.clear();
+        for(int i=0;i<length;++i)f.segments.push_back(f.cell(4,10-i));
+        f.wall(f.cell(4,10),1);f.wall(f.cell(4,10),2);
+        f.pearls={f.cell(3,10),f.cell(3,9)};
+        for(int d:{0,1,3})f.wall(f.cell(3,9),d);
+        for(int d:{2,3})f.wall(f.cell(3,10),d);
+        if(!safeTail)for(int d:{0,1,3})f.wall(f.segments.back(),d);
+        f.observe();auto a=f.choose();
+        if(length==8||!safeTail){
+            if(round<20){
+                if(length==3){assert(a.type==ActionType::MOVE);f.move(a);f.observe();a=f.choose();}
+                if(f.turn.round<20)assert(a.type==ActionType::SPLIT&&a.splitSize==2);
+                else assert(a.type!=ActionType::SPLIT || a.splitSize!=3);
+            } else assert(a.type!=ActionType::SPLIT || a.splitSize!=3);
+            continue;
+        }
+        assert(a.type==ActionType::MOVE&&a.dirs[0]==3);f.move(a);f.observe();a=f.choose();
+        assert(a.type==ActionType::MOVE&&a.dirs[0]==0);f.move(a);f.observe();a=f.choose();
+        assert(a.type==ActionType::SPLIT&&a.splitSize==3);assert(f.turn.length-a.splitSize>=2);
+    }
+    std::cout<<"spawn-heading opening and short pearl escape checks passed\n";
+}

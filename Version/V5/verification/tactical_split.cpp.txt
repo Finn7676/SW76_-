@@ -1,0 +1,90 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Observer observer{turn, world, topology, occupancy, body};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::NORTH, Vision{}, 64};
+
+    void observe(bool child = false, int enemyId = 3, int enemyLength = 5, int round = 10,
+                 bool dangerNearParent = false) {
+        turn.round = round;
+        turn.myId = ct.head.dragon_id = child ? 11 : 7;
+        turn.here = child ? 69 : 60;
+        turn.length = ct.length = child ? 2 : 8;
+        turn.population = ct.unit_count = child ? 63 : 62;
+        int cx = turn.here % config.width, cy = turn.here / config.width;
+        std::vector<Tile> tiles;
+        for (int dy = -3; dy <= 3; ++dy)
+            for (int dx = -3; dx <= 3; ++dx) {
+                int x = cx + dx, y = cy + dy, c = y * config.width + x;
+                std::optional<DragonPart> part;
+                auto own = [&](int at, Direction facing, bool head) {
+                    if (c == at) part.emplace(Position{x, y}, turn.myId, Team::A, facing, head);
+                };
+                if (child) {
+                    own(69, Direction::WEST, true);
+                    own(80, Direction::NORTH, false);
+                } else {
+                    own(60, Direction::NORTH, true);
+                    own(71, Direction::NORTH, false);
+                    own(82, Direction::NORTH, false);
+                    own(93, Direction::NORTH, false);
+                    own(92, Direction::EAST, false);
+                    own(91, Direction::EAST, false);
+                    own(80, Direction::SOUTH, false);
+                    own(69, Direction::SOUTH, false);
+                }
+                std::array<int, 5> enemyCells{68, 57, 46, 35, 36};
+                std::array<Direction, 5> enemyFacing{Direction::WEST, Direction::SOUTH,
+                                                      Direction::SOUTH, Direction::SOUTH, Direction::WEST};
+                for (int i = 0; i < enemyLength; ++i)
+                    if (c == enemyCells[i])
+                        part.emplace(Position{x, y}, enemyId, Team::B, enemyFacing[i], i == 0);
+                if (dangerNearParent && c == 61)
+                    part.emplace(Position{x, y}, 12, Team::B, Direction::NORTH, true);
+                tiles.emplace_back(Position{x, y}, part, -1, false);
+            }
+        ct.vision = Vision(std::move(tiles));
+        observer.observe(ct);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    }
+};
+
+int main() {
+    Fixture parent;
+    parent.observe();
+    Action spawn = parent.planner.choose(parent.ct);
+    assert(spawn.type == ActionType::SPLIT && spawn.splitSize == 2);
+
+    Fixture child;
+    child.observe(true);
+    Action trade = child.planner.choose(child.ct);
+    assert(trade.type == ActionType::MOVE && trade.dirs[0] == 3);
+
+    Fixture enemyHasNotActed;
+    enemyHasNotActed.observe(false, 10);
+    assert(enemyHasNotActed.planner.choose(enemyHasNotActed.ct).type != ActionType::SPLIT);
+
+    Fixture smallEnemy;
+    smallEnemy.observe(false, 3, 4);
+    assert(smallEnemy.planner.choose(smallEnemy.ct).type != ActionType::SPLIT);
+
+    Fixture lateRound;
+    lateRound.observe(false, 3, 5, CH_START);
+    assert(lateRound.planner.choose(lateRound.ct).type != ActionType::SPLIT);
+
+    Fixture unsafeParent;
+    unsafeParent.observe(false, 3, 5, 10, true);
+    assert(unsafeParent.planner.choose(unsafeParent.ct).type != ActionType::SPLIT);
+}

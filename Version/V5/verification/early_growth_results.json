@@ -1,0 +1,261 @@
+{
+  "baseline": "1f6b722b5813c26cc27455baac2f0a485b352f8f",
+  "source_fingerprint": "d65c31acef6c38edec40d1f65a7d4efad20179d0b9f1c2c03ed3c6b1505e357b",
+  "cpp_regressions": {
+    "passed": 10,
+    "failed": 0,
+    "suites": [
+      "combat_priority.cpp.txt",
+      "death_pearls.cpp.txt",
+      "early_growth.cpp.txt",
+      "opening_strategy.cpp.txt",
+      "opening_survival.cpp.txt",
+      "resource_pocket.cpp.txt",
+      "sacrifice.cpp.txt",
+      "short_avoid.cpp.txt",
+      "tactical_split.cpp.txt",
+      "v3_tests.cpp.txt"
+    ]
+  },
+  "protocol_sanitized": {
+    "passed": 7,
+    "failed": 0
+  },
+  "early_growth_sanitized": {
+    "passed": true
+  },
+  "short_escape_engine": [
+    {
+      "initial_length": 3,
+      "turns": [
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3,
+          "action": "MOVE W"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "length": 4,
+          "action": "MOVE N"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "length": 5,
+          "action": "SPLIT 3"
+        },
+        {
+          "id": 2,
+          "round": 3,
+          "length": 3,
+          "action": "MOVE E"
+        },
+        {
+          "id": 0,
+          "round": 4,
+          "length": 2,
+          "action": "NONE"
+        },
+        {
+          "id": 2,
+          "round": 4,
+          "length": 3,
+          "action": "MOVE E"
+        },
+        {
+          "id": 2,
+          "round": 5,
+          "length": 3,
+          "action": "MOVE E"
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 4,
+          "reason": "A"
+        }
+      ],
+      "errors": [],
+      "child_ids": [
+        2
+      ]
+    },
+    {
+      "initial_length": 4,
+      "turns": [
+        {
+          "id": 0,
+          "round": 1,
+          "length": 4,
+          "action": "MOVE W"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "length": 5,
+          "action": "MOVE N"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "length": 6,
+          "action": "SPLIT 3"
+        },
+        {
+          "id": 2,
+          "round": 3,
+          "length": 3,
+          "action": "MOVE E"
+        },
+        {
+          "id": 0,
+          "round": 4,
+          "length": 3,
+          "action": "NONE"
+        },
+        {
+          "id": 2,
+          "round": 4,
+          "length": 3,
+          "action": "MOVE E"
+        },
+        {
+          "id": 2,
+          "round": 5,
+          "length": 3,
+          "action": "MOVE S"
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 4,
+          "reason": "A"
+        }
+      ],
+      "errors": [],
+      "child_ids": [
+        2
+      ]
+    }
+  ],
+  "wasm_matches": [
+    {
+      "map": "dilemma",
+      "side": "A",
+      "seed": 7,
+      "turns": 482,
+      "actions": {
+        "SPLIT": 14,
+        "MOVE": 461,
+        "EMPTY": 7
+      },
+      "peak_points": 6070403,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "A": 7,
+        "H": 6
+      }
+    },
+    {
+      "map": "dilemma",
+      "side": "B",
+      "seed": 7,
+      "turns": 400,
+      "actions": {
+        "SPLIT": 10,
+        "MOVE": 386,
+        "EMPTY": 4
+      },
+      "peak_points": 5379370,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "A": 4,
+        "H": 6
+      }
+    },
+    {
+      "map": "devil",
+      "side": "A",
+      "seed": 15470468907592539593,
+      "turns": 1194,
+      "actions": {
+        "SPLIT": 54,
+        "MOVE": 1115,
+        "EMPTY": 25
+      },
+      "peak_points": 5741636,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "A": 25,
+        "H": 9
+      }
+    },
+    {
+      "map": "devil",
+      "side": "B",
+      "seed": 15470468907592539593,
+      "turns": 1084,
+      "actions": {
+        "SPLIT": 51,
+        "MOVE": 1006,
+        "EMPTY": 27
+      },
+      "peak_points": 5326168,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "A": 27,
+        "H": 5
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "A",
+      "seed": 7,
+      "turns": 1618,
+      "actions": {
+        "MOVE": 1571,
+        "SPLIT": 46,
+        "EMPTY": 1
+      },
+      "peak_points": 6932103,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "H": 15,
+        "A": 1
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "B",
+      "seed": 7,
+      "turns": 1559,
+      "actions": {
+        "MOVE": 1507,
+        "SPLIT": 51,
+        "EMPTY": 1
+      },
+      "peak_points": 6882737,
+      "round_limit": 80,
+      "execution_errors": 0,
+      "missed_legal_splits": 0,
+      "deaths_by_reason": {
+        "H": 20,
+        "A": 1
+      }
+    }
+  ]
+}

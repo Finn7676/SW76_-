@@ -1,0 +1,1532 @@
+{
+  "mode": "judge WASM sandbox",
+  "baseline_commit": "a4c2067",
+  "version": "v4-audit-20260928",
+  "opponent": "tyhh",
+  "opponent_cpp_sha256": "209cf29c89c9f87587b47c238d72dabe61ca039b7362c8f55a8d499c792db4c2",
+  "source_sha256": {
+    "action.hpp": "f05a1f31eff332b44dd3de36cbb35dd1f4aa892fb4e7f6b9f415b868e6b38a30",
+    "body.hpp": "c453773909f0e678a49d7abfeecce3ce0221d31c739d3f2966eba9de843c404f",
+    "bugnav.hpp": "c8c08a483acecb4a350a6a96b2bab8bb4e389bbf0bddb6e9db01994b53f58b39",
+    "core.hpp": "31e56ae7f4086b48c1763110401d68f45aadd637fd591c57af53fe453edc2352",
+    "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+    "donation.hpp": "14b11267c3810016ca92371d65e1cce385fe941e08750e011ac927faf73ee4ca",
+    "helper.hpp": "34fa03616ec9f521d4b8a26d37cd9a8abbacab25fdf7e6ad9bd29a86f2ffcab4",
+    "main.cpp": "66f57fe8a456bd3abbf7d667c56e4f252895951bb6f405cef358cd87b142fc41",
+    "observer.hpp": "88921518637fe748abac3dd3c251f96da8879f489a30dac17a6bcf622eaf0a15",
+    "occupancy.hpp": "4451aa143475944dfad0a44e3ce4bf895fc955b5275b11669237913393200614",
+    "planner.hpp": "19fd93d656f682ffd1a11319149db232c3b6369c8d19fc2aa91d83157af5ddf5",
+    "roles.hpp": "57c87f10e2dc3f680c47183adec04fde03dd242a713db0c9e805b573625bc1fc",
+    "search.hpp": "670ce8949a31339e1e4abd52cdbdc79f884e12ecb3f2c14f54aac91df52ed493",
+    "sonar.hpp": "dcaa61cd1966745e54fd40fe1dae78bb9cbc8e2b70148e55c345c3fe5b8f447a",
+    "topology.hpp": "55f98476639ebfd257682d9855d4789e658a549dfe468b0e196f20d0a6a9628c",
+    "world.hpp": "7263b8b7f1089d800eb69dbae6aabba11fb9a2333f6737d671f694b16352d439"
+  },
+  "baseline_stats": {
+    "matches": 26,
+    "wins": 3,
+    "turns": 129130,
+    "execution_errors": 0,
+    "missed_splits_before_round400": 3,
+    "self_collisions": 473,
+    "peak_points": 6688680
+  },
+  "fixed_stats": {
+    "matches": 26,
+    "wins": 13,
+    "turns": 220363,
+    "execution_errors": 0,
+    "missed_splits_before_round400": 0,
+    "self_collisions": 0,
+    "peak_points": 6598586
+  },
+  "baseline": [
+    {
+      "map": "Colosseum",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 75,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 28,
+        "a_length": 0,
+        "b_length": 67,
+        "events": 6007
+      },
+      "actions": {
+        "MOVE": 263,
+        "SPLIT": 12
+      },
+      "turns": 275,
+      "peak_points": 6248224,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 10,
+        "S": 1,
+        "O": 2
+      }
+    },
+    {
+      "map": "Colosseum",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 30,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 4,
+        "b_dragons": 0,
+        "a_length": 8,
+        "b_length": 0,
+        "events": 1301
+      },
+      "actions": {
+        "MOVE": 64,
+        "SPLIT": 3
+      },
+      "turns": 67,
+      "peak_points": 6104868,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 4
+      }
+    },
+    {
+      "map": "arena",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 24,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 23,
+        "a_length": 0,
+        "b_length": 59,
+        "events": 1172
+      },
+      "actions": {
+        "MOVE": 28,
+        "SPLIT": 1
+      },
+      "turns": 29,
+      "peak_points": 5667809,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 1,
+        "S": 1
+      }
+    },
+    {
+      "map": "arena",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 25,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 22,
+        "b_dragons": 0,
+        "a_length": 55,
+        "b_length": 0,
+        "events": 1351
+      },
+      "actions": {
+        "MOVE": 28,
+        "SPLIT": 2
+      },
+      "turns": 30,
+      "peak_points": 5775723,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 3
+      }
+    },
+    {
+      "map": "autarky",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 26,
+        "b_dragons": 2,
+        "a_length": 153,
+        "b_length": 5,
+        "events": 145670
+      },
+      "actions": {
+        "MOVE": 17317,
+        "SPLIT": 295,
+        "EMPTY": 43
+      },
+      "turns": 17655,
+      "peak_points": 6581091,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 137,
+        "H": 82,
+        "O": 13,
+        "A": 43
+      }
+    },
+    {
+      "map": "autarky",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 33,
+        "b_dragons": 10,
+        "a_length": 113,
+        "b_length": 37,
+        "events": 139240
+      },
+      "actions": {
+        "MOVE": 9347,
+        "SPLIT": 130,
+        "EMPTY": 2
+      },
+      "turns": 9479,
+      "peak_points": 6610164,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 42,
+        "H": 64,
+        "O": 18,
+        "A": 2
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 37,
+        "b_dragons": 31,
+        "a_length": 405,
+        "b_length": 496,
+        "events": 283984
+      },
+      "actions": {
+        "MOVE": 21420,
+        "SPLIT": 366,
+        "EMPTY": 3
+      },
+      "turns": 21789,
+      "peak_points": 6559648,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 311,
+        "S": 8,
+        "O": 10,
+        "A": 3
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 37,
+        "b_dragons": 45,
+        "a_length": 460,
+        "b_length": 496,
+        "events": 297269
+      },
+      "actions": {
+        "MOVE": 23244,
+        "SPLIT": 382,
+        "EMPTY": 2
+      },
+      "turns": 23628,
+      "peak_points": 6652419,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 309,
+        "O": 21,
+        "S": 8,
+        "A": 2
+      }
+    },
+    {
+      "map": "default",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 261,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 47,
+        "a_length": 0,
+        "b_length": 112,
+        "events": 42383
+      },
+      "actions": {
+        "MOVE": 476,
+        "SPLIT": 4
+      },
+      "turns": 480,
+      "peak_points": 5668853,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 8
+      }
+    },
+    {
+      "map": "default",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 11,
+        "b_dragons": 8,
+        "a_length": 61,
+        "b_length": 38,
+        "events": 90414
+      },
+      "actions": {
+        "MOVE": 6330,
+        "SPLIT": 134,
+        "EMPTY": 7
+      },
+      "turns": 6471,
+      "peak_points": 5595737,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 88,
+        "S": 21,
+        "A": 7,
+        "O": 14
+      }
+    },
+    {
+      "map": "default_small",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 67,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 17,
+        "a_length": 0,
+        "b_length": 36,
+        "events": 3244
+      },
+      "actions": {
+        "MOVE": 124,
+        "SPLIT": 2
+      },
+      "turns": 126,
+      "peak_points": 5005104,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 1,
+        "H": 3
+      }
+    },
+    {
+      "map": "default_small",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 186,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 35,
+        "b_dragons": 0,
+        "a_length": 79,
+        "b_length": 0,
+        "events": 19536
+      },
+      "actions": {
+        "MOVE": 552,
+        "SPLIT": 14,
+        "EMPTY": 1
+      },
+      "turns": 567,
+      "peak_points": 5004523,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 10,
+        "A": 1,
+        "S": 3,
+        "O": 2
+      }
+    },
+    {
+      "map": "devil",
+      "side": "A",
+      "seed": 15470468907592539593,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 1,
+        "b_dragons": 21,
+        "a_length": 2,
+        "b_length": 128,
+        "events": 96684
+      },
+      "actions": {
+        "MOVE": 1039,
+        "SPLIT": 31,
+        "EMPTY": 2
+      },
+      "turns": 1072,
+      "peak_points": 5481866,
+      "execution_errors": [],
+      "missed_splits_before_round400": [
+        {
+          "round": 38,
+          "id": 0,
+          "LENGTH": 6,
+          "UNIT_COUNT": 4
+        },
+        {
+          "round": 60,
+          "id": 20,
+          "LENGTH": 5,
+          "UNIT_COUNT": 4
+        }
+      ],
+      "death_reasons": {
+        "A": 2,
+        "H": 23,
+        "O": 5,
+        "S": 3
+      }
+    },
+    {
+      "map": "devil",
+      "side": "B",
+      "seed": 15470468907592539593,
+      "result": {
+        "rounds": 323,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 60,
+        "b_dragons": 0,
+        "a_length": 157,
+        "b_length": 0,
+        "events": 63060
+      },
+      "actions": {
+        "MOVE": 812,
+        "SPLIT": 9
+      },
+      "turns": 821,
+      "peak_points": 5339697,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "O": 1,
+        "H": 10,
+        "S": 1
+      }
+    },
+    {
+      "map": "dilemma",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 89,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 7,
+        "a_length": 0,
+        "b_length": 14,
+        "events": 5803
+      },
+      "actions": {
+        "MOVE": 285,
+        "SPLIT": 10
+      },
+      "turns": 295,
+      "peak_points": 5416966,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 7,
+        "H": 6
+      }
+    },
+    {
+      "map": "dilemma",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 408,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 28,
+        "b_dragons": 0,
+        "a_length": 67,
+        "b_length": 0,
+        "events": 38043
+      },
+      "actions": {
+        "MOVE": 783,
+        "SPLIT": 8
+      },
+      "turns": 791,
+      "peak_points": 5172434,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 7,
+        "H": 4
+      }
+    },
+    {
+      "map": "queen_of_spades",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 146,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 21,
+        "a_length": 0,
+        "b_length": 51,
+        "events": 9605
+      },
+      "actions": {
+        "MOVE": 202,
+        "SPLIT": 2
+      },
+      "turns": 204,
+      "peak_points": 5596574,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 1,
+        "H": 3
+      }
+    },
+    {
+      "map": "queen_of_spades",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 24,
+        "b_dragons": 1,
+        "a_length": 106,
+        "b_length": 2,
+        "events": 73004
+      },
+      "actions": {
+        "MOVE": 1093,
+        "SPLIT": 5
+      },
+      "turns": 1098,
+      "peak_points": 5529233,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 2,
+        "H": 4
+      }
+    },
+    {
+      "map": "schooltime",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 159,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 63,
+        "a_length": 0,
+        "b_length": 277,
+        "events": 25378
+      },
+      "actions": {
+        "MOVE": 647,
+        "SPLIT": 8
+      },
+      "turns": 655,
+      "peak_points": 6308139,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 10,
+        "S": 1
+      }
+    },
+    {
+      "map": "schooltime",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 40,
+        "b_dragons": 2,
+        "a_length": 601,
+        "b_length": 5,
+        "events": 139660
+      },
+      "actions": {
+        "MOVE": 1118,
+        "SPLIT": 23
+      },
+      "turns": 1141,
+      "peak_points": 5743593,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 23,
+        "S": 1
+      }
+    },
+    {
+      "map": "stronghold",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 29,
+        "b_dragons": 12,
+        "a_length": 112,
+        "b_length": 62,
+        "events": 167504
+      },
+      "actions": {
+        "MOVE": 15317,
+        "SPLIT": 193,
+        "EMPTY": 15
+      },
+      "turns": 15525,
+      "peak_points": 6168690,
+      "execution_errors": [],
+      "missed_splits_before_round400": [
+        {
+          "round": 343,
+          "id": 184,
+          "LENGTH": 4,
+          "UNIT_COUNT": 39
+        }
+      ],
+      "death_reasons": {
+        "S": 90,
+        "A": 15,
+        "O": 55,
+        "H": 6
+      }
+    },
+    {
+      "map": "stronghold",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 15,
+        "b_dragons": 29,
+        "a_length": 88,
+        "b_length": 112,
+        "events": 192778
+      },
+      "actions": {
+        "MOVE": 15787,
+        "SPLIT": 177,
+        "EMPTY": 16
+      },
+      "turns": 15980,
+      "peak_points": 6687101,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 63,
+        "O": 68,
+        "A": 16,
+        "H": 3
+      }
+    },
+    {
+      "map": "trauma",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 1,
+        "b_dragons": 8,
+        "a_length": 2,
+        "b_length": 26,
+        "events": 25181
+      },
+      "actions": {
+        "MOVE": 611,
+        "SPLIT": 3
+      },
+      "turns": 614,
+      "peak_points": 6590884,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 4
+      }
+    },
+    {
+      "map": "trauma",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 21,
+        "b_dragons": 20,
+        "a_length": 58,
+        "b_length": 84,
+        "events": 106367
+      },
+      "actions": {
+        "MOVE": 8780,
+        "SPLIT": 146,
+        "EMPTY": 14
+      },
+      "turns": 8940,
+      "peak_points": 6571871,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "S": 64,
+        "O": 27,
+        "H": 23,
+        "A": 14
+      }
+    },
+    {
+      "map": "trophy",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 153,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 52,
+        "a_length": 0,
+        "b_length": 125,
+        "events": 22244
+      },
+      "actions": {
+        "MOVE": 702,
+        "SPLIT": 20
+      },
+      "turns": 722,
+      "peak_points": 6009958,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 19,
+        "S": 3
+      }
+    },
+    {
+      "map": "trophy",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 254,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 61,
+        "b_dragons": 0,
+        "a_length": 188,
+        "b_length": 0,
+        "events": 52368
+      },
+      "actions": {
+        "MOVE": 652,
+        "SPLIT": 22,
+        "EMPTY": 2
+      },
+      "turns": 676,
+      "peak_points": 6688680,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 17,
+        "S": 4,
+        "O": 1,
+        "A": 2
+      }
+    }
+  ],
+  "fixed": [
+    {
+      "map": "Colosseum",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 115,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 32,
+        "b_dragons": 0,
+        "a_length": 86,
+        "b_length": 0,
+        "events": 12434
+      },
+      "actions": {
+        "MOVE": 1165,
+        "SPLIT": 75,
+        "EMPTY": 8
+      },
+      "turns": 1248,
+      "peak_points": 6533567,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 35,
+        "A": 8,
+        "O": 1
+      }
+    },
+    {
+      "map": "Colosseum",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 96,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 36,
+        "b_dragons": 0,
+        "a_length": 88,
+        "b_length": 0,
+        "events": 9827
+      },
+      "actions": {
+        "MOVE": 190,
+        "SPLIT": 7
+      },
+      "turns": 197,
+      "peak_points": 6131358,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 8
+      }
+    },
+    {
+      "map": "arena",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 31,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 25,
+        "a_length": 0,
+        "b_length": 61,
+        "events": 2083
+      },
+      "actions": {
+        "MOVE": 33,
+        "SPLIT": 3,
+        "EMPTY": 1
+      },
+      "turns": 37,
+      "peak_points": 5645819,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 3,
+        "A": 1
+      }
+    },
+    {
+      "map": "arena",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 25,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 22,
+        "b_dragons": 0,
+        "a_length": 55,
+        "b_length": 0,
+        "events": 1351
+      },
+      "actions": {
+        "MOVE": 28,
+        "SPLIT": 2
+      },
+      "turns": 30,
+      "peak_points": 5729536,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 3
+      }
+    },
+    {
+      "map": "autarky",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 406,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 62,
+        "b_dragons": 0,
+        "a_length": 188,
+        "b_length": 0,
+        "events": 131784
+      },
+      "actions": {
+        "MOVE": 16021,
+        "SPLIT": 217,
+        "EMPTY": 95
+      },
+      "turns": 16333,
+      "peak_points": 6343468,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 64,
+        "A": 95,
+        "O": 2
+      }
+    },
+    {
+      "map": "autarky",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 24,
+        "b_dragons": 12,
+        "a_length": 109,
+        "b_length": 50,
+        "events": 120615
+      },
+      "actions": {
+        "MOVE": 7858,
+        "SPLIT": 137,
+        "EMPTY": 65
+      },
+      "turns": 8060,
+      "peak_points": 6528018,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 66,
+        "A": 65
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 45,
+        "b_dragons": 33,
+        "a_length": 497,
+        "b_length": 464,
+        "events": 307486
+      },
+      "actions": {
+        "MOVE": 24719,
+        "SPLIT": 397,
+        "EMPTY": 19
+      },
+      "turns": 25135,
+      "peak_points": 6588178,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 336,
+        "A": 19
+      }
+    },
+    {
+      "map": "big_empty",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 27,
+        "b_dragons": 53,
+        "a_length": 856,
+        "b_length": 431,
+        "events": 172611
+      },
+      "actions": {
+        "MOVE": 6112,
+        "SPLIT": 141,
+        "EMPTY": 15
+      },
+      "turns": 6268,
+      "peak_points": 6598586,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 76,
+        "A": 15
+      }
+    },
+    {
+      "map": "default",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 411,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 60,
+        "a_length": 0,
+        "b_length": 164,
+        "events": 80944
+      },
+      "actions": {
+        "MOVE": 2324,
+        "SPLIT": 34,
+        "EMPTY": 2
+      },
+      "turns": 2360,
+      "peak_points": 5662935,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 36,
+        "A": 2
+      }
+    },
+    {
+      "map": "default",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 254,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 42,
+        "b_dragons": 0,
+        "a_length": 101,
+        "b_length": 0,
+        "events": 35256
+      },
+      "actions": {
+        "MOVE": 910,
+        "SPLIT": 15
+      },
+      "turns": 925,
+      "peak_points": 6067793,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 19
+      }
+    },
+    {
+      "map": "default_small",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 212,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 30,
+        "b_dragons": 0,
+        "a_length": 76,
+        "b_length": 0,
+        "events": 25064
+      },
+      "actions": {
+        "MOVE": 2527,
+        "SPLIT": 68,
+        "EMPTY": 7
+      },
+      "turns": 2602,
+      "peak_points": 5185618,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 33,
+        "A": 7
+      }
+    },
+    {
+      "map": "default_small",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 151,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 34,
+        "a_length": 0,
+        "b_length": 83,
+        "events": 20518
+      },
+      "actions": {
+        "MOVE": 2375,
+        "SPLIT": 60,
+        "EMPTY": 12
+      },
+      "turns": 2447,
+      "peak_points": 6234422,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 16,
+        "A": 12
+      }
+    },
+    {
+      "map": "devil",
+      "side": "A",
+      "seed": 15470468907592539593,
+      "result": {
+        "rounds": 272,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 63,
+        "b_dragons": 0,
+        "a_length": 192,
+        "b_length": 0,
+        "events": 80398
+      },
+      "actions": {
+        "SPLIT": 315,
+        "MOVE": 9302,
+        "EMPTY": 229
+      },
+      "turns": 9846,
+      "peak_points": 5531788,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 229,
+        "H": 26
+      }
+    },
+    {
+      "map": "devil",
+      "side": "B",
+      "seed": 15470468907592539593,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 15,
+        "b_dragons": 8,
+        "a_length": 110,
+        "b_length": 25,
+        "events": 122518
+      },
+      "actions": {
+        "SPLIT": 157,
+        "MOVE": 8365,
+        "EMPTY": 73
+      },
+      "turns": 8595,
+      "peak_points": 5457832,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 73,
+        "H": 79
+      }
+    },
+    {
+      "map": "dilemma",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 1,
+        "b_dragons": 10,
+        "a_length": 2,
+        "b_length": 47,
+        "events": 50357
+      },
+      "actions": {
+        "MOVE": 1178,
+        "SPLIT": 12,
+        "EMPTY": 6
+      },
+      "turns": 1196,
+      "peak_points": 5703235,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 6,
+        "H": 8
+      }
+    },
+    {
+      "map": "dilemma",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 195,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 16,
+        "a_length": 0,
+        "b_length": 39,
+        "events": 16125
+      },
+      "actions": {
+        "MOVE": 1621,
+        "SPLIT": 34,
+        "EMPTY": 13
+      },
+      "turns": 1668,
+      "peak_points": 5702092,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 13,
+        "H": 8
+      }
+    },
+    {
+      "map": "queen_of_spades",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 310,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 54,
+        "b_dragons": 0,
+        "a_length": 145,
+        "b_length": 0,
+        "events": 62163
+      },
+      "actions": {
+        "MOVE": 7661,
+        "SPLIT": 124,
+        "EMPTY": 50
+      },
+      "turns": 7835,
+      "peak_points": 5403251,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 50,
+        "H": 21,
+        "O": 1
+      }
+    },
+    {
+      "map": "queen_of_spades",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 189,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 23,
+        "b_dragons": 0,
+        "a_length": 59,
+        "b_length": 0,
+        "events": 14881
+      },
+      "actions": {
+        "MOVE": 593,
+        "SPLIT": 7,
+        "EMPTY": 1
+      },
+      "turns": 601,
+      "peak_points": 5270143,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 1,
+        "H": 8
+      }
+    },
+    {
+      "map": "schooltime",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 43,
+        "b_dragons": 29,
+        "a_length": 267,
+        "b_length": 143,
+        "events": 272201
+      },
+      "actions": {
+        "SPLIT": 477,
+        "MOVE": 24533,
+        "EMPTY": 258
+      },
+      "turns": 25268,
+      "peak_points": 5831383,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 258,
+        "H": 172,
+        "O": 7
+      }
+    },
+    {
+      "map": "schooltime",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 30,
+        "b_dragons": 50,
+        "a_length": 220,
+        "b_length": 206,
+        "events": 261992
+      },
+      "actions": {
+        "SPLIT": 369,
+        "MOVE": 19874,
+        "EMPTY": 154
+      },
+      "turns": 20397,
+      "peak_points": 6501091,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 154,
+        "H": 152,
+        "O": 16
+      }
+    },
+    {
+      "map": "stronghold",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 32,
+        "b_dragons": 9,
+        "a_length": 161,
+        "b_length": 47,
+        "events": 187941
+      },
+      "actions": {
+        "MOVE": 18372,
+        "SPLIT": 293,
+        "EMPTY": 228
+      },
+      "turns": 18893,
+      "peak_points": 6293424,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 228,
+        "H": 29,
+        "O": 6
+      }
+    },
+    {
+      "map": "stronghold",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 24,
+        "b_dragons": 31,
+        "a_length": 82,
+        "b_length": 135,
+        "events": 230225
+      },
+      "actions": {
+        "MOVE": 19511,
+        "SPLIT": 292,
+        "EMPTY": 251
+      },
+      "turns": 20054,
+      "peak_points": 6497080,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 251,
+        "H": 11,
+        "O": 1
+      }
+    },
+    {
+      "map": "trauma",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "A",
+        "end_reason": 1,
+        "a_dragons": 22,
+        "b_dragons": 9,
+        "a_length": 78,
+        "b_length": 30,
+        "events": 117618
+      },
+      "actions": {
+        "SPLIT": 337,
+        "MOVE": 12829,
+        "EMPTY": 301
+      },
+      "turns": 13467,
+      "peak_points": 6341431,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 301,
+        "H": 15,
+        "O": 1
+      }
+    },
+    {
+      "map": "trauma",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 499,
+        "winner": "B",
+        "end_reason": 1,
+        "a_dragons": 18,
+        "b_dragons": 29,
+        "a_length": 63,
+        "b_length": 95,
+        "events": 172556
+      },
+      "actions": {
+        "SPLIT": 339,
+        "MOVE": 17487,
+        "EMPTY": 284
+      },
+      "turns": 18110,
+      "peak_points": 6353547,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "A": 284,
+        "H": 26,
+        "O": 2
+      }
+    },
+    {
+      "map": "trophy",
+      "side": "A",
+      "seed": 7,
+      "result": {
+        "rounds": 261,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 62,
+        "b_dragons": 0,
+        "a_length": 168,
+        "b_length": 0,
+        "events": 66426
+      },
+      "actions": {
+        "MOVE": 7975,
+        "SPLIT": 152,
+        "EMPTY": 22
+      },
+      "turns": 8149,
+      "peak_points": 6500666,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 66,
+        "A": 22,
+        "O": 4
+      }
+    },
+    {
+      "map": "trophy",
+      "side": "B",
+      "seed": 7,
+      "result": {
+        "rounds": 204,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 62,
+        "b_dragons": 0,
+        "a_length": 166,
+        "b_length": 0,
+        "events": 38109
+      },
+      "actions": {
+        "MOVE": 621,
+        "SPLIT": 19,
+        "EMPTY": 2
+      },
+      "turns": 642,
+      "peak_points": 5337067,
+      "execution_errors": [],
+      "missed_splits_before_round400": [],
+      "death_reasons": {
+        "H": 19,
+        "A": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+#define DEBUG_PORTAL
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Observer observer{turn, world, topology, occupancy, body};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::WEST, Vision{}, 64};
+
+    void observe(int round, int here, bool oldDragon, bool droppedHeadPearl,
+                 bool nearbyEnemy = false) {
+        turn.round = round;
+        turn.here = here;
+        turn.myId = 7;
+        turn.length = ct.length = 9;
+        turn.population = ct.unit_count = 62;
+        std::vector<Tile> tiles;
+        int cx = here % config.width, cy = here / config.width;
+        for (int dy = -3; dy <= 3; ++dy)
+            for (int dx = -3; dx <= 3; ++dx) {
+                int x = cx + dx, y = cy + dy;
+                int c = y * config.width + x;
+                std::optional<DragonPart> part;
+                if (c == here) part.emplace(Position{x, y}, 7, Team::A, Direction::WEST, true);
+                if (oldDragon && c == 62) part.emplace(Position{x, y}, 9, Team::B, Direction::WEST, true);
+                if (oldDragon && c == 63) part.emplace(Position{x, y}, 9, Team::B, Direction::WEST, false);
+                if (nearbyEnemy && c == 50) part.emplace(Position{x, y}, 10, Team::B, Direction::NORTH, true);
+                tiles.emplace_back(Position{x, y}, part, -1, droppedHeadPearl && c == 62);
+            }
+        ct.vision = Vision(std::move(tiles));
+        observer.observe(ct);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    }
+    long eastScore() {
+        PortalDebug debug;
+        planner.choose(ct, debug);
+        return debug.scores[1];
+    }
+};
+
+int main() {
+    Fixture death, ordinary;
+    death.observe(310, 60, true, false);
+    ordinary.observe(310, 60, true, false);
+    death.observe(311, 59, false, true);
+    ordinary.observe(311, 59, false, true);
+    assert(death.world.deathClues.size() == 2);
+    assert(death.world.deathClues[0].c == 62);
+    ordinary.world.deathClues.clear();
+    assert(death.eastScore() >= ordinary.eastScore() + 200);
+
+    Fixture noEvidence;
+    noEvidence.observe(310, 60, true, false);
+    noEvidence.observe(311, 59, false, false);
+    assert(noEvidence.world.deathClues.empty());
+
+    Fixture danger, dangerWithoutClue;
+    danger.observe(310, 60, true, false);
+    dangerWithoutClue.observe(310, 60, true, false);
+    danger.observe(311, 59, false, true, true);
+    dangerWithoutClue.observe(311, 59, false, true, true);
+    dangerWithoutClue.world.deathClues.clear();
+    assert(danger.eastScore() <= dangerWithoutClue.eastScore());
+
+    death.observe(314, 59, false, false);
+    assert(death.world.deathClues.empty());
+}

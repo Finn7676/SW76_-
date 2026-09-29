@@ -1,0 +1,169 @@
+#include "planner.hpp"
+#include "sonar.hpp"
+#include "action.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <sstream>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::NORTH, Vision{}, 64};
+
+    Fixture() {
+        turn.round = 420;
+        turn.here = 60;
+        turn.myId = 7;
+        turn.length = ct.length = 4;
+        turn.population = ct.unit_count = 20;
+        std::vector<Tile> tiles;
+        for (int y = 2; y <= 8; ++y) for (int x = 2; x <= 8; ++x) {
+            int c = y * config.width + x;
+            std::optional<DragonPart> part;
+            if (c == 60) part.emplace(Position{x,y}, 7, Team::A, Direction::NORTH, true);
+            if (c == 61) part.emplace(Position{x,y}, 9, Team::A, Direction::WEST, true);
+            tiles.emplace_back(Position{x,y}, part, -1, false);
+        }
+        ct.vision = Vision(std::move(tiles));
+        Observer observer{turn, world, topology, occupancy, body};
+        observer.observe(ct);
+        world.firstObservedRound = 380;
+        world.allyRallies[9] = {61, turn.round, 10, turn.round};
+        std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    }
+};
+
+int main() {
+    Fixture early;
+    early.turn.round = V3_SACRIFICE_START_ROUND - 1;
+    assert(early.planner.choose(early.ct).type != ActionType::SUICIDE);
+
+    Fixture quiet;
+    quiet.turn.round = V3_SACRIFICE_START_ROUND;
+    quiet.world.allyRallies[9].round = quiet.turn.round;
+    assert(quiet.planner.choose(quiet.ct).type == ActionType::SUICIDE);
+    quiet.world.lastEnemyIntelRound = quiet.turn.round - V3_SACRIFICE_QUIET_ROUNDS + 1;
+    assert(quiet.planner.choose(quiet.ct).type != ActionType::SUICIDE);
+    quiet.world.lastEnemyIntelRound = quiet.turn.round - V3_SACRIFICE_QUIET_ROUNDS;
+    assert(quiet.planner.choose(quiet.ct).type == ActionType::SUICIDE);
+    std::ostringstream output;
+    auto *old = std::cout.rdbuf(output.rdbuf());
+    Executor executor{quiet.ct, quiet.turn, quiet.world, quiet.topology, quiet.body};
+    executor.execute(Action::suicide());
+    std::cout.rdbuf(old);
+    assert(output.str().empty()); // the engine interprets no action as suicide
+
+    Fixture reported;
+    Sonar sonar{reported.config, reported.turn, reported.world, reported.topology, reported.occupancy};
+    reported.ct.sonar_messages.push_back(sonar.wireMessage(sonar.pack(Sonar::M_ENEMY, 42, 417)));
+    sonar.receive(reported.ct);
+    assert(reported.planner.choose(reported.ct).type != ActionType::SUICIDE);
+
+    Fixture sender;
+    sender.turn.myId = 8;
+    sender.world.firstObservedRound = 400;
+    sender.world.lastEnemyIntelRound = 400;
+    sender.ct.sonar_protocol3 = true;
+    Sonar senderSonar{sender.config, sender.turn, sender.world, sender.topology, sender.occupancy};
+    uint64_t history = senderSonar.enemyHistoryMessage();
+    std::ostringstream sonarOutput;
+    old = std::cout.rdbuf(sonarOutput.rdbuf());
+    senderSonar.send(sender.ct);
+    std::cout.rdbuf(old);
+    assert(sonarOutput.str().find(std::to_string(history)) != std::string::npos);
+
+    Fixture cooperative;
+    cooperative.world.lastEnemyIntelRound = 413; // seven quiet rounds, short of 18
+    assert(cooperative.planner.choose(cooperative.ct).type != ActionType::SUICIDE);
+    cooperative.ct.sonar_messages = {history};
+    Sonar cooperativeSonar{cooperative.config, cooperative.turn, cooperative.world,
+                           cooperative.topology, cooperative.occupancy};
+    cooperativeSonar.receive(cooperative.ct);
+    assert(cooperative.world.lastQuietTeammateReportRound == 420);
+    assert(cooperative.planner.choose(cooperative.ct).type == ActionType::SUICIDE);
+    cooperative.world.lastEnemyIntelRound = 414; // six quiet rounds remain unsafe
+    assert(cooperative.planner.choose(cooperative.ct).type != ActionType::SUICIDE);
+    cooperative.world.lastEnemyIntelRound = 413;
+    cooperative.turn.round = 424; // the teammate's report has expired
+    assert(cooperative.planner.choose(cooperative.ct).type != ActionType::SUICIDE);
+
+    Fixture newbornSender, newbornReceiver;
+    newbornSender.turn.myId = 8;
+    newbornSender.world.firstObservedRound = 410;
+    newbornSender.world.lastEnemyIntelRound = 400;
+    Sonar newbornSonar{newbornSender.config, newbornSender.turn, newbornSender.world,
+                       newbornSender.topology, newbornSender.occupancy};
+    newbornReceiver.world.lastEnemyIntelRound = 413;
+    newbornReceiver.ct.sonar_messages = {newbornSonar.enemyHistoryMessage()};
+    Sonar newbornReceiverSonar{newbornReceiver.config, newbornReceiver.turn,
+                               newbornReceiver.world, newbornReceiver.topology,
+                               newbornReceiver.occupancy};
+    newbornReceiverSonar.receive(newbornReceiver.ct);
+    assert(newbornReceiver.planner.choose(newbornReceiver.ct).type != ActionType::SUICIDE);
+
+    Fixture staleReport;
+    staleReport.world.lastEnemyIntelRound = 413;
+    sender.turn.round = 418;
+    sender.world.lastEnemyIntelRound = 400;
+    staleReport.ct.sonar_messages = {senderSonar.enemyHistoryMessage()};
+    Sonar staleSonar{staleReport.config, staleReport.turn, staleReport.world,
+                     staleReport.topology, staleReport.occupancy};
+    staleSonar.receive(staleReport.ct);
+    assert(staleReport.planner.choose(staleReport.ct).type != ActionType::SUICIDE);
+    sender.turn.round = 420;
+
+    Fixture opponentReport;
+    opponentReport.world.lastEnemyIntelRound = 413;
+    sender.turn.myTeam = Team::B;
+    opponentReport.ct.sonar_messages = {senderSonar.enemyHistoryMessage()};
+    Sonar opponentSonar{opponentReport.config, opponentReport.turn, opponentReport.world,
+                        opponentReport.topology, opponentReport.occupancy};
+    opponentSonar.receive(opponentReport.ct);
+    assert(opponentReport.planner.choose(opponentReport.ct).type != ActionType::SUICIDE);
+    sender.turn.myTeam = Team::A;
+
+    Fixture selfEcho;
+    selfEcho.world.lastEnemyIntelRound = 413;
+    selfEcho.ct.sonar_messages = {history ^ (uint64_t(1) << 18)}; // damaged checksum
+    Sonar selfSonar{selfEcho.config, selfEcho.turn, selfEcho.world,
+                    selfEcho.topology, selfEcho.occupancy};
+    selfSonar.receive(selfEcho.ct);
+    assert(selfEcho.planner.choose(selfEcho.ct).type != ActionType::SUICIDE);
+    sender.turn.myId = selfEcho.turn.myId;
+    selfEcho.ct.sonar_messages = {senderSonar.enemyHistoryMessage()};
+    selfSonar.receive(selfEcho.ct);
+    assert(selfEcho.planner.choose(selfEcho.ct).type != ActionType::SUICIDE);
+
+    Fixture freshReport;
+    freshReport.world.lastEnemyIntelRound = 413;
+    sender.turn.myId = 8;
+    sender.world.lastEnemyIntelRound = 419;
+    freshReport.ct.sonar_messages = {senderSonar.enemyHistoryMessage()};
+    Sonar freshSonar{freshReport.config, freshReport.turn, freshReport.world,
+                     freshReport.topology, freshReport.occupancy};
+    freshSonar.receive(freshReport.ct);
+    assert(freshReport.world.lastEnemyIntelRound == 419);
+    assert(freshReport.planner.choose(freshReport.ct).type != ActionType::SUICIDE);
+
+    Fixture visible;
+    visible.turn.parts.push_back({59, 17, 0, false, false});
+    visible.world.lastEnemyIntelRound = visible.turn.round;
+    assert(visible.planner.choose(visible.ct).type != ActionType::SUICIDE);
+
+    Fixture champion;
+    champion.turn.length = champion.ct.length = 32; // above early donation size cap
+    assert(champion.planner.choose(champion.ct).type != ActionType::SUICIDE);
+
+    Fixture distant;
+    distant.world.allyRallies[9].c = 20;
+    assert(distant.planner.choose(distant.ct).type != ActionType::SUICIDE);
+}

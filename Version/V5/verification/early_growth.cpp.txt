@@ -1,0 +1,106 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <iostream>
+#include <set>
+using namespace bot;
+struct Fixture {
+    GameConfig config; TurnState turn; WorldModel world;
+    Topology topology; OccupancyModel occupancy; BodyMemory body;
+    Search search; Observer observer; Planner planner;
+    Controller ct{2,Team::A,Direction::EAST,Vision{},64};
+    std::vector<int> segments; std::vector<Part> allies; std::set<int> pearls;
+    Fixture(int w=32,int h=16):config(w,h),world(config),topology(config,world),occupancy(config,turn),
+        body(turn,topology,occupancy),search(config,turn,topology,occupancy),
+        observer(turn,world,topology,occupancy,body),planner(config,turn,world,topology,occupancy,search,body) {
+        turn.myId=2;turn.population=ct.unit_count=6;
+        std::fill(world.edgeT.begin(),world.edgeT.end(),E_OPEN);
+        segments={cell(4,2),cell(3,2)};
+    }
+    int cell(int x,int y)const{return y*config.width+x;}
+    void wall(int c,int d){topology.setEdge(c,d,E_KELP,-1);}
+    void observe(){
+        turn.here=segments.front();turn.length=ct.length=int(segments.size());
+        ct.head.position=Position{topology.cx(turn.here),topology.cy(turn.here)};
+        std::vector<Tile> tiles;
+        for(int c=0;c<config.cells;++c){
+            if(topology.cheb(c,turn.here)>3)continue;
+            int x=topology.cx(c),y=topology.cy(c);std::optional<DragonPart> part;
+            for(int i=0;i<int(segments.size());++i)if(c==segments[i]){
+                int d=dirIndex(ct.get_dir());
+                if(i)for(int k=0;k<4;++k)if(topology.geo(c,k)==segments[i-1]){d=k;break;}
+                part.emplace(Position{x,y},turn.myId,Team::A,Direction(DCH[d]),i==0);
+            }
+            for(auto const &a:allies)if(a.c==c)part.emplace(Position{x,y},a.id,a.mine?Team::A:Team::B,Direction(DCH[a.facing]),a.head);
+            Tile t{Position{x,y},part,-1,pearls.count(c)!=0};
+            for(int d=0;d<4;++d){
+                int edge=c*4+d;auto type=topology.edgeTypeAt(edge);
+                if(type==E_KELP)t.get_edge(Direction(DCH[d]))=Edge(false,EdgeType::KELP);
+                if(type==E_PORTAL)t.get_edge(Direction(DCH[d]))=Edge(true,EdgeType::PORTAL,topology.portalIdAt(edge));
+            }
+            tiles.push_back(t);
+        }
+        ct.vision=Vision(std::move(tiles));body.beginTurn();observer.observe(ct);
+    }
+    Action choose(){Action a=planner.finalizeAction(ct,planner.choose(ct));planner.rememberChosenAction(a);return a;}
+    void move(Action a){assert(a.type==ActionType::MOVE);int q=topology.step(turn.here,a.dirs[0]);assert(q>=0);
+        if(!pearls.erase(q))segments.pop_back();segments.insert(segments.begin(),q);ct.head.dir=Direction(DCH[a.dirs[0]]);++turn.round;}
+    void portalArrival(int source,int landing,int pid=23){
+        ++turn.round;segments={landing,source};
+        topology.setEdge(landing,3,E_PORTAL,pid);world.learnedExit[landing*4+3]=source;
+        world.lastExploredPortalKey=topology.canon(landing,3);world.lastExploredPortalSource=source;
+        world.lastExploredPortalOwner=turn.myId;world.lastExploredPortalRound=turn.round;
+    }
+};
+int main(){
+    auto setup=[](Fixture &f,int length,int round=30){
+        f.turn.round=round;f.ct.head.dir=Direction::EAST;
+        f.segments={f.cell(10,6),f.cell(9,6),f.cell(8,6),f.cell(8,7),f.cell(9,7),f.cell(10,7)};
+        f.segments.resize(length);
+    };
+    for(int round:{0,19,20,59,60,69})for(int distance:{0,1,2}){
+        Fixture f;setup(f,6,round);if(distance)f.pearls.insert(f.cell(10+distance,6));
+        f.observe();auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==3);
+    }
+    for(int length:{4,5})for(int round:{0,60,69})for(bool immediate:{false,true}){
+        Fixture f;setup(f,length,round);f.pearls.insert(f.cell(immediate?11:12,6));
+        f.observe();auto a=f.choose();
+        if(immediate)assert(a.type==ActionType::MOVE&&a.dirs[0]==1);
+        else assert(a.type==ActionType::SPLIT&&a.splitSize==length/2);
+    }
+    // A pearl behind an adjacent kelp edge is visible, but not immediately edible.
+    {Fixture f;setup(f,5);f.pearls.insert(f.cell(11,6));f.wall(f.cell(10,6),1);
+        f.observe();auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);}
+    // Reaching six after collecting a pearl triggers a balanced split next turn.
+    {Fixture f;setup(f,5);f.pearls={f.cell(11,6),f.cell(12,6)};f.observe();auto a=f.choose();
+        assert(a.type==ActionType::MOVE&&a.dirs[0]==1);f.move(a);f.observe();a=f.choose();
+        assert(a.type==ActionType::SPLIT&&a.splitSize==3);}
+    // No new rule at round 70; existing routine splitting still peels two.
+    {Fixture f;setup(f,6,70);f.observe();auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==2);}
+    {Fixture f;setup(f,6,70);f.pearls.insert(f.cell(11,6));f.observe();auto a=f.choose();
+        assert(a.type==ActionType::MOVE&&a.dirs[0]==1);}
+    // Real straight growth remembers the now-hidden tail and its known exits.
+    {Fixture f;f.turn.round=30;f.segments={f.cell(10,6),f.cell(9,6),f.cell(8,6)};
+        for(int i=0;i<3;++i){f.pearls.insert(f.cell(11+i,6));f.observe();auto a=f.choose();
+            assert(a.type==ActionType::MOVE&&a.dirs[0]==1);f.move(a);}
+        f.observe();assert(f.turn.length==6);assert(!f.body.tailCanEscape()&&f.body.tailCanEscape(true));
+        auto a=f.choose();assert(a.type==ActionType::SPLIT&&a.splitSize==3);}
+    // An unobserved birth tail is not inferred from length alone.
+    {Fixture f;f.turn.round=30;f.segments.clear();for(int i=0;i<6;++i)f.segments.push_back(f.cell(13-i,6));
+        f.pearls.insert(f.cell(14,6));f.observe();assert(f.body.cellAtTailOffset(0)<0);
+        assert(f.choose().type==ActionType::MOVE);}
+    // Closed tail exits and population limits still prevent development splits.
+    {Fixture f;setup(f,6);f.pearls.insert(f.cell(11,6));for(int d:{1,2})f.wall(f.cell(10,7),d);
+        f.observe();assert(!f.body.tailCanEscape(true));assert(f.choose().type==ActionType::MOVE);}
+    {Fixture f;setup(f,6);f.turn.population=f.ct.unit_count=64;f.pearls.insert(f.cell(11,6));
+        f.observe();assert(f.choose().type==ActionType::MOVE);}
+    // Ordinary Scout missions do not defer splitting, and survive the split.
+    {Fixture f;setup(f,3);f.topology.setEdge(f.cell(11,6),1,E_PORTAL,42);f.observe();f.choose();
+        assert(f.planner.currentMission().type==MissionType::SCOUT_PORTAL);setup(f,6,31);f.observe();auto a=f.choose();
+        assert(a.type==ActionType::SPLIT&&a.splitSize==3);
+        assert(f.planner.currentMission().type==MissionType::SCOUT_PORTAL&&f.planner.currentMission().targetId==42);}
+    // An immediately threatening enemy keeps survival ahead of development.
+    {Fixture f;setup(f,6);f.allies={{f.cell(11,6),11,3,false,true},{f.cell(12,6),11,3,false,false}};
+        f.observe();assert(f.choose().type!=ActionType::SPLIT);}
+    std::cout<<"first-70-round balanced growth checks passed\n";
+}
