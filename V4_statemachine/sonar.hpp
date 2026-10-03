@@ -53,6 +53,8 @@ class Sonar {
         // Rotate the reserved beams. A crossed pair goes out every turn; an
         // active explorer also reserves two beams for its short-lived claim.
         uint64_t rally = allyRallyMessage();
+        // Short scouts spend every beam on a pearl call so a long dragon can hear it.
+        uint64_t escortPearl = EscortPolicy::yieldsPearls(config, turn, world) ? escortPearlMessage() : 0;
         int base = (turn.round + turn.myId) & 3;
         for (int d = 0; d < 4; ++d) {
             uint64_t message = ordinary;
@@ -62,6 +64,9 @@ class Sonar {
             // Keep one crossed-pair beam; use its opposite beam to recruit
             // donors once quiet endgame consolidation has started.
             if (rally && !claim && d == ((base + 2) & 3)) message = rally;
+            if (escortPearl) message = escortPearl;
+            // A long dragon spends every beam on its summon so short dragons can hear it.
+            else if (rally && turn.length > V4_ESCORT_MAX_LENGTH) message = rally;
             if (message) ct.send_sonar(Direction(DCH[d]), message);
         }
     }
@@ -163,10 +168,44 @@ class Sonar {
     // x/y (6 each), sender ID (12), length lower bound (6), round (9),
     // team (1), magic (8), checksum (16). High IDs use local vision only;
     // never truncate an ID and accidentally recruit donors to another dragon.
+    uint64_t escortPearlMessage() {
+        int bestC = -1, bestRank = INF;
+        auto consider = [&](int c, bool visiblePearl) {
+            int due = world.pearlDue[c];
+            int info = world.pearlInfo[c];
+            if (due < 0 || due >= INF || due > 511 || info < turn.round - V4_PEARL_REPORT_AGE) return;
+            if (occupancy.visible(c) && !occupancy.hasPearl(c) && due <= turn.round) return;
+            int rank = (visiblePearl ? 0 : 100000) + (turn.round - info) * 1024 + due;
+            if (rank < bestRank) {
+                bestRank = rank;
+                bestC = c;
+            }
+        };
+        for (int i = 0; i < turn.visibleCount; ++i) {
+            int c = turn.visibleCells[i];
+            if (occupancy.hasPearl(c)) consider(c, true);
+        }
+        if (bestC < 0)
+            for (int c = 0; c < config.cells; ++c) consider(c, false);
+        return bestC < 0 ? 0 : wireMessage(pack(M_PEARL, bestC, world.pearlDue[bestC]));
+    }
+    void sendHeadPearl(Controller &ct) {
+        if (turn.here < 0 || turn.here >= config.cells) return;
+        world.pearlDue[turn.here] = turn.round;
+        world.pearlInfo[turn.here] = turn.round;
+        uint32_t packed = pack(M_PEARL, turn.here, turn.round & 511);
+        if (!ct.sonar_protocol3) {
+            ct.send_sonar(packed);
+            return;
+        }
+        uint64_t message = wireMessage(packed);
+        for (int d = 0; d < 4; ++d) ct.send_sonar(Direction(DCH[d]), message);
+    }
     uint64_t allyRallyMessage() const {
-        if (world.suppressRally || !DonationPolicy::quiet(config, turn, world) ||
-            turn.length < DonationPolicy::at(config, turn).minRecipientLength || turn.myId < 0 || turn.myId > 4095 ||
-            turn.round > 511 || topology.cx(turn.here) >= 64 || topology.cy(turn.here) >= 64) return 0;
+        // Only a dragon that has grown past the short cap calls others in.
+        if (world.suppressRally || turn.round < V4_SUMMON_ROUND || turn.length <= V4_ESCORT_MAX_LENGTH ||
+            turn.myId < 0 || turn.myId > 4095 || turn.round > 511 || topology.cx(turn.here) >= 64 ||
+            topology.cy(turn.here) >= 64) return 0;
         uint64_t low = uint64_t(topology.cx(world.nextRallyCell >= 0 ? world.nextRallyCell : turn.here)) |
                        (uint64_t(topology.cy(world.nextRallyCell >= 0 ? world.nextRallyCell : turn.here)) << 6) |
                        (uint64_t(turn.myId) << 12) | (uint64_t(std::min(world.nextRallyCell >= 0 ? world.nextRallyLength : turn.length, 63)) << 24) |
@@ -176,17 +215,17 @@ class Sonar {
     }
     void receiveAllyRally(uint64_t raw) {
         uint64_t low = raw & ((1ull << 48) - 1);
-        if (!DonationPolicy::active(turn) || (raw >> 48) != pairTag(low) ||
+        if (turn.round < V4_SUMMON_ROUND || (raw >> 48) != pairTag(low) ||
             ((low >> 40) & 255) != RALLY_MAGIC ||
             ((low >> 39) & 1) != uint64_t(turn.myTeam == Team::B)) return;
         int x = low & 63, y = (low >> 6) & 63, id = (low >> 12) & 4095;
         int length = (low >> 24) & 63, round = (low >> 30) & 511;
         if (x >= config.width || y >= config.height || id == turn.myId ||
-            length < DonationPolicy::at(config, turn).minRecipientLength || round > turn.round ||
-            turn.round - round > V4_DONATION_REPORT_AGE) return;
+            length <= V4_ESCORT_MAX_LENGTH || round > turn.round ||
+            turn.round - round > V4_SUMMON_AGE) return;
         auto it = world.allyRallies.find(id);
         if (it == world.allyRallies.end() || it->second.round <= round)
-            world.allyRallies[id] = {topology.cid(x, y), round, length, round};
+            world.allyRallies[id] = {topology.cid(x, y), round, length, round, true};
     }
     uint64_t portalMessage(int key) {
         int pid = topology.portalIdAt(key);
@@ -270,6 +309,8 @@ class Sonar {
         if (FEAT_PORTAL_EXPLORE && ((low >> 38) & 1)) world.exploredPortals.insert(pid);
     }
     uint32_t chooseLegacyMessage() {
+        if (EscortPolicy::yieldsPearls(config, turn, world))
+            if (uint64_t wide = escortPearlMessage()) return (uint32_t)wide;
         if (!turn.enemyHeads.empty()) {
             int best = 0;
             for (size_t i = 1; i < turn.enemyHeads.size(); ++i)

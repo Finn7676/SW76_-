@@ -146,16 +146,20 @@ class Observer {
         for (size_t i = 0; i < turn.friendHeads.size(); ++i) {
             int c = turn.friendHeads[i], id = occupancy.dragonId(c);
             int length = turn.friendHeadExactLen[i], lengthRound = turn.round;
+            bool summoned = false;
+            auto it = world.allyRallies.find(id);
             if (length < 0) {
                 length = turn.friendHeadLen[i];
-                auto it = world.allyRallies.find(id);
                 if (it != world.allyRallies.end() && turn.round - it->second.lengthRound <= V4_DONATION_REPORT_AGE &&
                     it->second.length > length) {
                     length = it->second.length;
                     lengthRound = it->second.lengthRound;
                 }
             }
-            world.allyRallies[id] = {c, turn.round, length, lengthRound};
+            if (it != world.allyRallies.end()) summoned = it->second.summoned;
+            // Seeing a teammate refreshes its position. It does not invent a summon;
+            // only that dragon's own sonar can do that.
+            world.allyRallies[id] = {c, turn.round, length, lengthRound, summoned};
         }
         // A fresh visible empty cell disproves a remote head position.
         for (auto it = world.allyRallies.begin(); it != world.allyRallies.end();) {
@@ -163,7 +167,8 @@ class Observer {
             bool contradicted = occupancy.visible(r.c) &&
                 (!occupancy.occupied(r.c) || !occupancy.isHead(r.c) ||
                  !occupancy.isMine(r.c) || occupancy.dragonId(r.c) != it->first);
-            if (contradicted || turn.round - r.round > V4_DONATION_REPORT_AGE)
+            int age = r.summoned ? V4_SUMMON_AGE : V4_DONATION_REPORT_AGE;
+            if (contradicted || turn.round - r.round > age)
                 it = world.allyRallies.erase(it);
             else ++it;
         }

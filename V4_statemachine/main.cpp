@@ -3,6 +3,8 @@
 // Combat scoring uses a uniform three-segment shorter-enemy threshold.
 // A visible tail can spawn a short same-round attacker under strict conditions.
 // Nearby confirmed pearl drops get a short-lived route preference.
+// Before round 350, split back to length 2. From round 350 a longer dragon
+// summons on sonar, and every short dragon except the escorts answers at once.
 #include "observer.hpp"
 #include "sonar.hpp"
 #include "planner.hpp"
@@ -68,7 +70,8 @@ int main() {
         capture.finish(turn, topology, occupancy);
 #endif
 #if FEAT_SONAR
-        if (action.type != ActionType::SUICIDE) sonar.send(ct);
+        if (action.type == ActionType::SUICIDE) sonar.sendHeadPearl(ct);
+        else sonar.send(ct);
 #endif
         // Protocol negotiation is per turn; the engine sends ECHOES and
         // accepts 64-bit directional sonar on the following turn.

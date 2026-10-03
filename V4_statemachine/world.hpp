@@ -16,6 +16,7 @@ struct DeathClue {
 struct AllyRally {
     int c, round, length; // length is a conservative lower bound when saturated
     int lengthRound = -1;
+    bool summoned = false; // the long dragon's own sonar, not a visual sighting
 };
 struct PortalClaim {
     int owner = -1;

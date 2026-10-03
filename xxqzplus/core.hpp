@@ -67,6 +67,59 @@ namespace bot {
 #ifndef V4_DONATION_REPORT_AGE
 #define V4_DONATION_REPORT_AGE 3
 #endif
+// V5 local feeding. Legacy quiet/reserve constants above still govern expansion.
+#ifndef V5_FEED_START_ROUND
+#define V5_FEED_START_ROUND 400
+#endif
+// Short-headshot and resource-collection thresholds are independent of feeding eligibility.
+#ifndef V5_FEED_SHORT_LENGTH
+#define V5_FEED_SHORT_LENGTH 8
+#endif
+#ifndef V5_FEED_RESOURCE_COLLECTOR_LENGTH
+#define V5_FEED_RESOURCE_COLLECTOR_LENGTH 12
+#endif
+#ifndef V5_FEED_MIN_LENGTH_GAIN
+#define V5_FEED_MIN_LENGTH_GAIN 2
+#endif
+#ifndef V5_FEED_LARGE_DONOR_LENGTH
+#define V5_FEED_LARGE_DONOR_LENGTH 18
+#endif
+#ifndef V5_FEED_LARGE_DONOR_POPULATION
+#define V5_FEED_LARGE_DONOR_POPULATION 20
+#endif
+#ifndef V5_FEED_TARGET_TIMEOUT
+#define V5_FEED_TARGET_TIMEOUT 4
+#endif
+#ifndef V5_FEED_MAX_CHASE_ROUNDS
+#define V5_FEED_MAX_CHASE_ROUNDS 8
+#endif
+#ifndef V5_FEED_NO_PROGRESS_ROUNDS
+#define V5_FEED_NO_PROGRESS_ROUNDS 3
+#endif
+#ifndef V5_FEED_CHASE_COOLDOWN
+#define V5_FEED_CHASE_COOLDOWN 4
+#endif
+#ifndef V5_FEED_SWITCH_LENGTH_GAIN
+#define V5_FEED_SWITCH_LENGTH_GAIN 4
+#endif
+#ifndef V5_FEED_PICKUP_STEPS
+#define V5_FEED_PICKUP_STEPS 2
+#endif
+#ifndef V5_FEED_END_MARGIN
+#define V5_FEED_END_MARGIN 2
+#endif
+#ifndef V5_FEED_ROUTE_DEPTH
+#define V5_FEED_ROUTE_DEPTH 8
+#endif
+#ifndef V5_FEED_ROUTE_NODES
+#define V5_FEED_ROUTE_NODES 256
+#endif
+#ifndef V5_FEED_RESOURCE_DEPTH
+#define V5_FEED_RESOURCE_DEPTH 4
+#endif
+#ifndef V5_FEED_CLUSTER_SIZE
+#define V5_FEED_CLUSTER_SIZE 3
+#endif
 #ifndef V3_SCOUT_MAX_PATH
 #define V3_SCOUT_MAX_PATH 6
 #endif
@@ -94,6 +147,16 @@ namespace bot {
 #endif
 #ifndef FEAT_SPRINT_RAM
 #define FEAT_SPRINT_RAM 1
+#endif
+#ifndef FEAT_REGION_DENSITY
+#define FEAT_REGION_DENSITY 1
+#endif
+#ifndef V5_DENSITY_CELLS_PER_DRAGON
+#define V5_DENSITY_CELLS_PER_DRAGON 10
+#endif
+
+#ifndef FEAT_SPRINT_ESCAPE
+#define FEAT_SPRINT_ESCAPE 1
 #endif
 #ifndef FEAT_SPRINT_EAT
 #define FEAT_SPRINT_EAT 1
@@ -143,6 +206,18 @@ constexpr int DY[4] = {-1, 0, 1, 0};
 constexpr char DCH[4] = {'N', 'E', 'S', 'W'};
 enum : uint8_t { E_UNKNOWN = 0, E_OPEN = 1, E_KELP = 2, E_PORTAL = 3 };
 
+// Queen identity is permanent and independent of role switches or round number.
+inline bool isQueenId(int id) { return id == 0 || id == 1; }
+struct MovementRules {
+    static int freeSteps(int initialLength) { return (initialLength + 3) / 4; }
+    static bool paidStep(int initialLength, int zeroBasedStep) {
+        return zeroBasedStep >= freeSteps(initialLength);
+    }
+    static int cost(int initialLength, int steps) {
+        return std::max(0, steps - freeSteps(initialLength));
+    }
+};
+
 struct GameConfig {
     int width, height, cells, targetPopulation;
     explicit GameConfig(Game const &game) : GameConfig(game.width, game.height, game.get_unit_limit()) {}
@@ -170,6 +245,13 @@ struct TurnState {
         myId = ct.get_id();
         myTeam = ct.get_team().value;
         here = ct.get_position().y * config.width + ct.get_position().x;
+    }
+    bool isQueen() const { return isQueenId(myId); }
+    bool queenDevelopment() const { return isQueen() && round >= 0 && round < 150; }
+    bool mayAttackQueen(int enemyLength) const {
+        // Use our current length, before sprint costs, and an observed lower bound.
+        return !isQueen() && population > 1 && enemyLength >= Constants::MIN_SIZE &&
+               (round >= 400 || length <= enemyLength + 2);
     }
     int countOf(int id) const {
         for (auto const &p : idCount)

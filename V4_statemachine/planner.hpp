@@ -216,6 +216,14 @@ class Planner {
             );
         }
 
+        // Before round 350, give away every segment past the minimum so the
+        // team stays a crowd of short dragons. The child splits again on its
+        // own turn if it is still long.
+        if (turn.round < V4_SUMMON_ROUND && turn.length >= 4 && ct.can_split(turn.length - 2)) {
+            currentBehavior = BehaviorState::EXPAND;
+            return Action::split(turn.length - 2);
+        }
+
         // Keep the existing late-game donation policy in its own decision
         // branch; it is independent of ordinary tactical and growth states.
         if (Action a = sacrifice(ct, context)) return a;
@@ -238,8 +246,9 @@ class Planner {
         }
 
         // P2: take a safe pearl that is about to be lost or can be collected
-        // with one move before another long-term task.
-        if (context.situation.immediatePearlOpportunity) {
+        // with one move before another long-term task. Short quiet-endgame
+        // dragons leave those pearls for a longer teammate.
+        if (context.situation.immediatePearlOpportunity && !context.roles.yieldPearls) {
             currentBehavior = BehaviorState::COLLECT;
             int planDir = routeDirection(ct, context);
             return scoreAndFallback(ct, context, ram.dir, planDir, false, false
@@ -500,6 +509,7 @@ class Planner {
             }
             if (separation <= currentDistance) continue;
             bool eats = occupancy.visible(dest) && occupancy.hasPearl(dest);
+            if (eats && context.roles.yieldPearls) continue;
             if (!pocketWorthEntering(adjacentPocket(d), d, ct)) continue;
             int space = search.spaceFrom(dest, eats, 24, false);
             long score = (long)separation * 180L + (long)space * 12L - (long)crowd * 100L;
@@ -621,7 +631,8 @@ class Planner {
     ) {
         int deathDir = context.situation.deathCluesPresent ? deathRouteDirection(ct) : -1;
 #if FEAT_V3_PEARL_ECONOMY && FEAT_V3_SCOUT && FEAT_SCOUT_ROLE && FEAT_PORTAL_EXPLORE
-        if (deathDir < 0 && scoutRoute.dir >= 0 && context.situation.pearlsVisible) {
+        if (deathDir < 0 && scoutRoute.dir >= 0 && context.situation.pearlsVisible &&
+            !context.roles.yieldPearls) {
             PearlRoute pearls = search.scoutPearlRoute(scoutSafeFirst,
                                                        [this](int c, int step) { return scoutTileScore(c, step); });
             bool nearby = pearls.distance == 1 || pearls.distance <= scoutRoute.distance;
@@ -641,9 +652,20 @@ class Planner {
 #endif
         );
     }
+    Action deliverSummon(DecisionContext const &context) {
+        // A short dragon that has heard a longer teammate's sonar gives its
+        // body immediately. Escorts ignore the call and keep scouting.
+        if (turn.round < V4_SUMMON_ROUND || context.situation.enemyVisible) return {};
+        if (!EscortPolicy::small(turn) || EscortPolicy::isEscort(turn)) return {};
+        if (!EscortPolicy::hasSummon(turn, world)) return {};
+        return Action::suicide();
+    }
     Action sacrifice(Controller const &ct, DecisionContext const &context) {
 #if FEAT_SACRIFICE
+        if (Action gift = deliverSummon(context)) return gift;
         if (context.situation.enemyVisible || !DonationPolicy::quiet(config, turn, world)) return {};
+        // Escorts stay alive and only report pearls. Other short dragons still donate.
+        if (EscortPolicy::isEscort(turn)) return {};
         DonationPolicy policy = DonationPolicy::at(config, turn);
         unsigned donationSafeFirst = safeScoutFirstSteps(ct);
         for (int d = 0; d < 4; ++d) {
@@ -652,10 +674,19 @@ class Planner {
                     int(occupancy.visible(q) && occupancy.hasPearl(q))) != 0 ||
                 blocksTeammateEscape(Action::move(d))) donationSafeFirst &= ~(1u << d);
         }
+        if (EscortPolicy::small(turn)) {
+            unsigned avoidingPearls = donationSafeFirst;
+            for (int d = 0; d < 4; ++d) {
+                int q = topology.step(turn.here, d);
+                if (q >= 0 && occupancy.visible(q) && occupancy.hasPearl(q))
+                    avoidingPearls &= ~(1u << d);
+            }
+            if (avoidingPearls) donationSafeFirst = avoidingPearls;
+        }
 
         // A surviving large dragon gathers known pearls from a dead teammate
         // before the ordinary exploration and expansion branches can distract it.
-        if (turn.length >= V3_SACRIFICE_MIN_ALLY_LENGTH && !world.deathClues.empty()) {
+        if (turn.length > V4_ESCORT_MAX_LENGTH && !world.deathClues.empty()) {
             if (donationSafeFirst) {
                 prepareRouteCrowd();
                 int dir = search.bfsFirstDir(
@@ -685,7 +716,8 @@ class Planner {
         std::vector<Recipient> recipients;
         for (auto const &[id, rally] : world.allyRallies) {
             if (id == turn.myId || turn.round - rally.round > V4_DONATION_REPORT_AGE ||
-                rally.c < 0 || rally.c >= config.cells || !policy.recipient(turn, rally.length)) continue;
+                rally.c < 0 || rally.c >= config.cells || !policy.recipient(turn, rally.length) ||
+                rally.length <= V4_ESCORT_MAX_LENGTH) continue;
             recipients.push_back({id, rally.c, rally.length, topology.manh(turn.here, rally.c)});
         }
         // Prefer a large recipient, then a short rendezvous. Keep walking toward
@@ -838,6 +870,9 @@ class Planner {
         }
         // ---- 1) keep the swarm at the cap; in a quiet donation phase,
         // reserve a diminishing population so accumulated length stays intact.
+        // Short dragons stop splitting once consolidation starts; new children
+        // would only become more bodies to donate.
+        if (consolidating && EscortPolicy::small(turn)) return {};
         bool wantExpand = consolidating ? turn.population < donation.reserve
                           : (turn.round < 470 && !context.roles.champion) || turn.population < 8;
         if (!activeScoutTask && wantExpand && turn.population < config.targetPopulation && context.profile.length >= 4 &&
@@ -1164,6 +1199,7 @@ class Planner {
     long scoutTileScore(int c, int step) const {
         bool eats = occupancy.visible(c) && occupancy.hasPearl(c);
         long score = world.seenRound[c] == 0 ? 130 : 0;
+        if (eats && EscortPolicy::yieldsPearls(config, turn, world)) score -= 8000;
         score -= long(routeCrowd[c]) * 35;
         int opens = 0;
         for (int d = 0; d < 4; ++d) {
@@ -1246,27 +1282,62 @@ class Planner {
 #endif
         return {};
     }
+    bool freshReportedPearl(int c) const {
+        int due = world.pearlDue[c];
+        int info = world.pearlInfo[c];
+        if (c == turn.here || info < turn.round - V4_PEARL_REPORT_AGE || due < 0 || due >= INF || due > 511)
+            return false;
+        if (occupancy.visible(c) && !occupancy.hasPearl(c) && due <= turn.round) return false;
+        return due >= turn.round - V4_PEARL_REPORT_AGE;
+    }
     int routeDirection(Controller const &ct, DecisionContext const &context) {
         (void)ct;
         prepareRouteCrowd();
         constexpr int depth = 24, nodes = 320;
         auto tileScore = [this](int c, int step) { return scoutTileScore(c, step); };
         isGoal.assign(config.cells, 0);
-        bool anyResource = context.situation.immediatePearlOpportunity;
-        for (int c : turn.visPearls) {
-            isGoal[c] = 1;
-            anyResource = true;
-        }
-        for (int c = 0; c < config.cells; ++c) {
-            int due = world.pearlDue[c];
-            if (due >= 0 && due < INF && due - turn.round <= 8) {
+        int goal = -1, resourceDistance = INF;
+        int resourceDir = -1;
+        bool anyResource = context.situation.immediatePearlOpportunity && !context.roles.yieldPearls;
+        if (!context.roles.yieldPearls)
+            for (int c : turn.visPearls) {
                 isGoal[c] = 1;
                 anyResource = true;
             }
+        if (turn.round >= V4_SUMMON_ROUND && turn.length > V4_ESCORT_MAX_LENGTH) {
+            int reportedDir = search.bfsFirstDir(
+                [this](int c) { return freshReportedPearl(c); }, tileScore, depth, nodes, 15, &goal,
+                &resourceDistance);
+            if (reportedDir >= 0) {
+                mission = {MissionType::COLLECT_RESOURCE, goal, -1, turn.round, turn.round, resourceDistance};
+                return reportedDir;
+            }
         }
+        if (context.roles.escort) {
+            std::vector<int> reported;
+            for (int c = 0; c < config.cells; ++c)
+                if (freshReportedPearl(c)) reported.push_back(c);
+            int watchDir = reported.empty() ? -1 : search.bfsFirstDir(
+                [this, &reported](int c) {
+                    if (occupancy.visible(c) && occupancy.hasPearl(c)) return false;
+                    for (int pearl : reported) {
+                        int distance = topology.cheb(c, pearl);
+                        if (distance >= 2 && distance <= 3 && topology.cheb(turn.here, pearl) > 3) return true;
+                    }
+                    return false;
+                },
+                tileScore, depth, nodes, 15);
+            if (watchDir >= 0) return watchDir;
+        }
+        if (!context.roles.yieldPearls)
+            for (int c = 0; c < config.cells; ++c) {
+                int due = world.pearlDue[c];
+                if (due >= 0 && due < INF && due - turn.round <= 8) {
+                    isGoal[c] = 1;
+                    anyResource = true;
+                }
+            }
 
-        int goal = -1, resourceDistance = INF;
-        int resourceDir = -1;
         if (mission.type == MissionType::COLLECT_RESOURCE && mission.targetCell >= 0) {
             resourceDir = search.bfsFirstDir([&](int q) { return q == mission.targetCell; }, tileScore,
                                              depth, nodes, 15, &goal, &resourceDistance);
@@ -1432,14 +1503,16 @@ class Planner {
                     if (turn.round - s.round <= 2 && topology.manh(dest, s.c) <= 3)
                         score -= (4 - topology.manh(dest, s.c)) * 60L;
 
-            if (pearlInView) {
+            if (pearlInView && !context.roles.yieldPearls) {
                 score -= (long)std::min(search.visPearlDist(dest), 14) * 25;
                 if (eats) score += 500;
             }
+            if (context.roles.yieldPearls && eats) score -= 8000;
             if (d == planDir) {
                 if (deathRoute) score += 250;
                 else if (currentBehavior == BehaviorState::COMBAT) score += 30;
                 else if (mission.type == MissionType::COLLECT_RESOURCE) score += 500;
+                else if (context.roles.escort) score += 220;
             }
 #if FEAT_V3_EXPLORED_BONUS
             if (isPortal && world.exploredPortals.count(topology.portalIdAt(turn.here * 4 + d)))
