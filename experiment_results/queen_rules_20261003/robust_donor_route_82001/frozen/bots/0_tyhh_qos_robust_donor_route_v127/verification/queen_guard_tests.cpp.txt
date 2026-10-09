@@ -1,0 +1,91 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct GuardFixture {
+    Controller ct{0, Team::A, Direction::SOUTH, Vision{}, 64};
+    void setup(std::vector<int> const& body) {
+        W = H = 32; NC = W * H; LEN = int(body.size()); HERE = body[0];
+        MYID = 0; MYTEAM = Team::A; POP = 8; ROUND = 110; STAMP = 1;
+        ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        trail.assign(body.rbegin(), body.rend()); trailId = MYID;
+        for (int i = 0; i < LEN; ++i) {
+            int c = body[i]; occStamp[c] = STAMP; occId[c] = MYID;
+            occMine[c] = true; occHead[c] = i == 0; occFree[c] = LEN + 1 - i;
+            parts.push_back({c, MYID, 0, true, i == 0});
+        }
+        chosenAction = {};
+    }
+    void block(int c, int id = 2, bool head = false) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = true;
+        occHead[c] = head; occFree[c] = INF;
+    }
+};
+
+int main() {
+    GuardFixture f;
+    f.setup({16 + 8 * 32, 16 + 9 * 32});
+    chosenAction = {{2}, 0, false, false};
+    assert(!queenActionSafe(chosenAction, f.ct, true));
+    reviewQueenSurvival(f.ct);
+    assert(chosenAction.split == 0 && projectAction(chosenAction).survives);
+    assert(queenContinuation(projectAction(chosenAction)));
+
+    f.setup({16 + 8 * 32, 16 + 9 * 32, 17 + 9 * 32, 17 + 8 * 32});
+    chosenAction = {{1}, 0, false, false}; // The tail does not vacate before collision.
+    assert(!projectAction(chosenAction).survives);
+    reviewQueenSurvival(f.ct);
+    assert(projectAction(chosenAction).survives);
+
+    // portals / xxqztest / B: round index110 split8 ->2 at (23,4),
+    // then index111 moved south into its neck at (23,5).
+    f.setup({23 + 4 * 32, 23 + 5 * 32, 24 + 5 * 32, 24 + 6 * 32,
+             25 + 6 * 32, 25 + 5 * 32, 25 + 4 * 32, 24 + 4 * 32});
+    chosenAction = {{}, 6, false, false};
+    assert(!queenActionSafe(chosenAction, f.ct, true));
+    reviewQueenSurvival(f.ct);
+    assert(chosenAction.split == 0 && projectAction(chosenAction).survives);
+    assert(queenContinuation(projectAction(chosenAction)));
+
+    f.setup({16 + 8 * 32, 16 + 9 * 32});
+    f.block(geo(HERE, 1), 2, true);
+    chosenAction = {{1}, 0, false, false};
+    reviewQueenSurvival(f.ct);
+    assert(!directFriendCollision(chosenAction));
+    assert(!actionRisk(chosenAction).strong && projectAction(chosenAction).survives);
+
+    f.setup({16 + 8 * 32, 16 + 9 * 32, 16 + 10 * 32,
+             16 + 11 * 32, 16 + 12 * 32, 16 + 13 * 32});
+    chosenAction = {{}, 2, false, false};
+    assert(queenActionSafe(chosenAction, f.ct, true));
+    reviewQueenSurvival(f.ct);
+    assert(chosenAction.split == 2);
+
+    f.setup({16 + 8 * 32, 16 + 9 * 32});
+    chosenAction = {{1}, 0, true, false};
+    auto original = chosenAction.dirs;
+    reviewQueenSurvival(f.ct);
+    assert(chosenAction.dirs == original);
+
+    f.setup({16 + 8 * 32, 16 + 9 * 32, 16 + 10 * 32,
+             16 + 11 * 32, 16 + 12 * 32, 16 + 13 * 32});
+    for (int d = 0; d < 4; ++d) edgeT[HERE * 4 + d] = E_KELP;
+    chosenAction = {{}, 4, false, false};
+    assert(!queenActionSafe(chosenAction, f.ct, true));
+    assert(tailCanEscape()); // The child can survive even if the parent is trapped.
+    reviewQueenSurvival(f.ct);
+    assert(chosenAction.split == 4); // No proven queen rescue: preserve child rescue.
+    std::cout << "queen_guard: 7 exact-body survival assertions passed\n";
+}

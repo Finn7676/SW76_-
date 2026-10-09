@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "scope": "Fresh native actual-input decisions linked to existing official rule arms; not competitive outcome",
+  "script_sha256": "d6287bd41461716a3ad2f21b4a11e232cabd5d57283fd8288257da0d8e59963b",
+  "actual_fixture_sha256": "d7673b4945db3b8c5dd452821eb205adc4546a04a12953a2128f83fd1fd052b0",
+  "candidate_sources": {
+    "main.cpp": "660363800c8cce16b1717d0f9dbbdf9feba6e02083380ccb1b3e1a5e92cc06d4",
+    "headtrade.hpp": "69bf74738cbf99f655eb9b715eec10f41b8946d184808b41fac28417c04ce4da",
+    "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+    "consolidate.hpp": "bbf0ab3334219c6914cd14a85a60157c3d0697fb16d54e70069719a818905bdf",
+    "queen_feed.hpp": "0f8ba15a48c506bf3b892a28259903a9eea6137d822ca0baff5c063db644db24"
+  },
+  "candidate_binary_sha256": "72a799b31a4fd26a67eebea5fa90fa1de8f692ae996d10d68a89e50e1223e1fa",
+  "cases": [
+    {
+      "label": "default",
+      "target_round": 20,
+      "target_id": 2,
+      "source_replay_sha256": "03558c792b675643b83c1533f7ba44b5ac50b53aa0e3dfa6b5ad2652235c2bdf",
+      "target_raw_input_sha256": "1c8427502ca20b1879f195d3fc7f10bcb0e36490bfa93bab4f520238f4a03852",
+      "native_candidate": {
+        "action": "MOVE N",
+        "output": "LOG SHORTER_HEAD_TRADE 20 2 before 1 after 0 complete_heads 1 to N\nMOVE N\nSONAR N 5859273483239900162\nSONAR E 5859273483239900162\nSONAR S 5859273483239900162\nSONAR W 5859273483239900162\nPROTOCOL 3\n",
+        "stderr": "",
+        "binary_sha256": "72a799b31a4fd26a67eebea5fa90fa1de8f692ae996d10d68a89e50e1223e1fa",
+        "fresh_process_no_prior_memory": true
+      },
+      "official_applied_arm": "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r26_default_alternate.replay",
+      "official_applied_arm_sha256": "5562acc63fc49112973f4d679f7167ee63412d4ad48070d4a3515f177c210e57",
+      "native_action_exactly_matches_official_scripted_arm": true
+    },
+    {
+      "label": "australia",
+      "target_round": 352,
+      "target_id": 341,
+      "source_replay_sha256": "0120e065da9808750aedf8736dc155dc78c5dc31325f801798b6594141485fed",
+      "target_raw_input_sha256": "4466959f64ce5966f07e63532b907b664184c5f9333bdfdf3e0155ed83d14428",
+      "native_candidate": {
+        "action": "MOVE N",
+        "output": "LOG SHORTER_HEAD_TRADE 352 341 before 1 after 0 complete_heads 1 to N\nMOVE N\nSONAR N 5859273483507597634\nSONAR E 5859273483507597634\nSONAR S 5859273483507597634\nSONAR W 5859273483507597634\nPROTOCOL 3\n",
+        "stderr": "",
+        "binary_sha256": "72a799b31a4fd26a67eebea5fa90fa1de8f692ae996d10d68a89e50e1223e1fa",
+        "fresh_process_no_prior_memory": true
+      },
+      "official_applied_arm": "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r26_australia_alternate.replay",
+      "official_applied_arm_sha256": "f40d4424af583a15d09db810b33fd605c74545967559e6c7533a718917e70755",
+      "native_action_exactly_matches_official_scripted_arm": true
+    }
+  ],
+  "limitations": [
+    "Fresh native controls do not reconstruct prior-round private memory.",
+    "Only native movement is applied; official arms retain recorded SONAR and other actor replies.",
+    "Local survival against the exact witnessed enemy does not establish wins or global safety."
+  ]
+}

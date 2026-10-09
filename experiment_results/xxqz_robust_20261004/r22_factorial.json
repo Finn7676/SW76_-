@@ -1,0 +1,954 @@
+{
+  "scope": "Single development base82001; descriptive paired four-cell screen",
+  "script_sha256": "981fc07a93076d011395960ae330ed8c5bba3825fe894e57b9b5542ba1fb3ace",
+  "provenance": [
+    {
+      "label": "robust_h14_82001",
+      "main_sha256": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+      "run_json_sha256": "4ff193df2b5a302d7ea4f71b9d9f3196c4caaedfac4c947646cbebe5ebd54391",
+      "audit_json_sha256": "41459021d6d4a679a221cf4fffcde9d30ef8fc7ff32f613a8f47bd1c9445086a"
+    },
+    {
+      "label": "robust_queen_hunt_82001_retry1",
+      "main_sha256": "de27f3b2abb1440d75395c9676eb4d80967947bd7adb7e66f9570005f24ca8ba",
+      "run_json_sha256": "ab1d9329d27ebcde871ea409071faa5e249c9ff891f4586e9f6ba90b6a6ff6d2",
+      "audit_json_sha256": "37d8b41db3ae0877cb2f32a4e408163e8f76bf34f018d63813a3722376190be8"
+    },
+    {
+      "label": "robust_rear_cascade_82001",
+      "main_sha256": "eb364e6e9ccf138a4b3b12d071e356a2ecee6300a4b0209675fe6888382f5573",
+      "run_json_sha256": "141d6a1c438abd2b611c702f2e4f7c1d026688b5d1036dbf5811864d5f736e8c",
+      "audit_json_sha256": "5cb62917cd5d077ecd948e6739439a80a33dba134d0bc9267ecfe9dc8557dd72"
+    },
+    {
+      "label": "robust_queen_rear_82001",
+      "main_sha256": "43ed3e523628fb34f74279943f80408f149353d5a3440a6fbadf73cfe4ff8138",
+      "run_json_sha256": "7fe213bd6419d2236a45b92823f24460981d27903b2b9afacd4cd46187aaffab",
+      "audit_json_sha256": "8faa613e09aafe43d32dc5131200c3f03a0af87ba269881e0e90da3b6f501684"
+    }
+  ],
+  "by_cell": {
+    "H14": {
+      "V3_portal": {
+        "games": 34,
+        "loss": 19,
+        "win": 15,
+        "win_rate": 0.4411764705882353,
+        "queen_survived": 6,
+        "opponent_queen_survived": 5,
+        "mean_queen": 1.9411764705882353,
+        "opponent_mean_queen": 0.5294117647058824,
+        "mean_longest": 12.441176470588236,
+        "opponent_mean_longest": 9.058823529411764,
+        "mean_total": 79.29411764705883,
+        "opponent_mean_total": 108.05882352941177,
+        "mean_queen_splits": 2,
+        "queen_death_reasons": {
+          "head": 12,
+          "self": 12,
+          "body": 4
+        },
+        "median_queen_death_round_index": 96.0,
+        "median_queen_length_before_death": 2.5,
+        "invalid_action_deaths": 768,
+        "opponent_invalid_action_deaths": 3
+      },
+      "xxqztest": {
+        "games": 34,
+        "loss": 18,
+        "win": 16,
+        "win_rate": 0.47058823529411764,
+        "queen_survived": 5,
+        "opponent_queen_survived": 4,
+        "mean_queen": 1.7647058823529411,
+        "opponent_mean_queen": 0.3235294117647059,
+        "mean_longest": 13.823529411764707,
+        "opponent_mean_longest": 14.588235294117647,
+        "mean_total": 81.55882352941177,
+        "opponent_mean_total": 98.44117647058823,
+        "mean_queen_splits": 1.6176470588235294,
+        "queen_death_reasons": {
+          "head": 15,
+          "self": 10,
+          "body": 4
+        },
+        "median_queen_death_round_index": 96,
+        "median_queen_length_before_death": 3,
+        "invalid_action_deaths": 881,
+        "opponent_invalid_action_deaths": 1343
+      }
+    },
+    "R10": {
+      "V3_portal": {
+        "games": 34,
+        "loss": 18,
+        "win": 16,
+        "win_rate": 0.47058823529411764,
+        "queen_survived": 5,
+        "opponent_queen_survived": 5,
+        "mean_queen": 1.6176470588235294,
+        "opponent_mean_queen": 0.5294117647058824,
+        "mean_longest": 13.147058823529411,
+        "opponent_mean_longest": 9.941176470588236,
+        "mean_total": 73.20588235294117,
+        "opponent_mean_total": 116.41176470588235,
+        "mean_queen_splits": 2.0294117647058822,
+        "queen_death_reasons": {
+          "head": 14,
+          "self": 12,
+          "body": 3
+        },
+        "median_queen_death_round_index": 97,
+        "median_queen_length_before_death": 3,
+        "invalid_action_deaths": 898,
+        "opponent_invalid_action_deaths": 3
+      },
+      "xxqztest": {
+        "games": 34,
+        "loss": 15,
+        "win": 19,
+        "win_rate": 0.5588235294117647,
+        "queen_survived": 5,
+        "opponent_queen_survived": 4,
+        "mean_queen": 1.7647058823529411,
+        "opponent_mean_queen": 0.3235294117647059,
+        "mean_longest": 16.38235294117647,
+        "opponent_mean_longest": 13.882352941176471,
+        "mean_total": 88.29411764705883,
+        "opponent_mean_total": 92.3529411764706,
+        "mean_queen_splits": 1.588235294117647,
+        "queen_death_reasons": {
+          "head": 15,
+          "self": 10,
+          "body": 4
+        },
+        "median_queen_death_round_index": 96,
+        "median_queen_length_before_death": 3,
+        "invalid_action_deaths": 1012,
+        "opponent_invalid_action_deaths": 1103
+      }
+    },
+    "R21": {
+      "V3_portal": {
+        "games": 34,
+        "win": 20,
+        "loss": 14,
+        "win_rate": 0.5882352941176471,
+        "queen_survived": 6,
+        "opponent_queen_survived": 5,
+        "mean_queen": 1.7058823529411764,
+        "opponent_mean_queen": 0.4117647058823529,
+        "mean_longest": 14.294117647058824,
+        "opponent_mean_longest": 8.970588235294118,
+        "mean_total": 81.41176470588235,
+        "opponent_mean_total": 111.41176470588235,
+        "mean_queen_splits": 2.4705882352941178,
+        "queen_death_reasons": {
+          "self": 13,
+          "head": 11,
+          "body": 4
+        },
+        "median_queen_death_round_index": 101.5,
+        "median_queen_length_before_death": 2.0,
+        "invalid_action_deaths": 839,
+        "opponent_invalid_action_deaths": 4
+      },
+      "xxqztest": {
+        "games": 34,
+        "loss": 17,
+        "win": 17,
+        "win_rate": 0.5,
+        "queen_survived": 7,
+        "opponent_queen_survived": 4,
+        "mean_queen": 2.4411764705882355,
+        "opponent_mean_queen": 0.3235294117647059,
+        "mean_longest": 14.794117647058824,
+        "opponent_mean_longest": 15.911764705882353,
+        "mean_total": 83.52941176470588,
+        "opponent_mean_total": 89.91176470588235,
+        "mean_queen_splits": 1.4705882352941178,
+        "queen_death_reasons": {
+          "head": 15,
+          "self": 7,
+          "body": 5
+        },
+        "median_queen_death_round_index": 87,
+        "median_queen_length_before_death": 4,
+        "invalid_action_deaths": 814,
+        "opponent_invalid_action_deaths": 1278
+      }
+    },
+    "R22": {
+      "V3_portal": {
+        "games": 34,
+        "win": 19,
+        "loss": 15,
+        "win_rate": 0.5588235294117647,
+        "queen_survived": 6,
+        "opponent_queen_survived": 5,
+        "mean_queen": 1.7058823529411764,
+        "opponent_mean_queen": 0.4117647058823529,
+        "mean_longest": 14.382352941176471,
+        "opponent_mean_longest": 9.411764705882353,
+        "mean_total": 75.26470588235294,
+        "opponent_mean_total": 115.97058823529412,
+        "mean_queen_splits": 2.2058823529411766,
+        "queen_death_reasons": {
+          "self": 11,
+          "head": 14,
+          "body": 3
+        },
+        "median_queen_death_round_index": 101.5,
+        "median_queen_length_before_death": 3.5,
+        "invalid_action_deaths": 859,
+        "opponent_invalid_action_deaths": 2
+      },
+      "xxqztest": {
+        "games": 34,
+        "loss": 17,
+        "win": 17,
+        "win_rate": 0.5,
+        "queen_survived": 7,
+        "opponent_queen_survived": 4,
+        "mean_queen": 2.235294117647059,
+        "opponent_mean_queen": 0.3235294117647059,
+        "mean_longest": 13.323529411764707,
+        "opponent_mean_longest": 13.764705882352942,
+        "mean_total": 87.6470588235294,
+        "opponent_mean_total": 89.32352941176471,
+        "mean_queen_splits": 1.4705882352941178,
+        "queen_death_reasons": {
+          "head": 15,
+          "self": 7,
+          "body": 5
+        },
+        "median_queen_death_round_index": 87,
+        "median_queen_length_before_death": 4,
+        "invalid_action_deaths": 863,
+        "opponent_invalid_action_deaths": 1167
+      }
+    }
+  },
+  "comparisons": {
+    "R21_versus_H14": {
+      "matched_games": 68,
+      "promotions_to_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "australia",
+          "seed": "82001",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0001_V3_portal_australia_seed82001_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0001_V3_portal_australia_seed82001_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0003_V3_portal_autarky_seed82002_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0003_V3_portal_autarky_seed82002_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0004_V3_portal_autarky_seed82002_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0004_V3_portal_autarky_seed82002_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "82013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0060_xxqztest_maze_seed82013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0060_xxqztest_maze_seed82013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0051_xxqztest_slithery_fight_seed82009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0051_xxqztest_slithery_fight_seed82009_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        }
+      ],
+      "regressions_from_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0050_xxqztest_schooltime_seed82008_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0050_xxqztest_schooltime_seed82008_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "unsw",
+          "seed": "82016",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0066_xxqztest_unsw_seed82016_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0066_xxqztest_unsw_seed82016_B.replay"
+        }
+      ],
+      "all_outcome_changes": [
+        {
+          "opponent": "V3_portal",
+          "map": "australia",
+          "seed": "82001",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0001_V3_portal_australia_seed82001_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0001_V3_portal_australia_seed82001_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0003_V3_portal_autarky_seed82002_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0003_V3_portal_autarky_seed82002_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0004_V3_portal_autarky_seed82002_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0004_V3_portal_autarky_seed82002_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "82013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0060_xxqztest_maze_seed82013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0060_xxqztest_maze_seed82013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0050_xxqztest_schooltime_seed82008_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0050_xxqztest_schooltime_seed82008_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0051_xxqztest_slithery_fight_seed82009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0051_xxqztest_slithery_fight_seed82009_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "unsw",
+          "seed": "82016",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0066_xxqztest_unsw_seed82016_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_rear_cascade_82001/0066_xxqztest_unsw_seed82016_B.replay"
+        }
+      ]
+    },
+    "R22_versus_R10": {
+      "matched_games": 68,
+      "promotions_to_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0018_V3_portal_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0018_V3_portal_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        }
+      ],
+      "regressions_from_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "default",
+          "seed": "82003",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0039_xxqztest_default_seed82003_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0039_xxqztest_default_seed82003_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0049_xxqztest_schooltime_seed82008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0049_xxqztest_schooltime_seed82008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0051_xxqztest_slithery_fight_seed82009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0051_xxqztest_slithery_fight_seed82009_A.replay"
+        }
+      ],
+      "all_outcome_changes": [
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0018_V3_portal_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0018_V3_portal_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "default",
+          "seed": "82003",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0039_xxqztest_default_seed82003_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0039_xxqztest_default_seed82003_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0049_xxqztest_schooltime_seed82008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0049_xxqztest_schooltime_seed82008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0051_xxqztest_slithery_fight_seed82009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0051_xxqztest_slithery_fight_seed82009_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_hunt_82001_retry1/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        }
+      ]
+    },
+    "R22_versus_H14": {
+      "matched_games": 68,
+      "promotions_to_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "australia",
+          "seed": "82001",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0001_V3_portal_australia_seed82001_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0001_V3_portal_australia_seed82001_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0003_V3_portal_autarky_seed82002_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0003_V3_portal_autarky_seed82002_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0018_V3_portal_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0018_V3_portal_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "default",
+          "seed": "82003",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0040_xxqztest_default_seed82003_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0040_xxqztest_default_seed82003_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "82013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0060_xxqztest_maze_seed82013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0060_xxqztest_maze_seed82013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        }
+      ],
+      "regressions_from_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "devil",
+          "seed": "82004",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0008_V3_portal_devil_seed82004_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0008_V3_portal_devil_seed82004_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0049_xxqztest_schooltime_seed82008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0049_xxqztest_schooltime_seed82008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "trophy",
+          "seed": "82011",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0055_xxqztest_trophy_seed82011_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0055_xxqztest_trophy_seed82011_A.replay"
+        }
+      ],
+      "all_outcome_changes": [
+        {
+          "opponent": "V3_portal",
+          "map": "australia",
+          "seed": "82001",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0001_V3_portal_australia_seed82001_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0001_V3_portal_australia_seed82001_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "seed": "82002",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0003_V3_portal_autarky_seed82002_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0003_V3_portal_autarky_seed82002_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "devil",
+          "seed": "82004",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0008_V3_portal_devil_seed82004_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0008_V3_portal_devil_seed82004_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0011_V3_portal_dilemma_seed82006_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0011_V3_portal_dilemma_seed82006_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "seed": "82006",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0012_V3_portal_dilemma_seed82006_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0012_V3_portal_dilemma_seed82006_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "seed": "82005",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0010_V3_portal_portals_seed82005_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0010_V3_portal_portals_seed82005_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0018_V3_portal_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0018_V3_portal_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "stripes",
+          "seed": "82014",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0028_V3_portal_stripes_seed82014_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0028_V3_portal_stripes_seed82014_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "default",
+          "seed": "82003",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0040_xxqztest_default_seed82003_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0040_xxqztest_default_seed82003_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "82013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0060_xxqztest_maze_seed82013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0060_xxqztest_maze_seed82013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "82008",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0049_xxqztest_schooltime_seed82008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0049_xxqztest_schooltime_seed82008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "82009",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0052_xxqztest_slithery_fight_seed82009_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0052_xxqztest_slithery_fight_seed82009_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "trophy",
+          "seed": "82011",
+          "side": "A",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0055_xxqztest_trophy_seed82011_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_rear_82001/0055_xxqztest_trophy_seed82011_A.replay"
+        }
+      ]
+    }
+  },
+  "interaction": {
+    "V3_portal": {
+      "allocation_without_attack_win_delta": 5,
+      "allocation_with_attack_win_delta": 3,
+      "difference_in_differences_wins": -2
+    },
+    "xxqztest": {
+      "allocation_without_attack_win_delta": 1,
+      "allocation_with_attack_win_delta": -2,
+      "difference_in_differences_wins": -3
+    }
+  },
+  "decision": "Do not expand, freeze as finalist, or use confirmation bases"
+}

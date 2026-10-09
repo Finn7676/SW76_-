@@ -1,0 +1,2312 @@
+{
+  "scope": "One deterministic pearl seed per ranked map, A/B paired; descriptive development comparison only",
+  "runs": [
+    {
+      "label": "queen_feed_v127",
+      "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/verified_audit.json",
+      "overall": {
+        "games": 68,
+        "win": 31,
+        "loss": 37,
+        "win_rate": 0.45588235294117646,
+        "queen_survived": 6,
+        "opponent_queen_survived": 8,
+        "mean_queen": 0.35294117647058826,
+        "opponent_mean_queen": 0.3088235294117647,
+        "mean_longest": 12.426470588235293,
+        "opponent_mean_longest": 13.338235294117647,
+        "mean_total": 98.32352941176471,
+        "opponent_mean_total": 100.76470588235294,
+        "mean_queen_splits": 1.0735294117647058,
+        "queen_death_reasons": {
+          "self": 36,
+          "head": 21,
+          "body": 5
+        },
+        "median_queen_death_round_index": 123.0,
+        "median_queen_length_before_death": 2.0,
+        "invalid_action_deaths": 41,
+        "opponent_invalid_action_deaths": 1211
+      },
+      "by_opponent": {
+        "V3_portal": {
+          "ranked17": {
+            "games": 34,
+            "win": 13,
+            "loss": 21,
+            "win_rate": 0.38235294117647056,
+            "queen_survived": 2,
+            "opponent_queen_survived": 4,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.29411764705882354,
+            "mean_longest": 11.294117647058824,
+            "opponent_mean_longest": 10.852941176470589,
+            "mean_total": 84.17647058823529,
+            "opponent_mean_total": 123.38235294117646,
+            "mean_queen_splits": 1.0588235294117647,
+            "queen_death_reasons": {
+              "self": 19,
+              "head": 10,
+              "body": 3
+            },
+            "median_queen_death_round_index": 144.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 20,
+            "opponent_invalid_action_deaths": 7
+          },
+          "legacy10": {
+            "games": 20,
+            "win": 7,
+            "loss": 13,
+            "win_rate": 0.35,
+            "queen_survived": 2,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.3,
+            "opponent_mean_queen": 0.3,
+            "mean_longest": 10.55,
+            "opponent_mean_longest": 9.35,
+            "mean_total": 80.2,
+            "opponent_mean_total": 98.35,
+            "mean_queen_splits": 1.05,
+            "queen_death_reasons": {
+              "self": 10,
+              "head": 7,
+              "body": 1
+            },
+            "median_queen_death_round_index": 190.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 6,
+            "opponent_invalid_action_deaths": 5
+          },
+          "side_A": {
+            "games": 17,
+            "loss": 11,
+            "win": 6,
+            "win_rate": 0.35294117647058826,
+            "queen_survived": 1,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.29411764705882354,
+            "mean_longest": 10.882352941176471,
+            "opponent_mean_longest": 10.117647058823529,
+            "mean_total": 88.3529411764706,
+            "opponent_mean_total": 113.58823529411765,
+            "mean_queen_splits": 1,
+            "queen_death_reasons": {
+              "head": 7,
+              "body": 1,
+              "self": 8
+            },
+            "median_queen_death_round_index": 168.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 1,
+            "opponent_invalid_action_deaths": 5
+          },
+          "side_B": {
+            "games": 17,
+            "win": 7,
+            "loss": 10,
+            "win_rate": 0.4117647058823529,
+            "queen_survived": 1,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.29411764705882354,
+            "mean_longest": 11.705882352941176,
+            "opponent_mean_longest": 11.588235294117647,
+            "mean_total": 80,
+            "opponent_mean_total": 133.1764705882353,
+            "mean_queen_splits": 1.1176470588235294,
+            "queen_death_reasons": {
+              "self": 11,
+              "body": 2,
+              "head": 3
+            },
+            "median_queen_death_round_index": 124.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 19,
+            "opponent_invalid_action_deaths": 2
+          }
+        },
+        "xxqztest": {
+          "ranked17": {
+            "games": 34,
+            "loss": 16,
+            "win": 18,
+            "win_rate": 0.5294117647058824,
+            "queen_survived": 4,
+            "opponent_queen_survived": 4,
+            "mean_queen": 0.5294117647058824,
+            "opponent_mean_queen": 0.3235294117647059,
+            "mean_longest": 13.558823529411764,
+            "opponent_mean_longest": 15.823529411764707,
+            "mean_total": 112.47058823529412,
+            "opponent_mean_total": 78.1470588235294,
+            "mean_queen_splits": 1.088235294117647,
+            "queen_death_reasons": {
+              "head": 11,
+              "body": 2,
+              "self": 17
+            },
+            "median_queen_death_round_index": 120.0,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 21,
+            "opponent_invalid_action_deaths": 1204
+          },
+          "legacy10": {
+            "games": 20,
+            "loss": 9,
+            "win": 11,
+            "win_rate": 0.55,
+            "queen_survived": 3,
+            "opponent_queen_survived": 3,
+            "mean_queen": 0.75,
+            "opponent_mean_queen": 0.4,
+            "mean_longest": 12.65,
+            "opponent_mean_longest": 12.1,
+            "mean_total": 110.6,
+            "opponent_mean_total": 62.45,
+            "mean_queen_splits": 0.95,
+            "queen_death_reasons": {
+              "head": 8,
+              "body": 2,
+              "self": 7
+            },
+            "median_queen_death_round_index": 124,
+            "median_queen_length_before_death": 2,
+            "invalid_action_deaths": 12,
+            "opponent_invalid_action_deaths": 665
+          },
+          "side_A": {
+            "games": 17,
+            "win": 10,
+            "loss": 7,
+            "win_rate": 0.5882352941176471,
+            "queen_survived": 2,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.7058823529411765,
+            "opponent_mean_queen": 0.29411764705882354,
+            "mean_longest": 14.941176470588236,
+            "opponent_mean_longest": 15.176470588235293,
+            "mean_total": 124.17647058823529,
+            "opponent_mean_total": 72.3529411764706,
+            "mean_queen_splits": 1.1176470588235294,
+            "queen_death_reasons": {
+              "head": 5,
+              "body": 1,
+              "self": 9
+            },
+            "median_queen_death_round_index": 120,
+            "median_queen_length_before_death": 2,
+            "invalid_action_deaths": 3,
+            "opponent_invalid_action_deaths": 552
+          },
+          "side_B": {
+            "games": 17,
+            "loss": 9,
+            "win": 8,
+            "win_rate": 0.47058823529411764,
+            "queen_survived": 2,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.35294117647058826,
+            "opponent_mean_queen": 0.35294117647058826,
+            "mean_longest": 12.176470588235293,
+            "opponent_mean_longest": 16.470588235294116,
+            "mean_total": 100.76470588235294,
+            "opponent_mean_total": 83.94117647058823,
+            "mean_queen_splits": 1.0588235294117647,
+            "queen_death_reasons": {
+              "head": 6,
+              "self": 8,
+              "body": 1
+            },
+            "median_queen_death_round_index": 120,
+            "median_queen_length_before_death": 2,
+            "invalid_action_deaths": 18,
+            "opponent_invalid_action_deaths": 652
+          }
+        }
+      },
+      "by_map": {
+        "V3_portal:australia": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 12.5,
+          "opponent_mean_longest": 26.5,
+          "mean_total": 90,
+          "opponent_mean_total": 394.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "body": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 222.0,
+          "median_queen_length_before_death": 4.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:autarky": {
+          "games": 2,
+          "win": 1,
+          "loss": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 9.5,
+          "opponent_mean_longest": 10.5,
+          "mean_total": 86.5,
+          "opponent_mean_total": 60.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 151.0,
+          "median_queen_length_before_death": 3.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:default": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 1.5,
+          "opponent_mean_longest": 8.5,
+          "mean_total": 1.5,
+          "opponent_mean_total": 136.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 198.0,
+          "median_queen_length_before_death": 5.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:devil": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 7.5,
+          "opponent_mean_longest": 1,
+          "mean_total": 151.5,
+          "opponent_mean_total": 1,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 121.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:dilemma": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 41.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 205.0,
+          "median_queen_length_before_death": 3.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:islands": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 2,
+          "opponent_mean_longest": 15.5,
+          "mean_total": 10.5,
+          "opponent_mean_total": 281.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 33.5,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:maze": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 25.5,
+          "opponent_mean_longest": 12.5,
+          "mean_total": 146,
+          "opponent_mean_total": 86,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 72.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:portals": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8,
+          "opponent_mean_longest": 11,
+          "mean_total": 64.5,
+          "opponent_mean_total": 71,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 164.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 5
+        },
+        "V3_portal:queen_of_spades": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 1.5,
+          "opponent_mean_longest": 9.5,
+          "mean_total": 8.5,
+          "opponent_mean_total": 77,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 298.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:schooltime": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 2,
+          "opponent_queen_survived": 2,
+          "mean_queen": 3,
+          "opponent_mean_queen": 3,
+          "mean_longest": 42.5,
+          "opponent_mean_longest": 20,
+          "mean_total": 222,
+          "opponent_mean_total": 208.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {},
+          "median_queen_death_round_index": null,
+          "median_queen_length_before_death": null,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:slithery_fight": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 29,
+          "opponent_mean_longest": 15.5,
+          "mean_total": 225,
+          "opponent_mean_total": 185.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 1.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:stripes": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 42,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 59.0,
+          "median_queen_length_before_death": 3.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:tower_defense": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1,
+          "mean_longest": 4.5,
+          "opponent_mean_longest": 10,
+          "mean_total": 19,
+          "opponent_mean_total": 42.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 290.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:trauma": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 6,
+          "opponent_mean_longest": 8.5,
+          "mean_total": 42.5,
+          "opponent_mean_total": 42,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 289.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 6,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:trophy": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 0,
+          "opponent_mean_longest": 5.5,
+          "mean_total": 0,
+          "opponent_mean_total": 160,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 66.0,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:unsw": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 35.5,
+          "opponent_mean_longest": 21,
+          "mean_total": 316.5,
+          "opponent_mean_total": 260.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 307.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 13,
+          "opponent_invalid_action_deaths": 2
+        },
+        "V3_portal:weakhold": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 6.5,
+          "opponent_mean_longest": 2,
+          "mean_total": 47,
+          "opponent_mean_total": 7,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "body": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 209.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 1,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:australia": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 19.5,
+          "opponent_mean_longest": 29,
+          "mean_total": 221.5,
+          "opponent_mean_total": 113,
+          "mean_queen_splits": 0,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 143.5,
+          "median_queen_length_before_death": 11.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 79
+        },
+        "xxqztest:autarky": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 3,
+          "opponent_mean_longest": 4.5,
+          "mean_total": 50.5,
+          "opponent_mean_total": 42,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 123.0,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 2
+        },
+        "xxqztest:default": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8.5,
+          "opponent_mean_longest": 1,
+          "mean_total": 142,
+          "opponent_mean_total": 1,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 218.5,
+          "median_queen_length_before_death": 11.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:devil": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8.5,
+          "opponent_mean_longest": 0,
+          "mean_total": 159,
+          "opponent_mean_total": 0,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 119.0,
+          "median_queen_length_before_death": 9.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:dilemma": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 17.5,
+          "opponent_mean_longest": 2.5,
+          "mean_total": 62,
+          "opponent_mean_total": 3.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 226.0,
+          "median_queen_length_before_death": 4.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:islands": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 6,
+          "opponent_mean_longest": 31,
+          "mean_total": 31.5,
+          "opponent_mean_total": 215.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 40.5,
+          "median_queen_length_before_death": 4.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 139
+        },
+        "xxqztest:maze": {
+          "games": 2,
+          "win": 1,
+          "loss": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 28,
+          "opponent_mean_longest": 23.5,
+          "mean_total": 141.5,
+          "opponent_mean_total": 101,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 109.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 95
+        },
+        "xxqztest:portals": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 9,
+          "opponent_mean_longest": 27.5,
+          "mean_total": 69.5,
+          "opponent_mean_total": 63.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 113.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 155
+        },
+        "xxqztest:queen_of_spades": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 97,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 173.5,
+          "median_queen_length_before_death": 3.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 6
+        },
+        "xxqztest:schooltime": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 2,
+          "opponent_queen_survived": 1,
+          "mean_queen": 3,
+          "opponent_mean_queen": 1.5,
+          "mean_longest": 35.5,
+          "opponent_mean_longest": 27.5,
+          "mean_total": 261.5,
+          "opponent_mean_total": 132,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {},
+          "median_queen_death_round_index": null,
+          "median_queen_length_before_death": null,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 201
+        },
+        "xxqztest:slithery_fight": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 22,
+          "opponent_mean_longest": 44.5,
+          "mean_total": 217.5,
+          "opponent_mean_total": 176.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 1.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 271
+        },
+        "xxqztest:stripes": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 1.5,
+          "opponent_mean_longest": 1.5,
+          "mean_total": 25.5,
+          "opponent_mean_total": 16.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 62.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:tower_defense": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 1,
+          "opponent_queen_survived": 1,
+          "mean_queen": 1.5,
+          "opponent_mean_queen": 1.5,
+          "mean_longest": 10.5,
+          "opponent_mean_longest": 13,
+          "mean_total": 42.5,
+          "opponent_mean_total": 40,
+          "mean_queen_splits": 3,
+          "queen_death_reasons": {
+            "self": 1
+          },
+          "median_queen_death_round_index": 309,
+          "median_queen_length_before_death": 2,
+          "invalid_action_deaths": 9,
+          "opponent_invalid_action_deaths": 9
+        },
+        "xxqztest:trauma": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 1,
+          "opponent_queen_survived": 0,
+          "mean_queen": 4.5,
+          "opponent_mean_queen": 0,
+          "mean_longest": 15.5,
+          "opponent_mean_longest": 8,
+          "mean_total": 51,
+          "opponent_mean_total": 67.5,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 1
+          },
+          "median_queen_death_round_index": 395,
+          "median_queen_length_before_death": 2,
+          "invalid_action_deaths": 12,
+          "opponent_invalid_action_deaths": 29
+        },
+        "xxqztest:trophy": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1.5,
+          "mean_longest": 7,
+          "opponent_mean_longest": 2,
+          "mean_total": 93,
+          "opponent_mean_total": 41.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 75.5,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 1
+        },
+        "xxqztest:unsw": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 33,
+          "opponent_mean_longest": 30,
+          "mean_total": 306,
+          "opponent_mean_total": 168,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 208.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 178
+        },
+        "xxqztest:weakhold": {
+          "games": 2,
+          "win": 1,
+          "loss": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 5.5,
+          "opponent_mean_longest": 20,
+          "mean_total": 37.5,
+          "opponent_mean_total": 50,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 182.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 39
+        }
+      },
+      "representative_losses": [
+        {
+          "opponent": "V3_portal",
+          "map": "default",
+          "side": "A",
+          "seed": "78003",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0005_V3_portal_default_seed78003_A.replay",
+          "standings": {
+            "A": {
+              "population": 0,
+              "longest": 0,
+              "total": 0,
+              "queen": 0
+            },
+            "B": {
+              "population": 50,
+              "longest": 6,
+              "total": 130,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 60,
+              "reason": "head",
+              "length_before_death": 6
+            },
+            "B": {
+              "round_index": 7,
+              "reason": "head",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "side": "A",
+          "seed": "78005",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0009_V3_portal_portals_seed78005_A.replay",
+          "standings": {
+            "A": {
+              "population": 14,
+              "longest": 9,
+              "total": 51,
+              "queen": 0
+            },
+            "B": {
+              "population": 14,
+              "longest": 12,
+              "total": 71,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 199,
+              "reason": "head",
+              "length_before_death": 2
+            },
+            "B": {
+              "round_index": 90,
+              "reason": "self",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 1
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "portals",
+          "side": "A",
+          "seed": "78005",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0043_xxqztest_portals_seed78005_A.replay",
+          "standings": {
+            "A": {
+              "population": 14,
+              "longest": 11,
+              "total": 65,
+              "queen": 0
+            },
+            "B": {
+              "population": 8,
+              "longest": 36,
+              "total": 61,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 115,
+              "reason": "self",
+              "length_before_death": 2
+            },
+            "B": {
+              "round_index": 211,
+              "reason": "self",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 1
+        }
+      ]
+    },
+    {
+      "label": "queen_consolidate_v127",
+      "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/verified_audit.json",
+      "overall": {
+        "games": 68,
+        "loss": 31,
+        "win": 37,
+        "win_rate": 0.5441176470588235,
+        "queen_survived": 6,
+        "opponent_queen_survived": 8,
+        "mean_queen": 0.6764705882352942,
+        "opponent_mean_queen": 0.3088235294117647,
+        "mean_longest": 14.073529411764707,
+        "opponent_mean_longest": 10.970588235294118,
+        "mean_total": 90.82352941176471,
+        "opponent_mean_total": 93.3529411764706,
+        "mean_queen_splits": 1.0735294117647058,
+        "queen_death_reasons": {
+          "head": 21,
+          "self": 36,
+          "body": 5
+        },
+        "median_queen_death_round_index": 123.0,
+        "median_queen_length_before_death": 2.0,
+        "invalid_action_deaths": 2065,
+        "opponent_invalid_action_deaths": 1021
+      },
+      "by_opponent": {
+        "V3_portal": {
+          "ranked17": {
+            "games": 34,
+            "loss": 18,
+            "win": 16,
+            "win_rate": 0.47058823529411764,
+            "queen_survived": 2,
+            "opponent_queen_survived": 3,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.23529411764705882,
+            "mean_longest": 11.588235294117647,
+            "opponent_mean_longest": 10.705882352941176,
+            "mean_total": 76.38235294117646,
+            "opponent_mean_total": 116.26470588235294,
+            "mean_queen_splits": 1.0588235294117647,
+            "queen_death_reasons": {
+              "head": 10,
+              "self": 19,
+              "body": 3
+            },
+            "median_queen_death_round_index": 144.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 824,
+            "opponent_invalid_action_deaths": 8
+          },
+          "legacy10": {
+            "games": 20,
+            "loss": 11,
+            "win": 9,
+            "win_rate": 0.45,
+            "queen_survived": 2,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.3,
+            "opponent_mean_queen": 0.3,
+            "mean_longest": 10.45,
+            "opponent_mean_longest": 8.85,
+            "mean_total": 70.35,
+            "opponent_mean_total": 92,
+            "mean_queen_splits": 1.05,
+            "queen_death_reasons": {
+              "head": 7,
+              "self": 10,
+              "body": 1
+            },
+            "median_queen_death_round_index": 190.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 384,
+            "opponent_invalid_action_deaths": 6
+          },
+          "side_A": {
+            "games": 17,
+            "loss": 9,
+            "win": 8,
+            "win_rate": 0.47058823529411764,
+            "queen_survived": 1,
+            "opponent_queen_survived": 1,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.17647058823529413,
+            "mean_longest": 12.882352941176471,
+            "opponent_mean_longest": 10.470588235294118,
+            "mean_total": 78.23529411764706,
+            "opponent_mean_total": 105.76470588235294,
+            "mean_queen_splits": 1,
+            "queen_death_reasons": {
+              "head": 7,
+              "body": 1,
+              "self": 8
+            },
+            "median_queen_death_round_index": 168.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 572,
+            "opponent_invalid_action_deaths": 5
+          },
+          "side_B": {
+            "games": 17,
+            "win": 8,
+            "loss": 9,
+            "win_rate": 0.47058823529411764,
+            "queen_survived": 1,
+            "opponent_queen_survived": 2,
+            "mean_queen": 0.17647058823529413,
+            "opponent_mean_queen": 0.29411764705882354,
+            "mean_longest": 10.294117647058824,
+            "opponent_mean_longest": 10.941176470588236,
+            "mean_total": 74.52941176470588,
+            "opponent_mean_total": 126.76470588235294,
+            "mean_queen_splits": 1.1176470588235294,
+            "queen_death_reasons": {
+              "self": 11,
+              "body": 2,
+              "head": 3
+            },
+            "median_queen_death_round_index": 124.5,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 252,
+            "opponent_invalid_action_deaths": 3
+          }
+        },
+        "xxqztest": {
+          "ranked17": {
+            "games": 34,
+            "win": 21,
+            "loss": 13,
+            "win_rate": 0.6176470588235294,
+            "queen_survived": 4,
+            "opponent_queen_survived": 5,
+            "mean_queen": 1.1764705882352942,
+            "opponent_mean_queen": 0.38235294117647056,
+            "mean_longest": 16.558823529411764,
+            "opponent_mean_longest": 11.235294117647058,
+            "mean_total": 105.26470588235294,
+            "opponent_mean_total": 70.44117647058823,
+            "mean_queen_splits": 1.088235294117647,
+            "queen_death_reasons": {
+              "head": 11,
+              "body": 2,
+              "self": 17
+            },
+            "median_queen_death_round_index": 120.0,
+            "median_queen_length_before_death": 2.0,
+            "invalid_action_deaths": 1241,
+            "opponent_invalid_action_deaths": 1013
+          },
+          "legacy10": {
+            "games": 20,
+            "loss": 7,
+            "win": 13,
+            "win_rate": 0.65,
+            "queen_survived": 4,
+            "opponent_queen_survived": 3,
+            "mean_queen": 2,
+            "opponent_mean_queen": 0.4,
+            "mean_longest": 15.15,
+            "opponent_mean_longest": 10.15,
+            "mean_total": 98.05,
+            "opponent_mean_total": 60.75,
+            "mean_queen_splits": 0.9,
+            "queen_death_reasons": {
+              "head": 8,
+              "body": 2,
+              "self": 6
+            },
+            "median_queen_death_round_index": 123.0,
+            "median_queen_length_before_death": 3.5,
+            "invalid_action_deaths": 646,
+            "opponent_invalid_action_deaths": 584
+          },
+          "side_A": {
+            "games": 17,
+            "win": 12,
+            "loss": 5,
+            "win_rate": 0.7058823529411765,
+            "queen_survived": 2,
+            "opponent_queen_survived": 3,
+            "mean_queen": 1,
+            "opponent_mean_queen": 0.4117647058823529,
+            "mean_longest": 18.941176470588236,
+            "opponent_mean_longest": 10.588235294117647,
+            "mean_total": 115.6470588235294,
+            "opponent_mean_total": 55.11764705882353,
+            "mean_queen_splits": 1.1176470588235294,
+            "queen_death_reasons": {
+              "head": 5,
+              "body": 1,
+              "self": 9
+            },
+            "median_queen_death_round_index": 120,
+            "median_queen_length_before_death": 2,
+            "invalid_action_deaths": 718,
+            "opponent_invalid_action_deaths": 459
+          },
+          "side_B": {
+            "games": 17,
+            "win": 9,
+            "loss": 8,
+            "win_rate": 0.5294117647058824,
+            "queen_survived": 2,
+            "opponent_queen_survived": 2,
+            "mean_queen": 1.3529411764705883,
+            "opponent_mean_queen": 0.35294117647058826,
+            "mean_longest": 14.176470588235293,
+            "opponent_mean_longest": 11.882352941176471,
+            "mean_total": 94.88235294117646,
+            "opponent_mean_total": 85.76470588235294,
+            "mean_queen_splits": 1.0588235294117647,
+            "queen_death_reasons": {
+              "head": 6,
+              "self": 8,
+              "body": 1
+            },
+            "median_queen_death_round_index": 120,
+            "median_queen_length_before_death": 2,
+            "invalid_action_deaths": 523,
+            "opponent_invalid_action_deaths": 554
+          }
+        }
+      },
+      "by_map": {
+        "V3_portal:australia": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 19,
+          "opponent_mean_longest": 27,
+          "mean_total": 99.5,
+          "opponent_mean_total": 371,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "body": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 222.0,
+          "median_queen_length_before_death": 4.5,
+          "invalid_action_deaths": 55,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:autarky": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8,
+          "opponent_mean_longest": 11,
+          "mean_total": 56.5,
+          "opponent_mean_total": 69.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 151.0,
+          "median_queen_length_before_death": 3.5,
+          "invalid_action_deaths": 26,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:default": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 1.5,
+          "opponent_mean_longest": 8.5,
+          "mean_total": 1.5,
+          "opponent_mean_total": 136.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 198.0,
+          "median_queen_length_before_death": 5.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:devil": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 10,
+          "opponent_mean_longest": 0,
+          "mean_total": 130,
+          "opponent_mean_total": 0,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 121.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 73,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:dilemma": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 41.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 205.0,
+          "median_queen_length_before_death": 3.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:islands": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 4.5,
+          "opponent_mean_longest": 15.5,
+          "mean_total": 17.5,
+          "opponent_mean_total": 276,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 33.5,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 2,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:maze": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 21.5,
+          "opponent_mean_longest": 11.5,
+          "mean_total": 138.5,
+          "opponent_mean_total": 91,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 72.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 127,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:portals": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8,
+          "opponent_mean_longest": 11,
+          "mean_total": 64.5,
+          "opponent_mean_total": 71,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 164.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 5
+        },
+        "V3_portal:queen_of_spades": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 1.5,
+          "opponent_mean_longest": 9.5,
+          "mean_total": 8.5,
+          "opponent_mean_total": 77,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 298.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:schooltime": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 2,
+          "opponent_queen_survived": 2,
+          "mean_queen": 3,
+          "opponent_mean_queen": 3,
+          "mean_longest": 38,
+          "opponent_mean_longest": 18,
+          "mean_total": 207,
+          "opponent_mean_total": 155.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {},
+          "median_queen_death_round_index": null,
+          "median_queen_length_before_death": null,
+          "invalid_action_deaths": 105,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:slithery_fight": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 29.5,
+          "opponent_mean_longest": 15,
+          "mean_total": 202,
+          "opponent_mean_total": 171,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 1.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 118,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:stripes": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 42,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 59.0,
+          "median_queen_length_before_death": 3.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:tower_defense": {
+          "games": 2,
+          "win": 1,
+          "loss": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8.5,
+          "opponent_mean_longest": 10,
+          "mean_total": 26.5,
+          "opponent_mean_total": 55.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 290.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 31,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:trauma": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8,
+          "opponent_mean_longest": 6.5,
+          "mean_total": 33.5,
+          "opponent_mean_total": 38,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 289.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 62,
+          "opponent_invalid_action_deaths": 1
+        },
+        "V3_portal:trophy": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 0,
+          "opponent_mean_longest": 5.5,
+          "mean_total": 0,
+          "opponent_mean_total": 160,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 66.0,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 0
+        },
+        "V3_portal:unsw": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 32,
+          "opponent_mean_longest": 24,
+          "mean_total": 286,
+          "opponent_mean_total": 214,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 266.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 169,
+          "opponent_invalid_action_deaths": 2
+        },
+        "V3_portal:weakhold": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 7,
+          "opponent_mean_longest": 2,
+          "mean_total": 27,
+          "opponent_mean_total": 7,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "body": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 209.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 56,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:australia": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 36,
+          "opponent_mean_longest": 8.5,
+          "mean_total": 224,
+          "opponent_mean_total": 64,
+          "mean_queen_splits": 0,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 143.5,
+          "median_queen_length_before_death": 11.5,
+          "invalid_action_deaths": 173,
+          "opponent_invalid_action_deaths": 74
+        },
+        "xxqztest:autarky": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 12,
+          "opponent_mean_longest": 4.5,
+          "mean_total": 37,
+          "opponent_mean_total": 46,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 123.0,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 34,
+          "opponent_invalid_action_deaths": 1
+        },
+        "xxqztest:default": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 21.5,
+          "opponent_mean_longest": 1.5,
+          "mean_total": 109.5,
+          "opponent_mean_total": 1.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 218.5,
+          "median_queen_length_before_death": 11.5,
+          "invalid_action_deaths": 156,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:devil": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 10,
+          "opponent_mean_longest": 0,
+          "mean_total": 148.5,
+          "opponent_mean_total": 0,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "self": 1,
+            "head": 1
+          },
+          "median_queen_death_round_index": 119.0,
+          "median_queen_length_before_death": 9.0,
+          "invalid_action_deaths": 14,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:dilemma": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 9.5,
+          "opponent_mean_longest": 2,
+          "mean_total": 33,
+          "opponent_mean_total": 4,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 226.0,
+          "median_queen_length_before_death": 4.0,
+          "invalid_action_deaths": 54,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:islands": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 8.5,
+          "opponent_mean_longest": 29,
+          "mean_total": 47,
+          "opponent_mean_total": 189,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 1,
+            "self": 1
+          },
+          "median_queen_death_round_index": 40.5,
+          "median_queen_length_before_death": 4.0,
+          "invalid_action_deaths": 21,
+          "opponent_invalid_action_deaths": 129
+        },
+        "xxqztest:maze": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 26,
+          "opponent_mean_longest": 7,
+          "mean_total": 121.5,
+          "opponent_mean_total": 126.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 109.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 87,
+          "opponent_invalid_action_deaths": 51
+        },
+        "xxqztest:portals": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 10.5,
+          "opponent_mean_longest": 23,
+          "mean_total": 75,
+          "opponent_mean_total": 67.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 113.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 2,
+          "opponent_invalid_action_deaths": 169
+        },
+        "xxqztest:queen_of_spades": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1,
+          "mean_longest": 0,
+          "opponent_mean_longest": 3.5,
+          "mean_total": 0,
+          "opponent_mean_total": 97,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "head": 1,
+            "body": 1
+          },
+          "median_queen_death_round_index": 173.5,
+          "median_queen_length_before_death": 3.5,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 6
+        },
+        "xxqztest:schooltime": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 2,
+          "opponent_queen_survived": 1,
+          "mean_queen": 3,
+          "opponent_mean_queen": 1.5,
+          "mean_longest": 32.5,
+          "opponent_mean_longest": 31,
+          "mean_total": 211,
+          "opponent_mean_total": 164.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {},
+          "median_queen_death_round_index": null,
+          "median_queen_length_before_death": null,
+          "invalid_action_deaths": 88,
+          "opponent_invalid_action_deaths": 175
+        },
+        "xxqztest:slithery_fight": {
+          "games": 2,
+          "win": 1,
+          "loss": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 29.5,
+          "opponent_mean_longest": 24,
+          "mean_total": 219,
+          "opponent_mean_total": 125,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 1.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 256,
+          "opponent_invalid_action_deaths": 199
+        },
+        "xxqztest:stripes": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 2,
+          "opponent_mean_longest": 1.5,
+          "mean_total": 23.5,
+          "opponent_mean_total": 16.5,
+          "mean_queen_splits": 2,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 62.0,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 4,
+          "opponent_invalid_action_deaths": 0
+        },
+        "xxqztest:tower_defense": {
+          "games": 2,
+          "loss": 2,
+          "win_rate": 0.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 2,
+          "mean_queen": 0,
+          "opponent_mean_queen": 2.5,
+          "mean_longest": 8,
+          "opponent_mean_longest": 7,
+          "mean_total": 36,
+          "opponent_mean_total": 27,
+          "mean_queen_splits": 3.5,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 397.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 39,
+          "opponent_invalid_action_deaths": 4
+        },
+        "xxqztest:trauma": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 2,
+          "opponent_queen_survived": 0,
+          "mean_queen": 17,
+          "opponent_mean_queen": 0,
+          "mean_longest": 19,
+          "opponent_mean_longest": 10,
+          "mean_total": 54.5,
+          "opponent_mean_total": 60.5,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {},
+          "median_queen_death_round_index": null,
+          "median_queen_length_before_death": null,
+          "invalid_action_deaths": 42,
+          "opponent_invalid_action_deaths": 33
+        },
+        "xxqztest:trophy": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 1,
+          "mean_queen": 0,
+          "opponent_mean_queen": 1.5,
+          "mean_longest": 7,
+          "opponent_mean_longest": 2,
+          "mean_total": 93,
+          "opponent_mean_total": 41.5,
+          "mean_queen_splits": 0.5,
+          "queen_death_reasons": {
+            "head": 2
+          },
+          "median_queen_death_round_index": 75.5,
+          "median_queen_length_before_death": 6.0,
+          "invalid_action_deaths": 0,
+          "opponent_invalid_action_deaths": 1
+        },
+        "xxqztest:unsw": {
+          "games": 2,
+          "win": 2,
+          "win_rate": 1.0,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 35.5,
+          "opponent_mean_longest": 16,
+          "mean_total": 321,
+          "opponent_mean_total": 120,
+          "mean_queen_splits": 1.5,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 208.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 233,
+          "opponent_invalid_action_deaths": 132
+        },
+        "xxqztest:weakhold": {
+          "games": 2,
+          "loss": 1,
+          "win": 1,
+          "win_rate": 0.5,
+          "queen_survived": 0,
+          "opponent_queen_survived": 0,
+          "mean_queen": 0,
+          "opponent_mean_queen": 0,
+          "mean_longest": 14,
+          "opponent_mean_longest": 20.5,
+          "mean_total": 36,
+          "opponent_mean_total": 47,
+          "mean_queen_splits": 1,
+          "queen_death_reasons": {
+            "self": 2
+          },
+          "median_queen_death_round_index": 182.5,
+          "median_queen_length_before_death": 2.0,
+          "invalid_action_deaths": 38,
+          "opponent_invalid_action_deaths": 39
+        }
+      },
+      "representative_losses": [
+        {
+          "opponent": "V3_portal",
+          "map": "default",
+          "side": "A",
+          "seed": "78003",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0005_V3_portal_default_seed78003_A.replay",
+          "standings": {
+            "A": {
+              "population": 0,
+              "longest": 0,
+              "total": 0,
+              "queen": 0
+            },
+            "B": {
+              "population": 50,
+              "longest": 6,
+              "total": 130,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 60,
+              "reason": "head",
+              "length_before_death": 6
+            },
+            "B": {
+              "round_index": 7,
+              "reason": "head",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "side": "A",
+          "seed": "78005",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0009_V3_portal_portals_seed78005_A.replay",
+          "standings": {
+            "A": {
+              "population": 14,
+              "longest": 9,
+              "total": 51,
+              "queen": 0
+            },
+            "B": {
+              "population": 14,
+              "longest": 12,
+              "total": 71,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 199,
+              "reason": "head",
+              "length_before_death": 2
+            },
+            "B": {
+              "round_index": 90,
+              "reason": "self",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 1
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "portals",
+          "side": "A",
+          "seed": "78005",
+          "selection": "requested-map loss; side A first",
+          "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0043_xxqztest_portals_seed78005_A.replay",
+          "standings": {
+            "A": {
+              "population": 12,
+              "longest": 9,
+              "total": 77,
+              "queen": 0
+            },
+            "B": {
+              "population": 8,
+              "longest": 30,
+              "total": 75,
+              "queen": 0
+            }
+          },
+          "queen_deaths": {
+            "A": {
+              "round_index": 115,
+              "reason": "self",
+              "length_before_death": 2
+            },
+            "B": {
+              "round_index": 211,
+              "reason": "self",
+              "length_before_death": 2
+            }
+          },
+          "end_reason": 1
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "matched_games": 68,
+      "promotions_to_win": [
+        {
+          "opponent": "V3_portal",
+          "map": "tower_defense",
+          "seed": "78015",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0029_V3_portal_tower_defense_seed78015_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0029_V3_portal_tower_defense_seed78015_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trauma",
+          "seed": "78010",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0019_V3_portal_trauma_seed78010_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0019_V3_portal_trauma_seed78010_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trauma",
+          "seed": "78010",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0020_V3_portal_trauma_seed78010_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0020_V3_portal_trauma_seed78010_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "australia",
+          "seed": "78001",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0036_xxqztest_australia_seed78001_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0036_xxqztest_australia_seed78001_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "78013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0060_xxqztest_maze_seed78013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0060_xxqztest_maze_seed78013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "78008",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0049_xxqztest_schooltime_seed78008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0049_xxqztest_schooltime_seed78008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "78009",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0051_xxqztest_slithery_fight_seed78009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0051_xxqztest_slithery_fight_seed78009_A.replay"
+        }
+      ],
+      "regressions_from_win": [
+        {
+          "opponent": "xxqztest",
+          "map": "tower_defense",
+          "seed": "78015",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0064_xxqztest_tower_defense_seed78015_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0064_xxqztest_tower_defense_seed78015_B.replay"
+        }
+      ],
+      "all_outcome_changes": [
+        {
+          "opponent": "V3_portal",
+          "map": "tower_defense",
+          "seed": "78015",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0029_V3_portal_tower_defense_seed78015_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0029_V3_portal_tower_defense_seed78015_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trauma",
+          "seed": "78010",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0019_V3_portal_trauma_seed78010_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0019_V3_portal_trauma_seed78010_A.replay"
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trauma",
+          "seed": "78010",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0020_V3_portal_trauma_seed78010_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0020_V3_portal_trauma_seed78010_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "australia",
+          "seed": "78001",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0036_xxqztest_australia_seed78001_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0036_xxqztest_australia_seed78001_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "maze",
+          "seed": "78013",
+          "side": "B",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0060_xxqztest_maze_seed78013_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0060_xxqztest_maze_seed78013_B.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "schooltime",
+          "seed": "78008",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0049_xxqztest_schooltime_seed78008_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0049_xxqztest_schooltime_seed78008_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "slithery_fight",
+          "seed": "78009",
+          "side": "A",
+          "baseline": "loss",
+          "candidate": "win",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0051_xxqztest_slithery_fight_seed78009_A.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0051_xxqztest_slithery_fight_seed78009_A.replay"
+        },
+        {
+          "opponent": "xxqztest",
+          "map": "tower_defense",
+          "seed": "78015",
+          "side": "B",
+          "baseline": "win",
+          "candidate": "loss",
+          "baseline_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_feed_v127/0064_xxqztest_tower_defense_seed78015_B.replay",
+          "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_consolidate_v127/0064_xxqztest_tower_defense_seed78015_B.replay"
+        }
+      ],
+      "baseline": "queen_feed_v127",
+      "candidate": "queen_consolidate_v127"
+    }
+  ]
+}

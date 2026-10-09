@@ -1,0 +1,113 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef LOCAL_MATURE
+#define LOCAL_MATURE 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <iostream>
+#include <sstream>
+
+struct Fixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+
+    void put(int c, int id, bool mine, bool head) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = INF; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 0, mine, head});
+    }
+
+    void setup(int round = 350, int population = 8, int length = 4, bool teamB = false) {
+        W = H = 32; NC = W * H; STAMP = 1; ROUND = round;
+        MYTEAM = teamB ? Team::B : Team::A; MYID = teamB ? 3 : 2;
+        LEN = ct.length = length; HERE = cid(16, 8);
+        POP = ct.unit_count = population; TARGET = 62; ct.unit_limit = 64;
+        ct.head.dragon_id = MYID; ct.head.team = Team(MYTEAM); CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+        occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; pendingPath.clear(); trail.clear(); trailId = MYID;
+        for (int j = length - 1; j >= 0; --j) {
+            int c = cid(16 - j, 8); trail.push_back(c);
+            put(c, MYID, true, j == 0); occFree[c] = length + 1 - j;
+        }
+        idCount.push_back({MYID, LEN});
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999; queenSeededScout = true;
+        queenFeedObserver = MYID; queenFeedFirstRound = queenFeedLastEnemy = 0;
+        consolidateObserver = MYID; consolidateHoldUntil = -1; yieldStreak = 0;
+        chosenAction = {};
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+    }
+
+    void turn() {
+        std::ostringstream output;
+        auto* saved = std::cout.rdbuf(output.rdbuf());
+        if (!queenFeedAction(ct) && !consolidateAction(ct)) takeTurn(ct);
+        freeHarvest(); reviewProtection(ct); reviewPortalSafety(ct); reviewQueenSurvival(ct);
+        std::cout.rdbuf(saved);
+    }
+
+    void livingMove() {
+        assert(chosenAction.split == 0 && !chosenAction.dirs.empty());
+        auto post = projectAction(chosenAction);
+        assert(post.known && post.survives && post.len == LEN);
+    }
+};
+
+int main() {
+    Fixture f;
+    for (bool teamB : {false, true}) {
+        f.setup(349, 8, 4, teamB); f.turn(); assert(chosenAction.split == 2);
+        f.setup(350, 7, 4, teamB); f.turn(); assert(chosenAction.split == 2);
+        f.setup(470, 7, 4, teamB); f.turn(); assert(chosenAction.split == 2);
+        for (int r : {350, 400, 469}) {
+            f.setup(r, 8, 4, teamB); f.turn();
+            if (LOCAL_MATURE) f.livingMove();
+            else assert(chosenAction.split == 2);
+        }
+        f.setup(470, 8, 4, teamB); f.turn(); f.livingMove();
+        f.setup(350, 8, 4, teamB);
+        f.put(cid(20, 20), 13, false, false); f.turn(); assert(chosenAction.split == 2);
+        f.setup(350, 8, 4, teamB);
+        f.put(cid(20, 20), 13, false, true); f.turn(); assert(chosenAction.split == 2);
+        f.setup(350, 8, 4, teamB);
+        sightings.push_back({cid(20, 20), ROUND, 5}); f.turn();
+        if (LOCAL_MATURE) f.livingMove();
+        else assert(chosenAction.split == 2);
+
+        // A body trap still reaches the unchanged reverse-split fallback.
+        f.setup(350, 8, 6, teamB);
+        std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+        setEdge(ownSeg(0), 0, E_OPEN, -1);
+        f.turn(); assert(chosenAction.split == (LOCAL_MATURE ? 4 : 2));
+
+        f.setup(350, 8, 3, teamB); f.turn(); f.livingMove();
+        f.setup(350, 8, 4, teamB);
+        consolidateHoldUntil = ROUND + 12; f.turn(); f.livingMove();
+    }
+
+    // Queen bootstrap and ordinary queen protection are not delayed.
+    f.setup(80, 1, 6); MYID = queenId(); f.ct.head.dragon_id = MYID;
+    for (auto& p : parts) { p.id = MYID; occId[p.c] = MYID; }
+    idCount = {{MYID, LEN}}; trailId = MYID; queenSeededScout = false;
+    f.turn(); assert(chosenAction.split == 2 && queenSeededScout);
+    f.setup(350, 8, 4); MYID = queenId(); f.ct.head.dragon_id = MYID;
+    for (auto& p : parts) { p.id = MYID; occId[p.c] = MYID; }
+    idCount = {{MYID, LEN}}; trailId = MYID;
+    f.turn(); f.livingMove();
+
+    std::cout << "local maturation candidate/control fixtures passed\n";
+}

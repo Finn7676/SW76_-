@@ -1,0 +1,277 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef POCKET_SALVAGE
+#define POCKET_SALVAGE 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
+struct Fixture {
+    Controller ct{2, Team::A, Direction::SOUTH, Vision{}, 64};
+    std::vector<int> body, child;
+    std::string logs;
+
+    void put(int c, int id, bool mine, bool head, int release) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = release; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 0, mine, head});
+        if (mine && id != MYID) friendParts.push_back(c);
+    }
+
+    void bind(std::vector<int> current, int id = 2) {
+        body = std::move(current); LEN = int(body.size()); HERE = body[0]; MYID = id;
+        ct.length = LEN; ct.head.dragon_id = MYID; CT = &ct;
+        ct.head.dir = Direction::SOUTH;
+        std::fill(occStamp.begin(), occStamp.end(), 0);
+        std::fill(occPart.begin(), occPart.end(), -1);
+        std::fill(occId.begin(), occId.end(), -1);
+        parts.clear(); idCount.clear(); friendParts.clear(); friendGuards.clear();
+        trail.assign(body.rbegin(), body.rend()); trailId = MYID;
+        pendingPath.clear();
+        for (int j = 0; j < LEN; ++j) put(body[j], MYID, true, j == 0, LEN + 1 - j);
+        idCount.push_back({MYID, LEN});
+        for (int c = 0; c < NC; ++c) visStamp[c] = cheb(c, HERE) <= 3 ? STAMP : 0;
+        chosenAction = {};
+    }
+
+    void setup(bool terminal = false, bool mirror = false) {
+        W = 24; H = 12; NC = W * H; MYTEAM = Team::A; ROUND = 14; STAMP = 1;
+        POP = ct.unit_count = 8; TARGET = 62; ct.unit_limit = 64;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+        occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; pendingPath.clear(); child.clear();
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999; queenSeededScout = true;
+        queenFeedObserver = 2; queenFeedFirstRound = queenFeedLastEnemy = 0;
+        consolidateObserver = 2; consolidateHoldUntil = -1; yieldStreak = 0;
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+
+        std::ifstream map("../../battlecode_quickstart/maps/stripes.map");
+        assert(map.is_open());
+        std::string line;
+        while (std::getline(map, line)) {
+            std::istringstream row(line); std::string tag; row >> tag;
+            if (tag != "EDGE") continue;
+            int key, kind, portal; row >> key >> kind >> portal;
+            int boundary = key / (W + 1), x = key % (W + 1);
+            if (boundary % 2 == 0)
+                setEdge(cid(x % W, (boundary / 2) % H), 0,
+                        kind == 0 ? E_OPEN : kind == 1 ? E_KELP : E_PORTAL, portal);
+            else
+                setEdge(cid(x % W, ((boundary - 1) / 2) % H), 3,
+                        kind == 0 ? E_OPEN : kind == 1 ? E_KELP : E_PORTAL, portal);
+        }
+        auto cell = [&](int x, int y) { return mirror ? cid(W - 1 - x, H - 1 - y) : cid(x, y); };
+        std::vector<int> current{cell(16, 10), cell(16, 9), cell(17, 8), cell(18, 8)};
+        if (terminal) current.insert(current.begin(), cell(17, 10));
+        bind(current);
+        if (!terminal) {
+            int p = cell(17, 10); visPearl[p] = 1; visPearls.push_back(p); pearlDue[p] = ROUND;
+        }
+        int other = cell(17, 9); visPearl[other] = 1; visPearls.push_back(other); pearlDue[other] = ROUND;
+    }
+
+    void turn() {
+        std::ostringstream output;
+        auto* saved = std::cout.rdbuf(output.rdbuf());
+        if (!queenFeedAction(ct) && !consolidateAction(ct)) takeTurn(ct);
+        freeHarvest(); reviewProtection(ct); reviewPortalSafety(ct); reviewQueenSurvival(ct);
+        std::cout.rdbuf(saved);
+        logs = output.str();
+    }
+
+    bool move(int d) const { return !chosenAction.split && chosenAction.dirs == std::vector<int>{d}; }
+
+    void advanceMove() {
+        auto p = projectAction(chosenAction);
+        assert(p.known && p.survives);
+        std::vector<Part> others;
+        for (auto const& part : parts) if (part.id != MYID) others.push_back(part);
+        auto counts = idCount;
+        for (int c : p.body) visPearl[c] = 0;
+        visPearls.erase(std::remove_if(visPearls.begin(), visPearls.end(),
+                                     [&](int c) { return !visPearl[c]; }), visPearls.end());
+        ++ROUND;
+        bind(p.body);
+        for (auto const& part : others) put(part.c, part.id, part.mine, part.head, INF);
+        for (auto const& count : counts) if (count.first != MYID) idCount.push_back(count);
+    }
+
+    void applySplit() {
+        int k = chosenAction.split;
+        assert(ct.can_split(k) && splitSafe(k));
+        child.assign(body.rbegin(), body.rbegin() + k);
+        std::vector<int> parent(body.begin(), body.end() - k);
+        ++POP; ct.unit_count = POP;
+        bind(parent);
+        for (int j = 0; j < k; ++j) put(child[j], 4, true, j == 0, k + 1 - j);
+        idCount.push_back({4, k});
+    }
+
+    void childTurn() {
+        auto parent = body;
+        bind(child, 4);
+        for (int j = 0; j < int(parent.size()); ++j)
+            put(parent[j], 2, true, j == 0, int(parent.size()) + 1 - j);
+        idCount.push_back({2, int(parent.size())});
+    }
+};
+
+int main() {
+    Fixture f;
+    for (bool mirror : {false, true}) {
+        const int direction = mirror ? 3 : 1;
+        f.setup(false, mirror);
+        auto first = projectAction({{direction}, 0, false, false});
+        assert(first.known && first.survives && first.len == 5);
+        assert(first.body[4] == ownSeg(0));
+        f.turn();
+#if POCKET_SALVAGE
+        assert(f.move(direction));
+        assert(f.logs.find("pickup") != std::string::npos);
+        f.advanceMove();
+        assert(LEN == 5 && f.body == first.body);
+        f.turn(); assert(chosenAction.split == 3);
+        assert(f.logs.find("reverse") != std::string::npos);
+        auto expected = std::vector<int>{first.body[4], first.body[3], first.body[2]};
+        f.applySplit();
+        assert(LEN == 2 && f.child == expected && !bridged(f.body[0], f.body[1]));
+        f.childTurn();
+        for (int step = 0; step < 2; ++step) {
+            f.turn();
+            auto p = projectAction(chosenAction);
+            assert(!chosenAction.split && p.known && p.survives && p.len >= 3);
+            f.advanceMove();
+        }
+#else
+        assert(chosenAction.split == 2);
+        f.applySplit();
+        assert(LEN == 2 && f.child.size() == 2);
+        f.turn(); assert(f.move(direction));
+        f.advanceMove();
+        assert(LEN == 3);
+        f.turn(); assert(f.move(direction ^ 2));
+        assert(!projectAction(chosenAction).survives);
+#endif
+    }
+
+    for (bool mirror : {false, true}) {
+        f.setup(true, mirror);
+        f.turn();
+        assert(chosenAction.split == (POCKET_SALVAGE ? 3 : 2));
+        if (POCKET_SALVAGE) {
+            auto expected = std::vector<int>{f.body[4], f.body[3], f.body[2]};
+            f.applySplit();
+            assert(LEN == 2 && !bridged(f.body[0], f.body[1]) && f.child == expected);
+            f.childTurn();
+            for (int step = 0; step < 2; ++step) {
+                f.turn();
+                auto p = projectAction(chosenAction);
+                assert(!chosenAction.split && !chosenAction.dirs.empty() && p.known && p.survives);
+                assert(p.len >= 3);
+                f.advanceMove();
+            }
+        }
+    }
+
+    // Out-of-scope ordinary splits retain H14's exact SPLIT 2.
+    for (bool terminal : {false, true}) {
+        f.setup(terminal); f.put(cid(0, 0), 13, false, false, INF);
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal); sightings.push_back({cid(0, 0), ROUND - 6, 5});
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal); visStamp[ownSeg(0)] = 0;
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal); occId[ownSeg(0)] = 44;
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal);
+        int target = terminal ? HERE : cid(17, 10);
+        setEdge(target, 0, E_UNKNOWN, -1);
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal);
+        target = terminal ? HERE : cid(17, 10);
+        setEdge(target, 0, E_OPEN, -1);
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal);
+        for (int d = 0; d < 4; ++d) setEdge(ownSeg(0), d, E_KELP, -1);
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal);
+        f.put(cid(18, 7), 14, true, false, INF);
+        f.put(cid(19, 8), 14, true, false, INF);
+        f.turn(); assert(chosenAction.split == 2);
+        f.setup(terminal); f.ct.head.dragon_id = MYID = 0; queenSeededScout = false;
+        POP = f.ct.unit_count = 1; ROUND = 14;
+        for (auto& p : parts) p.id = 0;
+        for (int c : f.body) occId[c] = 0;
+        chosenAction = {};
+#if POCKET_SALVAGE
+        assert(!pocketSalvageAction(f.ct));
+#endif
+        f.turn();
+        assert(terminal ? chosenAction.split == 3 : f.move(1));
+        assert(f.logs.find("POCKET_SALVAGE") == std::string::npos);
+    }
+
+    f.setup(); visPearl[cid(17, 10)] = 0; visPearls.clear();
+    f.turn(); assert(chosenAction.split == 2);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1);
+    f.turn(); assert(chosenAction.split == 2); // Another live head exit.
+    f.setup(); setEdge(HERE, 2, E_PORTAL, 77);
+    f.turn(); assert(!f.move(1)); // Unresolved portal keeps existing priority.
+    f.setup(); visStamp[cid(17, 10)] = 0;
+    f.turn(); assert(chosenAction.split == 2);
+    f.setup(); POP = f.ct.unit_count = 64;
+    f.turn(); assert(chosenAction.split == 0);
+    f.setup(true); POP = f.ct.unit_count = 64;
+    f.turn(); assert(chosenAction.split == 0);
+    f.setup(true); POP = f.ct.unit_count = TARGET;
+    f.turn(); assert(chosenAction.split == 3); // Unchanged scorer's emergency branch.
+    assert(f.logs.find("POCKET_SALVAGE") == std::string::npos);
+    f.setup(true); ROUND = 400; consolidateHoldUntil = 412;
+    f.turn(); assert(chosenAction.split == 3); // Emergency fallback, not ordinary hook.
+    assert(f.logs.find("POCKET_SALVAGE") == std::string::npos);
+    f.setup(true); setEdge(HERE, 3, E_PORTAL, 91); learnedExit[HERE * 4 + 3] = f.body[1];
+    f.turn(); assert(chosenAction.split == 2); // Geometrically adjacent portal is not an ordinary neck.
+
+    for (int unknown : {0, 1}) {
+        f.setup();
+        friendGuards.push_back({12, cid(18, 10), 8, cid(17, 10), {cid(17, 10)}, unknown});
+        f.turn(); assert(chosenAction.split == 2);
+    }
+
+#if POCKET_SALVAGE
+    f.setup(true); POP = f.ct.unit_count = 64;
+    assert(!pocketSalvageAction(f.ct));
+    f.setup(true); f.ct.length = 4;
+    assert(!pocketSalvageAction(f.ct)); // No current legal split3.
+    f.setup();
+    auto expected = projectAction({{1}, 0, false, false});
+    expected.body[1] = cid(1, 1);
+    assert(!pocketSalvageChildEscape(expected));
+    f.setup();
+    for (int d = 0; d < 4; ++d) {
+        int q = moveCell(ownSeg(0), d);
+        if (q >= 0 && !occupied(q)) for (int next = 0; next < 4; ++next)
+            setEdge(q, next, E_KELP, -1);
+    }
+    assert(!pocketSalvageAction(f.ct));
+#endif
+    std::cout << "pocket salvage " << (POCKET_SALVAGE ? "candidate" : "H14 control")
+              << " source-bound assertions passed\n";
+}

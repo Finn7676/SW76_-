@@ -1,0 +1,34 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+Controller testController{8, Team::A, Direction::EAST, Vision{},64};
+void put(int c,int id,bool head,int length) {
+    occStamp[c]=STAMP; occMine[c]=1; occId[c]=id; occHead[c]=head;
+    parts.push_back({c,id,1,true,head}); idCount.push_back({id,length});
+}
+void setup() {
+    W=H=12; NC=W*H; HERE=cid(5,5); LEN=4; MYID=8; MYTEAM=Team::A;
+    ROUND=360; POP=4; STAMP=1; CT=&testController;
+    edgeT.assign(NC*4,E_OPEN); edgePid.assign(NC*4,-1); learnedExit.assign(NC*4,-1);
+    visStamp.assign(NC,STAMP); occStamp.assign(NC,0); occMine.assign(NC,0);
+    occId.assign(NC,-1); occHead.assign(NC,0); visPearl.assign(NC,0);
+    parts.clear(); idCount.clear(); friendStatuses.clear(); sightings.clear();
+    put(HERE,MYID,true,LEN); put(cid(7,5),2,true,4); put(cid(8,5),2,false,0);
+    queenFeedFirstRound=350; queenFeedLastEnemy=350; consolidateObserver=-1; consolidateHoldUntil=-1;
+    chosenAction={};
+}
+int main() {
+    setup(); assert(consolidatePickup(cid(7,5),HERE,8)==2);
+    assert(consolidateReceiver(8,HERE,4)==2);
+    assert(consolidateAction(testController) && chosenAction.donation);
+    setup(); MYID=2; HERE=cid(7,5); assert(!consolidateAction(testController));
+    setup(); MYID=queenId(); assert(!consolidateAction(testController));
+    setup(); POP=3; assert(!consolidateAction(testController));
+    setup(); put(cid(1,1),queenId(),true,2); assert(!consolidateAction(testController));
+    setup(); std::fill(edgeT.begin(),edgeT.end(),E_KELP); assert(!consolidateAction(testController));
+    setup(); MYID=2; HERE=cid(7,5); consolidateObserve(); assert(consolidateHolding());
+    ROUND+=13; assert(!consolidateHolding());
+    std::cout << "consolidate: 8 recipient, reserve and path checks passed\n";
+}

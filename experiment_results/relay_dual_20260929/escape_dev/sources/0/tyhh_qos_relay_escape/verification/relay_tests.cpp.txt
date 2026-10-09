@@ -1,0 +1,70 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+void resetWorld(uint8_t terrain = E_KELP) {
+    W = 12; H = 12; NC = W * H; ROUND = 50; MYID = 3; MYTEAM = Team::A;
+    edgeT.assign(NC * 4, terrain);
+    edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1);
+    pearlDue.assign(NC, INF);
+    portalEnds.clear(); portalKeys.clear(); portalRelayCursor = 0;
+}
+
+int main() {
+    resetWorld();
+    int c = cid(4, 4);
+    setEdge(c, 1, E_PORTAL, 17);
+    pearlDue[c] = 50;
+    assert(provenResourceRoom(c) == 17);
+    setEdge(c, 3, E_OPEN, -1);
+    assert(provenResourceRoom(c) == 17);
+    setEdge(geo(c, 3), 0, E_UNKNOWN, -1);
+    assert(provenResourceRoom(c) == -1);
+    setEdge(geo(c, 3), 0, E_KELP, -1);
+    setEdge(geo(c, 3), 3, E_PORTAL, 18);
+    assert(provenResourceRoom(c) == -1);
+    resetWorld();
+    setEdge(c, 1, E_PORTAL, 17);
+    assert(provenResourceRoom(c) == -1); // no resource source
+    assert(provenResourceRoom(-1) == -1);
+    resetWorld(E_OPEN);
+    pearlDue[c] = 100;
+    assert(provenResourceRoom(c) == -1); // region exceeds 24 cells
+
+    resetWorld(E_UNKNOWN);
+    int a = cid(2, 3) * 4 + 1, b = cid(8, 9) * 4 + 1;
+    setEdge(a / 4, 1, E_PORTAL, 7000);
+    setEdge(b / 4, 1, E_PORTAL, 7000);
+    uint64_t message = portalPairMessage(a);
+    assert(message != 0);
+    assert(choosePortalPairMessage() == message);
+    resetWorld(E_UNKNOWN);
+    assert(receivePortalPair(message));
+    assert(edgePid[a] == 7000 && edgePid[b] == 7000);
+    assert(portalExit(a / 4, 1) == geo(b / 4, 1));
+    assert(portalEnds[7000].size() == 2);
+    assert(receivePortalPair(message)); // idempotent receipt
+    assert(portalEnds[7000].size() == 2);
+
+    resetWorld(E_UNKNOWN);
+    assert(!receivePortalPair(message ^ 1)); // checksum
+    assert(portalKeys.empty());
+    MYTEAM = Team::B;
+    assert(!receivePortalPair(message)); // team discriminator
+    assert(portalKeys.empty());
+    MYTEAM = Team::A;
+    setEdge(a / 4, 1, E_KELP, -1);
+    assert(!receivePortalPair(message)); // no terrain overwrite
+    assert(edgeT[b] == E_UNKNOWN);
+    resetWorld(E_UNKNOWN);
+    setEdge(cid(10, 5), 1, E_PORTAL, 7000);
+    assert(!receivePortalPair(message)); // inconsistent existing endpoint
+    assert(edgeT[a] == E_UNKNOWN && edgeT[b] == E_UNKNOWN);
+
+    uint64_t wrapped = ordinaryWire(pack(M_PEARL, c, 55));
+    assert((wrapped >> 32) == ordinaryMarker());
+    assert(uint32_t(wrapped) == pack(M_PEARL, c, 55));
+    std::cout << "relay room/topology assertions passed\n";
+}

@@ -1,0 +1,13 @@
+#define main bot_program_main
+#include "../../../tyhh_test/tyhh_qos_robust_rear_cascade_v127/main.cpp"
+#undef main
+#include <cassert>
+
+int main() {
+    W = H = 32; NC = W * H; LEN = 7; HERE = cid(16,8);
+    trail.clear(); parts.clear();
+    assert(ownSeg(LEN - 2) == -1);
+    assert(splitSafe(2));
+    assert(splitSafe(LEN - 2));
+    std::cout << "Inherited splitSafe permits missing neck; not a visibility or survival proof\n";
+}

@@ -1,0 +1,2645 @@
+{
+  "passed": true,
+  "scope": "R25 design/input preparation only; official1.2.7 action tape, no bot or competition",
+  "script_sha256": "0f21cc75161fb57691193ee2afe064527401b1f0afc873ee611ae19d32c5d8da",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "probe_json_sha256": "2f23e430da447e4b8566ff97b9eaa54d9550c1bd38b67c0553cdb8eca06da55e",
+  "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0054_xxqztest_trauma_seed84010_B.replay",
+  "replay_sha256": "69e6882e023e9032acc4461dd3d1cc97901d7a6fec34aad52758abc71c54a5c9",
+  "map_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+  "seed": 84010,
+  "side": "B",
+  "target_id": 75,
+  "target_round": 188,
+  "source_action_event": 27433,
+  "source_action": "MOVE S",
+  "source_finding": {
+    "round": 188,
+    "id": 75,
+    "action_event": 27433,
+    "turn_event": 27432,
+    "action": "MOVE S",
+    "body_before": [
+      [
+        34,
+        21
+      ],
+      [
+        33,
+        21
+      ]
+    ],
+    "kind": 0,
+    "directions": [
+      2
+    ],
+    "length_before": 2,
+    "complete_visible_own_body": true,
+    "unique_ordinary_own_body": true,
+    "physical_sonar_action_prefix_sha256": "890170fa26f2a79542c179cdc6ec06d16f8a838ccb2fe4ec34cc4410a02c5e23",
+    "physical_sonar_action_prefix_events": 27385,
+    "prefix_excludes_this_action": true,
+    "visible_cells": [
+      [
+        31,
+        0
+      ],
+      [
+        31,
+        18
+      ],
+      [
+        31,
+        19
+      ],
+      [
+        31,
+        20
+      ],
+      [
+        31,
+        21
+      ],
+      [
+        31,
+        22
+      ],
+      [
+        31,
+        23
+      ],
+      [
+        32,
+        0
+      ],
+      [
+        32,
+        18
+      ],
+      [
+        32,
+        19
+      ],
+      [
+        32,
+        20
+      ],
+      [
+        32,
+        21
+      ],
+      [
+        32,
+        22
+      ],
+      [
+        32,
+        23
+      ],
+      [
+        33,
+        0
+      ],
+      [
+        33,
+        18
+      ],
+      [
+        33,
+        19
+      ],
+      [
+        33,
+        20
+      ],
+      [
+        33,
+        21
+      ],
+      [
+        33,
+        22
+      ],
+      [
+        33,
+        23
+      ],
+      [
+        34,
+        0
+      ],
+      [
+        34,
+        18
+      ],
+      [
+        34,
+        19
+      ],
+      [
+        34,
+        20
+      ],
+      [
+        34,
+        21
+      ],
+      [
+        34,
+        22
+      ],
+      [
+        34,
+        23
+      ],
+      [
+        35,
+        0
+      ],
+      [
+        35,
+        18
+      ],
+      [
+        35,
+        19
+      ],
+      [
+        35,
+        20
+      ],
+      [
+        35,
+        21
+      ],
+      [
+        35,
+        22
+      ],
+      [
+        35,
+        23
+      ],
+      [
+        36,
+        0
+      ],
+      [
+        36,
+        18
+      ],
+      [
+        36,
+        19
+      ],
+      [
+        36,
+        20
+      ],
+      [
+        36,
+        21
+      ],
+      [
+        36,
+        22
+      ],
+      [
+        36,
+        23
+      ],
+      [
+        37,
+        0
+      ],
+      [
+        37,
+        18
+      ],
+      [
+        37,
+        19
+      ],
+      [
+        37,
+        20
+      ],
+      [
+        37,
+        21
+      ],
+      [
+        37,
+        22
+      ],
+      [
+        37,
+        23
+      ]
+    ],
+    "visible_other_cells": [
+      [
+        31,
+        19
+      ],
+      [
+        31,
+        20
+      ],
+      [
+        31,
+        21
+      ],
+      [
+        35,
+        23
+      ],
+      [
+        36,
+        23
+      ]
+    ],
+    "visible_enemy_parts": [],
+    "visible_pearls": [
+      [
+        33,
+        0
+      ],
+      [
+        34,
+        0
+      ],
+      [
+        34,
+        22
+      ],
+      [
+        36,
+        21
+      ]
+    ],
+    "current_pearl": [
+      34,
+      22
+    ],
+    "original_projection": {
+      "known": true,
+      "survives": true,
+      "body": [
+        [
+          34,
+          22
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          21
+        ]
+      ],
+      "eaten": [
+        [
+          34,
+          22
+        ]
+      ],
+      "initial_free_steps": 1,
+      "trace": [
+        {
+          "step": 1,
+          "direction": "S",
+          "paid": false,
+          "eats": true,
+          "head": [
+            34,
+            22
+          ],
+          "length": 3
+        }
+      ]
+    },
+    "terminal_proof": [
+      {
+        "direction": "N",
+        "own_postbody": [
+          34,
+          21
+        ]
+      },
+      {
+        "direction": "E",
+        "wall": true
+      },
+      {
+        "direction": "S",
+        "wall": true
+      },
+      {
+        "direction": "W",
+        "wall": true
+      }
+    ],
+    "candidate_ordinary_alternatives": [
+      {
+        "action": "E",
+        "projected_body": [
+          [
+            35,
+            21
+          ],
+          [
+            34,
+            21
+          ]
+        ],
+        "projected_length": 2,
+        "next_turn_continuation": "S",
+        "continuation_body": [
+          [
+            35,
+            22
+          ],
+          [
+            35,
+            21
+          ]
+        ],
+        "same_turn_two_step_legal": false
+      }
+    ],
+    "quiet_with_alternate": true,
+    "logs_before_action": [],
+    "actual_successful_updates": [
+      {
+        "event": 27435,
+        "body_after": [
+          [
+            34,
+            22
+          ],
+          [
+            34,
+            21
+          ],
+          [
+            33,
+            21
+          ]
+        ]
+      }
+    ],
+    "next_own_action": {
+      "round": 189,
+      "id": 75,
+      "action_event": 27658,
+      "turn_event": 27657,
+      "action": "MOVE N",
+      "body_before": [
+        [
+          34,
+          22
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          21
+        ]
+      ],
+      "kind": 0
+    },
+    "actual_death": {
+      "event": 27659,
+      "round": 189,
+      "acting_id": 75,
+      "reason": "self",
+      "body_before": [
+        [
+          34,
+          22
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          21
+        ]
+      ],
+      "engine_logs": []
+    },
+    "actual_projection_exact_match": true,
+    "actual_self_death_next_round": true
+  },
+  "physical_sonar_action_prefix_equal": true,
+  "physical_sonar_action_prefix_events": 27385,
+  "physical_sonar_action_prefix_sha256": "890170fa26f2a79542c179cdc6ec06d16f8a838ccb2fe4ec34cc4410a02c5e23",
+  "target_spawn_input": "ID 75\nTEAM B\nMAP 48 24\nUNIT_LIMIT 64\n",
+  "target_turn_input": {
+    "round": 188,
+    "facing": "E",
+    "length": 2,
+    "unit_count": 22,
+    "messages": [],
+    "echoes": null,
+    "tiles": [
+      [
+        31,
+        18,
+        0,
+        -1
+      ],
+      [
+        32,
+        18,
+        0,
+        -1
+      ],
+      [
+        33,
+        18,
+        0,
+        -1
+      ],
+      [
+        34,
+        18,
+        0,
+        -1
+      ],
+      [
+        35,
+        18,
+        0,
+        -1
+      ],
+      [
+        36,
+        18,
+        0,
+        -1
+      ],
+      [
+        37,
+        18,
+        0,
+        -1
+      ],
+      [
+        31,
+        19,
+        0,
+        -1
+      ],
+      [
+        32,
+        19,
+        0,
+        -1
+      ],
+      [
+        33,
+        19,
+        0,
+        -1
+      ],
+      [
+        34,
+        19,
+        0,
+        -1
+      ],
+      [
+        35,
+        19,
+        0,
+        -1
+      ],
+      [
+        36,
+        19,
+        0,
+        -1
+      ],
+      [
+        37,
+        19,
+        0,
+        -1
+      ],
+      [
+        31,
+        20,
+        0,
+        -1
+      ],
+      [
+        32,
+        20,
+        0,
+        -1
+      ],
+      [
+        33,
+        20,
+        0,
+        -1
+      ],
+      [
+        34,
+        20,
+        0,
+        -1
+      ],
+      [
+        35,
+        20,
+        0,
+        -1
+      ],
+      [
+        36,
+        20,
+        0,
+        -1
+      ],
+      [
+        37,
+        20,
+        0,
+        -1
+      ],
+      [
+        31,
+        21,
+        0,
+        -1
+      ],
+      [
+        32,
+        21,
+        0,
+        -1
+      ],
+      [
+        33,
+        21,
+        0,
+        -1
+      ],
+      [
+        34,
+        21,
+        0,
+        -1
+      ],
+      [
+        35,
+        21,
+        0,
+        -1
+      ],
+      [
+        36,
+        21,
+        1,
+        -1
+      ],
+      [
+        37,
+        21,
+        0,
+        -1
+      ],
+      [
+        31,
+        22,
+        0,
+        -1
+      ],
+      [
+        32,
+        22,
+        0,
+        -1
+      ],
+      [
+        33,
+        22,
+        0,
+        -1
+      ],
+      [
+        34,
+        22,
+        1,
+        -1
+      ],
+      [
+        35,
+        22,
+        0,
+        -1
+      ],
+      [
+        36,
+        22,
+        0,
+        -1
+      ],
+      [
+        37,
+        22,
+        0,
+        -1
+      ],
+      [
+        31,
+        23,
+        0,
+        -1
+      ],
+      [
+        32,
+        23,
+        0,
+        -1
+      ],
+      [
+        33,
+        23,
+        0,
+        -1
+      ],
+      [
+        34,
+        23,
+        0,
+        -1
+      ],
+      [
+        35,
+        23,
+        0,
+        -1
+      ],
+      [
+        36,
+        23,
+        0,
+        -1
+      ],
+      [
+        37,
+        23,
+        0,
+        -1
+      ],
+      [
+        31,
+        0,
+        0,
+        -1
+      ],
+      [
+        32,
+        0,
+        0,
+        -1
+      ],
+      [
+        33,
+        0,
+        1,
+        84
+      ],
+      [
+        34,
+        0,
+        1,
+        11
+      ],
+      [
+        35,
+        0,
+        0,
+        -1
+      ],
+      [
+        36,
+        0,
+        0,
+        -1
+      ],
+      [
+        37,
+        0,
+        0,
+        -1
+      ]
+    ],
+    "parts": [
+      [
+        "B",
+        "75",
+        "34",
+        "21",
+        "E",
+        "1"
+      ],
+      [
+        "B",
+        "75",
+        "33",
+        "21",
+        "E",
+        "0"
+      ],
+      [
+        "B",
+        "78",
+        "31",
+        "19",
+        "N",
+        "1"
+      ],
+      [
+        "B",
+        "78",
+        "31",
+        "20",
+        "N",
+        "0"
+      ],
+      [
+        "B",
+        "78",
+        "31",
+        "21",
+        "N",
+        "0"
+      ],
+      [
+        "B",
+        "98",
+        "35",
+        "23",
+        "W",
+        "1"
+      ],
+      [
+        "B",
+        "98",
+        "36",
+        "23",
+        "W",
+        "0"
+      ]
+    ],
+    "edge_rows": [
+      ". . w . w . .",
+      "w . . . . w .",
+      ". w w . w . .",
+      ". w . w w w .",
+      "w . . . . . .",
+      ". . w w w w .",
+      "w w w w w w w",
+      ". . . . . . .",
+      ". w . w . . w .",
+      "w w w . w . w .",
+      "w . . w . 3 w .",
+      ". w w . . w w .",
+      ". w . w w . w .",
+      ". w . . . . 1 .",
+      ". . . . w . w ."
+    ],
+    "raw": "ROUND 188\nDIR E\nLENGTH 2\nUNIT_COUNT 22\nNUM_MSGS 0\n31 18 0 -1\n32 18 0 -1\n33 18 0 -1\n34 18 0 -1\n35 18 0 -1\n36 18 0 -1\n37 18 0 -1\n31 19 0 -1\n32 19 0 -1\n33 19 0 -1\n34 19 0 -1\n35 19 0 -1\n36 19 0 -1\n37 19 0 -1\n31 20 0 -1\n32 20 0 -1\n33 20 0 -1\n34 20 0 -1\n35 20 0 -1\n36 20 0 -1\n37 20 0 -1\n31 21 0 -1\n32 21 0 -1\n33 21 0 -1\n34 21 0 -1\n35 21 0 -1\n36 21 1 -1\n37 21 0 -1\n31 22 0 -1\n32 22 0 -1\n33 22 0 -1\n34 22 1 -1\n35 22 0 -1\n36 22 0 -1\n37 22 0 -1\n31 23 0 -1\n32 23 0 -1\n33 23 0 -1\n34 23 0 -1\n35 23 0 -1\n36 23 0 -1\n37 23 0 -1\n31 0 0 -1\n32 0 0 -1\n33 0 1 84\n34 0 1 11\n35 0 0 -1\n36 0 0 -1\n37 0 0 -1\nDRAGON_BODIES 7\nB 75 34 21 E 1\nB 75 33 21 E 0\nB 78 31 19 N 1\nB 78 31 20 N 0\nB 78 31 21 N 0\nB 98 35 23 W 1\nB 98 36 23 W 0\n. . w . w . .\nw . . . . w .\n. w w . w . .\n. w . w w w .\nw . . . . . .\n. . w w w w .\nw w w w w w w\n. . . . . . .\n. w . w . . w .\nw w w . w . w .\nw . . w . 3 w .\n. w w . . w w .\n. w . w w . w .\n. w . . . . 1 .\n. . . . w . w .\n",
+    "sha256": "ef5eff379593964e41aed03e42432a9f5f2e660f08d58e2c84c5705346170163"
+  },
+  "current_visible_topology": [
+    {
+      "cell": [
+        31,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        0
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        0
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        18
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        18
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        18
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        18
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        19
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        19
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        19
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        19
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        20
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        20
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        20
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        20
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        21
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        21
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        21
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        21
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        22
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        22
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        22
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        22
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        23
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        23
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        31,
+        23
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        0
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        0
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        18
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        18
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        18
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        18
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        19
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        19
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        19
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        19
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        20
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        20
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        20
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        20
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        21
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        21
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        21
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        22
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        22
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        22
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        23
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        23
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        32,
+        23
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        0
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        0
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        18
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        18
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        18
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        18
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        19
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        19
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        19
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        19
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        20
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        20
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        20
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        20
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        21
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        21
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        21
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        22
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        22
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        22
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        23
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        23
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        33,
+        23
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        0
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        0
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        18
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        18
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        18
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        18
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        19
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        19
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        19
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        19
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        20
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        20
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        20
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        20
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        21
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        21
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        21
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        22
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        22
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        22
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        23
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        23
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        34,
+        23
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        0
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        0
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        18
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        18
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        18
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        18
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        19
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        19
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        19
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        19
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        20
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        20
+      ],
+      "direction": "E",
+      "kind": 2,
+      "portal_id": 3
+    },
+    {
+      "cell": [
+        35,
+        20
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        20
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        21
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        21
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        21
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        22
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        22
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        22
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        23
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        23
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        35,
+        23
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        0
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        0
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        18
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        18
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        18
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        18
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        19
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        19
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        19
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        19
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        20
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        20
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        20
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        20
+      ],
+      "direction": "W",
+      "kind": 2,
+      "portal_id": 3
+    },
+    {
+      "cell": [
+        36,
+        21
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        21
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        21
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        22
+      ],
+      "direction": "E",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        22
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        22
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        23
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        23
+      ],
+      "direction": "E",
+      "kind": 2,
+      "portal_id": 1
+    },
+    {
+      "cell": [
+        36,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        36,
+        23
+      ],
+      "direction": "W",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        0
+      ],
+      "direction": "N",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        0
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        0
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        0
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        18
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        18
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        18
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        18
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        19
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        19
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        19
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        19
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        20
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        20
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        20
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        20
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        21
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        21
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        21
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        21
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        22
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        22
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        22
+      ],
+      "direction": "S",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        22
+      ],
+      "direction": "W",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        23
+      ],
+      "direction": "N",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        23
+      ],
+      "direction": "E",
+      "kind": 0,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        23
+      ],
+      "direction": "S",
+      "kind": 1,
+      "portal_id": -1
+    },
+    {
+      "cell": [
+        37,
+        23
+      ],
+      "direction": "W",
+      "kind": 2,
+      "portal_id": 1
+    }
+  ],
+  "local_body": [
+    [
+      34,
+      21
+    ],
+    [
+      33,
+      21
+    ]
+  ],
+  "current_candidate_alternatives": [
+    {
+      "action": "E",
+      "projected_body": [
+        [
+          35,
+          21
+        ],
+        [
+          34,
+          21
+        ]
+      ],
+      "projected_length": 2,
+      "next_turn_continuation": "S",
+      "continuation_body": [
+        [
+          35,
+          22
+        ],
+        [
+          35,
+          21
+        ]
+      ],
+      "same_turn_two_step_legal": false
+    }
+  ],
+  "fixture_replay": "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r25_terminal_input_fixture.replay",
+  "fixture_replay_sha256": "3ef023dbd5dda49fb4b55622cd0590604c629f8138f02c39c0633198aaf4a64c",
+  "target_fixture_deaths": [
+    [
+      75,
+      189,
+      "A"
+    ]
+  ],
+  "cleanup_turn_count": 28,
+  "notices": [],
+  "limitations": [
+    "All source actions/SONAR are scripted, no persistent bot state is regenerated.",
+    "After the target action, ENDTURN callbacks are deliberate fixture cleanup, not strategy or survival evidence.",
+    "The actual spawn/turn input prepares a source-bound fixture but does not establish H14 or R25 action from a fresh process.",
+    "No alternate action arm was run; immediate escape and live policy remain unverified."
+  ]
+}

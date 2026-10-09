@@ -1,0 +1,287 @@
+#define main bot_program_main
+#ifdef H14_CONTROL
+#include "../../tyhh_qos_counter_queen_guard_consolidate_v127/main.cpp"
+#else
+#include "../main.cpp"
+#endif
+#undef main
+#include <array>
+#include <cassert>
+#include <iostream>
+
+struct TradeFixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+    int enemy, alt;
+    int checks = 0;
+
+    void put(int c, int id, bool mine, bool head, int facing, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+    }
+
+    void body(std::vector<int> const& cells, int id, bool mine, int heading = 1) {
+        idCount.push_back({id, int(cells.size())});
+        for (size_t i = 0; i < cells.size(); ++i) {
+            int facing = heading;
+            if (i) {
+                facing = -1;
+                for (int d = 0; d < 4; ++d) if (geo(cells[i], d) == cells[i - 1]) facing = d;
+                assert(facing >= 0);
+            }
+            put(cells[i], id, mine, i == 0, facing,
+                mine ? int(cells.size()) + 1 - int(i) : INF);
+        }
+        if (!mine) { enemyHeads.push_back(cells.front()); enemyHeadLen.push_back(int(cells.size())); }
+    }
+
+    void setup(int length = 5, int enemyLength = 2, int enemyX = 18, bool teamB = false) {
+        W = 32; H = 24; NC = W * H; HERE = cid(16, 10);
+        LEN = ct.length = length; POP = ct.unit_count = 10; ROUND = 120;
+        MYID = teamB ? 3 : 2; MYTEAM = teamB ? Team::B : Team::A;
+        STAMP = 1; TARGET = 62; CT = &ct;
+        ct.head.dragon_id = MYID; ct.head.team = Team(MYTEAM); ct.head.dir = Direction::EAST;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, ROUND);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; pendingPath.clear(); pendingPortalKey = -1;
+        queenSeededScout = false; yieldStreak = 0; teamFrontier = 999;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = false;
+        v41LowFrontierRounds = 0;
+        std::vector<int> own, other;
+        for (int i = 0; i < length; ++i) own.push_back(cid(16 - i, 10));
+        for (int i = 0; i < enemyLength; ++i) other.push_back(cid(enemyX, 10 - i));
+        trail.assign(own.rbegin(), own.rend()); trailId = MYID;
+        body(own, MYID, true);
+        body(other, teamB ? 14 : 15, false, 3);
+        enemy = other.front(); alt = geo(HERE, 0);
+        setEdge(HERE, 2, E_KELP, -1);
+        chosenAction = {{1}, 0, true, false};
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+    }
+
+    void pearl(int c) {
+        visPearl[c] = 1; visPearls.push_back(c); pearlDue[c] = ROUND;
+    }
+
+    void replaceBodies(std::vector<int> const& own, std::vector<int> const& other) {
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        std::fill(occStamp.begin(), occStamp.end(), 0);
+        trail.assign(own.rbegin(), own.rend());
+        body(own, MYID, true);
+        body(other, 15, false, 3);
+        enemy = other.front();
+    }
+
+    void review() {
+#ifndef H14_CONTROL
+        reviewShorterHeadTrade(ct);
+#endif
+    }
+
+    void expect(char const* name, bool changes, int direction = 0) {
+        const ChosenAction before = chosenAction;
+        review();
+#ifdef H14_CONTROL
+        changes = false;
+#endif
+        if (changes) {
+            assert(chosenAction.dirs == std::vector<int>{direction});
+            assert(!chosenAction.split && !chosenAction.donation && chosenAction.scored);
+        } else {
+            assert(chosenAction.dirs == before.dirs && chosenAction.split == before.split);
+            assert(chosenAction.scored == before.scored && chosenAction.donation == before.donation);
+        }
+        ++checks;
+        std::cout << name << ": passed\n";
+    }
+
+    void scoresUnchanged(char const* name, bool changes) {
+        const ChosenAction proposed = chosenAction;
+        chooseScoredAction(ct, championPolicy(), POP <= 2, POP >= 12, -1);
+        std::array<long, 4> expected;
+        std::copy(moveScores, moveScores + 4, expected.begin());
+        chosenAction = proposed;
+        expect(name, changes);
+        assert(std::equal(expected.begin(), expected.end(), moveScores));
+        std::cout << "RAW " << name;
+        for (long value : expected) std::cout << " " << value;
+        std::cout << "\n";
+    }
+};
+
+int main() {
+    TradeFixture f;
+    for (bool teamB : {false, true}) {
+        for (int length : {3, 4, 5, 8, 12}) {
+            f.setup(length, length - 1, 18, teamB);
+            f.expect("any strictly shorter exact enemy", true);
+        }
+    }
+    f.setup(3, 3); f.pearl(geo(HERE, 1));
+    assert(projectAction(chosenAction).len == 4);
+    f.expect("pearl growth LEN3 to LEN4 triggers gap one", true);
+    f.setup(2, 2); f.pearl(geo(HERE, 1));
+    assert(projectAction(chosenAction).len == 3);
+    f.expect("pearl growth LEN2 to LEN3 included", true);
+    f.setup(); chosenAction.scored = false;
+    f.expect("unscored ordinary proposal included", true);
+    f.setup(5, 2, 19); chosenAction.dirs = {1, 1};
+    assert(projectAction(chosenAction).survives && projectAction(chosenAction).head == cid(18,10));
+    f.expect("living ordinary multistep included", true);
+    f.setup(12, 2, 21); chosenAction.dirs = {1, 1, 1, 1};
+    assert(projectAction(chosenAction).survives && projectAction(chosenAction).len == 11);
+    f.expect("four ordinary steps including payment included", true);
+
+    f.setup(); MYID = queenId(); f.expect("queen excluded", false);
+    f.setup(); chosenAction.donation = true; f.expect("donation excluded", false);
+    f.setup(); doSplit(2); f.expect("split excluded", false);
+    f.setup(); chosenAction = {}; f.expect("empty action excluded", false);
+    f.setup(); chosenAction.dirs = {1, 1, 1, 1, 1}; f.expect("more than four steps excluded", false);
+    f.setup(); chosenAction.dirs = {4}; f.expect("invalid direction excluded", false);
+    f.setup(); setEdge(HERE, 1, E_UNKNOWN, -1); f.expect("unknown proposal excluded", false);
+    f.setup(); setEdge(HERE, 1, E_PORTAL, 7); learnedExit[HERE * 4 + 1] = cid(17,10);
+    f.expect("known portal proposal excluded", false);
+    f.setup(); visStamp[geo(HERE, 1)] = 0; f.expect("hidden landing excluded", false);
+    f.setup(); chosenAction.dirs = {1, 1};
+    assert(!projectAction(chosenAction).survives);
+    f.expect("known fatal enemy ram preserved", false);
+    f.setup(); chosenAction.dirs = {3};
+    assert(!projectAction(chosenAction).survives);
+    f.expect("known fatal self ram preserved", false);
+    f.setup(5, 5); f.expect("equal enemy does not trigger", false);
+    f.setup(5, 6); f.expect("larger enemy does not trigger", false);
+    f.setup();
+    for (auto& p : parts) if (!p.mine) { p.id = enemyQueenId(); occId[p.c] = p.id; }
+    idCount[1].first = enemyQueenId(); f.expect("enemy queen does not trigger", false);
+    f.setup(); setEdge(f.enemy, 3, E_KELP, -1);
+    f.expect("blocked enemy first step does not trigger", false);
+    f.setup(); setEdge(f.enemy, 3, E_PORTAL, 8);
+    f.expect("enemy portal first step not ordinary witness", false);
+    f.setup(); enemyHeads.clear(); enemyHeadLen.clear(); f.expect("no enemy heads preserves", false);
+
+    f.setup(); visStamp[cid(12,10)] = 0; f.expect("hidden own tail rejected", false);
+    f.setup(); idCount[0].second = LEN - 1; f.expect("partial own body rejected", false);
+    f.setup(); parts.push_back(parts[occPart[cid(12,10)]]);
+    f.expect("duplicate own part rejected", false);
+    f.setup(); parts[occPart[cid(14,10)]].facing = 0; f.expect("broken own predecessor rejected", false);
+    f.setup(); trail[0] = cid(11,10); f.expect("projection order mismatch rejected", false);
+    f.setup(); setEdge(cid(12,10), 1, E_PORTAL, 9); f.expect("portal own link rejected", false);
+    f.setup(); setEdge(cid(12,10), 1, E_UNKNOWN, -1); f.expect("unknown own link rejected", false);
+    f.setup(); visStamp[cid(18,9)] = 0; f.expect("hidden enemy part rejected", false);
+    f.setup(); visStamp[cid(19,9)] = 0; f.expect("hidden possible enemy tail extension rejected", false);
+    f.setup(); setEdge(cid(18,9), 0, E_UNKNOWN, -1); f.expect("unknown enemy tail extension rejected", false);
+    f.setup(); setEdge(cid(18,9), 0, E_PORTAL, 10); f.expect("portal enemy tail extension rejected", false);
+    f.setup(); f.put(cid(19,10), occId[f.enemy], false, false, 3); idCount[1].second = 3;
+    f.expect("ambiguous enemy predecessor rejected", false);
+    f.setup(); f.put(cid(21,8), occId[f.enemy], false, false, 1); idCount[1].second = 3;
+    f.expect("disconnected enemy part rejected", false);
+    f.setup(); f.put(cid(21,8), occId[f.enemy], false, false, 1);
+    f.put(cid(22,8), occId[f.enemy], false, false, 3); idCount[1].second = 4;
+    f.expect("detached cyclic enemy group rejected", false);
+    f.setup(); f.put(cid(18,11), occId[f.enemy], false, true, 0); idCount[1].second = 3;
+    f.expect("duplicate enemy heads rejected", false);
+    f.setup(); parts[occPart[cid(18,9)]].facing = 0;
+    f.expect("reverse-facing fiction does not form exact enemy", false);
+
+    for (int length : {2, 5, 7}) {
+        f.setup();
+        std::vector<int> added;
+        for (int i = 0; i < length; ++i) added.push_back(cid(16,8 - i));
+        f.body(added, 17, false, 2);
+        if (length == 2) visStamp[cid(17,7)] = 0;
+        f.expect("new partial/equal/larger head exposure rejected", false);
+    }
+    f.setup(); f.body({cid(16,8),cid(16,7)}, 17, false, 2);
+    f.expect("new exact shorter head exposure rejected", false);
+    f.setup(); setEdge(HERE, 0, E_KELP, -1); f.expect("no surviving alternative preserves", false);
+    f.setup(); visStamp[f.alt] = 0; f.expect("hidden alternative rejected", false);
+    f.setup(); setEdge(HERE, 0, E_UNKNOWN, -1); f.expect("unknown alternative rejected", false);
+    f.setup(); setEdge(HERE, 0, E_PORTAL, 11); learnedExit[HERE * 4] = f.alt;
+    f.expect("known portal alternative rejected", false);
+    f.setup(); f.put(f.alt, 4, true, true, 1); idCount.push_back({4, 8});
+    assert(directFriendCollision({{0},0,true,false}));
+    f.expect("direct friendly head collision rejected", false);
+    f.setup(); friendGuards.push_back({4,cid(16,8),8,f.alt,{f.alt},0});
+    assert(actionRisk({{0},0,true,false}).strong);
+    f.expect("hard friendly protection rejected", false);
+    f.setup(); friendGuards.push_back({4,cid(16,8),8,f.alt,{f.alt,cid(17,8)},1});
+    assert(actionRisk({{0},0,true,false}).soft);
+    f.expect("soft friendly protection rejected", false);
+    f.setup(); for (int d : {0, 1, 3}) setEdge(f.alt, d, E_KELP, -1);
+    f.expect("no ordinary continuation rejected", false);
+    f.setup(); for (int d : {1, 3}) setEdge(f.alt, d, E_KELP, -1);
+    setEdge(f.alt, 0, E_UNKNOWN, -1); f.expect("unknown continuation rejected", false);
+    f.setup(); for (int d : {1, 3}) setEdge(f.alt, d, E_KELP, -1);
+    setEdge(f.alt, 0, E_PORTAL, 12); learnedExit[f.alt * 4] = cid(16,8);
+    f.expect("portal continuation rejected", false);
+    f.setup(); for (int d : {1, 3}) setEdge(f.alt, d, E_KELP, -1);
+    visStamp[cid(16,8)] = 0; f.expect("hidden continuation rejected", false);
+    f.setup(); for (int d : {1, 3}) setEdge(f.alt, d, E_KELP, -1);
+    f.put(cid(16,8), 4, true, false, 2); f.expect("occupied continuation rejected", false);
+
+    // Bent predecessor chains remain exact, including a kelp-closed tail side.
+    f.setup();
+    const std::vector<int> own{HERE,cid(15,10),cid(15,11),cid(14,11),cid(14,10)};
+    f.replaceBodies(own, {cid(18,10),cid(18,9),cid(19,9)});
+    setEdge(cid(19,9), 1, E_KELP, -1); visStamp[cid(20,9)] = 0;
+#ifndef H14_CONTROL
+    TradeVisibleBody exact;
+    assert(tradeVisibleBody(HERE, exact) && exact.cells == own);
+    assert(tradeVisibleBody(cid(18,10), exact));
+    assert(exact.cells == std::vector<int>({cid(18,10),cid(18,9),cid(19,9)}));
+#endif
+    f.expect("bent own and enemy chains accepted", true);
+
+    f.setup(); f.scoresUnchanged("inherited raw ordering unchanged", true);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1); f.pearl(geo(HERE, 2));
+    const ChosenAction proposed = chosenAction;
+    chooseScoredAction(f.ct, championPolicy(), POP <= 2, POP >= 12, -1);
+    assert(moveScores[2] > moveScores[0]); chosenAction = proposed;
+    f.expect("highest unchanged admitted raw score selected", true, 2);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1);
+    pearlDue.assign(NC, INF); visPearls.clear();
+    chooseScoredAction(f.ct, championPolicy(), POP <= 2, POP >= 12, -1);
+    assert(moveScores[0] == moveScores[2]); chosenAction = proposed;
+    f.expect("N wins identical N S raw scores", true);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1);
+    f.replaceBodies({HERE,cid(15,10),cid(14,10),cid(13,10),cid(12,10)},
+                    {cid(16,12),cid(17,12)});
+    chosenAction = {{2},0,false,false};
+    const auto south = chosenAction;
+    chooseScoredAction(f.ct, championPolicy(), POP <= 2, POP >= 12, -1);
+    assert(moveScores[0] == moveScores[1]); chosenAction = south;
+    f.expect("N precedes E on identical admitted raw scores", true);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1);
+    f.replaceBodies({HERE,cid(15,10),cid(14,10),cid(13,10),cid(12,10)},
+                    {cid(16,8),cid(17,8)});
+    chosenAction = {{0},0,false,false};
+    const auto north = chosenAction;
+    chooseScoredAction(f.ct, championPolicy(), POP <= 2, POP >= 12, -1);
+    assert(moveScores[1] == moveScores[2]); chosenAction = north;
+    f.expect("E precedes S on identical admitted raw scores", true, 1);
+    f.setup(); setEdge(HERE, 2, E_OPEN, -1);
+    f.replaceBodies({HERE,cid(16,9),cid(16,8),cid(16,7),cid(16,6)},
+                    {cid(18,10),cid(18,9)});
+    chooseScoredAction(f.ct, championPolicy(), POP <= 2, POP >= 12, -1);
+    assert(moveScores[2] == moveScores[3]); chosenAction = proposed;
+    f.expect("S precedes W on identical admitted raw scores", true, 2);
+    f.setup(); f.pearl(geo(HERE, 1));
+    f.scoresUnchanged("pearl scorer unchanged despite final avoidance", true);
+
+#ifdef H14_CONTROL
+    std::cout << "H14 source control: ";
+#else
+    std::cout << "R26 source candidate: ";
+#endif
+    std::cout << f.checks << " focused controls passed\n";
+}

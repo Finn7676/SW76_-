@@ -1,0 +1,1467 @@
+{
+  "passed": true,
+  "scope": "Existing development replay action-tape diagnosis, not competition or candidate implementation",
+  "source_sha256": "b3e093a15f31f3c90153dc139f99b102cbac22de0e18f651b93c9f02105ae000",
+  "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_queen_witness_82001/0058_xxqztest_islands_seed82012_B.replay",
+  "replay_sha256": "7106610fddda33580282fcb5eb69a94f011df1a43d6152d8aba8bd64f813ca2a",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "seed": 82012,
+  "round": 32,
+  "analysis": {
+    "original": {
+      "known": true,
+      "survives": true,
+      "body": [
+        [
+          45,
+          10
+        ],
+        [
+          45,
+          9
+        ],
+        [
+          46,
+          9
+        ],
+        [
+          46,
+          10
+        ],
+        [
+          46,
+          11
+        ],
+        [
+          45,
+          11
+        ]
+      ],
+      "eaten": [],
+      "initial_free_steps": 2,
+      "trace": [
+        {
+          "step": 1,
+          "direction": "S",
+          "paid": false,
+          "eats": false,
+          "head": [
+            45,
+            10
+          ],
+          "length": 6
+        }
+      ]
+    },
+    "candidate_alternatives": [
+      {
+        "action": "N",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              45,
+              8
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ],
+            [
+              45,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                8
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "W",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              44,
+              9
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ],
+            [
+              45,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                9
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "NE",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              46,
+              8
+            ],
+            [
+              45,
+              8
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                8
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "E",
+              "paid": false,
+              "eats": false,
+              "head": [
+                46,
+                8
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "NN",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              45,
+              7
+            ],
+            [
+              45,
+              8
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                8
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                7
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "NW",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              44,
+              8
+            ],
+            [
+              45,
+              8
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                8
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                8
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "SW",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              44,
+              10
+            ],
+            [
+              45,
+              10
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "S",
+              "paid": false,
+              "eats": false,
+              "head": [
+                45,
+                10
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                10
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "WN",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              44,
+              8
+            ],
+            [
+              44,
+              9
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                9
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "N",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                8
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "WS",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              44,
+              10
+            ],
+            [
+              44,
+              9
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                9
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "S",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                10
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "E",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      },
+      {
+        "action": "WW",
+        "projection": {
+          "known": true,
+          "survives": true,
+          "body": [
+            [
+              43,
+              9
+            ],
+            [
+              44,
+              9
+            ],
+            [
+              45,
+              9
+            ],
+            [
+              46,
+              9
+            ],
+            [
+              46,
+              10
+            ],
+            [
+              46,
+              11
+            ]
+          ],
+          "eaten": [],
+          "initial_free_steps": 2,
+          "trace": [
+            {
+              "step": 1,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                44,
+                9
+              ],
+              "length": 6
+            },
+            {
+              "step": 2,
+              "direction": "W",
+              "paid": false,
+              "eats": false,
+              "head": [
+                43,
+                9
+              ],
+              "length": 6
+            }
+          ]
+        },
+        "ordinary_continuation": "N",
+        "portal_incident": false,
+        "enemy_head_geometrically_adjacent": false
+      }
+    ],
+    "current_visible_enemy_parts": [
+      [
+        "A",
+        "16",
+        "48",
+        "9",
+        "N",
+        "1"
+      ],
+      [
+        "A",
+        "16",
+        "48",
+        "10",
+        "N",
+        "0"
+      ]
+    ],
+    "current_visible_other_friend_parts": [],
+    "origin_friend12_visible": false,
+    "original_final_head_portal_edges": [
+      {
+        "dir": "N",
+        "edge": [
+          0,
+          -1
+        ]
+      },
+      {
+        "dir": "E",
+        "edge": [
+          0,
+          -1
+        ]
+      },
+      {
+        "dir": "S",
+        "edge": [
+          2,
+          1
+        ]
+      },
+      {
+        "dir": "W",
+        "edge": [
+          0,
+          -1
+        ]
+      }
+    ],
+    "limitations": [
+      "Enemy geometric adjacency is descriptive, not an enemy legal-reach certificate.",
+      "No absent portal at endpoint proves incoming portal is impossible through that endpoint, not overall safety.",
+      "Known ordinary same-length survival/continuation uses the actual current view; later actors and hidden threats are unknown."
+    ]
+  },
+  "arms": [
+    {
+      "replacement": null,
+      "observed": {
+        "round": 32,
+        "facing": "W",
+        "length": 6,
+        "unit_count": 5,
+        "messages": [],
+        "echoes": null,
+        "tiles": [
+          [
+            42,
+            6,
+            0,
+            -1
+          ],
+          [
+            43,
+            6,
+            0,
+            -1
+          ],
+          [
+            44,
+            6,
+            0,
+            -1
+          ],
+          [
+            45,
+            6,
+            0,
+            -1
+          ],
+          [
+            46,
+            6,
+            0,
+            -1
+          ],
+          [
+            47,
+            6,
+            1,
+            1
+          ],
+          [
+            48,
+            6,
+            0,
+            -1
+          ],
+          [
+            42,
+            7,
+            0,
+            -1
+          ],
+          [
+            43,
+            7,
+            0,
+            -1
+          ],
+          [
+            44,
+            7,
+            0,
+            -1
+          ],
+          [
+            45,
+            7,
+            0,
+            -1
+          ],
+          [
+            46,
+            7,
+            0,
+            -1
+          ],
+          [
+            47,
+            7,
+            0,
+            -1
+          ],
+          [
+            48,
+            7,
+            0,
+            -1
+          ],
+          [
+            42,
+            8,
+            0,
+            -1
+          ],
+          [
+            43,
+            8,
+            0,
+            -1
+          ],
+          [
+            44,
+            8,
+            0,
+            -1
+          ],
+          [
+            45,
+            8,
+            0,
+            -1
+          ],
+          [
+            46,
+            8,
+            0,
+            -1
+          ],
+          [
+            47,
+            8,
+            0,
+            -1
+          ],
+          [
+            48,
+            8,
+            0,
+            -1
+          ],
+          [
+            42,
+            9,
+            0,
+            -1
+          ],
+          [
+            43,
+            9,
+            0,
+            -1
+          ],
+          [
+            44,
+            9,
+            0,
+            -1
+          ],
+          [
+            45,
+            9,
+            0,
+            -1
+          ],
+          [
+            46,
+            9,
+            0,
+            -1
+          ],
+          [
+            47,
+            9,
+            1,
+            1
+          ],
+          [
+            48,
+            9,
+            0,
+            -1
+          ],
+          [
+            42,
+            10,
+            0,
+            -1
+          ],
+          [
+            43,
+            10,
+            0,
+            -1
+          ],
+          [
+            44,
+            10,
+            0,
+            -1
+          ],
+          [
+            45,
+            10,
+            0,
+            -1
+          ],
+          [
+            46,
+            10,
+            0,
+            -1
+          ],
+          [
+            47,
+            10,
+            0,
+            -1
+          ],
+          [
+            48,
+            10,
+            0,
+            -1
+          ],
+          [
+            42,
+            11,
+            0,
+            -1
+          ],
+          [
+            43,
+            11,
+            0,
+            -1
+          ],
+          [
+            44,
+            11,
+            0,
+            -1
+          ],
+          [
+            45,
+            11,
+            0,
+            -1
+          ],
+          [
+            46,
+            11,
+            0,
+            -1
+          ],
+          [
+            47,
+            11,
+            0,
+            -1
+          ],
+          [
+            48,
+            11,
+            0,
+            -1
+          ],
+          [
+            42,
+            12,
+            0,
+            -1
+          ],
+          [
+            43,
+            12,
+            0,
+            -1
+          ],
+          [
+            44,
+            12,
+            0,
+            -1
+          ],
+          [
+            45,
+            12,
+            0,
+            -1
+          ],
+          [
+            46,
+            12,
+            0,
+            -1
+          ],
+          [
+            47,
+            12,
+            0,
+            -1
+          ],
+          [
+            48,
+            12,
+            0,
+            -1
+          ]
+        ],
+        "parts": [
+          [
+            "B",
+            "1",
+            "45",
+            "9",
+            "W",
+            "1"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "9",
+            "W",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "10",
+            "N",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "11",
+            "N",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "45",
+            "11",
+            "E",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "44",
+            "11",
+            "E",
+            "0"
+          ],
+          [
+            "A",
+            "16",
+            "48",
+            "9",
+            "N",
+            "1"
+          ],
+          [
+            "A",
+            "16",
+            "48",
+            "10",
+            "N",
+            "0"
+          ]
+        ],
+        "edge_rows": [
+          ". . . . . . .",
+          ". . . . . . .",
+          ". . . . . . .",
+          ". . . . . . .",
+          "w . . . . . .",
+          ". . . 1 . w w",
+          ". w w . w . .",
+          ". . w w w . .",
+          ". . . . . . . w",
+          ". . . . . . . .",
+          ". . . . . . . .",
+          ". . . . . . . .",
+          ". w . . . . . w",
+          ". . . . . w . .",
+          "w w . w w w . ."
+        ],
+        "raw": "ROUND 32\nDIR W\nLENGTH 6\nUNIT_COUNT 5\nNUM_MSGS 0\n42 6 0 -1\n43 6 0 -1\n44 6 0 -1\n45 6 0 -1\n46 6 0 -1\n47 6 1 1\n48 6 0 -1\n42 7 0 -1\n43 7 0 -1\n44 7 0 -1\n45 7 0 -1\n46 7 0 -1\n47 7 0 -1\n48 7 0 -1\n42 8 0 -1\n43 8 0 -1\n44 8 0 -1\n45 8 0 -1\n46 8 0 -1\n47 8 0 -1\n48 8 0 -1\n42 9 0 -1\n43 9 0 -1\n44 9 0 -1\n45 9 0 -1\n46 9 0 -1\n47 9 1 1\n48 9 0 -1\n42 10 0 -1\n43 10 0 -1\n44 10 0 -1\n45 10 0 -1\n46 10 0 -1\n47 10 0 -1\n48 10 0 -1\n42 11 0 -1\n43 11 0 -1\n44 11 0 -1\n45 11 0 -1\n46 11 0 -1\n47 11 0 -1\n48 11 0 -1\n42 12 0 -1\n43 12 0 -1\n44 12 0 -1\n45 12 0 -1\n46 12 0 -1\n47 12 0 -1\n48 12 0 -1\nDRAGON_BODIES 8\nB 1 45 9 W 1\nB 1 46 9 W 0\nB 1 46 10 N 0\nB 1 46 11 N 0\nB 1 45 11 E 0\nB 1 44 11 E 0\nA 16 48 9 N 1\nA 16 48 10 N 0\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . . . . .\nw . . . . . .\n. . . 1 . w w\n. w w . w . .\n. . w w w . .\n. . . . . . . w\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. w . . . . . w\n. . . . . w . .\nw w . w w w . .\n",
+        "sha256": "6d058185a1329fe26a708c76fb33e986c424f625c2f921719eb9702e4b78a6bc"
+      },
+      "spawn": "ID 1\nTEAM B\nMAP 56 40\nUNIT_LIMIT 64\n",
+      "prefix_canonical_events": 4647,
+      "prefix_equal": true,
+      "r32_queen_or_friend12_deaths": [
+        [
+          1,
+          32,
+          "H"
+        ],
+        [
+          12,
+          32,
+          "H"
+        ]
+      ],
+      "fixture_replay_sha256": "93ac38f8e61b604741f01676c95331d583746c135dc2549082b60378d4d88321"
+    },
+    {
+      "replacement": "N",
+      "observed": {
+        "round": 32,
+        "facing": "W",
+        "length": 6,
+        "unit_count": 5,
+        "messages": [],
+        "echoes": null,
+        "tiles": [
+          [
+            42,
+            6,
+            0,
+            -1
+          ],
+          [
+            43,
+            6,
+            0,
+            -1
+          ],
+          [
+            44,
+            6,
+            0,
+            -1
+          ],
+          [
+            45,
+            6,
+            0,
+            -1
+          ],
+          [
+            46,
+            6,
+            0,
+            -1
+          ],
+          [
+            47,
+            6,
+            1,
+            1
+          ],
+          [
+            48,
+            6,
+            0,
+            -1
+          ],
+          [
+            42,
+            7,
+            0,
+            -1
+          ],
+          [
+            43,
+            7,
+            0,
+            -1
+          ],
+          [
+            44,
+            7,
+            0,
+            -1
+          ],
+          [
+            45,
+            7,
+            0,
+            -1
+          ],
+          [
+            46,
+            7,
+            0,
+            -1
+          ],
+          [
+            47,
+            7,
+            0,
+            -1
+          ],
+          [
+            48,
+            7,
+            0,
+            -1
+          ],
+          [
+            42,
+            8,
+            0,
+            -1
+          ],
+          [
+            43,
+            8,
+            0,
+            -1
+          ],
+          [
+            44,
+            8,
+            0,
+            -1
+          ],
+          [
+            45,
+            8,
+            0,
+            -1
+          ],
+          [
+            46,
+            8,
+            0,
+            -1
+          ],
+          [
+            47,
+            8,
+            0,
+            -1
+          ],
+          [
+            48,
+            8,
+            0,
+            -1
+          ],
+          [
+            42,
+            9,
+            0,
+            -1
+          ],
+          [
+            43,
+            9,
+            0,
+            -1
+          ],
+          [
+            44,
+            9,
+            0,
+            -1
+          ],
+          [
+            45,
+            9,
+            0,
+            -1
+          ],
+          [
+            46,
+            9,
+            0,
+            -1
+          ],
+          [
+            47,
+            9,
+            1,
+            1
+          ],
+          [
+            48,
+            9,
+            0,
+            -1
+          ],
+          [
+            42,
+            10,
+            0,
+            -1
+          ],
+          [
+            43,
+            10,
+            0,
+            -1
+          ],
+          [
+            44,
+            10,
+            0,
+            -1
+          ],
+          [
+            45,
+            10,
+            0,
+            -1
+          ],
+          [
+            46,
+            10,
+            0,
+            -1
+          ],
+          [
+            47,
+            10,
+            0,
+            -1
+          ],
+          [
+            48,
+            10,
+            0,
+            -1
+          ],
+          [
+            42,
+            11,
+            0,
+            -1
+          ],
+          [
+            43,
+            11,
+            0,
+            -1
+          ],
+          [
+            44,
+            11,
+            0,
+            -1
+          ],
+          [
+            45,
+            11,
+            0,
+            -1
+          ],
+          [
+            46,
+            11,
+            0,
+            -1
+          ],
+          [
+            47,
+            11,
+            0,
+            -1
+          ],
+          [
+            48,
+            11,
+            0,
+            -1
+          ],
+          [
+            42,
+            12,
+            0,
+            -1
+          ],
+          [
+            43,
+            12,
+            0,
+            -1
+          ],
+          [
+            44,
+            12,
+            0,
+            -1
+          ],
+          [
+            45,
+            12,
+            0,
+            -1
+          ],
+          [
+            46,
+            12,
+            0,
+            -1
+          ],
+          [
+            47,
+            12,
+            0,
+            -1
+          ],
+          [
+            48,
+            12,
+            0,
+            -1
+          ]
+        ],
+        "parts": [
+          [
+            "B",
+            "1",
+            "45",
+            "9",
+            "W",
+            "1"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "9",
+            "W",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "10",
+            "N",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "46",
+            "11",
+            "N",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "45",
+            "11",
+            "E",
+            "0"
+          ],
+          [
+            "B",
+            "1",
+            "44",
+            "11",
+            "E",
+            "0"
+          ],
+          [
+            "A",
+            "16",
+            "48",
+            "9",
+            "N",
+            "1"
+          ],
+          [
+            "A",
+            "16",
+            "48",
+            "10",
+            "N",
+            "0"
+          ]
+        ],
+        "edge_rows": [
+          ". . . . . . .",
+          ". . . . . . .",
+          ". . . . . . .",
+          ". . . . . . .",
+          "w . . . . . .",
+          ". . . 1 . w w",
+          ". w w . w . .",
+          ". . w w w . .",
+          ". . . . . . . w",
+          ". . . . . . . .",
+          ". . . . . . . .",
+          ". . . . . . . .",
+          ". w . . . . . w",
+          ". . . . . w . .",
+          "w w . w w w . ."
+        ],
+        "raw": "ROUND 32\nDIR W\nLENGTH 6\nUNIT_COUNT 5\nNUM_MSGS 0\n42 6 0 -1\n43 6 0 -1\n44 6 0 -1\n45 6 0 -1\n46 6 0 -1\n47 6 1 1\n48 6 0 -1\n42 7 0 -1\n43 7 0 -1\n44 7 0 -1\n45 7 0 -1\n46 7 0 -1\n47 7 0 -1\n48 7 0 -1\n42 8 0 -1\n43 8 0 -1\n44 8 0 -1\n45 8 0 -1\n46 8 0 -1\n47 8 0 -1\n48 8 0 -1\n42 9 0 -1\n43 9 0 -1\n44 9 0 -1\n45 9 0 -1\n46 9 0 -1\n47 9 1 1\n48 9 0 -1\n42 10 0 -1\n43 10 0 -1\n44 10 0 -1\n45 10 0 -1\n46 10 0 -1\n47 10 0 -1\n48 10 0 -1\n42 11 0 -1\n43 11 0 -1\n44 11 0 -1\n45 11 0 -1\n46 11 0 -1\n47 11 0 -1\n48 11 0 -1\n42 12 0 -1\n43 12 0 -1\n44 12 0 -1\n45 12 0 -1\n46 12 0 -1\n47 12 0 -1\n48 12 0 -1\nDRAGON_BODIES 8\nB 1 45 9 W 1\nB 1 46 9 W 0\nB 1 46 10 N 0\nB 1 46 11 N 0\nB 1 45 11 E 0\nB 1 44 11 E 0\nA 16 48 9 N 1\nA 16 48 10 N 0\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . . . . .\nw . . . . . .\n. . . 1 . w w\n. w w . w . .\n. . w w w . .\n. . . . . . . w\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. w . . . . . w\n. . . . . w . .\nw w . w w w . .\n",
+        "sha256": "6d058185a1329fe26a708c76fb33e986c424f625c2f921719eb9702e4b78a6bc"
+      },
+      "spawn": "ID 1\nTEAM B\nMAP 56 40\nUNIT_LIMIT 64\n",
+      "prefix_canonical_events": 4647,
+      "prefix_equal": true,
+      "r32_queen_or_friend12_deaths": [],
+      "fixture_replay_sha256": "c30873d78dac76a5ea66bcec6ef15cadc8a4cfa79b997679ac2549063f2433b4"
+    }
+  ],
+  "fixture_replays": [
+    "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r20_portal_incident_probe_actual.replay",
+    "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r20_portal_incident_probe_alternate.replay"
+  ],
+  "limitations": [
+    "All actions/SONAR before target are recorded R20 actions; no bot is called.",
+    "The alternate is an offline local proof and scripted counterfactual, not a bot policy or win-rate claim.",
+    "Recorded friend12 action is held fixed at32; it may change under a live policy's alternate.",
+    "ENDTURN cleanup after id12 is fixture-only and not bot behavior."
+  ]
+}

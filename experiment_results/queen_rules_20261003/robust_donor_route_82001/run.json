@@ -1,0 +1,784 @@
+{
+  "label": "robust_donor_route_82001",
+  "created_utc": "2026-10-04T14:54:52.048096+00:00",
+  "unswbc": "1.2.7",
+  "python": "/home/tyhh/SW76_-/.venv-battlecode/bin/python",
+  "cli": "/home/tyhh/SW76_-/.venv-battlecode/bin/unswbc",
+  "cli_sha256": "46757bce2ea7df2457f6d3deb29c989e1fa286776e90fed5bdec42e23de5e448",
+  "engine_original": "/home/tyhh/SW76_-/.venv-battlecode/lib/python3.13/site-packages/unswbc/unswbc_engine.wasm",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "engine_snapshot_files": {
+    "__init__.py": "e3da6b08b6c4ddf1732dfc5e9b9addd9daf5895e3f2fe6cdd0de09ee3c54e720",
+    "api.py": "98d429fe5737de1b6d544029d3a3b24442a743b22c6a12d5b30090ed9f60e1fd",
+    "auth.py": "ad5ba61e6da8c976d9b3e6779ec93036ea7f89a353f431d2bc1272a0da65787b",
+    "bot.py": "9b7d178c167e42f968ca89a1d0d86d9d151bf63e042f2c63ab2ff9df23f77ac5",
+    "clangtool.py": "31d3895b34d24709728efbd7aecf836f720a22b9a01756f3a2c6752a0424b4f9",
+    "cli.py": "99d0b3724a922d7ecbe4c07bba852b0194b2e926bbaa7b53629fe2ded5a63991",
+    "color.py": "5b007fff1c649b0937e463191fa94e27c7a1f3412ff85b898417357ed4506825",
+    "engine.py": "7158bde232f6bf5400e047ed4103451a7e708a0c9f7df9b857b5ad129214b442",
+    "errors.py": "a0255b8e459eb3fdbc419c9c65362150419461f458b3c0111d7b6f137183ff73",
+    "init.py": "4b3e90d4eb875abd14764058d0e63fe0fefb11e67182b6aa588ba7502d5393e9",
+    "maps.py": "32cabe3c1df8b693ac2d12b8a2e1ca4a453ad8fc7da92fd16d48eb7ab4e7d2e1",
+    "metering.py": "175193a973585d2e10d920b1d0b97c9d4f1577b4050829564be45a6e16fbee8d",
+    "progress.py": "4cf5230bd7dee8c66de50cbc9ec89a12080e8ee5ad9fe6587e97444d66b9f1b9",
+    "project.py": "3e502b57fac5d0ef95a346e54cbadb69f9eb350611939f520094cdef3a46c168",
+    "run.py": "6e24178f6772f06455ce97c637afd46380e9b1b5a8218b1aa782c8a50adefc52",
+    "sandbox.py": "a318cb556a2b8419e2bf246dbed68a718eb8d6ff24b7189aad3929d169b262fe",
+    "submit.py": "bcad71be95a1a35652edbd0fca7c53144e8f4d024d5c759289327e94db918502",
+    "toolchain.py": "7e88b95d57c52ae7fd1f166aa985f2a092b25c91b47b0338e8239c2d148aa1af",
+    "turn.py": "2150efad3fd75ba6e7efc6dc51b4f89817fada4c1d0e6fd47f055efe8322312c",
+    "unswbc_engine.wasm": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+    "update.py": "b1fd33f83e1aa12dc2d77c2f829e1addd1d18fe8753040f0ec4f2518320f1736",
+    "vscode.py": "92985cd9bc8466429e85e2d4bcaf3346270cc5826cc4fe0fb159e088ef438077",
+    "webc.py": "2e2b0cc548138e6589162a624916331de8f3f54a2b2141ff726b525ce1e167d5",
+    "zygote_host.py": "48b8b7bab7f7fdec85ad500dccdb6e242aec1e9ddcc61d16a800b8495d42603c"
+  },
+  "candidate": "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_robust_donor_route_v127",
+  "sources": [
+    {
+      "original": "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_robust_donor_route_v127",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/0_tyhh_qos_robust_donor_route_v127",
+      "prepared": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/0_tyhh_qos_robust_donor_route_v127/.unswbc-build/bot",
+      "prepared_sha256": "7f4330607b687ad815c2395ab2e0ad91530b71871f4c645932af876dba8d0039",
+      "files": {
+        ".unswbc-build/.built-from": "c49b37a582d4593393e14dfcb67415cf2caa0cee350976569fbe11943baed968",
+        ".unswbc-build/bot": "7f4330607b687ad815c2395ab2e0ad91530b71871f4c645932af876dba8d0039",
+        "EXPERIMENT.md": "aa8b2a71cfe84e05977db3dc107be8136ab2ff3396dafe150ad109199c9ad584",
+        "READY.md": "72dc49a9bc817b69172a349c998f075f5fc062a1b2557259b01a77494d00783c",
+        "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+        "consolidate.hpp": "bbf0ab3334219c6914cd14a85a60157c3d0697fb16d54e70069719a818905bdf",
+        "donor_route.hpp": "59088c9202afe8e4e942c9dcdeb1b03a3cb9a2f9619a1ac3839d94a5252ebf99",
+        "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+        "main.cpp": "91a65ac8a9fb7656f1631d5a0ebda7c1905e7bdafc2ee66240b8b081f398ecee",
+        "queen_feed.hpp": "0f8ba15a48c506bf3b892a28259903a9eea6137d822ca0baff5c063db644db24",
+        "verification/VALIDATION.md": "c4b204cf8572996e5f9d0b02ac9b63d104abef1110943d735b2f48aad43715db",
+        "verification/candidate_tests.cpp.txt": "a575e2e4b3eff22ad8b2e90c1a35355fd5d6d4c0af01956551af98adf42cd3e2",
+        "verification/consolidate_tests.cpp.txt": "5de377877b7bbada6b7f8f2197d8db9544c2bec26b213251ca3bb7bbacdfa3e4",
+        "verification/donor_route_tests.cpp.txt": "71c306742c3cbdc75bae8f61f79d1969d6212cb377369c273845e3907ec37dd8",
+        "verification/queen_guard_tests.cpp.txt": "9dea7beefc3b48de61e12133c33b42bdcafb80f9ecfe47fd6645e62b9d913def"
+      }
+    },
+    {
+      "original": "/home/tyhh/SW76_-/tyhh_test/V3_portal",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/1_V3_portal",
+      "prepared": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "prepared_sha256": "149f787af8b6ee01eeba1f37abaa466f0d179e083c2b4a2de6618519ab2c1b2c",
+      "files": {
+        ".gitignore": "2c147c477a5e7050bebb482645844eda308cf71e61f85e491d5d2d0d4fb71b89",
+        ".unswbc-build/.built-from": "dc18629465c9445f7f2d42c50bb588df913cc9dc14a046029d03da5cde617381",
+        ".unswbc-build/bot": "149f787af8b6ee01eeba1f37abaa466f0d179e083c2b4a2de6618519ab2c1b2c",
+        "V3_NOTES.md": "892497ecd8162146b07c438a929388f2795610420d56165070e5ac9ce33b78fe",
+        "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+        "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+        "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+        "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+        "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+        "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+        "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+        "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+        "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+        "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+        "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+        "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+        "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+        "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+        "verification/short_avoid.cpp.txt": "9f43aeb65f402e0a6cd09312490040787a316ead825c21e23ac27087509c2e09",
+        "verification/v3_tests.cpp.txt": "0b5530c3a6567fa5480de168b3536aa3464a1bcd7f4310c9284c74b591c4807a",
+        "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+      }
+    },
+    {
+      "original": "/home/tyhh/SW76_-/tyhh_test/xxqztest",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/2_xxqztest",
+      "prepared": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "prepared_sha256": "7b4de70054dcb5bbba49c087370699506ec4f6d40b0e126d80d3388fb3adca81",
+      "files": {
+        ".gitignore": "2c147c477a5e7050bebb482645844eda308cf71e61f85e491d5d2d0d4fb71b89",
+        ".unswbc-build/.built-from": "3078092efc0f4208b92a9a0d4d09d0da616c43827f2611c5d5c224abcb2da140",
+        ".unswbc-build/bot": "7b4de70054dcb5bbba49c087370699506ec4f6d40b0e126d80d3388fb3adca81",
+        "SACRIFICE_EXPERIMENT.md": "b3b9532ce1f3971525e58bdc790ea7c688abfb5383b14f27a7a993fabfc08d88",
+        "V3_NOTES.md": "7587b0637f764fff03895391e5197f3f884f8800fc8fdcde8b4f1b51c6345fb1",
+        "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+        "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+        "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+        "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+        "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+        "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+        "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+        "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+        "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+        "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+        "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+        "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+        "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+        "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+        "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+        "verification/combat_priority.cpp.txt": "903bc51942f430b8c29ee6bdd25cb037793cd68cb17427409f12369943819c61",
+        "verification/death_pearls.cpp.txt": "85949dd372e41c29cf70bb8ae79c614aba7b8c07d9b99d77189028f52a50fdcc",
+        "verification/escort.cpp.txt": "3bccc17650894b3aabb79cc280a6fd30e4a3bf428018c055c1bf32f064bb2c8d",
+        "verification/resource_pocket.cpp.txt": "d2ac5a30b64b46736e43c985316d003b3f85e63c2ac30d784bce735b8149af22",
+        "verification/sacrifice.cpp.txt": "3bda21448cdedd3c7db1cff49ba0b64c358dd76a8864bfa0d141be23bcb1f707",
+        "verification/short_avoid.cpp.txt": "e744fb774dc6c48f3f321cd5fbad10d41eeb173e13bd8dcf915b477aa36135eb",
+        "verification/tactical_split.cpp.txt": "f2cbb6d8c35e74ecaf5d7041b8af953e68d07a157c32ee1a252b210123f9c2b9",
+        "verification/v3_tests.cpp.txt": "ac49d58ffba27a6fedddec48cdcdd69313e5cab3f0a9cfb49093c5777c774354",
+        "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+      }
+    }
+  ],
+  "maps": [
+    {
+      "name": "australia",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/australia.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/australia.map",
+      "sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+      "seed": 82001,
+      "legacy_subset": false
+    },
+    {
+      "name": "autarky",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/autarky.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/autarky.map",
+      "sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+      "seed": 82002,
+      "legacy_subset": true
+    },
+    {
+      "name": "default",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/default.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/default.map",
+      "sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+      "seed": 82003,
+      "legacy_subset": true
+    },
+    {
+      "name": "devil",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/devil.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/devil.map",
+      "sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+      "seed": 82004,
+      "legacy_subset": true
+    },
+    {
+      "name": "portals",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/portals.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/portals.map",
+      "sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+      "seed": 82005,
+      "legacy_subset": true
+    },
+    {
+      "name": "dilemma",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/dilemma.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/dilemma.map",
+      "sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+      "seed": 82006,
+      "legacy_subset": true
+    },
+    {
+      "name": "queen_of_spades",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/queen_of_spades.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/queen_of_spades.map",
+      "sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+      "seed": 82007,
+      "legacy_subset": true
+    },
+    {
+      "name": "schooltime",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/schooltime.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/schooltime.map",
+      "sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+      "seed": 82008,
+      "legacy_subset": true
+    },
+    {
+      "name": "slithery_fight",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/slithery_fight.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/slithery_fight.map",
+      "sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+      "seed": 82009,
+      "legacy_subset": true
+    },
+    {
+      "name": "trauma",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/trauma.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/trauma.map",
+      "sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+      "seed": 82010,
+      "legacy_subset": true
+    },
+    {
+      "name": "trophy",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/trophy.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/trophy.map",
+      "sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+      "seed": 82011,
+      "legacy_subset": true
+    },
+    {
+      "name": "islands",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/islands.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/islands.map",
+      "sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+      "seed": 82012,
+      "legacy_subset": false
+    },
+    {
+      "name": "maze",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/maze.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/maze.map",
+      "sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+      "seed": 82013,
+      "legacy_subset": false
+    },
+    {
+      "name": "stripes",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/stripes.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/stripes.map",
+      "sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+      "seed": 82014,
+      "legacy_subset": false
+    },
+    {
+      "name": "tower_defense",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/tower_defense.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/tower_defense.map",
+      "sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+      "seed": 82015,
+      "legacy_subset": false
+    },
+    {
+      "name": "unsw",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/unsw.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/unsw.map",
+      "sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+      "seed": 82016,
+      "legacy_subset": false
+    },
+    {
+      "name": "weakhold",
+      "original": "/home/tyhh/SW76_-/battlecode_quickstart/maps/weakhold.map",
+      "snapshot": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_donor_route_82001/frozen/maps/weakhold.map",
+      "sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+      "seed": 82017,
+      "legacy_subset": false
+    }
+  ],
+  "selected_maps": [
+    "australia",
+    "autarky",
+    "default",
+    "devil",
+    "portals",
+    "dilemma",
+    "queen_of_spades",
+    "schooltime",
+    "slithery_fight",
+    "trauma",
+    "trophy",
+    "islands",
+    "maze",
+    "stripes",
+    "tower_defense",
+    "unsw",
+    "weakhold"
+  ],
+  "base_seed": 82001,
+  "seed_policy": "base + ranked17 index; shared A/B, opponents and variants",
+  "rules": "queen ID A=0/B=1; queen,longest,total; ceil(initial action length/4) free steps",
+  "sandbox": false,
+  "workers": 2,
+  "global_worker_cap": 4,
+  "timeout_seconds": 300,
+  "planned": 68,
+  "legacy_maps": [
+    "autarky",
+    "default",
+    "devil",
+    "portals",
+    "dilemma",
+    "queen_of_spades",
+    "schooltime",
+    "slithery_fight",
+    "trauma",
+    "trophy"
+  ],
+  "schedule": [
+    {
+      "game": 1,
+      "opponent": "V3_portal",
+      "map": "australia",
+      "seed": 82001,
+      "side": "A"
+    },
+    {
+      "game": 2,
+      "opponent": "V3_portal",
+      "map": "australia",
+      "seed": 82001,
+      "side": "B"
+    },
+    {
+      "game": 3,
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "seed": 82002,
+      "side": "A"
+    },
+    {
+      "game": 4,
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "seed": 82002,
+      "side": "B"
+    },
+    {
+      "game": 5,
+      "opponent": "V3_portal",
+      "map": "default",
+      "seed": 82003,
+      "side": "A"
+    },
+    {
+      "game": 6,
+      "opponent": "V3_portal",
+      "map": "default",
+      "seed": 82003,
+      "side": "B"
+    },
+    {
+      "game": 7,
+      "opponent": "V3_portal",
+      "map": "devil",
+      "seed": 82004,
+      "side": "A"
+    },
+    {
+      "game": 8,
+      "opponent": "V3_portal",
+      "map": "devil",
+      "seed": 82004,
+      "side": "B"
+    },
+    {
+      "game": 9,
+      "opponent": "V3_portal",
+      "map": "portals",
+      "seed": 82005,
+      "side": "A"
+    },
+    {
+      "game": 10,
+      "opponent": "V3_portal",
+      "map": "portals",
+      "seed": 82005,
+      "side": "B"
+    },
+    {
+      "game": 11,
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "seed": 82006,
+      "side": "A"
+    },
+    {
+      "game": 12,
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "seed": 82006,
+      "side": "B"
+    },
+    {
+      "game": 13,
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "seed": 82007,
+      "side": "A"
+    },
+    {
+      "game": 14,
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "seed": 82007,
+      "side": "B"
+    },
+    {
+      "game": 15,
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "seed": 82008,
+      "side": "A"
+    },
+    {
+      "game": 16,
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "seed": 82008,
+      "side": "B"
+    },
+    {
+      "game": 17,
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "seed": 82009,
+      "side": "A"
+    },
+    {
+      "game": 18,
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "seed": 82009,
+      "side": "B"
+    },
+    {
+      "game": 19,
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "seed": 82010,
+      "side": "A"
+    },
+    {
+      "game": 20,
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "seed": 82010,
+      "side": "B"
+    },
+    {
+      "game": 21,
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "seed": 82011,
+      "side": "A"
+    },
+    {
+      "game": 22,
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "seed": 82011,
+      "side": "B"
+    },
+    {
+      "game": 23,
+      "opponent": "V3_portal",
+      "map": "islands",
+      "seed": 82012,
+      "side": "A"
+    },
+    {
+      "game": 24,
+      "opponent": "V3_portal",
+      "map": "islands",
+      "seed": 82012,
+      "side": "B"
+    },
+    {
+      "game": 25,
+      "opponent": "V3_portal",
+      "map": "maze",
+      "seed": 82013,
+      "side": "A"
+    },
+    {
+      "game": 26,
+      "opponent": "V3_portal",
+      "map": "maze",
+      "seed": 82013,
+      "side": "B"
+    },
+    {
+      "game": 27,
+      "opponent": "V3_portal",
+      "map": "stripes",
+      "seed": 82014,
+      "side": "A"
+    },
+    {
+      "game": 28,
+      "opponent": "V3_portal",
+      "map": "stripes",
+      "seed": 82014,
+      "side": "B"
+    },
+    {
+      "game": 29,
+      "opponent": "V3_portal",
+      "map": "tower_defense",
+      "seed": 82015,
+      "side": "A"
+    },
+    {
+      "game": 30,
+      "opponent": "V3_portal",
+      "map": "tower_defense",
+      "seed": 82015,
+      "side": "B"
+    },
+    {
+      "game": 31,
+      "opponent": "V3_portal",
+      "map": "unsw",
+      "seed": 82016,
+      "side": "A"
+    },
+    {
+      "game": 32,
+      "opponent": "V3_portal",
+      "map": "unsw",
+      "seed": 82016,
+      "side": "B"
+    },
+    {
+      "game": 33,
+      "opponent": "V3_portal",
+      "map": "weakhold",
+      "seed": 82017,
+      "side": "A"
+    },
+    {
+      "game": 34,
+      "opponent": "V3_portal",
+      "map": "weakhold",
+      "seed": 82017,
+      "side": "B"
+    },
+    {
+      "game": 35,
+      "opponent": "xxqztest",
+      "map": "australia",
+      "seed": 82001,
+      "side": "A"
+    },
+    {
+      "game": 36,
+      "opponent": "xxqztest",
+      "map": "australia",
+      "seed": 82001,
+      "side": "B"
+    },
+    {
+      "game": 37,
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "seed": 82002,
+      "side": "A"
+    },
+    {
+      "game": 38,
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "seed": 82002,
+      "side": "B"
+    },
+    {
+      "game": 39,
+      "opponent": "xxqztest",
+      "map": "default",
+      "seed": 82003,
+      "side": "A"
+    },
+    {
+      "game": 40,
+      "opponent": "xxqztest",
+      "map": "default",
+      "seed": 82003,
+      "side": "B"
+    },
+    {
+      "game": 41,
+      "opponent": "xxqztest",
+      "map": "devil",
+      "seed": 82004,
+      "side": "A"
+    },
+    {
+      "game": 42,
+      "opponent": "xxqztest",
+      "map": "devil",
+      "seed": 82004,
+      "side": "B"
+    },
+    {
+      "game": 43,
+      "opponent": "xxqztest",
+      "map": "portals",
+      "seed": 82005,
+      "side": "A"
+    },
+    {
+      "game": 44,
+      "opponent": "xxqztest",
+      "map": "portals",
+      "seed": 82005,
+      "side": "B"
+    },
+    {
+      "game": 45,
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "seed": 82006,
+      "side": "A"
+    },
+    {
+      "game": 46,
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "seed": 82006,
+      "side": "B"
+    },
+    {
+      "game": 47,
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "seed": 82007,
+      "side": "A"
+    },
+    {
+      "game": 48,
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "seed": 82007,
+      "side": "B"
+    },
+    {
+      "game": 49,
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "seed": 82008,
+      "side": "A"
+    },
+    {
+      "game": 50,
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "seed": 82008,
+      "side": "B"
+    },
+    {
+      "game": 51,
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "seed": 82009,
+      "side": "A"
+    },
+    {
+      "game": 52,
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "seed": 82009,
+      "side": "B"
+    },
+    {
+      "game": 53,
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "seed": 82010,
+      "side": "A"
+    },
+    {
+      "game": 54,
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "seed": 82010,
+      "side": "B"
+    },
+    {
+      "game": 55,
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "seed": 82011,
+      "side": "A"
+    },
+    {
+      "game": 56,
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "seed": 82011,
+      "side": "B"
+    },
+    {
+      "game": 57,
+      "opponent": "xxqztest",
+      "map": "islands",
+      "seed": 82012,
+      "side": "A"
+    },
+    {
+      "game": 58,
+      "opponent": "xxqztest",
+      "map": "islands",
+      "seed": 82012,
+      "side": "B"
+    },
+    {
+      "game": 59,
+      "opponent": "xxqztest",
+      "map": "maze",
+      "seed": 82013,
+      "side": "A"
+    },
+    {
+      "game": 60,
+      "opponent": "xxqztest",
+      "map": "maze",
+      "seed": 82013,
+      "side": "B"
+    },
+    {
+      "game": 61,
+      "opponent": "xxqztest",
+      "map": "stripes",
+      "seed": 82014,
+      "side": "A"
+    },
+    {
+      "game": 62,
+      "opponent": "xxqztest",
+      "map": "stripes",
+      "seed": 82014,
+      "side": "B"
+    },
+    {
+      "game": 63,
+      "opponent": "xxqztest",
+      "map": "tower_defense",
+      "seed": 82015,
+      "side": "A"
+    },
+    {
+      "game": 64,
+      "opponent": "xxqztest",
+      "map": "tower_defense",
+      "seed": 82015,
+      "side": "B"
+    },
+    {
+      "game": 65,
+      "opponent": "xxqztest",
+      "map": "unsw",
+      "seed": 82016,
+      "side": "A"
+    },
+    {
+      "game": 66,
+      "opponent": "xxqztest",
+      "map": "unsw",
+      "seed": 82016,
+      "side": "B"
+    },
+    {
+      "game": 67,
+      "opponent": "xxqztest",
+      "map": "weakhold",
+      "seed": 82017,
+      "side": "A"
+    },
+    {
+      "game": 68,
+      "opponent": "xxqztest",
+      "map": "weakhold",
+      "seed": 82017,
+      "side": "B"
+    }
+  ],
+  "native_limit_caveat": "Native runs do not enforce judge points/memory or bot random seeding"
+}

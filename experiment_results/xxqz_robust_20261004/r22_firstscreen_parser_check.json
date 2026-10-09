@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "scope": "Frozen source and synthetic nested classifier only; no engine invocation",
+  "subject_sha256": "33fe2ac8c73e9c6b952b16f9a2784027a584121d980b3e7f9350c57119152999",
+  "script_sha256": "8a94bc1c665170f1c2155576db489b411aa1f4f4f616605b26b89a2241ab7828",
+  "source_binding": {
+    "passed": true,
+    "five_line_factor_only": true,
+    "R10_main_sha256": "de27f3b2abb1440d75395c9676eb4d80967947bd7adb7e66f9570005f24ca8ba",
+    "R22_main_sha256": "43ed3e523628fb34f74279943f80408f149353d5a3440a6fbadf73cfe4ff8138",
+    "shared_byte_identical": [
+      "helper.hpp",
+      "queen_feed.hpp",
+      "consolidate.hpp",
+      "bot.toml",
+      "verification/queen_hunt_tests.cpp.txt",
+      "verification/sprint4_tests.cpp.txt"
+    ],
+    "same_engine_maps_opponents": true
+  },
+  "synthetic_cases": [
+    {
+      "case": "three_step_hit_is_two_successful_updates_plus_collision",
+      "passed": true
+    },
+    {
+      "case": "four_requested_steps_early_hit_not_long_range",
+      "passed": true
+    },
+    {
+      "case": "unused_fourth_direction_not_counted_as_fourth_hit",
+      "passed": true
+    },
+    {
+      "case": "own_queen_route_excluded_from_nonqueen_sprint",
+      "passed": true
+    },
+    {
+      "case": "portal_collision_excluded_from_ordinary_sprint",
+      "passed": true
+    },
+    {
+      "case": "nonordinary_prefix_excluded",
+      "passed": true
+    },
+    {
+      "case": "generic_successful_harvest_not_head_trade",
+      "passed": true
+    },
+    {
+      "case": "victim_head_death_without_actor_pair_not_trade",
+      "passed": true
+    },
+    {
+      "case": "enemy_acting_turn_not_our_initiated_trade",
+      "passed": true
+    },
+    {
+      "case": "ordinary_enemy_not_fixed_queen",
+      "passed": true
+    },
+    {
+      "case": "paid_collision_prefix_length_two_rejected",
+      "passed": true
+    },
+    {
+      "case": "paid_collision_prefix_length_three_allowed",
+      "passed": true
+    },
+    {
+      "case": "null_action_pointer_counted_separately",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct CounterFixture {
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+
+    void setup(int enemyLength, int population = 10, int ownId = 7, int round = 100) {
+        W = H = 11; NC = W * H; HERE = 60; LEN = 2; POP = population;
+        MYID = ownId; MYTEAM = Team::A; ROUND = round; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); sightings.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail = {59, 60}; trailId = MYID;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = teamFrontier = 0; chosenAction = {};
+        put(60, MYID, true, true, 1, 3);
+        put(59, MYID, true, false, 1, 2);
+        idCount.push_back({MYID, 2});
+        if (enemyLength) {
+            for (int i = 0; i < enemyLength; ++i)
+                put(61 + i, 3, false, i == 0, 3, enemyLength - i + 1);
+            idCount.push_back({3, enemyLength});
+            enemyHeads.push_back(61); enemyHeadLen.push_back(enemyLength);
+        }
+    }
+
+    void put(int c, int id, bool mine, bool head, int facing, int freeAt) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+    }
+
+    bool choosesEast() {
+        takeTurn(ct);
+        return chosenAction.split == 0 && chosenAction.dirs.size() == 1 && chosenAction.dirs[0] == 1;
+    }
+};
+
+int main() {
+    CounterFixture f;
+    f.setup(2);
+    assert(!profitableLen2Ram(1, 2));
+    assert(!f.choosesEast()); // no proactive equal-size trade when an exit exists
+    f.setup(1);
+    assert(!f.choosesEast()); // one observed segment does not prove a trade-up
+    f.setup(3);
+    assert(profitableLen2Ram(1, 3));
+    assert(f.choosesEast());
+    f.setup(5, 2);
+    assert(f.choosesEast()); // retain the penultimate dragon's profitable attack
+    f.setup(5, 1);
+    assert(!profitableLen2Ram(1, 5));
+    assert(!f.choosesEast()); // do not voluntarily eliminate the whole team
+    f.setup(3, 10, 8, 300);
+    assert(f.choosesEast()); // short ID-selected champion keeps its profitable ram
+    f.setup(0);
+    assert(!profitableLen2Ram(-1, 9));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 0 && chosenAction.dirs.size() == 1);
+    f.setup(3);
+    LEN = 3;
+    assert(!profitableLen2Ram(1, 9)); // module does not reclassify longer dragons
+    f.setup(2, 1);
+    std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(HERE, 1, E_OPEN, -1);
+    assert(f.choosesEast()); // unchanged last-resort ram when every safe exit is closed
+    std::cout << "counter proactive-trade boundary assertions passed\n";
+}

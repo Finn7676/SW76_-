@@ -1,0 +1,603 @@
+{
+  "phase": "confirmation",
+  "runs": {
+    "h14": [
+      {
+        "label": "h14_confirm79001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/h14_confirm79001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "consolidate.hpp": "bbf0ab3334219c6914cd14a85a60157c3d0697fb16d54e70069719a818905bdf",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+          "queen_feed.hpp": "0f8ba15a48c506bf3b892a28259903a9eea6137d822ca0baff5c063db644db24"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 79001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 21,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 12,
+            "side_B_wins": 9
+          },
+          "xxqztest": {
+            "wins": 19,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 11,
+            "side_B_wins": 8
+          }
+        },
+        "legacy_wins": 23,
+        "queen_survived": 13,
+        "joint_over_half": true
+      },
+      {
+        "label": "h14_confirm80001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/h14_confirm80001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "consolidate.hpp": "bbf0ab3334219c6914cd14a85a60157c3d0697fb16d54e70069719a818905bdf",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+          "queen_feed.hpp": "0f8ba15a48c506bf3b892a28259903a9eea6137d822ca0baff5c063db644db24"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 80001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 16,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 9,
+            "side_B_wins": 7
+          },
+          "xxqztest": {
+            "wins": 19,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 10,
+            "side_B_wins": 9
+          }
+        },
+        "legacy_wins": 21,
+        "queen_survived": 11,
+        "joint_over_half": false
+      },
+      {
+        "label": "h14_confirm81001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/h14_confirm81001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "consolidate.hpp": "bbf0ab3334219c6914cd14a85a60157c3d0697fb16d54e70069719a818905bdf",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+          "queen_feed.hpp": "0f8ba15a48c506bf3b892a28259903a9eea6137d822ca0baff5c063db644db24"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 81001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 19,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 11,
+            "side_B_wins": 8
+          },
+          "xxqztest": {
+            "wins": 16,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 9,
+            "side_B_wins": 7
+          }
+        },
+        "legacy_wins": 20,
+        "queen_survived": 14,
+        "joint_over_half": false
+      }
+    ],
+    "counter": [
+      {
+        "label": "counter_confirm79001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/counter_confirm79001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ceaa0183760c064b25141cb8f7cbe2d73213050a760942db0768419572529873"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 79001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 15,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 7,
+            "side_B_wins": 8
+          },
+          "xxqztest": {
+            "wins": 18,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 10,
+            "side_B_wins": 8
+          }
+        },
+        "legacy_wins": 22,
+        "queen_survived": 12,
+        "joint_over_half": false
+      },
+      {
+        "label": "counter_confirm80001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/counter_confirm80001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ceaa0183760c064b25141cb8f7cbe2d73213050a760942db0768419572529873"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 80001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 12,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 7,
+            "side_B_wins": 5
+          },
+          "xxqztest": {
+            "wins": 16,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 8,
+            "side_B_wins": 8
+          }
+        },
+        "legacy_wins": 16,
+        "queen_survived": 12,
+        "joint_over_half": false
+      },
+      {
+        "label": "counter_confirm81001",
+        "audit": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/counter_confirm81001/verified_audit.json",
+        "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+        "candidate_code_sha256": {
+          "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "main.cpp": "ceaa0183760c064b25141cb8f7cbe2d73213050a760942db0768419572529873"
+        },
+        "opponent_code_sha256": [
+          {
+            "action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+            "body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+            "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+            "core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+            "debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+            "helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+            "occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+            "planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+            "roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+            "search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+            "sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+            "topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+            "world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+          },
+          {
+            "action.hpp": "dc08d52baae436689358d12572105c2e9369820ce48de976bb92a8273ff1c654",
+            "body.hpp": "627c571d7c73728d74a79b076f885e1ef67e2dc5a79a4685aec6d7e2e4c439e6",
+            "bot.toml": "e51995706fd549144bb2d365358555f8c77d473d586bdf35f99b367761999d4f",
+            "core.hpp": "31a0d9b6fe55d70f32a330fbe3206d36c940b4753915f46555168f42dd384d9b",
+            "debug.hpp": "09a622a93617b740a6f001192157737254796f2368181e47756315d07297fed5",
+            "donation.hpp": "680614abe7ca711eee8a85ac3f1cdeb7cae80c06da019e99f280b9a3315fe596",
+            "helper.hpp": "3332c2ce3bd8007e6107cfb40bc3b45ef1933648efeb1124584bef5564951bea",
+            "main.cpp": "83f85b056b482d7488762bf73dcd07de09cd1f1485dc9f61e4e8b991f43a815c",
+            "observer.hpp": "b54e5b9f411421917aec8e3d0e40b82aadfb9aa71e2d1f859e94e45a7514f33a",
+            "occupancy.hpp": "f780106cadc6f24ae03b1a6129ff3f4b433e08bd5685a584920208f6cb751c8d",
+            "planner.hpp": "f0f4a570085bf5efedb8abf22c2dea63ac004f1d3494dac0dbe86c86a2667c09",
+            "roles.hpp": "1fb7785b6444c8bf2845bb64e2289163e7cbb434233c88db0b916e71273ee366",
+            "search.hpp": "c3dea2fd5d87529ebfeced6a5b866e4cdae00719f39c76a5b4d98d09e3f6e164",
+            "sonar.hpp": "31674c26389d059521da12cb8e2fef59f9129ed1bc408fb76d2db62a52b5c991",
+            "topology.hpp": "05da77b7083b2eebc77a168dd79c3ed5d8ec27246aaaee42503e60ae90c0e25b",
+            "world.hpp": "c3527d5051eb9f63ee59c1fca91890adb03bda6251913e16582fb934110a4d35"
+          }
+        ],
+        "map_sha256": {
+          "australia": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+          "autarky": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+          "default": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+          "devil": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+          "portals": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+          "dilemma": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+          "queen_of_spades": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+          "schooltime": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+          "slithery_fight": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+          "trauma": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+          "trophy": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+          "islands": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+          "maze": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+          "stripes": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+          "tower_defense": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+          "unsw": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+          "weakhold": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1"
+        },
+        "base_seed": 81001,
+        "by_opponent": {
+          "V3_portal": {
+            "wins": 10,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 7,
+            "side_B_wins": 3
+          },
+          "xxqztest": {
+            "wins": 11,
+            "games": 34,
+            "draws": 0,
+            "side_A_wins": 7,
+            "side_B_wins": 4
+          }
+        },
+        "legacy_wins": 13,
+        "queen_survived": 10,
+        "joint_over_half": false
+      }
+    ]
+  },
+  "aggregates": {
+    "h14": {
+      "V3_portal": {
+        "wins": 56,
+        "games": 102,
+        "win_rate": 0.5490196078431373,
+        "batch_wins": [
+          21,
+          16,
+          19
+        ],
+        "batch_rate_mean": 0.5490196078431373,
+        "batch_rate_sample_std": 0.07401798465951717,
+        "batch_rate_range": [
+          0.47058823529411764,
+          0.6176470588235294
+        ]
+      },
+      "xxqztest": {
+        "wins": 54,
+        "games": 102,
+        "win_rate": 0.5294117647058824,
+        "batch_wins": [
+          19,
+          19,
+          16
+        ],
+        "batch_rate_mean": 0.5294117647058824,
+        "batch_rate_sample_std": 0.05094267081084934,
+        "batch_rate_range": [
+          0.47058823529411764,
+          0.5588235294117647
+        ]
+      }
+    },
+    "counter": {
+      "V3_portal": {
+        "wins": 37,
+        "games": 102,
+        "win_rate": 0.3627450980392157,
+        "batch_wins": [
+          15,
+          12,
+          10
+        ],
+        "batch_rate_mean": 0.3627450980392157,
+        "batch_rate_sample_std": 0.07401798465951714,
+        "batch_rate_range": [
+          0.29411764705882354,
+          0.4411764705882353
+        ]
+      },
+      "xxqztest": {
+        "wins": 45,
+        "games": 102,
+        "win_rate": 0.4411764705882353,
+        "batch_wins": [
+          18,
+          16,
+          11
+        ],
+        "batch_rate_mean": 0.4411764705882353,
+        "batch_rate_sample_std": 0.10604562574894086,
+        "batch_rate_range": [
+          0.3235294117647059,
+          0.5294117647058824
+        ]
+      }
+    }
+  },
+  "joint_confirmation_passed": true,
+  "scope": "Three preregistered unused seed batches; draws are non-wins; no p-values."
+}

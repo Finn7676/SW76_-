@@ -1,0 +1,93 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct StrikeFixture {
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+    void put(int c, int id, bool mine, bool head, int freeAt) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, mine ? 1 : 3, mine, head});
+    }
+    void reset(int length, int distance = 2, int enemyLength = 8) {
+        W = H = 16; NC = W * H; HERE = 136; LEN = length; POP = 10;
+        MYID = 7; MYTEAM = Team::A; ROUND = 100; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount = {{MYID, LEN}}; enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); sightings.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail.clear(); trailId = MYID;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = teamFrontier = 0; chosenAction = {};
+        for (int i = 0; i < LEN; ++i) put(HERE - i, MYID, true, i == 0, LEN - i + 1);
+        for (int i = LEN - 1; i >= 0; --i) trail.push_back(HERE - i);
+        for (int i = 0; i < distance; ++i) setEdge(HERE + i, 1, E_OPEN, -1);
+        if (distance > 0) target(HERE + distance, enemyLength);
+    }
+    void target(int c, int length) {
+        for (int i = 0; i < length; ++i) put(c + i, 3, false, i == 0, length - i + 1);
+        idCount.push_back({3, length}); enemyHeads.push_back(c); enemyHeadLen.push_back(length);
+    }
+    void pearl(int offset) { visPearl[HERE + offset] = 1; visPearls.push_back(HERE + offset); }
+    StrikePlan plan(bool champion = false, bool attrition = false) { return profitableSprint(champion, attrition); }
+};
+
+int main() {
+    StrikeFixture f;
+    f.reset(2); assert(f.plan().dirs.empty());
+    f.pearl(2); assert(f.plan().dirs.empty()); // the paid step's pearl is too late
+    f.reset(2); f.pearl(1); assert((f.plan().dirs == std::vector<int>{1, 1}));
+    f.reset(2, 3); f.pearl(1); assert(f.plan().dirs.empty());
+    f.pearl(2); assert((f.plan().dirs == std::vector<int>{1, 1, 1}));
+    f.reset(5, 4, 9); assert(f.plan().dirs.size() == 4);
+    f.reset(8, 5, 12); assert(f.plan().dirs.empty()); // hard four-step bound
+    f.reset(3, 2, 4); assert(f.plan().dirs.empty());
+    assert(f.plan(false, true).dirs.size() == 2); // inherited attrition threshold
+    f.reset(3); POP = 1; assert(f.plan().dirs.empty());
+    f.reset(3); POP = 2; assert(f.plan().dirs.size() == 2);
+    f.reset(6, 2, 10); assert(f.plan(true).dirs.empty());
+    f.reset(3); assert(f.plan(true).dirs.size() == 2); // short ID champion
+    f.reset(3); visStamp[HERE + 2] = 0; assert(f.plan().dirs.empty());
+    f.reset(3);
+    f.put(HERE + 1, 9, true, false, 2); assert(f.plan().dirs.empty()); // allied body is static
+    f.reset(3); f.put(HERE + 1, 9, false, false, 2); assert(f.plan().dirs.empty());
+    f.reset(3); edgeT[HERE * 4 + 1] = E_UNKNOWN; assert(f.plan().dirs.empty());
+    f.reset(3, 0);
+    int landing = HERE + W;
+    edgeT[HERE * 4 + 1] = E_PORTAL; learnedExit[HERE * 4 + 1] = landing;
+    setEdge(landing, 1, E_OPEN, -1); f.target(landing + 1, 8);
+    assert((f.plan().dirs == std::vector<int>{1, 1})); // known visible nonlocal portal
+    learnedExit[HERE * 4 + 1] = -1; assert(f.plan().dirs.empty());
+    f.reset(3); edgeT[HERE * 4 + 1] = E_PORTAL;
+    learnedExit[HERE * 4 + 1] = HERE - 1;
+    assert(f.plan().dirs.empty()); // portal into the still-occupied neck is a collision
+    f.reset(4, 0);
+    int oldTail = HERE - 3, bentTail = HERE + W - 2;
+    occStamp[oldTail] = 0; parts.back().c = bentTail; parts.back().facing = 0;
+    occStamp[bentTail] = STAMP; occId[bentTail] = MYID; occMine[bentTail] = 1;
+    occHead[bentTail] = 0; occFree[bentTail] = 2; occPart[bentTail] = int(parts.size()) - 1;
+    trail = {bentTail, HERE - 2, HERE - 1, HERE};
+    setEdge(HERE, 0, E_OPEN, -1);
+    edgeT[(HERE - W) * 4 + 1] = E_PORTAL;
+    learnedExit[(HERE - W) * 4 + 1] = bentTail;
+    setEdge(bentTail, 1, E_OPEN, -1); f.target(bentTail + 1, 8);
+    assert((f.plan().dirs == std::vector<int>{0, 1, 1})); // own tail vacated on a previous step
+    f.reset(3); trail.clear(); occFree[HERE - 1] = INF;
+    assert(f.plan().dirs.empty()); // unknown own body cannot be assumed vacated
+    f.reset(4, 2, 8); takeTurn(f.ct);
+    assert(chosenAction.split == 0 && chosenAction.dirs.size() == 2); // combat before growth split
+    f.reset(4, 2, 3); takeTurn(f.ct); assert(chosenAction.split == 2); // unchanged ordinary expansion
+    f.reset(2, 1, 2); takeTurn(f.ct);
+    assert((chosenAction.dirs == std::vector<int>{1})); // original adjacent ram unchanged
+    std::cout << "strike payment/topology/collision/priority assertions passed\n";
+}

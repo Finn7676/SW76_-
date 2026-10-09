@@ -1,0 +1,308 @@
+{
+  "date": "2026-09-25",
+  "baseline": "/home/tyhh/SW76_-/tyhh",
+  "design": "12 maps x both sides x one deterministic game",
+  "variants": {
+    "tyhh_portal_bridge": {
+      "FEAT_V3_RELAY": 0,
+      "FEAT_V3_SCOUT": 0,
+      "FEAT_V3_PORTAL_CLAIM": 0,
+      "FEAT_SCOUT_ROLE": 0
+    },
+    "tyhh_portal_relay": {
+      "FEAT_V3_RELAY": 1,
+      "FEAT_V3_SCOUT": 0,
+      "FEAT_V3_PORTAL_CLAIM": 0,
+      "FEAT_SCOUT_ROLE": 0
+    },
+    "tyhh_portal_relay_scout": {
+      "FEAT_V3_RELAY": 1,
+      "FEAT_V3_SCOUT": 1,
+      "FEAT_V3_PORTAL_CLAIM": 0,
+      "FEAT_SCOUT_ROLE": 1
+    },
+    "tyhh_portal_core": {
+      "FEAT_V3_RELAY": 1,
+      "FEAT_V3_SCOUT": 1,
+      "FEAT_V3_PORTAL_CLAIM": 1,
+      "FEAT_SCOUT_ROLE": 1
+    }
+  },
+  "common_settings": {
+    "FEAT_V3_EXPLORED_BONUS": 0,
+    "FEAT_V3_SHORT_AVOID": 0,
+    "FEAT_V3_PEARL_ECONOMY": 0,
+    "FEAT_TRAP": 0,
+    "FEAT_FEAST": 0,
+    "FEAT_HUNT_SIGHTINGS": 0,
+    "FEAT_PORTAL_EXPLORE": 1,
+    "FEAT_SONAR": 1
+  },
+  "summaries": [
+    {
+      "variant": "tyhh_portal_bridge",
+      "wins": 10,
+      "losses": 14,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.4166666666666667,
+      "seconds": 347.0,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-175811-gphk12n8/results.csv"
+    },
+    {
+      "variant": "tyhh_portal_relay",
+      "wins": 12,
+      "losses": 12,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.5,
+      "seconds": 358.8,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-175811-rqd5fsg_/results.csv"
+    },
+    {
+      "variant": "tyhh_portal_relay_scout",
+      "wins": 12,
+      "losses": 12,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.5,
+      "seconds": 350.4,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-175811-6z9jlo1b/results.csv"
+    },
+    {
+      "variant": "tyhh_portal_core",
+      "wins": 12,
+      "losses": 12,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.5,
+      "seconds": 320.5,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-180358-rcjsol54/results.csv"
+    }
+  ],
+  "stage_deltas": [
+    {
+      "from": "tyhh_portal_bridge",
+      "to": "tyhh_portal_relay",
+      "delta_wins": 2,
+      "flips": [
+        {
+          "map": "default.map",
+          "side": "B",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "help.map",
+          "side": "B",
+          "before": "win",
+          "after": "loss"
+        },
+        {
+          "map": "schooltime.map",
+          "side": "A",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "schooltime.map",
+          "side": "B",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "stronghold.map",
+          "side": "A",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "trophy.map",
+          "side": "A",
+          "before": "win",
+          "after": "loss"
+        }
+      ]
+    },
+    {
+      "from": "tyhh_portal_relay",
+      "to": "tyhh_portal_relay_scout",
+      "delta_wins": 0,
+      "flips": [
+        {
+          "map": "default.map",
+          "side": "A",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "queen_of_spades.map",
+          "side": "A",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "queen_of_spades.map",
+          "side": "B",
+          "before": "win",
+          "after": "loss"
+        },
+        {
+          "map": "trauma.map",
+          "side": "B",
+          "before": "win",
+          "after": "loss"
+        }
+      ]
+    },
+    {
+      "from": "tyhh_portal_relay_scout",
+      "to": "tyhh_portal_core",
+      "delta_wins": 0,
+      "flips": [
+        {
+          "map": "Colosseum.map",
+          "side": "A",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "default.map",
+          "side": "B",
+          "before": "win",
+          "after": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "A",
+          "before": "win",
+          "after": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "B",
+          "before": "loss",
+          "after": "win"
+        },
+        {
+          "map": "stronghold.map",
+          "side": "B",
+          "before": "win",
+          "after": "loss"
+        },
+        {
+          "map": "trauma.map",
+          "side": "B",
+          "before": "loss",
+          "after": "win"
+        }
+      ]
+    }
+  ],
+  "conditions": {
+    "tyhh_portal_bridge": {
+      "Colosseum.map|A": "loss",
+      "Colosseum.map|B": "loss",
+      "arena.map|A": "win",
+      "arena.map|B": "loss",
+      "big_empty.map|A": "loss",
+      "big_empty.map|B": "win",
+      "default.map|A": "loss",
+      "default.map|B": "loss",
+      "default_small.map|A": "win",
+      "default_small.map|B": "loss",
+      "devil.map|A": "loss",
+      "devil.map|B": "loss",
+      "help.map|A": "win",
+      "help.map|B": "win",
+      "queen_of_spades.map|A": "loss",
+      "queen_of_spades.map|B": "win",
+      "schooltime.map|A": "loss",
+      "schooltime.map|B": "loss",
+      "stronghold.map|A": "loss",
+      "stronghold.map|B": "win",
+      "trauma.map|A": "win",
+      "trauma.map|B": "win",
+      "trophy.map|A": "win",
+      "trophy.map|B": "loss"
+    },
+    "tyhh_portal_relay_scout": {
+      "Colosseum.map|A": "loss",
+      "Colosseum.map|B": "loss",
+      "arena.map|A": "win",
+      "arena.map|B": "loss",
+      "big_empty.map|A": "loss",
+      "big_empty.map|B": "win",
+      "default.map|A": "win",
+      "default.map|B": "win",
+      "default_small.map|A": "win",
+      "default_small.map|B": "loss",
+      "devil.map|A": "loss",
+      "devil.map|B": "loss",
+      "help.map|A": "win",
+      "help.map|B": "loss",
+      "queen_of_spades.map|A": "win",
+      "queen_of_spades.map|B": "loss",
+      "schooltime.map|A": "win",
+      "schooltime.map|B": "win",
+      "stronghold.map|A": "win",
+      "stronghold.map|B": "win",
+      "trauma.map|A": "win",
+      "trauma.map|B": "loss",
+      "trophy.map|A": "loss",
+      "trophy.map|B": "loss"
+    },
+    "tyhh_portal_relay": {
+      "Colosseum.map|A": "loss",
+      "Colosseum.map|B": "loss",
+      "arena.map|A": "win",
+      "arena.map|B": "loss",
+      "big_empty.map|A": "loss",
+      "big_empty.map|B": "win",
+      "default.map|A": "loss",
+      "default.map|B": "win",
+      "default_small.map|A": "win",
+      "default_small.map|B": "loss",
+      "devil.map|A": "loss",
+      "devil.map|B": "loss",
+      "help.map|A": "win",
+      "help.map|B": "loss",
+      "queen_of_spades.map|A": "loss",
+      "queen_of_spades.map|B": "win",
+      "schooltime.map|A": "win",
+      "schooltime.map|B": "win",
+      "stronghold.map|A": "win",
+      "stronghold.map|B": "win",
+      "trauma.map|A": "win",
+      "trauma.map|B": "win",
+      "trophy.map|A": "loss",
+      "trophy.map|B": "loss"
+    },
+    "tyhh_portal_core": {
+      "Colosseum.map|A": "win",
+      "Colosseum.map|B": "loss",
+      "arena.map|A": "win",
+      "arena.map|B": "loss",
+      "big_empty.map|A": "loss",
+      "big_empty.map|B": "win",
+      "default.map|A": "win",
+      "default.map|B": "loss",
+      "default_small.map|A": "win",
+      "default_small.map|B": "loss",
+      "devil.map|A": "loss",
+      "devil.map|B": "loss",
+      "help.map|A": "loss",
+      "help.map|B": "win",
+      "queen_of_spades.map|A": "win",
+      "queen_of_spades.map|B": "loss",
+      "schooltime.map|A": "win",
+      "schooltime.map|B": "win",
+      "stronghold.map|A": "win",
+      "stronghold.map|B": "loss",
+      "trauma.map|A": "win",
+      "trauma.map|B": "win",
+      "trophy.map|A": "loss",
+      "trophy.map|B": "loss"
+    }
+  }
+}

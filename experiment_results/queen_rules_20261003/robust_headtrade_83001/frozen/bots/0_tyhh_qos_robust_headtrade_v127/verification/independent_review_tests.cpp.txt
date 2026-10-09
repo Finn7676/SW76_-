@@ -1,0 +1,137 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct Fixture {
+    Controller ct{2, Team::A, Direction::NORTH, Vision{}, 64};
+    void put(int c, int id, bool mine, bool head, int facing, int freeAt) {
+        assert(!occupied(c));
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+    }
+    void body(std::vector<int> const& cells, int id, bool mine) {
+        idCount.push_back({id, int(cells.size())});
+        for (size_t i = 0; i < cells.size(); ++i) {
+            int facing = 0;
+            if (i) {
+                facing = -1;
+                for (int d = 0; d < 4; ++d)
+                    if (geo(cells[i], d) == cells[i - 1]) facing = d;
+                assert(facing >= 0);
+            }
+            put(cells[i], id, mine, !i, facing, mine ? int(cells.size()) + 1 - int(i) : INF);
+        }
+        if (!mine) { enemyHeads.push_back(cells[0]); enemyHeadLen.push_back(int(cells.size())); }
+    }
+    void setup(int length = 3, bool teamB = false, bool queen = false) {
+        W = 32; H = 16; NC = W * H; LEN = length; HERE = cid(16,8);
+        MYTEAM = teamB ? Team::B : Team::A;
+        MYID = queen ? queenId() : (teamB ? 3 : 2);
+        POP = 10; ROUND = 300; TARGET = 62; STAMP = 1;
+        ct.head.dragon_id = MYID; ct.head.team = Team(MYTEAM);
+        ct.head.dir = Direction::NORTH; ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        for (int dx = -3; dx <= 3; ++dx) for (int dy = -3; dy <= 3; ++dy)
+            visStamp[cid(16 + dx, 8 + dy)] = STAMP;
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; yieldStreak = 0; trailId = MYID;
+        v41Target = -1; v41ExplorationMode = false;
+        std::vector<int> own{HERE,cid(16,9),cid(15,9),cid(15,10),cid(14,10)};
+        own.resize(length); trail.assign(own.rbegin(), own.rend());
+        body(own, MYID, true);
+        chosenAction = {{0},0,true,false};
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+    }
+    void enemy(int length = 2, int id = 14) {
+        std::vector<int> cells{cid(16,6),cid(15,6),cid(14,6),cid(14,7)};
+        cells.resize(length); body(cells,id,false);
+    }
+    void checkReplacement() {
+        auto originalDirs = chosenAction.dirs;
+        auto original = projectAction(chosenAction);
+        assert(original.known && original.survives);
+        std::vector<unsigned> exposure;
+        for (int h : enemyHeads) exposure.push_back(tradeHeadExposure(h, original.head));
+        reviewShorterHeadTrade(ct);
+        assert(chosenAction.dirs != originalDirs);
+        assert(chosenAction.dirs.size() == 1 && tradeOrdinary(chosenAction));
+        auto post = projectAction(chosenAction);
+        assert(post.known && post.survives && tradeContinuation(post));
+        assert(!directFriendCollision(chosenAction));
+        auto risk = actionRisk(chosenAction); assert(!risk.strong && !risk.soft);
+        for (size_t i = 0; i < enemyHeads.size(); ++i) {
+            assert(!(tradeHeadExposure(enemyHeads[i],post.head) & ~exposure[i]));
+            TradeVisibleBody e;
+            if (tradeVisibleBody(enemyHeads[i], e)) assert(!tradeShorterWitness(e,post));
+        }
+    }
+    void checkUnchanged() {
+        auto original = chosenAction;
+        reviewShorterHeadTrade(ct);
+        assert(chosenAction.dirs == original.dirs && chosenAction.split == original.split &&
+               chosenAction.donation == original.donation && chosenAction.scored == original.scored);
+    }
+};
+
+int main() {
+    Fixture f;
+    for (bool teamB : {false,true}) {
+        f.setup(3,teamB); f.enemy(); f.checkReplacement();
+        f.setup(2,teamB); f.enemy(); f.checkUnchanged();
+        f.setup(2,teamB); f.enemy(); visPearl[cid(16,7)] = 1;
+        visPearls.push_back(cid(16,7)); f.checkReplacement();
+        f.setup(3,teamB,true); f.enemy(); f.checkUnchanged();
+        f.setup(3,teamB); f.enemy(2,enemyQueenId()); f.checkUnchanged();
+    }
+    f.setup(); f.enemy(3); f.checkUnchanged();
+    f.setup(); f.enemy(4); f.checkUnchanged();
+    f.setup(); f.enemy(); visStamp[cid(15,9)] = 0; f.checkUnchanged();
+    f.setup(); f.enemy(); trail[0] = cid(14,9); f.checkUnchanged();
+    f.setup(); f.enemy(); visStamp[cid(14,6)] = 0; f.checkUnchanged();
+    f.setup(); f.enemy(); parts[occPart[cid(15,6)]].facing = 0; f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(cid(15,6),0,E_PORTAL,0); f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,0,E_UNKNOWN,-1); f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,0,E_PORTAL,0);
+    learnedExit[HERE * 4] = cid(16,7); f.checkUnchanged();
+    f.setup(); f.enemy(); chosenAction = {{},2,false,false}; f.checkUnchanged();
+    f.setup(); f.enemy(); chosenAction.donation = true; f.checkUnchanged();
+    f.setup(); f.enemy(); chosenAction.dirs = {0,0}; f.checkUnchanged();
+    f.setup(); f.enemy(); chosenAction.dirs = {4}; f.checkUnchanged();
+    f.setup(); f.enemy();
+    for (int d : {1,2,3}) setEdge(HERE,d,E_KELP,-1);
+    f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,3,E_KELP,-1);
+    f.body({cid(17,7),cid(18,7)},16,false);
+    f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,3,E_KELP,-1);
+    f.body({cid(17,7),cid(18,7)},16,false);
+    visStamp[cid(19,7)] = 0;
+    f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,3,E_KELP,-1);
+    friendGuards.push_back({4,cid(18,8),8,cid(17,8),{cid(17,8)},0});
+    f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,3,E_KELP,-1);
+    friendGuards.push_back({4,cid(18,8),8,cid(17,8),{cid(17,8),cid(18,9)},0});
+    f.checkUnchanged();
+    f.setup(); f.enemy(); setEdge(HERE,3,E_KELP,-1);
+    setEdge(cid(17,8),0,E_KELP,-1); setEdge(cid(17,8),1,E_KELP,-1);
+    setEdge(cid(17,8),2,E_KELP,-1); f.checkUnchanged();
+    f.setup(5); f.enemy(); chosenAction = {{1,0},0,false,false};
+    f.body({cid(18,7),cid(18,6)},16,false);
+    assert(tradeShorterWitness({16,{cid(18,7),cid(18,6)}},projectAction(chosenAction)));
+    f.checkReplacement();
+    std::cout << "Independent R26 controls passed: teams, exact shorter/equal/longer, pearl growth, queens, own/enemy partial, portal/unknown, malformed proposals, fatal rams, split/donation, no alternative, complete/partial new attackers, hard/soft friends, continuation and living multi-step proposals.\n";
+}

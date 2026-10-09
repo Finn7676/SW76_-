@@ -1,0 +1,64 @@
+{
+  "source": {
+    "path": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/relay_tests.cpp.txt",
+    "exists": true,
+    "bytes": 2523,
+    "sha256": "a7f5be7750970ead17e9a523834514610ee03c56cca8780c25b1b79b7a852fa3"
+  },
+  "source_manifest_before": {
+    "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+    "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+    "main.cpp": "c65cfa425e09b38662610fd19fc309b419e5c82edc2c6e7cddadeab8337b4961",
+    "verification/relay_tests.cpp.txt": "a7f5be7750970ead17e9a523834514610ee03c56cca8780c25b1b79b7a852fa3"
+  },
+  "mode": "Fresh compilation of frozen final source; not an existing test-binary rerun",
+  "compile": {
+    "command": [
+      "/usr/bin/clang++",
+      "-std=c++20",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-Wall",
+      "-Wextra",
+      "-x",
+      "c++",
+      "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/relay_tests.cpp.txt",
+      "-o",
+      "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/verification_artifacts/20260928T170807024714Z/relay_frozen_asan_ubsan"
+    ],
+    "shell_command": "/usr/bin/clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ /home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/relay_tests.cpp.txt -o /home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/verification_artifacts/20260928T170807024714Z/relay_frozen_asan_ubsan",
+    "cwd": "/home/tyhh/SW76_-",
+    "environment_overrides": {},
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "In file included from /home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/relay_tests.cpp.txt:2:\n/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/../main.cpp:1349:1: warning: non-void function does not return a value [-Wreturn-type]\n}\n^\n/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/relay_final/sources/0/tyhh_qos_protect_relay/verification/../main.cpp:660:5: warning: unused function 'enemyEscapes' [-Wunused-function]\nint enemyEscapes(int eh) {\n    ^\n2 warnings generated.\n"
+  },
+  "binary": {
+    "path": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/verification_artifacts/20260928T170807024714Z/relay_frozen_asan_ubsan",
+    "exists": true,
+    "bytes": 3720792,
+    "sha256": "e3ee0c046c3d1188ed0c7e242a1f9f9675f7f5a28a35c1732d2b46412fa1421f"
+  },
+  "run": {
+    "command": [
+      "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/verification_artifacts/20260928T170807024714Z/relay_frozen_asan_ubsan"
+    ],
+    "shell_command": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/verification_artifacts/20260928T170807024714Z/relay_frozen_asan_ubsan",
+    "cwd": "/home/tyhh/SW76_-",
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "exit_code": 0,
+    "stdout": "relay room/topology assertions passed\n",
+    "stderr": ""
+  },
+  "source_manifest_after": {
+    "bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+    "helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+    "main.cpp": "c65cfa425e09b38662610fd19fc309b419e5c82edc2c6e7cddadeab8337b4961",
+    "verification/relay_tests.cpp.txt": "a7f5be7750970ead17e9a523834514610ee03c56cca8780c25b1b79b7a852fa3"
+  }
+}

@@ -1,0 +1,28 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+void setup() {
+    W=H=16;NC=W*H;HERE=cid(5,5);MYID=2;MYTEAM=Team::A;LEN=2;ROUND=100;STAMP=1;
+    edgeT.assign(NC*4,E_OPEN);edgePid.assign(NC*4,-1);learnedExit.assign(NC*4,-1);
+    visStamp.assign(NC,STAMP);occStamp.assign(NC,0);occId.assign(NC,-1);occMine.assign(NC,0);
+    occHead.assign(NC,0);visPearl.assign(NC,0);seenRound.assign(NC,0);
+    friendGuards.clear();parts.clear();enemyHeads.clear();portalEnds.clear();portalClaimRound.clear();
+    occupiedPortalId=-1;trail={cid(5,6),HERE};
+    occStamp[HERE]=occStamp[cid(5,6)]=STAMP;occMine[HERE]=occMine[cid(5,6)]=1;
+    occId[HERE]=occId[cid(5,6)]=MYID;
+    int target=cid(8,5);setEdge(target,1,E_PORTAL,7);
+}
+int main() {
+    Controller ct{2,Team::A,Direction::NORTH,Vision{},64};CT=&ct;
+    setup();assert(scoutPortalDirection()==1);
+    setup();MYID=0;assert(scoutPortalDirection()==-1);
+    setup();LEN=8;assert(scoutPortalDirection()==-1);
+    setup();ROUND=220;assert(scoutPortalDirection()==-1);
+    setup();enemyHeads.push_back(cid(3,3));assert(scoutPortalDirection()==-1);
+    setup();portalClaimRound[7]=ROUND;assert(scoutPortalDirection()==-1);
+    setup();std::fill(learnedExit.begin(),learnedExit.end(),0);assert(scoutPortalDirection()==-1);
+    setup();std::fill(edgeT.begin(),edgeT.end(),E_UNKNOWN);assert(scoutPortalDirection()==-1);
+    std::cout<<"scout: 8 bounded route checks passed\n";
+}

@@ -1,0 +1,4738 @@
+{
+  "summary": {
+    "run_dir": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127",
+    "label": "queen_margin_v127",
+    "created_utc": "2026-10-03T16:26:40.444203+00:00",
+    "games": 68,
+    "planned": 68,
+    "audit_failures": [],
+    "manifest_failures": [],
+    "failed_matches": [],
+    "wins": 28,
+    "losses": 40,
+    "draws": 0,
+    "audit_csv": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/verified_audit.csv",
+    "by_opponent": {
+      "V3_portal": {
+        "win": 15,
+        "loss": 19,
+        "draw": 0
+      },
+      "xxqztest": {
+        "win": 13,
+        "loss": 21,
+        "draw": 0
+      }
+    },
+    "legacy_subset_games": 40,
+    "audit_tool_sha256": "12518d888b85a2eaf71263b048d1820ff51849fad91b013a320554e1284781cf",
+    "packed_parser_sha256": "5adb4ae2b3e15217742baec0f6439d556e35a5c4c1054c3ab05315b797cc9565",
+    "audit_passed": true
+  },
+  "games": [
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0002_V3_portal_australia_seed78001_B.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 242,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 62,
+          "longest": 16,
+          "total": 352,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 52,
+          "body": 29,
+          "head": 36,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 24,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 56,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 202,
+          "reason": "head",
+          "length_before_death": 10
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78001",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+      "replay_sha256": "0596607d0952f43f35a33086aae818034f33da9778704749f510f9634d46c9d4",
+      "game": "2",
+      "opponent": "V3_portal",
+      "map": "australia",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0004_V3_portal_autarky_seed78002_B.replay",
+      "format_version": 2,
+      "width": 54,
+      "height": 18,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 19,
+          "longest": 8,
+          "total": 66,
+          "queen": 0
+        },
+        "B": {
+          "population": 21,
+          "longest": 14,
+          "total": 90,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 6,
+          "body": 7,
+          "head": 42,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 14,
+          "body": 13,
+          "head": 30,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 133,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 106,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78002",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+      "replay_sha256": "75f7909dce74016104c696e2fe4df176006ef1b0324fecc982d0781647c27873",
+      "game": "4",
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0003_V3_portal_autarky_seed78002_A.replay",
+      "format_version": 2,
+      "width": 54,
+      "height": 18,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 29,
+          "longest": 7,
+          "total": 86,
+          "queen": 0
+        },
+        "B": {
+          "population": 15,
+          "longest": 4,
+          "total": 42,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 14,
+          "body": 4,
+          "head": 42,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 9,
+          "body": 4,
+          "head": 50,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 186,
+          "reason": "head",
+          "length_before_death": 5
+        },
+        "B": {
+          "round_index": 179,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78002",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+      "replay_sha256": "ab4e37798084e4b137e4de1938646ef71b045397e94b38bd7c931cf8b7b67df5",
+      "game": "3",
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0006_V3_portal_default_seed78003_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "completed_rounds": 293,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 39,
+          "longest": 3,
+          "total": 99,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 30,
+          "body": 20,
+          "head": 60,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 2,
+          "body": 2,
+          "head": 24,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 18,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 72,
+          "reason": "head",
+          "length_before_death": 6
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78003",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+      "replay_sha256": "ece2896360659bbd56b756ac54d5ef0f7e8fe5a429f8e98aea03d000c6871819",
+      "game": "6",
+      "opponent": "V3_portal",
+      "map": "default",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0005_V3_portal_default_seed78003_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "completed_rounds": 435,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 50,
+          "longest": 6,
+          "total": 130,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 1,
+          "body": 0,
+          "head": 21,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 52,
+          "body": 37,
+          "head": 115,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 60,
+          "reason": "head",
+          "length_before_death": 6
+        },
+        "B": {
+          "round_index": 7,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78003",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+      "replay_sha256": "29d4eb8a85f37538239158cae41be1d02dc58921f6d2ba0dc0b23cbdbd39713b",
+      "game": "5",
+      "opponent": "V3_portal",
+      "map": "default",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0001_V3_portal_australia_seed78001_A.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 11,
+          "longest": 13,
+          "total": 47,
+          "queen": 0
+        },
+        "B": {
+          "population": 48,
+          "longest": 30,
+          "total": 531,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 2,
+          "body": 2,
+          "head": 61,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 72,
+          "body": 86,
+          "head": 61,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 226,
+          "reason": "head",
+          "length_before_death": 17
+        },
+        "B": {
+          "round_index": 70,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78001",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+      "replay_sha256": "982794bafe03f7b9120a4e49ee33ee68ecbd0c0f3d78c8c54db2dfeaa2f16ac2",
+      "game": "1",
+      "opponent": "V3_portal",
+      "map": "australia",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0008_V3_portal_devil_seed78004_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 293,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 53,
+          "longest": 6,
+          "total": 130,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 7,
+          "body": 5,
+          "head": 31,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 213,
+          "body": 72,
+          "head": 31,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 90,
+          "reason": "self",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 42,
+          "reason": "head",
+          "length_before_death": 13
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78004",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+      "replay_sha256": "15d8361456739635d3a2e30d5b8a8447b3ed2cb009d888aa3215377a2197aa38",
+      "game": "8",
+      "opponent": "V3_portal",
+      "map": "devil",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0011_V3_portal_dilemma_seed78006_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 316,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 15,
+          "longest": 3,
+          "total": 34,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 8,
+          "body": 0,
+          "head": 6,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 29,
+          "body": 1,
+          "head": 6,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 227,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 23,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78006",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+      "replay_sha256": "caf0c041091079351c4126b0844dfd9e2673dc06b4bfdc9f8536590db716eb30",
+      "game": "11",
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0007_V3_portal_devil_seed78004_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 34,
+          "longest": 11,
+          "total": 161,
+          "queen": 0
+        },
+        "B": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 491,
+          "body": 165,
+          "head": 25,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 3,
+          "body": 2,
+          "head": 25,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 185,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 52,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 3,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78004",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+      "replay_sha256": "b6db63d1a5dc8684677dfe84ce89bf8f4900b91606eb875c3dab6e177d039454",
+      "game": "7",
+      "opponent": "V3_portal",
+      "map": "devil",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0012_V3_portal_dilemma_seed78006_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 419,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 15,
+          "longest": 4,
+          "total": 38,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 37,
+          "body": 2,
+          "head": 11,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 5,
+          "body": 0,
+          "head": 9,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 16,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 173,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78006",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+      "replay_sha256": "2c525abd24416971c77e5945322e502b66360d0c08b42354c327644487c68f14",
+      "game": "12",
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0009_V3_portal_portals_seed78005_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 14,
+          "longest": 9,
+          "total": 51,
+          "queen": 0
+        },
+        "B": {
+          "population": 14,
+          "longest": 12,
+          "total": 71,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 305,
+          "body": 37,
+          "head": 62,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 294,
+          "body": 73,
+          "head": 72,
+          "invalid_action": 3
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 199,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 90,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 3
+      },
+      "end_reason": 1,
+      "seed": "78005",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+      "replay_sha256": "67a0215e974d2b61c908de080aae08a079086d7dbbef0a0e6e0f6a6f5ce4870f",
+      "game": "9",
+      "opponent": "V3_portal",
+      "map": "portals",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0013_V3_portal_queen_of_spades_seed78007_A.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 2,
+          "longest": 2,
+          "total": 4,
+          "queen": 0
+        },
+        "B": {
+          "population": 31,
+          "longest": 8,
+          "total": 106,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 1,
+          "body": 2,
+          "head": 16,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 84,
+          "body": 61,
+          "head": 40,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 250,
+          "reason": "head",
+          "length_before_death": 5
+        },
+        "B": {
+          "round_index": 87,
+          "reason": "body",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78007",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+      "replay_sha256": "78440d99006f690f41e4088fe29abfac3865aa2bb82636c69f65c15c8ce4094f",
+      "game": "13",
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0014_V3_portal_queen_of_spades_seed78007_B.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 20,
+          "longest": 13,
+          "total": 83,
+          "queen": 0
+        },
+        "B": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 104,
+          "body": 85,
+          "head": 39,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 6,
+          "body": 0,
+          "head": 11,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 102,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 202,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 8,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78007",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+      "replay_sha256": "3e654159742e5940f7c8bf4933c5d0774b80e858fc634f0118aed411386c4119",
+      "game": "14",
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0010_V3_portal_portals_seed78005_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 13,
+          "longest": 10,
+          "total": 71,
+          "queen": 0
+        },
+        "B": {
+          "population": 18,
+          "longest": 7,
+          "total": 78,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 316,
+          "body": 68,
+          "head": 80,
+          "invalid_action": 2
+        },
+        "B": {
+          "wall": 0,
+          "self": 299,
+          "body": 54,
+          "head": 70,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 75,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 129,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 3,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 2,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78005",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+      "replay_sha256": "fc3abaee2773cc1292c70c02b996e866e81ce0048672e8de6fa2bc5f4d807129",
+      "game": "10",
+      "opponent": "V3_portal",
+      "map": "portals",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0015_V3_portal_schooltime_seed78008_A.replay",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 44,
+          "longest": 41,
+          "total": 254,
+          "queen": 3
+        },
+        "B": {
+          "population": 20,
+          "longest": 17,
+          "total": 152,
+          "queen": 3
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 185,
+          "body": 45,
+          "head": 224,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 166,
+          "body": 91,
+          "head": 178,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": null
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78008",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+      "replay_sha256": "c351fd28c8d6314aa49f123221defc395be25fc23e12bef5a0bbc1434026d116",
+      "game": "15",
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0019_V3_portal_trauma_seed78010_A.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 17,
+          "longest": 5,
+          "total": 45,
+          "queen": 0
+        },
+        "B": {
+          "population": 15,
+          "longest": 9,
+          "total": 54,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 5,
+          "body": 3,
+          "head": 0,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 45,
+          "body": 12,
+          "head": 8,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 212,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 150,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78010",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+      "replay_sha256": "3a67f01a107aac45565f3f0ac5263535374145d448123cf969c002de57c00da2",
+      "game": "19",
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0016_V3_portal_schooltime_seed78008_B.replay",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 34,
+          "longest": 23,
+          "total": 265,
+          "queen": 3
+        },
+        "B": {
+          "population": 29,
+          "longest": 44,
+          "total": 190,
+          "queen": 3
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 171,
+          "body": 149,
+          "head": 176,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 253,
+          "body": 100,
+          "head": 176,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": null
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78008",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+      "replay_sha256": "b35be2ac70c1f3332d69fa33b419ab4dad4d19df737cd3ec8b258e1bf81c42a5",
+      "game": "16",
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0017_V3_portal_slithery_fight_seed78009_A.replay",
+      "format_version": 2,
+      "width": 63,
+      "height": 27,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 38,
+          "longest": 34,
+          "total": 234,
+          "queen": 0
+        },
+        "B": {
+          "population": 33,
+          "longest": 19,
+          "total": 189,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 578,
+          "body": 81,
+          "head": 118,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 347,
+          "body": 301,
+          "head": 122,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78009",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+      "replay_sha256": "7a79e9d0ae4701ab9f711e2a79d61acad9942b3a9d66aae0def7f4765b87d8f5",
+      "game": "17",
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0020_V3_portal_trauma_seed78010_B.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 9,
+          "longest": 9,
+          "total": 31,
+          "queen": 0
+        },
+        "B": {
+          "population": 10,
+          "longest": 14,
+          "total": 63,
+          "queen": 12
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 45,
+          "body": 8,
+          "head": 4,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 152,
+          "body": 23,
+          "head": 4,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 119,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": null
+      },
+      "queen_splits": {
+        "A": 5,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78010",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+      "replay_sha256": "bcf721ae12e325a0210b8a237b90b90d819672bbb34b182175d18f6a3db1d5fb",
+      "game": "20",
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0018_V3_portal_slithery_fight_seed78009_B.replay",
+      "format_version": 2,
+      "width": 63,
+      "height": 27,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 29,
+          "longest": 12,
+          "total": 182,
+          "queen": 0
+        },
+        "B": {
+          "population": 33,
+          "longest": 24,
+          "total": 216,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 441,
+          "body": 201,
+          "head": 121,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 593,
+          "body": 101,
+          "head": 121,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 1,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78009",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+      "replay_sha256": "d011f17e045ff467b3b7c32f2abafedd8e6e2f577d65ef1bbefc8adeb24ad33c",
+      "game": "18",
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0023_V3_portal_islands_seed78012_A.replay",
+      "format_version": 2,
+      "width": 56,
+      "height": 40,
+      "completed_rounds": 268,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 62,
+          "longest": 16,
+          "total": 356,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 6,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 128,
+          "body": 78,
+          "head": 30,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 35,
+          "reason": "head",
+          "length_before_death": 10
+        },
+        "B": {
+          "round_index": 41,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78012",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+      "replay_sha256": "39c2627d6917eddeae61a2c64762e325a1c1deaa3d226400497733c1a19fb998",
+      "game": "23",
+      "opponent": "V3_portal",
+      "map": "islands",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0021_V3_portal_trophy_seed78011_A.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 25,
+      "completed_rounds": 143,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 62,
+          "longest": 4,
+          "total": 147,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 7,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 13,
+          "body": 6,
+          "head": 9,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 46,
+          "reason": "head",
+          "length_before_death": 17
+        },
+        "B": {
+          "round_index": 25,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78011",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+      "replay_sha256": "9b657060c8153581f32a88c3a5475b87ff8c69a852c4c819e911168b33c59fe7",
+      "game": "21",
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0025_V3_portal_maze_seed78013_A.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 24,
+          "longest": 24,
+          "total": 150,
+          "queen": 0
+        },
+        "B": {
+          "population": 17,
+          "longest": 10,
+          "total": 72,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 341,
+          "body": 95,
+          "head": 28,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 193,
+          "body": 61,
+          "head": 24,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 117,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 188,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 5
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78013",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+      "replay_sha256": "671bf7e3b50317b637b381622259155c82718a566c8a1de576e8dd6c1dd5f520",
+      "game": "25",
+      "opponent": "V3_portal",
+      "map": "maze",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0027_V3_portal_stripes_seed78014_A.replay",
+      "format_version": 2,
+      "width": 24,
+      "height": 12,
+      "completed_rounds": 155,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 15,
+          "longest": 4,
+          "total": 38,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 10,
+          "body": 0,
+          "head": 4,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 5,
+          "body": 2,
+          "head": 4,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 45,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 35,
+          "reason": "self",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78014",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+      "replay_sha256": "f01dc2e1c06fb356c717103f83bd2b0dd1710ad40a4cf39b4dc8eefe1c97f938",
+      "game": "27",
+      "opponent": "V3_portal",
+      "map": "stripes",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0028_V3_portal_stripes_seed78014_B.replay",
+      "format_version": 2,
+      "width": 24,
+      "height": 12,
+      "completed_rounds": 167,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 19,
+          "longest": 3,
+          "total": 46,
+          "queen": 2
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 14,
+          "body": 3,
+          "head": 2,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 4,
+          "body": 0,
+          "head": 2,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": {
+          "round_index": 73,
+          "reason": "head",
+          "length_before_death": 4
+        }
+      },
+      "queen_splits": {
+        "A": 10,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78014",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+      "replay_sha256": "d3e1831a777564c984463e39e2dfbf5333b131ccfef28de7b13dc66659f24c18",
+      "game": "28",
+      "opponent": "V3_portal",
+      "map": "stripes",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0029_V3_portal_tower_defense_seed78015_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 8,
+          "longest": 6,
+          "total": 24,
+          "queen": 0
+        },
+        "B": {
+          "population": 8,
+          "longest": 4,
+          "total": 21,
+          "queen": 2
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 8,
+          "body": 2,
+          "head": 0,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 7,
+          "body": 1,
+          "head": 0,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 260,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": null
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78015",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+      "replay_sha256": "3cc6bf16ce941d4a627be7c4e0f794c5cb02802f8f64265bdef3620a6477bd36",
+      "game": "29",
+      "opponent": "V3_portal",
+      "map": "tower_defense",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0030_V3_portal_tower_defense_seed78015_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 15,
+          "longest": 17,
+          "total": 64,
+          "queen": 0
+        },
+        "B": {
+          "population": 7,
+          "longest": 3,
+          "total": 16,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 45,
+          "body": 31,
+          "head": 5,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 6,
+          "body": 2,
+          "head": 5,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 340,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 362,
+          "reason": "head",
+          "length_before_death": 4
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78015",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+      "replay_sha256": "923bf74b9de5e096ba9afc224667e61e041e9374f55c9ec45b4d874a574d2041",
+      "game": "30",
+      "opponent": "V3_portal",
+      "map": "tower_defense",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0026_V3_portal_maze_seed78013_B.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 15,
+          "longest": 15,
+          "total": 100,
+          "queen": 0
+        },
+        "B": {
+          "population": 27,
+          "longest": 27,
+          "total": 142,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 171,
+          "body": 62,
+          "head": 11,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 180,
+          "body": 66,
+          "head": 11,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 218,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 28,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 4,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78013",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+      "replay_sha256": "4a2ce3a3404b1cb676326872e321e1bf95de8686bf22df6e7d6905dea3792b14",
+      "game": "26",
+      "opponent": "V3_portal",
+      "map": "maze",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0024_V3_portal_islands_seed78012_B.replay",
+      "format_version": 2,
+      "width": 56,
+      "height": 40,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 34,
+          "longest": 19,
+          "total": 290,
+          "queen": 0
+        },
+        "B": {
+          "population": 8,
+          "longest": 4,
+          "total": 21,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 186,
+          "body": 144,
+          "head": 91,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 20,
+          "body": 6,
+          "head": 35,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 394,
+          "reason": "head",
+          "length_before_death": 10
+        },
+        "B": {
+          "round_index": 31,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 5,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78012",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+      "replay_sha256": "ad8fe6c4d012e68817a21c5ee961fa285ba6ce5433352854e65320b674865080",
+      "game": "24",
+      "opponent": "V3_portal",
+      "map": "islands",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0033_V3_portal_weakhold_seed78017_A.replay",
+      "format_version": 2,
+      "width": 40,
+      "height": 15,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 20,
+          "longest": 10,
+          "total": 83,
+          "queen": 4
+        },
+        "B": {
+          "population": 3,
+          "longest": 3,
+          "total": 7,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 133,
+          "body": 43,
+          "head": 1,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 62,
+          "body": 0,
+          "head": 1,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": {
+          "round_index": 23,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78017",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+      "replay_sha256": "6e68da2cab955d5e30055427ec421b8f010d6f088d4fd1ea798a3dbe94e8d620",
+      "game": "33",
+      "opponent": "V3_portal",
+      "map": "weakhold",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0034_V3_portal_weakhold_seed78017_B.replay",
+      "format_version": 2,
+      "width": 40,
+      "height": 15,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 4,
+          "longest": 2,
+          "total": 8,
+          "queen": 0
+        },
+        "B": {
+          "population": 5,
+          "longest": 3,
+          "total": 11,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 113,
+          "body": 0,
+          "head": 0,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 44,
+          "body": 1,
+          "head": 0,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 29,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 120,
+          "reason": "body",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78017",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+      "replay_sha256": "8522575ab0e070693b52baa07399fcf9817b7bf584421367b635126adcf2cbd5",
+      "game": "34",
+      "opponent": "V3_portal",
+      "map": "weakhold",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0031_V3_portal_unsw_seed78016_A.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 35,
+          "longest": 25,
+          "total": 288,
+          "queen": 0
+        },
+        "B": {
+          "population": 40,
+          "longest": 17,
+          "total": 283,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 289,
+          "body": 39,
+          "head": 122,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 218,
+          "body": 105,
+          "head": 130,
+          "invalid_action": 2
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 137,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 171,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 2
+      },
+      "end_reason": 1,
+      "seed": "78016",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "map_sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+      "replay_sha256": "96d8b480be3aa9e18a57b5a22c966e9b8b86c23aa6e9fa411ede00ad47e2f97a",
+      "game": "31",
+      "opponent": "V3_portal",
+      "map": "unsw",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0032_V3_portal_unsw_seed78016_B.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 38,
+          "longest": 29,
+          "total": 262,
+          "queen": 0
+        },
+        "B": {
+          "population": 41,
+          "longest": 31,
+          "total": 302,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 232,
+          "body": 109,
+          "head": 122,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 197,
+          "body": 37,
+          "head": 116,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 36,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 314,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78016",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+      "replay_sha256": "16fd6a6113b246ffe61e665638f7b1b8c1b5bebc3a8ae890841f2b629df740b3",
+      "game": "32",
+      "opponent": "V3_portal",
+      "map": "unsw",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0035_xxqztest_australia_seed78001_A.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 43,
+          "longest": 10,
+          "total": 178,
+          "queen": 0
+        },
+        "B": {
+          "population": 31,
+          "longest": 14,
+          "total": 113,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 91,
+          "body": 24,
+          "head": 183,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 71,
+          "body": 36,
+          "head": 185,
+          "invalid_action": 29
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 213,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 198,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 29
+      },
+      "end_reason": 1,
+      "seed": "78001",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+      "replay_sha256": "ee7a67f6fcff88dd54b905f602c2be38a24001c3f1c0d2a359807c7757caf12f",
+      "game": "35",
+      "opponent": "xxqztest",
+      "map": "australia",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0037_xxqztest_autarky_seed78002_A.replay",
+      "format_version": 2,
+      "width": 54,
+      "height": 18,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 36,
+          "longest": 6,
+          "total": 101,
+          "queen": 0
+        },
+        "B": {
+          "population": 12,
+          "longest": 6,
+          "total": 42,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 19,
+          "body": 8,
+          "head": 45,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 18,
+          "body": 6,
+          "head": 47,
+          "invalid_action": 2
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 122,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 203,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 2
+      },
+      "end_reason": 1,
+      "seed": "78002",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+      "replay_sha256": "bfa5560efd2e4606180de46e9504e0b53142aff864c2a7503b36b0c5fd8c9044",
+      "game": "37",
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0038_xxqztest_autarky_seed78002_B.replay",
+      "format_version": 2,
+      "width": 54,
+      "height": 18,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 18,
+          "longest": 9,
+          "total": 55,
+          "queen": 0
+        },
+        "B": {
+          "population": 24,
+          "longest": 4,
+          "total": 66,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 96,
+          "body": 17,
+          "head": 68,
+          "invalid_action": 3
+        },
+        "B": {
+          "wall": 0,
+          "self": 12,
+          "body": 4,
+          "head": 50,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 25,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 126,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 3,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78002",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+      "replay_sha256": "1c1e03512e13140525ce320a0fa368639b7912a9a19e7c3f1da14954d81d7a59",
+      "game": "38",
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0036_xxqztest_australia_seed78001_B.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 8,
+          "longest": 27,
+          "total": 92,
+          "queen": 0
+        },
+        "B": {
+          "population": 43,
+          "longest": 26,
+          "total": 288,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 68,
+          "body": 18,
+          "head": 113,
+          "invalid_action": 77
+        },
+        "B": {
+          "wall": 0,
+          "self": 88,
+          "body": 46,
+          "head": 117,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 22,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 234,
+          "reason": "head",
+          "length_before_death": 16
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 77,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78001",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "7fccdee8a73a971bc3dc7a07b13aa56bb214f311249b942869bcc9708084d539",
+      "replay_sha256": "738516493e48eb4d86c362fcf5aa3cea0cef61967de1595c7e293322dca2665d",
+      "game": "36",
+      "opponent": "xxqztest",
+      "map": "australia",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0039_xxqztest_default_seed78003_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 4,
+          "longest": 3,
+          "total": 9,
+          "queen": 0
+        },
+        "B": {
+          "population": 16,
+          "longest": 36,
+          "total": 118,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 5,
+          "body": 2,
+          "head": 54,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 21,
+          "body": 31,
+          "head": 98,
+          "invalid_action": 86
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 76,
+          "reason": "head",
+          "length_before_death": 5
+        },
+        "B": {
+          "round_index": 78,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 86
+      },
+      "end_reason": 1,
+      "seed": "78003",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+      "replay_sha256": "b46efe70fd2f0bbd8dfdf4efa93c63735c93c80f5550a73f15e11b22e0552a75",
+      "game": "39",
+      "opponent": "xxqztest",
+      "map": "default",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0040_xxqztest_default_seed78003_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        },
+        "B": {
+          "population": 37,
+          "longest": 13,
+          "total": 149,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 17,
+          "body": 21,
+          "head": 72,
+          "invalid_action": 2
+        },
+        "B": {
+          "wall": 0,
+          "self": 43,
+          "body": 41,
+          "head": 88,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 66,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 272,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 2,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78003",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "42d4766ffede5f445692b119a26a6eee687fdc63b5b86776fefdf7fd755789b8",
+      "replay_sha256": "e50e19da1faf574e7e6898e4595dedd1ee42040c06a9ba03ebdd0645dd9a1f54",
+      "game": "40",
+      "opponent": "xxqztest",
+      "map": "default",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0041_xxqztest_devil_seed78004_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 355,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 61,
+          "longest": 13,
+          "total": 162,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 364,
+          "body": 106,
+          "head": 20,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 2,
+          "body": 1,
+          "head": 20,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 157,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 83,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 3
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78004",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+      "replay_sha256": "0ce85cf5e110ea527bfd9c2ead022efa6e90aafcb0e21fc273327ca08fcfeb27",
+      "game": "41",
+      "opponent": "xxqztest",
+      "map": "devil",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0042_xxqztest_devil_seed78004_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 316,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 49,
+          "longest": 5,
+          "total": 129,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 3,
+          "body": 1,
+          "head": 30,
+          "invalid_action": 1
+        },
+        "B": {
+          "wall": 0,
+          "self": 282,
+          "body": 89,
+          "head": 30,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 109,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 275,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 5
+      },
+      "explicit_suicide_deaths": {
+        "A": 1,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78004",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+      "replay_sha256": "f63f6a939e78463ae5f6e156f6c0cdf3188156e903a3882bd69e82e086f838f3",
+      "game": "42",
+      "opponent": "xxqztest",
+      "map": "devil",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0045_xxqztest_dilemma_seed78006_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 15,
+          "longest": 14,
+          "total": 68,
+          "queen": 0
+        },
+        "B": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 55,
+          "body": 12,
+          "head": 12,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 3,
+          "body": 0,
+          "head": 12,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 245,
+          "reason": "head",
+          "length_before_death": 6
+        },
+        "B": {
+          "round_index": 18,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78006",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+      "replay_sha256": "b5f7574502d905a255ef4e97c8f9824fa249753d14d853fb424005cea4451883",
+      "game": "45",
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0043_xxqztest_portals_seed78005_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 14,
+          "longest": 11,
+          "total": 65,
+          "queen": 0
+        },
+        "B": {
+          "population": 8,
+          "longest": 36,
+          "total": 61,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 329,
+          "body": 56,
+          "head": 82,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 175,
+          "body": 49,
+          "head": 50,
+          "invalid_action": 53
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 115,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 211,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 53
+      },
+      "end_reason": 1,
+      "seed": "78005",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+      "replay_sha256": "b9dc342e0dcfb1f432b9548fb4ce31f09fa02789418b7a679774eafd973aca70",
+      "game": "43",
+      "opponent": "xxqztest",
+      "map": "portals",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0046_xxqztest_dilemma_seed78006_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        },
+        "B": {
+          "population": 17,
+          "longest": 13,
+          "total": 60,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 7,
+          "body": 0,
+          "head": 9,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 55,
+          "body": 9,
+          "head": 17,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 48,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 105,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78006",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "fd02547854cbcbe36274d4341900610ba1aa1caa35e553c38135def95e0db68d",
+      "replay_sha256": "1852d530316894a5a6442d00c02c1cdbc1da9a6b44894dbcf20fa529e178310f",
+      "game": "46",
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0048_xxqztest_queen_of_spades_seed78007_B.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "completed_rounds": 216,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 38,
+          "longest": 4,
+          "total": 93,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 23,
+          "body": 12,
+          "head": 21,
+          "invalid_action": 3
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 9,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 177,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 215,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 3,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 3,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78007",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+      "replay_sha256": "e27a6828d7a11be8add20cbbbe37b536a6e106a9ab6281ff588a5de909db7a4f",
+      "game": "48",
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0044_xxqztest_portals_seed78005_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 8,
+          "longest": 19,
+          "total": 66,
+          "queen": 0
+        },
+        "B": {
+          "population": 18,
+          "longest": 7,
+          "total": 74,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 253,
+          "body": 66,
+          "head": 80,
+          "invalid_action": 102
+        },
+        "B": {
+          "wall": 0,
+          "self": 414,
+          "body": 68,
+          "head": 68,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 78,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 111,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 3,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 102,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78005",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "56341e6577da7429efb6f33b64b79b0c4223c4fbd9df995713ad781bead5f423",
+      "replay_sha256": "62915c23470dd212dce82bbf6924750aa8ed3323064da110e27cb7ee930661f9",
+      "game": "44",
+      "opponent": "xxqztest",
+      "map": "portals",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0049_xxqztest_schooltime_seed78008_A.replay",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 37,
+          "longest": 30,
+          "total": 271,
+          "queen": 3
+        },
+        "B": {
+          "population": 26,
+          "longest": 40,
+          "total": 169,
+          "queen": 3
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 259,
+          "body": 66,
+          "head": 164,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 100,
+          "body": 72,
+          "head": 152,
+          "invalid_action": 93
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": null
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 93
+      },
+      "end_reason": 1,
+      "seed": "78008",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+      "replay_sha256": "7544ba858f4263e4501a6ae8919c61ddef8e6722bc4fc9885ae554086e9468f9",
+      "game": "49",
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0050_xxqztest_schooltime_seed78008_B.replay",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 18,
+          "longest": 15,
+          "total": 95,
+          "queen": 0
+        },
+        "B": {
+          "population": 38,
+          "longest": 41,
+          "total": 252,
+          "queen": 3
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 121,
+          "body": 63,
+          "head": 178,
+          "invalid_action": 108
+        },
+        "B": {
+          "wall": 0,
+          "self": 209,
+          "body": 74,
+          "head": 184,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 276,
+          "reason": "self",
+          "length_before_death": 4
+        },
+        "B": null
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 108,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78008",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "5b9481d0c65454b6d0a6747a581c582414cba37dd99273cc5a23dbca63b31724",
+      "replay_sha256": "f155f7049c890a5558bcb44fab4030e9bbde9465d900a2014565de638ee2b8ad",
+      "game": "50",
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0047_xxqztest_queen_of_spades_seed78007_A.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "completed_rounds": 149,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 29,
+          "longest": 4,
+          "total": 69,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 2,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 15,
+          "body": 5,
+          "head": 2,
+          "invalid_action": 2
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 148,
+          "reason": "head",
+          "length_before_death": 9
+        },
+        "B": {
+          "round_index": 118,
+          "reason": "invalid_action",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 9
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 2
+      },
+      "end_reason": 0,
+      "seed": "78007",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+      "replay_sha256": "2dedbb83c70661f2f4b3822e806e7417abb41d8edb4c3147c93a76260e570e2b",
+      "game": "47",
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0053_xxqztest_trauma_seed78010_A.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 9,
+          "longest": 9,
+          "total": 37,
+          "queen": 0
+        },
+        "B": {
+          "population": 17,
+          "longest": 13,
+          "total": 59,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 120,
+          "body": 18,
+          "head": 26,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 48,
+          "body": 16,
+          "head": 20,
+          "invalid_action": 10
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 347,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 306,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 3
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 10
+      },
+      "end_reason": 1,
+      "seed": "78010",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+      "replay_sha256": "8e9784bf62b63fd5496db909037d7db808c966cd4cc285f5164f0907a9b8177c",
+      "game": "53",
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0022_V3_portal_trophy_seed78011_B.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 25,
+      "completed_rounds": 154,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 61,
+          "longest": 5,
+          "total": 151,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 22,
+          "body": 8,
+          "head": 16,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 1,
+          "head": 14,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 68,
+          "reason": "head",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 111,
+          "reason": "head",
+          "length_before_death": 4
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78011",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/1_V3_portal/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+      "replay_sha256": "a06a344621ee2801eec56ef92884b56b19c4c3420f7823725356d594a1ccffb3",
+      "game": "22",
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0054_xxqztest_trauma_seed78010_B.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 18,
+          "longest": 12,
+          "total": 71,
+          "queen": 0
+        },
+        "B": {
+          "population": 15,
+          "longest": 7,
+          "total": 47,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 126,
+          "body": 39,
+          "head": 24,
+          "invalid_action": 28
+        },
+        "B": {
+          "wall": 0,
+          "self": 108,
+          "body": 19,
+          "head": 34,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 231,
+          "reason": "body",
+          "length_before_death": 3
+        },
+        "B": {
+          "round_index": 333,
+          "reason": "head",
+          "length_before_death": 5
+        }
+      },
+      "queen_splits": {
+        "A": 3,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 28,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78010",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+      "replay_sha256": "eff967630fda2d7c75439e61f5473efe83f9078bdfdc4f701ca19af0e940ac70",
+      "game": "54",
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0051_xxqztest_slithery_fight_seed78009_A.replay",
+      "format_version": 2,
+      "width": 63,
+      "height": 27,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 38,
+          "longest": 23,
+          "total": 249,
+          "queen": 0
+        },
+        "B": {
+          "population": 17,
+          "longest": 37,
+          "total": 141,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 595,
+          "body": 87,
+          "head": 77,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 189,
+          "body": 104,
+          "head": 77,
+          "invalid_action": 134
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 134
+      },
+      "end_reason": 1,
+      "seed": "78009",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+      "replay_sha256": "58f6a8e7b624bfb6ad4ada10c00de45f588889e8fec00e83e58e919146376af0",
+      "game": "51",
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0056_xxqztest_trophy_seed78011_B.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 25,
+      "completed_rounds": 161,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 64,
+          "longest": 6,
+          "total": 176,
+          "queen": 3
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 8,
+          "body": 11,
+          "head": 9,
+          "invalid_action": 3
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 5,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": {
+          "round_index": 105,
+          "reason": "head",
+          "length_before_death": 9
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 3,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78011",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+      "replay_sha256": "b708a54308505d3238133146a1dbe52240ef6248640dfd5b0b445f0e6027d120",
+      "game": "56",
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0057_xxqztest_islands_seed78012_A.replay",
+      "format_version": 2,
+      "width": 56,
+      "height": 40,
+      "completed_rounds": 266,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 64,
+          "longest": 12,
+          "total": 281,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 1,
+          "body": 0,
+          "head": 8,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 66,
+          "body": 29,
+          "head": 40,
+          "invalid_action": 5
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 110,
+          "reason": "head",
+          "length_before_death": 14
+        },
+        "B": {
+          "round_index": 47,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 4
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 5
+      },
+      "end_reason": 0,
+      "seed": "78012",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+      "replay_sha256": "4837e72c37135433ac8d3762935adb7706c2ee32f52b2a57735c880e266f4cf5",
+      "game": "57",
+      "opponent": "xxqztest",
+      "map": "islands",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0055_xxqztest_trophy_seed78011_A.replay",
+      "format_version": 2,
+      "width": 25,
+      "height": 25,
+      "completed_rounds": 374,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 63,
+          "longest": 7,
+          "total": 167,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 127,
+          "body": 31,
+          "head": 73,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 3,
+          "head": 41,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 64,
+          "reason": "head",
+          "length_before_death": 25
+        },
+        "B": {
+          "round_index": 62,
+          "reason": "head",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 0,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78011",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "4f84e990688c1e96ee4c2a7ff0706e4b44f4ee63531dd5c5582cf9157b134fb1",
+      "replay_sha256": "347d24a2935e3e43a32696dc4107ec281b4fb3402686e6f442287fc4a6be41ee",
+      "game": "55",
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "outcome": "win",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0058_xxqztest_islands_seed78012_B.replay",
+      "format_version": 2,
+      "width": 56,
+      "height": 40,
+      "completed_rounds": 362,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 62,
+          "longest": 22,
+          "total": 241,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 96,
+          "body": 35,
+          "head": 31,
+          "invalid_action": 36
+        },
+        "B": {
+          "wall": 0,
+          "self": 0,
+          "body": 0,
+          "head": 9,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 40,
+          "reason": "head",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 30,
+          "reason": "head",
+          "length_before_death": 6
+        }
+      },
+      "queen_splits": {
+        "A": 5,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 36,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78012",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "8a403c0aa6c7affc53ee27283fed1568840bb82517c9d7eb59c69462f66d5fb6",
+      "replay_sha256": "db85387653ab4a554f6fbce2ba9aa2bd2c1cfd53d125b1165fdbf9e30eaa5a0b",
+      "game": "58",
+      "opponent": "xxqztest",
+      "map": "islands",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0061_xxqztest_stripes_seed78014_A.replay",
+      "format_version": 2,
+      "width": 24,
+      "height": 12,
+      "completed_rounds": 361,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        },
+        "B": {
+          "population": 21,
+          "longest": 5,
+          "total": 59,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 13,
+          "body": 1,
+          "head": 15,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 87,
+          "body": 14,
+          "head": 19,
+          "invalid_action": 2
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 82,
+          "reason": "head",
+          "length_before_death": 8
+        },
+        "B": {
+          "round_index": 81,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 6
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 2
+      },
+      "end_reason": 0,
+      "seed": "78014",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+      "replay_sha256": "d88c5653a6fe2ec7697f0cdc2c6fde54f14d98a3e73e9c408abbd5bf2b0941a6",
+      "game": "61",
+      "opponent": "xxqztest",
+      "map": "stripes",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0059_xxqztest_maze_seed78013_A.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 23,
+          "longest": 41,
+          "total": 167,
+          "queen": 0
+        },
+        "B": {
+          "population": 18,
+          "longest": 18,
+          "total": 74,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 347,
+          "body": 79,
+          "head": 34,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 155,
+          "body": 49,
+          "head": 28,
+          "invalid_action": 24
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 99,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 28,
+          "reason": "body",
+          "length_before_death": 3
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 24
+      },
+      "end_reason": 1,
+      "seed": "78013",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+      "replay_sha256": "b08504201b8aa63162b41bc78afea21631209ec68d448943bc9ce0e34275f8f7",
+      "game": "59",
+      "opponent": "xxqztest",
+      "map": "maze",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0063_xxqztest_tower_defense_seed78015_A.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 8,
+          "longest": 10,
+          "total": 26,
+          "queen": 0
+        },
+        "B": {
+          "population": 11,
+          "longest": 21,
+          "total": 49,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 6,
+          "body": 4,
+          "head": 1,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 10,
+          "body": 4,
+          "head": 1,
+          "invalid_action": 8
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 309,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 431,
+          "reason": "body",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 8
+      },
+      "end_reason": 1,
+      "seed": "78015",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+      "replay_sha256": "0dd8a8dda34036b48f0ad5a2bb9650f3867dab4b3fab45f531be0399837e0b78",
+      "game": "63",
+      "opponent": "xxqztest",
+      "map": "tower_defense",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0060_xxqztest_maze_seed78013_B.replay",
+      "format_version": 2,
+      "width": 48,
+      "height": 24,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 22,
+          "longest": 29,
+          "total": 128,
+          "queen": 0
+        },
+        "B": {
+          "population": 19,
+          "longest": 15,
+          "total": 116,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 276,
+          "body": 54,
+          "head": 32,
+          "invalid_action": 71
+        },
+        "B": {
+          "wall": 0,
+          "self": 283,
+          "body": 80,
+          "head": 28,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 55,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 120,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 71,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78013",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "f154114e3ed9d39efd8516529acf8462328866b1580662228ff35dedd3cd3bdf",
+      "replay_sha256": "b9c2819d9e420f2fde987322d6f3833605381fefcacb86b11e51600c2e621932",
+      "game": "60",
+      "opponent": "xxqztest",
+      "map": "maze",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0064_xxqztest_tower_defense_seed78015_B.replay",
+      "format_version": 2,
+      "width": 32,
+      "height": 16,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 8,
+          "longest": 4,
+          "total": 21,
+          "queen": 3
+        },
+        "B": {
+          "population": 13,
+          "longest": 19,
+          "total": 71,
+          "queen": 6
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 3,
+          "body": 1,
+          "head": 3,
+          "invalid_action": 1
+        },
+        "B": {
+          "wall": 0,
+          "self": 18,
+          "body": 13,
+          "head": 3,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": null,
+        "B": null
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 1,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78015",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "1f097251f44508a5db71c691a361362052934817e99a8975a2521bcaf81c9725",
+      "replay_sha256": "6077897907a0bf1d27e47ad0368754c3a92e446e84a74fb271ee52085eb286ec",
+      "game": "64",
+      "opponent": "xxqztest",
+      "map": "tower_defense",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0052_xxqztest_slithery_fight_seed78009_B.replay",
+      "format_version": 2,
+      "width": 63,
+      "height": 27,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 22,
+          "longest": 52,
+          "total": 212,
+          "queen": 0
+        },
+        "B": {
+          "population": 29,
+          "longest": 21,
+          "total": 186,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 301,
+          "body": 99,
+          "head": 84,
+          "invalid_action": 137
+        },
+        "B": {
+          "wall": 0,
+          "self": 427,
+          "body": 91,
+          "head": 96,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 1,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 1,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 137,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78009",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "001f3501dc5b76cb35b796f03fcaaed6c90be34741b5da03ab061ba0908347e7",
+      "replay_sha256": "b4d6f7845caa22c2f9c379857c40b9d1444c487e571f5c09a1f20eac3e762ef2",
+      "game": "52",
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "outcome": "loss",
+      "legacy_subset": "True"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0067_xxqztest_weakhold_seed78017_A.replay",
+      "format_version": 2,
+      "width": 40,
+      "height": 15,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 19,
+          "longest": 9,
+          "total": 73,
+          "queen": 0
+        },
+        "B": {
+          "population": 6,
+          "longest": 2,
+          "total": 12,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 96,
+          "body": 24,
+          "head": 4,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 47,
+          "body": 1,
+          "head": 4,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 120,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 25,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 2
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78017",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+      "replay_sha256": "e8779cdd7ebba29c46fb66e23d019975afcca216bfbe601411a0d485575ecbda",
+      "game": "67",
+      "opponent": "xxqztest",
+      "map": "weakhold",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0068_xxqztest_weakhold_seed78017_B.replay",
+      "format_version": 2,
+      "width": 40,
+      "height": 15,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 11,
+          "longest": 38,
+          "total": 88,
+          "queen": 0
+        },
+        "B": {
+          "population": 1,
+          "longest": 2,
+          "total": 2,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 137,
+          "body": 32,
+          "head": 2,
+          "invalid_action": 39
+        },
+        "B": {
+          "wall": 0,
+          "self": 34,
+          "body": 0,
+          "head": 2,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 33,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 245,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 39,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78017",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "4cf0e4e57c12fd4dfbd2ad997e29994e736dd5d8eca1e0f3353e3020d94b08c1",
+      "replay_sha256": "88677898e52e73f17203a2b462538e8c60414f7514dd1ead5048de5964262117",
+      "game": "68",
+      "opponent": "xxqztest",
+      "map": "weakhold",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0065_xxqztest_unsw_seed78016_A.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "A",
+      "bot1_side": "A",
+      "standings": {
+        "A": {
+          "population": 35,
+          "longest": 29,
+          "total": 248,
+          "queen": 0
+        },
+        "B": {
+          "population": 43,
+          "longest": 23,
+          "total": 160,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 271,
+          "body": 43,
+          "head": 153,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 127,
+          "body": 44,
+          "head": 163,
+          "invalid_action": 98
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 327,
+          "reason": "self",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 99,
+          "reason": "head",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 2,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 98
+      },
+      "end_reason": 1,
+      "seed": "78016",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "map_sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+      "replay_sha256": "0c8fe3c4076eaa44be51325ee0fbe49974afb0901b0bbb979cc588aba4612695",
+      "game": "65",
+      "opponent": "xxqztest",
+      "map": "unsw",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0066_xxqztest_unsw_seed78016_B.replay",
+      "format_version": 2,
+      "width": 64,
+      "height": 64,
+      "completed_rounds": 500,
+      "winner": "B",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 24,
+          "longest": 31,
+          "total": 171,
+          "queen": 0
+        },
+        "B": {
+          "population": 41,
+          "longest": 35,
+          "total": 326,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 145,
+          "body": 44,
+          "head": 168,
+          "invalid_action": 84
+        },
+        "B": {
+          "wall": 0,
+          "self": 227,
+          "body": 28,
+          "head": 170,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 4,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 81,
+          "reason": "self",
+          "length_before_death": 2
+        }
+      },
+      "queen_splits": {
+        "A": 1,
+        "B": 1
+      },
+      "explicit_suicide_deaths": {
+        "A": 84,
+        "B": 0
+      },
+      "end_reason": 1,
+      "seed": "78016",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "ea443f10a63c1a37521cfef814b2e9316acf5e56f29e74b9e2c20987ccd0b72a",
+      "replay_sha256": "b961b4f18e9c286d4315f3e49419e8afbfbcb24481ea307f0c185216afb640db",
+      "game": "66",
+      "opponent": "xxqztest",
+      "map": "unsw",
+      "outcome": "win",
+      "legacy_subset": "False"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/0062_xxqztest_stripes_seed78014_B.replay",
+      "format_version": 2,
+      "width": 24,
+      "height": 12,
+      "completed_rounds": 72,
+      "winner": "A",
+      "bot1_side": "B",
+      "standings": {
+        "A": {
+          "population": 11,
+          "longest": 2,
+          "total": 22,
+          "queen": 0
+        },
+        "B": {
+          "population": 0,
+          "longest": 0,
+          "total": 0,
+          "queen": 0
+        }
+      },
+      "deaths": {
+        "A": {
+          "wall": 0,
+          "self": 3,
+          "body": 1,
+          "head": 1,
+          "invalid_action": 0
+        },
+        "B": {
+          "wall": 0,
+          "self": 3,
+          "body": 0,
+          "head": 1,
+          "invalid_action": 0
+        }
+      },
+      "queen_deaths": {
+        "A": {
+          "round_index": 65,
+          "reason": "body",
+          "length_before_death": 2
+        },
+        "B": {
+          "round_index": 71,
+          "reason": "head",
+          "length_before_death": 5
+        }
+      },
+      "queen_splits": {
+        "A": 4,
+        "B": 0
+      },
+      "explicit_suicide_deaths": {
+        "A": 0,
+        "B": 0
+      },
+      "end_reason": 0,
+      "seed": "78014",
+      "bot_a": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/2_xxqztest/.unswbc-build/bot",
+      "bot_b": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/queen_margin_v127/frozen/bots/0_tyhh_qos_counter_queen_margin_v127/.unswbc-build/bot",
+      "map_sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+      "replay_sha256": "4e9e4fdbda25cffbe0c805e993d32fd60c5da846057abfdb5126852a5826526d",
+      "game": "62",
+      "opponent": "xxqztest",
+      "map": "stripes",
+      "outcome": "loss",
+      "legacy_subset": "False"
+    }
+  ]
+}

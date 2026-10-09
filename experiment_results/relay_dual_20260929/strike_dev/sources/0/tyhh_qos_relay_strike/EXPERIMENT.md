@@ -1,0 +1,124 @@
+# Strike: bounded profitable sprint combat before ordinary expansion
+
+Registered 2026-09-29 before any strike match. Parent is the original frozen
+tyhh_qos_protect_relay, not counter or mature. Parent main.cpp SHA-256:
+c65cfa425e09b38662610fd19fc309b419e5c82edc2c6e7cddadeab8337b4961.
+
+Single intervention: replace the old two-step sprint ram with an at-most-four
+step, currently visible route search, and arbitrate a profitable result before
+ordinary expansion. The module follows xxqztest/planner.hpp sprintRam's
+incremental length/body accounting, with explicit attribution. Known resolved
+portals are eligible only when their landing is visible; no map or opponent
+identity is used. Unknown routes are rejected, never assigned invented exits.
+
+Each extra step requires length >2 before collision/eating. Collision checks
+include the full currently known own body before paid tail removal; other
+dragons remain static during one sprint. Only an earlier consumed visible
+pearl can fund a later step. An initially length-two dragon therefore needs
+a first-step pearl. Current pearls cannot be harvested twice in one route.
+
+Profitability uses the existing relay thresholds evaluated at the simulated
+pre-collision length: observed enemy length >=length+2 and >=5; in attrition,
+>=length+1 and >=4 suffices. Observed enemy size is a lower bound. Preserve the
+last unit; a champion longer than five remains protected, while a short
+ID-selected champion may make a profitable attack. Prefer greater observed
+target size, then fewer steps. Selection and bounded search are one complete
+combat intervention, not separately identified subcomponent effects.
+
+Unchanged: adjacent rams (including relay's unconditional length-two rule),
+score weights, portal exploration policy, expansion thresholds, donation,
+and the existing post-selection teammate-protection framework. This does not
+include counter's trade-up gate or the former antiram defensive review; that
+review predicted enemy moves after our turn, whereas strike acts immediately
+on a visible enemy head during the current atomic action.
+
+Expected benefit: take confirmed high-value attacks before splitting can
+consume the turn, and exploit pearl-funded attacks inaccessible to the old
+length>=3/two-step branch. Risk: spending more collectors or paying sprint
+length can reduce resource growth; visible opportunity does not imply improved
+match results. No performance improvement is asserted before root's paired
+two-opponent development tests. Full matches are scheduled only by root.
+
+Focused validation covers payment timing, repeated/late pearls, collision and
+body release, visible resolved versus unknown portals, the four-step bound,
+profitability/last-unit/champion gates and expansion arbitration. Installed
+engine payment fixtures are separate from competitive matches. Final seeds
+74001+ remain unread and are not used to adjust this module.
+
+## Inherited relay record — parent provenance only
+
+The copied historical results and unchanged-combat statements below apply
+only to the parent, not to this untested strike candidate.
+
+# Portal communication / claim experiment
+
+Derived from `tyhh_qos_protect_route`, without modifying the original directory.
+Movement scores, exploration parameters, combat, split thresholds, and the
+local teammate protection review remain unchanged.
+
+Hypothesis: the baseline's persistent last-crossed-portal claim monopolizes
+all four sonar beams and reserves ordinary connected terrain as if it were a
+small resource room. This suppresses topology and resource propagation.
+
+This variant claims a room only when a flood fill using known open edges
+proves a component of at most 24 cells, exactly one canonical portal boundary,
+and a known pearl source. Unknown edges or another portal boundary prevent a
+claim. The proof is evaluated at the current and projected post-action head;
+an unresolved landing does not produce a claim. Received claims retain the
+baseline's six-round expiry.
+
+Complete portal endpoint pairs use a team-tagged, checksummed 64-bit message.
+One beam carries ordinary information, another a rotating complete portal
+pair, another a proven room claim, and another verified-state-format status
+when available. Unused beams repeat ordinary information. The beam assignment
+rotates every turn. Thus a claimed room cannot suppress all other information.
+The legacy single-end portal encoding is limited to IDs below 4096, its actual
+12-bit payload capacity; complete pair messages support all 13-bit IDs.
+
+`verification/relay_tests.cpp.txt` checks claim evidence, rejection of unknown
+or oversized regions, complete-pair round trips including high portal IDs,
+team and checksum validation, and rejection of conflicting map information.
+Match results are recorded separately by the experiment runner; no performance
+claim is made before matched-seed, side-balanced evaluation.
+
+Validation completed: native `clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic`
+build passed (one inherited unused `enemyEscapes` warning); all relay/room
+assertions passed under AddressSanitizer and UndefinedBehaviorSanitizer, with
+leak detection disabled for the sandbox. The test include renames the bot
+`main`, producing an inherited missing-return warning in that unused function.
+
+## Frozen evaluation outcome
+
+Development: 11 wins / 9 losses on seed 20260927, the ten official maps, and
+both sides. Eight development candidates were retained and compared. Relay
+was selected under the recorded tie rule and frozen before final evaluation.
+
+Final matched evaluation: 25 wins / 35 losses (41.7%) against V3_portal; the
+unchanged route baseline scored 17 wins / 43 losses (28.3%) under the same
+seeds 20261011, 20261012, 20261013, ten maps and both sides. These integers are
+random seeds, not experiment dates. Thirteen paired conditions changed from
+loss to win and five from win to loss. No draws or run failures were reported
+in either 60-game suite. This improves the matched sample result but does not
+establish a winning overall record against V3.
+
+Per-seed wins are 6/9/10 for relay and 6/7/4 for route. These are descriptive
+results over three seeds, not a significance test. Autarky and Slithery Fight
+each lost one win relative to route; Default remained 0/6. Production sources
+were not changed after final evaluation.
+
+Full evidence, protocol correction, replays, source snapshots and verification
+are under ../../experiment_results/protect_vs_v3_20260928/. See REPORT.md and
+final_summary.json there. Do not combine development and final cohorts, or
+tune on these final seeds while describing them as held-out.
+
+Audit clarification: the V3 opponent had 11 no-valid-action deaths in five
+relay-suite games and seven in six baseline-suite games, all on Portals.
+Neither relay nor route had such deaths. V3 intentionally supports ActionType
+NONE for self-sacrifice / teammate-head protection; its tests expect NONE in
+these scenarios. This engine death reason alone is not evidence of a crash or
+failed match. Each recorded death has not been traced to its exact decision
+branch. All completed outcomes remain included without reweighting.
+
+Final artifact integrity and runtime-failure checks pass. The stronger audit
+flag requiring zero no-action deaths on both teams remains false and is
+retained as such. See final_verification.json and REPORT.md for the distinction.

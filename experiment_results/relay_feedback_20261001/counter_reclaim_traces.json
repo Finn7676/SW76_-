@@ -1,0 +1,2823 @@
+{
+  "definition": "Attribute intervention logs to candidate/opponent using replay team lineage.\n\nLogs establish policy activation, not successful pearl recovery or causation.\nThe samples retain the original round/dragon/message for replay inspection.\n",
+  "games": [
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0001_V3_portal_autarky_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 143,
+          "RECLAIM_REJECT": 132,
+          "RECLAIM_COLLECT": 151
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 5,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 5 0 cell 937 old_id 12"
+            },
+            {
+              "round": 5,
+              "dragon": 2,
+              "message": "RECLAIM_PEARL 5 2 cell 937 old_id 12"
+            },
+            {
+              "round": 53,
+              "dragon": 18,
+              "message": "RECLAIM_PEARL 53 18 cell 250 old_id 5"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 30,
+              "dragon": 16,
+              "message": "RECLAIM_REJECT 30 16 target 7 friend 0 enemy 4"
+            },
+            {
+              "round": 45,
+              "dragon": 28,
+              "message": "RECLAIM_REJECT 45 28 target 7 friend 0 enemy 6"
+            },
+            {
+              "round": 46,
+              "dragon": 28,
+              "message": "RECLAIM_REJECT 46 28 target 7 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 54,
+              "dragon": 24,
+              "message": "RECLAIM_COLLECT 54 24 goal 136 distance 4"
+            },
+            {
+              "round": 54,
+              "dragon": 26,
+              "message": "RECLAIM_COLLECT 54 26 goal 304 distance 4"
+            },
+            {
+              "round": 55,
+              "dragon": 24,
+              "message": "RECLAIM_COLLECT 55 24 goal 136 distance 3"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0002_V3_portal_autarky_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 224,
+          "RECLAIM_COLLECT": 207,
+          "RECLAIM_REJECT": 102
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 5,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 5 1 cell 34 old_id 13"
+            },
+            {
+              "round": 5,
+              "dragon": 5,
+              "message": "RECLAIM_PEARL 5 5 cell 34 old_id 13"
+            },
+            {
+              "round": 5,
+              "dragon": 15,
+              "message": "RECLAIM_PEARL 5 15 cell 413 old_id 21"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 5,
+              "dragon": 17,
+              "message": "RECLAIM_COLLECT 5 17 goal 302 distance 5"
+            },
+            {
+              "round": 5,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 5 19 goal 302 distance 4"
+            },
+            {
+              "round": 6,
+              "dragon": 5,
+              "message": "RECLAIM_COLLECT 6 5 goal 193 distance 3"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 56,
+              "dragon": 7,
+              "message": "RECLAIM_REJECT 56 7 target 2 friend 0 enemy 4"
+            },
+            {
+              "round": 87,
+              "dragon": 27,
+              "message": "RECLAIM_REJECT 87 27 target 47 friend 0 enemy 4"
+            },
+            {
+              "round": 88,
+              "dragon": 27,
+              "message": "RECLAIM_REJECT 88 27 target 47 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "autarky",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0003_V3_portal_default_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 25,
+          "RECLAIM_PEARL": 583,
+          "RECLAIM_COLLECT": 649
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 6,
+              "dragon": 2,
+              "message": "RECLAIM_REJECT 6 2 target 1 friend 1 enemy 3"
+            },
+            {
+              "round": 6,
+              "dragon": 14,
+              "message": "RECLAIM_REJECT 6 14 target 13 friend 0 enemy 4"
+            },
+            {
+              "round": 12,
+              "dragon": 14,
+              "message": "RECLAIM_REJECT 12 14 target 7 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 46,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 46 12 cell 935 old_id 7"
+            },
+            {
+              "round": 70,
+              "dragon": 19,
+              "message": "RECLAIM_PEARL 70 19 cell 363 old_id 22"
+            },
+            {
+              "round": 76,
+              "dragon": 34,
+              "message": "RECLAIM_PEARL 76 34 cell 229 old_id 24"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 70,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 70 19 goal 363 distance 6"
+            },
+            {
+              "round": 71,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 71 19 goal 363 distance 5"
+            },
+            {
+              "round": 72,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 72 19 goal 363 distance 4"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "default",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0004_V3_portal_default_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 67,
+          "RECLAIM_PEARL": 403,
+          "RECLAIM_COLLECT": 406
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 3,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 3 15 target 6 friend 1 enemy 3"
+            },
+            {
+              "round": 11,
+              "dragon": 11,
+              "message": "RECLAIM_REJECT 11 11 target 6 friend 0 enemy 4"
+            },
+            {
+              "round": 12,
+              "dragon": 11,
+              "message": "RECLAIM_REJECT 12 11 target 6 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 38,
+              "dragon": 13,
+              "message": "RECLAIM_PEARL 38 13 cell 660 old_id 0"
+            },
+            {
+              "round": 55,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 55 22 cell 231 old_id 2"
+            },
+            {
+              "round": 55,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 55 22 cell 295 old_id 2"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 40,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 40 13 goal 660 distance 6"
+            },
+            {
+              "round": 55,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 55 22 goal 231 distance 1"
+            },
+            {
+              "round": 56,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 56 22 goal 295 distance 2"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "default",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0005_V3_portal_devil_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 508,
+          "RECLAIM_COLLECT": 216,
+          "RECLAIM_REJECT": 4
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 33,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 33 6 cell 142 old_id 4"
+            },
+            {
+              "round": 33,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 33 6 cell 206 old_id 4"
+            },
+            {
+              "round": 33,
+              "dragon": 8,
+              "message": "RECLAIM_PEARL 33 8 cell 206 old_id 4"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 33,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 33 6 goal 142 distance 2"
+            },
+            {
+              "round": 33,
+              "dragon": 16,
+              "message": "RECLAIM_COLLECT 33 16 goal 206 distance 1"
+            },
+            {
+              "round": 34,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 34 6 goal 142 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 70,
+              "dragon": 56,
+              "message": "RECLAIM_REJECT 70 56 target 3 friend 2 enemy 4"
+            },
+            {
+              "round": 74,
+              "dragon": 41,
+              "message": "RECLAIM_REJECT 74 41 target 54 friend 3 enemy 5"
+            },
+            {
+              "round": 78,
+              "dragon": 57,
+              "message": "RECLAIM_REJECT 78 57 target 7 friend 2 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "devil",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0006_V3_portal_devil_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 1240,
+          "RECLAIM_COLLECT": 444,
+          "RECLAIM_REJECT": 30
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 25,
+              "dragon": 3,
+              "message": "RECLAIM_PEARL 25 3 cell 365 old_id 2"
+            },
+            {
+              "round": 25,
+              "dragon": 3,
+              "message": "RECLAIM_PEARL 25 3 cell 367 old_id 2"
+            },
+            {
+              "round": 36,
+              "dragon": 16,
+              "message": "RECLAIM_PEARL 36 16 cell 143 old_id 13"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 25,
+              "dragon": 3,
+              "message": "RECLAIM_COLLECT 25 3 goal 367 distance 4"
+            },
+            {
+              "round": 26,
+              "dragon": 3,
+              "message": "RECLAIM_COLLECT 26 3 goal 367 distance 3"
+            },
+            {
+              "round": 27,
+              "dragon": 3,
+              "message": "RECLAIM_COLLECT 27 3 goal 367 distance 2"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 72,
+              "dragon": 33,
+              "message": "RECLAIM_REJECT 72 33 target 4 friend 2 enemy 4"
+            },
+            {
+              "round": 72,
+              "dragon": 33,
+              "message": "RECLAIM_REJECT 72 33 target 48 friend 2 enemy 4"
+            },
+            {
+              "round": 85,
+              "dragon": 63,
+              "message": "RECLAIM_REJECT 85 63 target 0 friend 3 enemy 5"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "devil",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0007_V3_portal_portals_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1899,
+          "RECLAIM_COLLECT": 709
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 13,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 13 6 cell 432 old_id 9"
+            },
+            {
+              "round": 13,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 13 6 cell 496 old_id 9"
+            },
+            {
+              "round": 13,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 13 6 cell 15 old_id 8"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 14,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 14 6 goal 15 distance 3"
+            },
+            {
+              "round": 15,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 15 6 goal 15 distance 2"
+            },
+            {
+              "round": 16,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 16 6 goal 15 distance 1"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "portals",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0008_V3_portal_portals_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 1995,
+          "RECLAIM_COLLECT": 826
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 12,
+              "dragon": 9,
+              "message": "RECLAIM_PEARL 12 9 cell 15 old_id 8"
+            },
+            {
+              "round": 13,
+              "dragon": 7,
+              "message": "RECLAIM_PEARL 13 7 cell 432 old_id 9"
+            },
+            {
+              "round": 13,
+              "dragon": 7,
+              "message": "RECLAIM_PEARL 13 7 cell 496 old_id 9"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 14,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 14 7 goal 496 distance 3"
+            },
+            {
+              "round": 15,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 15 7 goal 496 distance 2"
+            },
+            {
+              "round": 16,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 16 7 goal 496 distance 1"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "portals",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0009_V3_portal_dilemma_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 79,
+          "RECLAIM_PEARL": 7,
+          "RECLAIM_COLLECT": 4
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 4,
+              "dragon": 8,
+              "message": "RECLAIM_REJECT 4 8 target 11 friend 0 enemy 4"
+            },
+            {
+              "round": 6,
+              "dragon": 10,
+              "message": "RECLAIM_REJECT 6 10 target 13 friend 0 enemy 4"
+            },
+            {
+              "round": 14,
+              "dragon": 19,
+              "message": "RECLAIM_REJECT 14 19 target 15 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 62,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 62 22 cell 267 old_id 9"
+            },
+            {
+              "round": 62,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 62 22 cell 332 old_id 4"
+            },
+            {
+              "round": 64,
+              "dragon": 14,
+              "message": "RECLAIM_PEARL 64 14 cell 265 old_id 22"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 62,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 62 22 goal 267 distance 2"
+            },
+            {
+              "round": 64,
+              "dragon": 14,
+              "message": "RECLAIM_COLLECT 64 14 goal 265 distance 2"
+            },
+            {
+              "round": 65,
+              "dragon": 14,
+              "message": "RECLAIM_COLLECT 65 14 goal 265 distance 1"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0010_V3_portal_dilemma_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 99,
+          "RECLAIM_PEARL": 22,
+          "RECLAIM_COLLECT": 22
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 6,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 6 15 target 12 friend 0 enemy 4"
+            },
+            {
+              "round": 7,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 7 15 target 12 friend 0 enemy 4"
+            },
+            {
+              "round": 12,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 12 15 target 12 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 28,
+              "dragon": 11,
+              "message": "RECLAIM_PEARL 28 11 cell 113 old_id 24"
+            },
+            {
+              "round": 28,
+              "dragon": 21,
+              "message": "RECLAIM_PEARL 28 21 cell 113 old_id 24"
+            },
+            {
+              "round": 28,
+              "dragon": 23,
+              "message": "RECLAIM_PEARL 28 23 cell 113 old_id 24"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 28,
+              "dragon": 23,
+              "message": "RECLAIM_COLLECT 28 23 goal 113 distance 6"
+            },
+            {
+              "round": 29,
+              "dragon": 11,
+              "message": "RECLAIM_COLLECT 29 11 goal 113 distance 3"
+            },
+            {
+              "round": 29,
+              "dragon": 23,
+              "message": "RECLAIM_COLLECT 29 23 goal 113 distance 5"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "dilemma",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0011_V3_portal_queen_of_spades_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 10,
+          "RECLAIM_COLLECT": 14,
+          "RECLAIM_REJECT": 9
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 104,
+              "dragon": 2,
+              "message": "RECLAIM_PEARL 104 2 cell 213 old_id 29"
+            },
+            {
+              "round": 104,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 104 6 cell 213 old_id 29"
+            },
+            {
+              "round": 104,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 104 6 cell 238 old_id 1"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 104,
+              "dragon": 2,
+              "message": "RECLAIM_COLLECT 104 2 goal 213 distance 3"
+            },
+            {
+              "round": 104,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 104 6 goal 239 distance 3"
+            },
+            {
+              "round": 105,
+              "dragon": 2,
+              "message": "RECLAIM_COLLECT 105 2 goal 213 distance 2"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 138,
+              "dragon": 26,
+              "message": "RECLAIM_REJECT 138 26 target 10 friend 0 enemy 6"
+            },
+            {
+              "round": 147,
+              "dragon": 2,
+              "message": "RECLAIM_REJECT 147 2 target 56 friend 0 enemy 6"
+            },
+            {
+              "round": 149,
+              "dragon": 2,
+              "message": "RECLAIM_REJECT 149 2 target 56 friend 0 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0012_V3_portal_queen_of_spades_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 47,
+          "RECLAIM_COLLECT": 27,
+          "RECLAIM_REJECT": 47
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 65,
+              "dragon": 5,
+              "message": "RECLAIM_PEARL 65 5 cell 67 old_id 12"
+            },
+            {
+              "round": 127,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 127 1 cell 41 old_id 34"
+            },
+            {
+              "round": 130,
+              "dragon": 36,
+              "message": "RECLAIM_PEARL 130 36 cell 795 old_id 30"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 130,
+              "dragon": 36,
+              "message": "RECLAIM_COLLECT 130 36 goal 795 distance 3"
+            },
+            {
+              "round": 131,
+              "dragon": 44,
+              "message": "RECLAIM_COLLECT 131 44 goal 720 distance 3"
+            },
+            {
+              "round": 132,
+              "dragon": 44,
+              "message": "RECLAIM_COLLECT 132 44 goal 720 distance 2"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 132,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 132 1 target 2 friend 0 enemy 6"
+            },
+            {
+              "round": 140,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 140 1 target 51 friend 0 enemy 6"
+            },
+            {
+              "round": 141,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 141 1 target 51 friend 0 enemy 6"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "queen_of_spades",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0013_V3_portal_schooltime_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1429,
+          "RECLAIM_COLLECT": 1126,
+          "RECLAIM_REJECT": 206
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 47,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 47 0 cell 642 old_id 19"
+            },
+            {
+              "round": 50,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 50 0 cell 701 old_id 22"
+            },
+            {
+              "round": 92,
+              "dragon": 26,
+              "message": "RECLAIM_PEARL 92 26 cell 554 old_id 74"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 47,
+              "dragon": 0,
+              "message": "RECLAIM_COLLECT 47 0 goal 642 distance 1"
+            },
+            {
+              "round": 50,
+              "dragon": 0,
+              "message": "RECLAIM_COLLECT 50 0 goal 701 distance 1"
+            },
+            {
+              "round": 95,
+              "dragon": 4,
+              "message": "RECLAIM_COLLECT 95 4 goal 308 distance 5"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 61,
+              "dragon": 12,
+              "message": "RECLAIM_REJECT 61 12 target 33 friend 0 enemy 6"
+            },
+            {
+              "round": 61,
+              "dragon": 12,
+              "message": "RECLAIM_REJECT 61 12 target 33 friend 0 enemy 6"
+            },
+            {
+              "round": 70,
+              "dragon": 32,
+              "message": "RECLAIM_REJECT 70 32 target 38 friend 0 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0014_V3_portal_schooltime_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 1501,
+          "RECLAIM_COLLECT": 1130,
+          "RECLAIM_REJECT": 275
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 44,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 44 1 cell 501 old_id 8"
+            },
+            {
+              "round": 44,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 44 1 cell 561 old_id 3"
+            },
+            {
+              "round": 47,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 47 1 cell 617 old_id 21"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 47,
+              "dragon": 1,
+              "message": "RECLAIM_COLLECT 47 1 goal 617 distance 1"
+            },
+            {
+              "round": 50,
+              "dragon": 1,
+              "message": "RECLAIM_COLLECT 50 1 goal 678 distance 1"
+            },
+            {
+              "round": 97,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 97 7 goal 554 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 86,
+              "dragon": 49,
+              "message": "RECLAIM_REJECT 86 49 target 65 friend 0 enemy 8"
+            },
+            {
+              "round": 86,
+              "dragon": 49,
+              "message": "RECLAIM_REJECT 86 49 target 65 friend 0 enemy 8"
+            },
+            {
+              "round": 87,
+              "dragon": 23,
+              "message": "RECLAIM_REJECT 87 23 target 89 friend 0 enemy 6"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "schooltime",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0015_V3_portal_slithery_fight_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1803,
+          "RECLAIM_COLLECT": 1003,
+          "RECLAIM_REJECT": 205
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 1,
+              "dragon": 18,
+              "message": "RECLAIM_PEARL 1 18 cell 1389 old_id 4"
+            },
+            {
+              "round": 18,
+              "dragon": 55,
+              "message": "RECLAIM_PEARL 18 55 cell 1282 old_id 40"
+            },
+            {
+              "round": 18,
+              "dragon": 55,
+              "message": "RECLAIM_PEARL 18 55 cell 1346 old_id 40"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 20,
+              "dragon": 55,
+              "message": "RECLAIM_COLLECT 20 55 goal 1282 distance 3"
+            },
+            {
+              "round": 21,
+              "dragon": 55,
+              "message": "RECLAIM_COLLECT 21 55 goal 1282 distance 2"
+            },
+            {
+              "round": 52,
+              "dragon": 51,
+              "message": "RECLAIM_COLLECT 52 51 goal 1658 distance 2"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 43,
+              "dragon": 65,
+              "message": "RECLAIM_REJECT 43 65 target 97 friend 0 enemy 4"
+            },
+            {
+              "round": 45,
+              "dragon": 65,
+              "message": "RECLAIM_REJECT 45 65 target 63 friend 0 enemy 4"
+            },
+            {
+              "round": 51,
+              "dragon": 65,
+              "message": "RECLAIM_REJECT 51 65 target 111 friend 0 enemy 4"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0016_V3_portal_slithery_fight_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 2080,
+          "RECLAIM_COLLECT": 1244,
+          "RECLAIM_REJECT": 206
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 1,
+              "dragon": 19,
+              "message": "RECLAIM_PEARL 1 19 cell 311 old_id 5"
+            },
+            {
+              "round": 17,
+              "dragon": 23,
+              "message": "RECLAIM_PEARL 17 23 cell 939 old_id 26"
+            },
+            {
+              "round": 18,
+              "dragon": 57,
+              "message": "RECLAIM_PEARL 18 57 cell 354 old_id 40"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 20,
+              "dragon": 57,
+              "message": "RECLAIM_COLLECT 20 57 goal 418 distance 3"
+            },
+            {
+              "round": 21,
+              "dragon": 57,
+              "message": "RECLAIM_COLLECT 21 57 goal 418 distance 2"
+            },
+            {
+              "round": 93,
+              "dragon": 242,
+              "message": "RECLAIM_COLLECT 93 242 goal 529 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 49,
+              "dragon": 91,
+              "message": "RECLAIM_REJECT 49 91 target 121 friend 0 enemy 4"
+            },
+            {
+              "round": 53,
+              "dragon": 91,
+              "message": "RECLAIM_REJECT 53 91 target 121 friend 0 enemy 4"
+            },
+            {
+              "round": 56,
+              "dragon": 91,
+              "message": "RECLAIM_REJECT 56 91 target 121 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "slithery_fight",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0017_V3_portal_trauma_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 215,
+          "RECLAIM_COLLECT": 99
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 80,
+              "dragon": 18,
+              "message": "RECLAIM_PEARL 80 18 cell 352 old_id 20"
+            },
+            {
+              "round": 91,
+              "dragon": 33,
+              "message": "RECLAIM_PEARL 91 33 cell 399 old_id 28"
+            },
+            {
+              "round": 96,
+              "dragon": 10,
+              "message": "RECLAIM_PEARL 96 10 cell 395 old_id 34"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 91,
+              "dragon": 33,
+              "message": "RECLAIM_COLLECT 91 33 goal 399 distance 1"
+            },
+            {
+              "round": 100,
+              "dragon": 37,
+              "message": "RECLAIM_COLLECT 100 37 goal 397 distance 1"
+            },
+            {
+              "round": 117,
+              "dragon": 37,
+              "message": "RECLAIM_COLLECT 117 37 goal 10 distance 2"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0018_V3_portal_trauma_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 184,
+          "RECLAIM_COLLECT": 104,
+          "RECLAIM_REJECT": 2
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 40,
+              "dragon": 9,
+              "message": "RECLAIM_PEARL 40 9 cell 704 old_id 8"
+            },
+            {
+              "round": 40,
+              "dragon": 10,
+              "message": "RECLAIM_PEARL 40 10 cell 704 old_id 8"
+            },
+            {
+              "round": 40,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 40 12 cell 704 old_id 8"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 40,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 40 12 goal 704 distance 1"
+            },
+            {
+              "round": 59,
+              "dragon": 16,
+              "message": "RECLAIM_COLLECT 59 16 goal 703 distance 1"
+            },
+            {
+              "round": 67,
+              "dragon": 28,
+              "message": "RECLAIM_COLLECT 67 28 goal 756 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 470,
+              "dragon": 9,
+              "message": "RECLAIM_REJECT 470 9 target 227 friend 0 enemy 4"
+            },
+            {
+              "round": 472,
+              "dragon": 9,
+              "message": "RECLAIM_REJECT 472 9 target 227 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "trauma",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0019_V3_portal_trophy_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 104,
+          "RECLAIM_PEARL": 951,
+          "RECLAIM_COLLECT": 764
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 25,
+              "dragon": 5,
+              "message": "RECLAIM_REJECT 25 5 target 4 friend 0 enemy 6"
+            },
+            {
+              "round": 26,
+              "dragon": 5,
+              "message": "RECLAIM_REJECT 26 5 target 4 friend 0 enemy 6"
+            },
+            {
+              "round": 27,
+              "dragon": 5,
+              "message": "RECLAIM_REJECT 27 5 target 4 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 55,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 55 6 cell 152 old_id 18"
+            },
+            {
+              "round": 55,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 55 6 cell 178 old_id 18"
+            },
+            {
+              "round": 55,
+              "dragon": 8,
+              "message": "RECLAIM_PEARL 55 8 cell 152 old_id 18"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 55,
+              "dragon": 8,
+              "message": "RECLAIM_COLLECT 55 8 goal 152 distance 1"
+            },
+            {
+              "round": 55,
+              "dragon": 15,
+              "message": "RECLAIM_COLLECT 55 15 goal 178 distance 5"
+            },
+            {
+              "round": 56,
+              "dragon": 8,
+              "message": "RECLAIM_COLLECT 56 8 goal 178 distance 2"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0020_V3_portal_trophy_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 164,
+          "RECLAIM_PEARL": 147,
+          "RECLAIM_COLLECT": 118
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 45,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 45 6 target 7 friend 0 enemy 6"
+            },
+            {
+              "round": 45,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 45 6 target 20 friend 0 enemy 6"
+            },
+            {
+              "round": 45,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 45 6 target 20 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 45,
+              "dragon": 10,
+              "message": "RECLAIM_PEARL 45 10 cell 346 old_id 18"
+            },
+            {
+              "round": 51,
+              "dragon": 3,
+              "message": "RECLAIM_PEARL 51 3 cell 198 old_id 1"
+            },
+            {
+              "round": 51,
+              "dragon": 5,
+              "message": "RECLAIM_PEARL 51 5 cell 198 old_id 1"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 45,
+              "dragon": 10,
+              "message": "RECLAIM_COLLECT 45 10 goal 346 distance 1"
+            },
+            {
+              "round": 51,
+              "dragon": 5,
+              "message": "RECLAIM_COLLECT 51 5 goal 248 distance 1"
+            },
+            {
+              "round": 77,
+              "dragon": 32,
+              "message": "RECLAIM_COLLECT 77 32 goal 80 distance 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "map": "trophy",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0021_xxqztest_autarky_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 272,
+          "RECLAIM_REJECT": 44,
+          "RECLAIM_COLLECT": 302
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 5,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 5 0 cell 937 old_id 12"
+            },
+            {
+              "round": 5,
+              "dragon": 2,
+              "message": "RECLAIM_PEARL 5 2 cell 937 old_id 12"
+            },
+            {
+              "round": 45,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 45 22 cell 391 old_id 45"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 19,
+              "dragon": 26,
+              "message": "RECLAIM_REJECT 19 26 target 3 friend 0 enemy 6"
+            },
+            {
+              "round": 23,
+              "dragon": 28,
+              "message": "RECLAIM_REJECT 23 28 target 5 friend 0 enemy 4"
+            },
+            {
+              "round": 43,
+              "dragon": 34,
+              "message": "RECLAIM_REJECT 43 34 target 40 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 45,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 45 22 goal 391 distance 3"
+            },
+            {
+              "round": 46,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 46 22 goal 391 distance 2"
+            },
+            {
+              "round": 47,
+              "dragon": 22,
+              "message": "RECLAIM_COLLECT 47 22 goal 391 distance 1"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0022_xxqztest_autarky_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 251,
+          "RECLAIM_COLLECT": 256,
+          "RECLAIM_REJECT": 29
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 5,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 5 1 cell 34 old_id 13"
+            },
+            {
+              "round": 5,
+              "dragon": 5,
+              "message": "RECLAIM_PEARL 5 5 cell 34 old_id 13"
+            },
+            {
+              "round": 5,
+              "dragon": 19,
+              "message": "RECLAIM_PEARL 5 19 cell 192 old_id 6"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 5,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 5 19 goal 192 distance 6"
+            },
+            {
+              "round": 6,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 6 19 goal 192 distance 5"
+            },
+            {
+              "round": 7,
+              "dragon": 19,
+              "message": "RECLAIM_COLLECT 7 19 goal 192 distance 4"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 74,
+              "dragon": 51,
+              "message": "RECLAIM_REJECT 74 51 target 32 friend 0 enemy 4"
+            },
+            {
+              "round": 76,
+              "dragon": 51,
+              "message": "RECLAIM_REJECT 76 51 target 32 friend 0 enemy 4"
+            },
+            {
+              "round": 81,
+              "dragon": 3,
+              "message": "RECLAIM_REJECT 81 3 target 14 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "autarky",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0023_xxqztest_default_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 89,
+          "RECLAIM_COLLECT": 104,
+          "RECLAIM_REJECT": 187
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 8,
+              "dragon": 10,
+              "message": "RECLAIM_PEARL 8 10 cell 1023 old_id 2"
+            },
+            {
+              "round": 82,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 82 12 cell 905 old_id 5"
+            },
+            {
+              "round": 82,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 82 12 cell 907 old_id 5"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 8,
+              "dragon": 10,
+              "message": "RECLAIM_COLLECT 8 10 goal 1023 distance 3"
+            },
+            {
+              "round": 82,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 82 12 goal 905 distance 1"
+            },
+            {
+              "round": 83,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 83 12 goal 907 distance 2"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 14,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 14 6 target 5 friend 0 enemy 4"
+            },
+            {
+              "round": 23,
+              "dragon": 0,
+              "message": "RECLAIM_REJECT 23 0 target 13 friend 0 enemy 6"
+            },
+            {
+              "round": 23,
+              "dragon": 0,
+              "message": "RECLAIM_REJECT 23 0 target 17 friend 0 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "default",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0024_xxqztest_default_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 91,
+          "RECLAIM_PEARL": 287,
+          "RECLAIM_COLLECT": 324
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 3,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 3 15 target 6 friend 1 enemy 3"
+            },
+            {
+              "round": 4,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 4 15 target 6 friend 0 enemy 4"
+            },
+            {
+              "round": 6,
+              "dragon": 15,
+              "message": "RECLAIM_REJECT 6 15 target 12 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 38,
+              "dragon": 5,
+              "message": "RECLAIM_PEARL 38 5 cell 408 old_id 20"
+            },
+            {
+              "round": 61,
+              "dragon": 26,
+              "message": "RECLAIM_PEARL 61 26 cell 569 old_id 23"
+            },
+            {
+              "round": 61,
+              "dragon": 26,
+              "message": "RECLAIM_PEARL 61 26 cell 634 old_id 14"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 38,
+              "dragon": 5,
+              "message": "RECLAIM_COLLECT 38 5 goal 408 distance 1"
+            },
+            {
+              "round": 61,
+              "dragon": 26,
+              "message": "RECLAIM_COLLECT 61 26 goal 569 distance 1"
+            },
+            {
+              "round": 62,
+              "dragon": 26,
+              "message": "RECLAIM_COLLECT 62 26 goal 634 distance 3"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "default",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0025_xxqztest_devil_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1146,
+          "RECLAIM_COLLECT": 457
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 30,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 30 6 cell 304 old_id 15"
+            },
+            {
+              "round": 30,
+              "dragon": 8,
+              "message": "RECLAIM_PEARL 30 8 cell 304 old_id 15"
+            },
+            {
+              "round": 30,
+              "dragon": 16,
+              "message": "RECLAIM_PEARL 30 16 cell 304 old_id 15"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 30,
+              "dragon": 8,
+              "message": "RECLAIM_COLLECT 30 8 goal 304 distance 3"
+            },
+            {
+              "round": 31,
+              "dragon": 8,
+              "message": "RECLAIM_COLLECT 31 8 goal 304 distance 2"
+            },
+            {
+              "round": 32,
+              "dragon": 8,
+              "message": "RECLAIM_COLLECT 32 8 goal 304 distance 1"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "devil",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0026_xxqztest_devil_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 2405,
+          "RECLAIM_COLLECT": 917,
+          "RECLAIM_REJECT": 50
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 46,
+              "dragon": 20,
+              "message": "RECLAIM_PEARL 46 20 cell 301 old_id 2"
+            },
+            {
+              "round": 46,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 46 22 cell 301 old_id 2"
+            },
+            {
+              "round": 46,
+              "dragon": 27,
+              "message": "RECLAIM_PEARL 46 27 cell 301 old_id 2"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 46,
+              "dragon": 27,
+              "message": "RECLAIM_COLLECT 46 27 goal 301 distance 4"
+            },
+            {
+              "round": 47,
+              "dragon": 27,
+              "message": "RECLAIM_COLLECT 47 27 goal 301 distance 3"
+            },
+            {
+              "round": 48,
+              "dragon": 25,
+              "message": "RECLAIM_COLLECT 48 25 goal 80 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 64,
+              "dragon": 30,
+              "message": "RECLAIM_REJECT 64 30 target 6 friend 2 enemy 4"
+            },
+            {
+              "round": 80,
+              "dragon": 58,
+              "message": "RECLAIM_REJECT 80 58 target 10 friend 0 enemy 4"
+            },
+            {
+              "round": 91,
+              "dragon": 53,
+              "message": "RECLAIM_REJECT 91 53 target 68 friend 0 enemy 6"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "devil",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0027_xxqztest_portals_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1343,
+          "RECLAIM_COLLECT": 580
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 13,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 13 6 cell 15 old_id 8"
+            },
+            {
+              "round": 13,
+              "dragon": 6,
+              "message": "RECLAIM_PEARL 13 6 cell 79 old_id 8"
+            },
+            {
+              "round": 23,
+              "dragon": 2,
+              "message": "RECLAIM_PEARL 23 2 cell 199 old_id 10"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 14,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 14 6 goal 15 distance 3"
+            },
+            {
+              "round": 15,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 15 6 goal 15 distance 2"
+            },
+            {
+              "round": 16,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 16 6 goal 15 distance 1"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "portals",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0028_xxqztest_portals_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 1511,
+          "RECLAIM_COLLECT": 752
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 13,
+              "dragon": 7,
+              "message": "RECLAIM_PEARL 13 7 cell 432 old_id 9"
+            },
+            {
+              "round": 13,
+              "dragon": 7,
+              "message": "RECLAIM_PEARL 13 7 cell 496 old_id 9"
+            },
+            {
+              "round": 29,
+              "dragon": 16,
+              "message": "RECLAIM_PEARL 29 16 cell 271 old_id 7"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 14,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 14 7 goal 496 distance 3"
+            },
+            {
+              "round": 15,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 15 7 goal 496 distance 2"
+            },
+            {
+              "round": 16,
+              "dragon": 7,
+              "message": "RECLAIM_COLLECT 16 7 goal 496 distance 1"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "portals",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0029_xxqztest_dilemma_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 10,
+          "RECLAIM_PEARL": 26,
+          "RECLAIM_COLLECT": 29
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 5,
+              "dragon": 17,
+              "message": "RECLAIM_REJECT 5 17 target 9 friend 0 enemy 4"
+            },
+            {
+              "round": 21,
+              "dragon": 23,
+              "message": "RECLAIM_REJECT 21 23 target 8 friend 0 enemy 4"
+            },
+            {
+              "round": 64,
+              "dragon": 24,
+              "message": "RECLAIM_REJECT 64 24 target 21 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 25,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 25 12 cell 334 old_id 8"
+            },
+            {
+              "round": 25,
+              "dragon": 14,
+              "message": "RECLAIM_PEARL 25 14 cell 364 old_id 4"
+            },
+            {
+              "round": 25,
+              "dragon": 23,
+              "message": "RECLAIM_PEARL 25 23 cell 334 old_id 8"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 25,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 25 12 goal 334 distance 3"
+            },
+            {
+              "round": 25,
+              "dragon": 14,
+              "message": "RECLAIM_COLLECT 25 14 goal 364 distance 5"
+            },
+            {
+              "round": 26,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 26 12 goal 334 distance 2"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0030_xxqztest_dilemma_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 63,
+          "RECLAIM_COLLECT": 69,
+          "RECLAIM_REJECT": 14
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 3,
+              "dragon": 13,
+              "message": "RECLAIM_PEARL 3 13 cell 239 old_id 10"
+            },
+            {
+              "round": 3,
+              "dragon": 13,
+              "message": "RECLAIM_PEARL 3 13 cell 240 old_id 12"
+            },
+            {
+              "round": 49,
+              "dragon": 19,
+              "message": "RECLAIM_PEARL 49 19 cell 143 old_id 4"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 3,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 3 13 goal 240 distance 3"
+            },
+            {
+              "round": 4,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 4 13 goal 240 distance 2"
+            },
+            {
+              "round": 5,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 5 13 goal 240 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 9,
+              "dragon": 11,
+              "message": "RECLAIM_REJECT 9 11 target 14 friend 1 enemy 3"
+            },
+            {
+              "round": 13,
+              "dragon": 11,
+              "message": "RECLAIM_REJECT 13 11 target 14 friend 0 enemy 4"
+            },
+            {
+              "round": 14,
+              "dragon": 11,
+              "message": "RECLAIM_REJECT 14 11 target 8 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "dilemma",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0031_xxqztest_queen_of_spades_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 5,
+          "RECLAIM_PEARL": 4,
+          "RECLAIM_COLLECT": 3
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 96,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 96 6 target 10 friend 0 enemy 4"
+            },
+            {
+              "round": 101,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 101 6 target 10 friend 0 enemy 4"
+            },
+            {
+              "round": 101,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 101 6 target 8 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 103,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 103 12 cell 299 old_id 2"
+            },
+            {
+              "round": 186,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 186 0 cell 845 old_id 24"
+            },
+            {
+              "round": 191,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 191 0 cell 795 old_id 27"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 103,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 103 12 goal 299 distance 2"
+            },
+            {
+              "round": 104,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 104 12 goal 299 distance 1"
+            },
+            {
+              "round": 186,
+              "dragon": 0,
+              "message": "RECLAIM_COLLECT 186 0 goal 845 distance 3"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0032_xxqztest_queen_of_spades_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 86,
+          "RECLAIM_PEARL": 30,
+          "RECLAIM_COLLECT": 33
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 43,
+              "dragon": 6,
+              "message": "RECLAIM_REJECT 43 6 target 7 friend 0 enemy 4"
+            },
+            {
+              "round": 98,
+              "dragon": 21,
+              "message": "RECLAIM_REJECT 98 21 target 17 friend 0 enemy 4"
+            },
+            {
+              "round": 100,
+              "dragon": 21,
+              "message": "RECLAIM_REJECT 100 21 target 17 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 56,
+              "dragon": 15,
+              "message": "RECLAIM_PEARL 56 15 cell 783 old_id 16"
+            },
+            {
+              "round": 56,
+              "dragon": 15,
+              "message": "RECLAIM_PEARL 56 15 cell 807 old_id 12"
+            },
+            {
+              "round": 56,
+              "dragon": 15,
+              "message": "RECLAIM_PEARL 56 15 cell 833 old_id 12"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 71,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 71 6 goal 499 distance 2"
+            },
+            {
+              "round": 72,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 72 6 goal 499 distance 1"
+            },
+            {
+              "round": 73,
+              "dragon": 6,
+              "message": "RECLAIM_COLLECT 73 6 goal 500 distance 2"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "queen_of_spades",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0033_xxqztest_schooltime_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1545,
+          "RECLAIM_COLLECT": 1190,
+          "RECLAIM_REJECT": 158
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 47,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 47 0 cell 642 old_id 21"
+            },
+            {
+              "round": 50,
+              "dragon": 0,
+              "message": "RECLAIM_PEARL 50 0 cell 701 old_id 25"
+            },
+            {
+              "round": 69,
+              "dragon": 13,
+              "message": "RECLAIM_PEARL 69 13 cell 160 old_id 3"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 47,
+              "dragon": 0,
+              "message": "RECLAIM_COLLECT 47 0 goal 642 distance 1"
+            },
+            {
+              "round": 50,
+              "dragon": 0,
+              "message": "RECLAIM_COLLECT 50 0 goal 701 distance 1"
+            },
+            {
+              "round": 69,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 69 13 goal 160 distance 4"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 58,
+              "dragon": 2,
+              "message": "RECLAIM_REJECT 58 2 target 3 friend 0 enemy 6"
+            },
+            {
+              "round": 61,
+              "dragon": 16,
+              "message": "RECLAIM_REJECT 61 16 target 3 friend 0 enemy 8"
+            },
+            {
+              "round": 62,
+              "dragon": 16,
+              "message": "RECLAIM_REJECT 62 16 target 9 friend 0 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0034_xxqztest_schooltime_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 155,
+          "RECLAIM_PEARL": 1025,
+          "RECLAIM_COLLECT": 904
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 24,
+              "dragon": 7,
+              "message": "RECLAIM_REJECT 24 7 target 8 friend 0 enemy 4"
+            },
+            {
+              "round": 25,
+              "dragon": 7,
+              "message": "RECLAIM_REJECT 25 7 target 8 friend 0 enemy 4"
+            },
+            {
+              "round": 26,
+              "dragon": 7,
+              "message": "RECLAIM_REJECT 26 7 target 8 friend 0 enemy 4"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 47,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 47 1 cell 617 old_id 15"
+            },
+            {
+              "round": 50,
+              "dragon": 1,
+              "message": "RECLAIM_PEARL 50 1 cell 678 old_id 20"
+            },
+            {
+              "round": 59,
+              "dragon": 13,
+              "message": "RECLAIM_PEARL 59 13 cell 6 old_id 4"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 47,
+              "dragon": 1,
+              "message": "RECLAIM_COLLECT 47 1 goal 617 distance 1"
+            },
+            {
+              "round": 50,
+              "dragon": 1,
+              "message": "RECLAIM_COLLECT 50 1 goal 678 distance 1"
+            },
+            {
+              "round": 59,
+              "dragon": 13,
+              "message": "RECLAIM_COLLECT 59 13 goal 6 distance 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "schooltime",
+      "seed": 76001,
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0035_xxqztest_slithery_fight_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 1348,
+          "RECLAIM_COLLECT": 792,
+          "RECLAIM_REJECT": 65
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 1,
+              "dragon": 18,
+              "message": "RECLAIM_PEARL 1 18 cell 1389 old_id 4"
+            },
+            {
+              "round": 18,
+              "dragon": 61,
+              "message": "RECLAIM_PEARL 18 61 cell 1282 old_id 50"
+            },
+            {
+              "round": 18,
+              "dragon": 61,
+              "message": "RECLAIM_PEARL 18 61 cell 1346 old_id 50"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 20,
+              "dragon": 61,
+              "message": "RECLAIM_COLLECT 20 61 goal 1282 distance 3"
+            },
+            {
+              "round": 21,
+              "dragon": 61,
+              "message": "RECLAIM_COLLECT 21 61 goal 1282 distance 2"
+            },
+            {
+              "round": 47,
+              "dragon": 134,
+              "message": "RECLAIM_COLLECT 47 134 goal 1346 distance 4"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 37,
+              "dragon": 108,
+              "message": "RECLAIM_REJECT 37 108 target 98 friend 0 enemy 4"
+            },
+            {
+              "round": 38,
+              "dragon": 108,
+              "message": "RECLAIM_REJECT 38 108 target 98 friend 0 enemy 4"
+            },
+            {
+              "round": 39,
+              "dragon": 108,
+              "message": "RECLAIM_REJECT 39 108 target 98 friend 0 enemy 4"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0036_xxqztest_slithery_fight_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 1523,
+          "RECLAIM_COLLECT": 1171,
+          "RECLAIM_REJECT": 257
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 1,
+              "dragon": 19,
+              "message": "RECLAIM_PEARL 1 19 cell 311 old_id 5"
+            },
+            {
+              "round": 17,
+              "dragon": 62,
+              "message": "RECLAIM_PEARL 17 62 cell 354 old_id 49"
+            },
+            {
+              "round": 27,
+              "dragon": 85,
+              "message": "RECLAIM_PEARL 27 85 cell 418 old_id 62"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 18,
+              "dragon": 62,
+              "message": "RECLAIM_COLLECT 18 62 goal 354 distance 5"
+            },
+            {
+              "round": 19,
+              "dragon": 62,
+              "message": "RECLAIM_COLLECT 19 62 goal 354 distance 4"
+            },
+            {
+              "round": 20,
+              "dragon": 62,
+              "message": "RECLAIM_COLLECT 20 62 goal 354 distance 3"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 56,
+              "dragon": 73,
+              "message": "RECLAIM_REJECT 56 73 target 23 friend 0 enemy 2"
+            },
+            {
+              "round": 65,
+              "dragon": 73,
+              "message": "RECLAIM_REJECT 65 73 target 178 friend 0 enemy 4"
+            },
+            {
+              "round": 67,
+              "dragon": 73,
+              "message": "RECLAIM_REJECT 67 73 target 178 friend 0 enemy 4"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "slithery_fight",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0037_xxqztest_trauma_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_PEARL": 377,
+          "RECLAIM_COLLECT": 184,
+          "RECLAIM_REJECT": 5
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 80,
+              "dragon": 18,
+              "message": "RECLAIM_PEARL 80 18 cell 352 old_id 20"
+            },
+            {
+              "round": 91,
+              "dragon": 34,
+              "message": "RECLAIM_PEARL 91 34 cell 399 old_id 28"
+            },
+            {
+              "round": 96,
+              "dragon": 30,
+              "message": "RECLAIM_PEARL 96 30 cell 395 old_id 35"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 91,
+              "dragon": 34,
+              "message": "RECLAIM_COLLECT 91 34 goal 399 distance 1"
+            },
+            {
+              "round": 100,
+              "dragon": 38,
+              "message": "RECLAIM_COLLECT 100 38 goal 397 distance 1"
+            },
+            {
+              "round": 127,
+              "dragon": 54,
+              "message": "RECLAIM_COLLECT 127 54 goal 397 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 405,
+              "dragon": 400,
+              "message": "RECLAIM_REJECT 405 400 target 374 friend 0 enemy 6"
+            },
+            {
+              "round": 412,
+              "dragon": 403,
+              "message": "RECLAIM_REJECT 412 403 target 397 friend 0 enemy 4"
+            },
+            {
+              "round": 412,
+              "dragon": 403,
+              "message": "RECLAIM_REJECT 412 403 target 399 friend 0 enemy 6"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0038_xxqztest_trauma_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": 226,
+          "RECLAIM_COLLECT": 118,
+          "RECLAIM_REJECT": 7
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_PEARL": [
+            {
+              "round": 40,
+              "dragon": 9,
+              "message": "RECLAIM_PEARL 40 9 cell 704 old_id 8"
+            },
+            {
+              "round": 40,
+              "dragon": 10,
+              "message": "RECLAIM_PEARL 40 10 cell 704 old_id 8"
+            },
+            {
+              "round": 40,
+              "dragon": 12,
+              "message": "RECLAIM_PEARL 40 12 cell 704 old_id 8"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 40,
+              "dragon": 12,
+              "message": "RECLAIM_COLLECT 40 12 goal 704 distance 1"
+            },
+            {
+              "round": 59,
+              "dragon": 16,
+              "message": "RECLAIM_COLLECT 59 16 goal 703 distance 1"
+            },
+            {
+              "round": 67,
+              "dragon": 28,
+              "message": "RECLAIM_COLLECT 67 28 goal 756 distance 1"
+            }
+          ],
+          "RECLAIM_REJECT": [
+            {
+              "round": 285,
+              "dragon": 110,
+              "message": "RECLAIM_REJECT 285 110 target 153 friend 0 enemy 2"
+            },
+            {
+              "round": 285,
+              "dragon": 110,
+              "message": "RECLAIM_REJECT 285 110 target 153 friend 0 enemy 2"
+            },
+            {
+              "round": 301,
+              "dragon": 129,
+              "message": "RECLAIM_REJECT 301 129 target 153 friend 0 enemy 8"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "trauma",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0039_xxqztest_trophy_seed76001_A.replay",
+      "candidate_side": "A",
+      "counts": {
+        "candidate": {
+          "RECLAIM_REJECT": 21,
+          "RECLAIM_PEARL": 2
+        },
+        "opponent": {}
+      },
+      "samples": {
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 18,
+              "dragon": 0,
+              "message": "RECLAIM_REJECT 18 0 target 3 friend 0 enemy 4"
+            },
+            {
+              "round": 24,
+              "dragon": 0,
+              "message": "RECLAIM_REJECT 24 0 target 5 friend 0 enemy 6"
+            },
+            {
+              "round": 45,
+              "dragon": 7,
+              "message": "RECLAIM_REJECT 45 7 target 5 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 97,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 97 22 cell 153 old_id 42"
+            },
+            {
+              "round": 123,
+              "dragon": 22,
+              "message": "RECLAIM_PEARL 123 22 cell 172 old_id 34"
+            }
+          ]
+        },
+        "opponent": {}
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "seed": 76001,
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/relay_feedback_20261001/counter_reclaim/0040_xxqztest_trophy_seed76001_B.replay",
+      "candidate_side": "B",
+      "counts": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": 96,
+          "RECLAIM_PEARL": 291,
+          "RECLAIM_COLLECT": 289
+        }
+      },
+      "samples": {
+        "opponent": {},
+        "candidate": {
+          "RECLAIM_REJECT": [
+            {
+              "round": 18,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 18 1 target 2 friend 0 enemy 4"
+            },
+            {
+              "round": 24,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 24 1 target 5 friend 0 enemy 4"
+            },
+            {
+              "round": 30,
+              "dragon": 1,
+              "message": "RECLAIM_REJECT 30 1 target 5 friend 0 enemy 6"
+            }
+          ],
+          "RECLAIM_PEARL": [
+            {
+              "round": 64,
+              "dragon": 30,
+              "message": "RECLAIM_PEARL 64 30 cell 281 old_id 14"
+            },
+            {
+              "round": 70,
+              "dragon": 15,
+              "message": "RECLAIM_PEARL 70 15 cell 337 old_id 12"
+            },
+            {
+              "round": 70,
+              "dragon": 20,
+              "message": "RECLAIM_PEARL 70 20 cell 337 old_id 12"
+            }
+          ],
+          "RECLAIM_COLLECT": [
+            {
+              "round": 70,
+              "dragon": 15,
+              "message": "RECLAIM_COLLECT 70 15 goal 337 distance 2"
+            },
+            {
+              "round": 70,
+              "dragon": 30,
+              "message": "RECLAIM_COLLECT 70 30 goal 312 distance 4"
+            },
+            {
+              "round": 70,
+              "dragon": 39,
+              "message": "RECLAIM_COLLECT 70 39 goal 164 distance 5"
+            }
+          ]
+        }
+      },
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "map": "trophy",
+      "seed": 76001,
+      "outcome": "loss"
+    }
+  ],
+  "totals": [
+    {
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "owner": "candidate",
+      "tags": {
+        "RECLAIM_PEARL": 15391,
+        "RECLAIM_REJECT": 1756,
+        "RECLAIM_COLLECT": 9263
+      }
+    },
+    {
+      "run": "counter_reclaim",
+      "opponent": "V3_portal",
+      "owner": "opponent",
+      "tags": {}
+    },
+    {
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "owner": "candidate",
+      "tags": {
+        "RECLAIM_PEARL": 13764,
+        "RECLAIM_REJECT": 1280,
+        "RECLAIM_COLLECT": 8474
+      }
+    },
+    {
+      "run": "counter_reclaim",
+      "opponent": "xxqztest",
+      "owner": "opponent",
+      "tags": {}
+    }
+  ]
+}

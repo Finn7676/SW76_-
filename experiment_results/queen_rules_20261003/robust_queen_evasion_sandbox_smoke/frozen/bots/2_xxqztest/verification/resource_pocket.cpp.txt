@@ -1,0 +1,90 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <iostream>
+#include <set>
+
+using namespace bot;
+
+// Follow a length-2 dragon through a known pearl corridor over real planner
+// turns. The child's size must follow harvested length, not a fixed example.
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Observer observer{turn, world, topology, occupancy, body};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{8, Team::A, Direction::EAST, Vision{}, 64};
+    std::vector<int> segments{60, 59};
+    std::set<int> pearls;
+
+    explicit Fixture(int pearlCount) {
+        turn.round = 302;
+        turn.myId = 8; // Champion-by-ID is not a parent escape requirement
+        turn.population = ct.unit_count = 10;
+        std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+        for (int c = 61; c <= 60 + pearlCount; ++c) {
+            pearls.insert(c);
+            topology.setEdge(c, 0, E_KELP, -1);
+            topology.setEdge(c, 2, E_KELP, -1);
+        }
+        topology.setEdge(60 + pearlCount, 1, E_KELP, -1);
+    }
+    void observe() {
+        turn.here = segments.front();
+        turn.length = ct.length = int(segments.size());
+        std::vector<Tile> tiles;
+        for (int dy = -3; dy <= 3; ++dy)
+            for (int dx = -3; dx <= 3; ++dx) {
+                int x = (turn.here % 11 + dx + 11) % 11;
+                int y = (turn.here / 11 + dy + 11) % 11;
+                int c = y * 11 + x;
+                std::optional<DragonPart> part;
+                for (int i = 0; i < int(segments.size()); ++i)
+                    if (segments[i] == c)
+                        part.emplace(Position{x,y}, 8, Team::A, Direction::EAST, i == 0);
+                Tile tile{Position{x,y}, part, -1, pearls.count(c) != 0};
+                for (int d = 0; d < 4; ++d)
+                    if (topology.edgeTypeAt(c * 4 + d) == E_KELP)
+                        tile.get_edge(Direction(DCH[d])) = Edge(false, EdgeType::KELP);
+                tiles.push_back(tile);
+            }
+        ct.vision = Vision(std::move(tiles));
+        body.beginTurn();
+        observer.observe(ct);
+    }
+    Action choose() {
+        Action a = planner.avoidTeammateHead(planner.choose(ct));
+        planner.rememberChosenAction(a);
+        return a;
+    }
+    void move(Action a) {
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+        int dest = topology.step(turn.here, 1);
+        bool ate = pearls.erase(dest) != 0;
+        if (!ate) segments.pop_back();
+        segments.insert(segments.begin(), dest);
+        ++turn.round;
+    }
+};
+
+int main() {
+    for (int pearlCount : {3,5}) {
+        Fixture f{pearlCount};
+        for (int step = 0; step < pearlCount; ++step) {
+            f.observe();
+            Action a = f.choose();
+            assert(f.planner.currentMission().type == MissionType::PEARL_POCKET);
+            f.move(a);
+        }
+        f.observe();
+        Action split = f.choose();
+        assert(split.type == ActionType::SPLIT && split.splitSize == pearlCount);
+        assert(f.turn.length - split.splitSize == 2);
+    }
+    std::cout << "variable-size pearl pocket split checks passed\n";
+}

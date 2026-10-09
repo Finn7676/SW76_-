@@ -1,0 +1,3211 @@
+{
+  "passed": true,
+  "case_count": 27,
+  "toolkit_version": "1.2.7",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "fixture_source_sha256": "cf1f3593ecbd857047cbe5e68940449727c5db294e74d00058fcbd95a6b9fe39",
+  "replay_parser_sha256": "5adb4ae2b3e15217742baec0f6439d556e35a5c4c1054c3ab05315b797cc9565",
+  "cases": [
+    {
+      "case": "queen_zero_no_initial_teammate_succession",
+      "result": {
+        "rounds": 1,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 1,
+        "b_dragons": 0,
+        "a_length": 12,
+        "b_length": 0,
+        "events": 24,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 12,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "length": 12
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            23,
+            24
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "head": [
+            17,
+            16
+          ],
+          "tail": [
+            6,
+            16
+          ],
+          "length": 12
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "head": [
+            18,
+            16
+          ],
+          "tail": [
+            7,
+            16
+          ],
+          "length": 12
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "queen_0_split_keeps_parent_identity",
+      "result": {
+        "rounds": 1,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 2,
+        "b_dragons": 0,
+        "a_length": 8,
+        "b_length": 0,
+        "events": 24,
+        "a_queen": 3,
+        "b_queen": 0,
+        "a_longest": 5,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "length": 5
+        }
+      ],
+      "deaths": [
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            23,
+            24
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "head": [
+            8,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "head": [
+            7,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 5
+        }
+      ],
+      "splits": [
+        {
+          "parent": 0,
+          "child": 2,
+          "parent_length": 3,
+          "child_length": 5
+        }
+      ]
+    },
+    {
+      "case": "queen_0_death_no_child_succession",
+      "result": {
+        "rounds": 2,
+        "winner": "A",
+        "end_reason": 0,
+        "a_dragons": 1,
+        "b_dragons": 0,
+        "a_length": 5,
+        "b_length": 0,
+        "events": 33,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 5,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "length": 5
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          2,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            23,
+            24
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "head": [
+            8,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "head": [
+            26,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "head": [
+            7,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "head": [
+            6,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 5
+        }
+      ],
+      "splits": [
+        {
+          "parent": 0,
+          "child": 2,
+          "parent_length": 3,
+          "child_length": 5
+        }
+      ]
+    },
+    {
+      "case": "queen_1_split_keeps_parent_identity",
+      "result": {
+        "rounds": 1,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 2,
+        "a_length": 0,
+        "b_length": 8,
+        "events": 24,
+        "a_queen": 0,
+        "b_queen": 3,
+        "a_longest": 0,
+        "b_longest": 5
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "length": 5
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "head": [
+            16,
+            24
+          ],
+          "tail": [
+            20,
+            24
+          ],
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            23,
+            24
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "head": [
+            15,
+            24
+          ],
+          "tail": [
+            19,
+            24
+          ],
+          "length": 5
+        }
+      ],
+      "splits": [
+        {
+          "parent": 1,
+          "child": 2,
+          "parent_length": 3,
+          "child_length": 5
+        }
+      ]
+    },
+    {
+      "case": "queen_1_death_no_child_succession",
+      "result": {
+        "rounds": 2,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 5,
+        "events": 33,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 5
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "length": 5
+        }
+      ],
+      "deaths": [
+        [
+          1,
+          1,
+          "A"
+        ],
+        [
+          0,
+          2,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "head": [
+            16,
+            24
+          ],
+          "tail": [
+            20,
+            24
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "head": [
+            15,
+            24
+          ],
+          "tail": [
+            19,
+            24
+          ],
+          "length": 5
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "head": [
+            14,
+            24
+          ],
+          "tail": [
+            18,
+            24
+          ],
+          "length": 5
+        }
+      ],
+      "splits": [
+        {
+          "parent": 1,
+          "child": 2,
+          "parent_length": 3,
+          "child_length": 5
+        }
+      ]
+    },
+    {
+      "case": "sprint",
+      "initial_length": 4,
+      "free_steps": 1,
+      "requested_steps": 1,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 19,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 4,
+      "free_steps": 1,
+      "requested_steps": 3,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 20,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 4,
+      "free_steps": 1,
+      "requested_steps": 4,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 14,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 5,
+      "free_steps": 2,
+      "requested_steps": 2,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 21,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 5,
+      "free_steps": 2,
+      "requested_steps": 4,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 22,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 5,
+      "free_steps": 2,
+      "requested_steps": 6,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 16,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            20,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 8,
+      "free_steps": 2,
+      "requested_steps": 2,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 22,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 8,
+      "free_steps": 2,
+      "requested_steps": 4,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 23,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 6
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 7
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 6
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 8,
+      "free_steps": 2,
+      "requested_steps": 9,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 19,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 7
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 6
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            17,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            22,
+            8
+          ],
+          "tail": [
+            19,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            23,
+            8
+          ],
+          "tail": [
+            21,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            24,
+            8
+          ],
+          "tail": [
+            23,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 9,
+      "free_steps": 3,
+      "requested_steps": 3,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 24,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 9
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 9
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            9,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 9,
+      "free_steps": 3,
+      "requested_steps": 5,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 25,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 9
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 7
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            9,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 7
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 9,
+      "free_steps": 3,
+      "requested_steps": 11,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 21,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 9
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            9,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            11,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 7
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            22,
+            8
+          ],
+          "tail": [
+            17,
+            8
+          ],
+          "length": 6
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            23,
+            8
+          ],
+          "tail": [
+            19,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            24,
+            8
+          ],
+          "tail": [
+            21,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            25,
+            8
+          ],
+          "tail": [
+            23,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            26,
+            8
+          ],
+          "tail": [
+            25,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 12,
+      "free_steps": 3,
+      "requested_steps": 3,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 25,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            6,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            7,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            8,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 12,
+      "free_steps": 3,
+      "requested_steps": 5,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 26,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 10
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            6,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            7,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            8,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 11
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ],
+          "length": 10
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 12,
+      "free_steps": 3,
+      "requested_steps": 14,
+      "pearl_offsets": [],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 24,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 12
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            6,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            7,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            8,
+            8
+          ],
+          "length": 12
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 11
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            21,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ],
+          "length": 10
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            22,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            23,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            24,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ],
+          "length": 7
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            25,
+            8
+          ],
+          "tail": [
+            20,
+            8
+          ],
+          "length": 6
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            26,
+            8
+          ],
+          "tail": [
+            22,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            27,
+            8
+          ],
+          "tail": [
+            24,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            28,
+            8
+          ],
+          "tail": [
+            26,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            29,
+            8
+          ],
+          "tail": [
+            28,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 4,
+      "free_steps": 1,
+      "requested_steps": 2,
+      "pearl_offsets": [
+        1
+      ],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 29,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 8,
+      "free_steps": 2,
+      "requested_steps": 3,
+      "pearl_offsets": [
+        1
+      ],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 32,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            9,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            10,
+            8
+          ],
+          "length": 9
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ],
+          "length": 8
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 2,
+      "free_steps": 1,
+      "requested_steps": 2,
+      "pearl_offsets": [
+        2
+      ],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 18,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 2,
+      "free_steps": 1,
+      "requested_steps": 2,
+      "pearl_offsets": [
+        1,
+        2
+      ],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 38,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            16,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 5,
+      "free_steps": 2,
+      "requested_steps": 3,
+      "pearl_offsets": [
+        3
+      ],
+      "result": {
+        "rounds": 1,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 31,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            14,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "sprint",
+      "initial_length": 4,
+      "free_steps": 1,
+      "requested_steps": 5,
+      "pearl_offsets": [
+        1,
+        5
+      ],
+      "result": {
+        "rounds": 0,
+        "winner": "B",
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 1,
+        "a_length": 0,
+        "b_length": 2,
+        "events": 28,
+        "a_queen": 0,
+        "b_queen": 2,
+        "a_longest": 0,
+        "b_longest": 2
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            13,
+            8
+          ],
+          "length": 5
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            18,
+            8
+          ],
+          "tail": [
+            15,
+            8
+          ],
+          "length": 4
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            17,
+            8
+          ],
+          "length": 3
+        },
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            20,
+            8
+          ],
+          "tail": [
+            19,
+            8
+          ],
+          "length": 2
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "head": [
+            25,
+            24
+          ],
+          "tail": [
+            24,
+            24
+          ],
+          "length": 2
+        }
+      ],
+      "splits": []
+    },
+    {
+      "case": "paid_collision_before_tail_removal",
+      "result": {
+        "rounds": 0,
+        "winner": null,
+        "end_reason": 0,
+        "a_dragons": 0,
+        "b_dragons": 0,
+        "a_length": 0,
+        "b_length": 0,
+        "events": 13,
+        "a_queen": 0,
+        "b_queen": 0,
+        "a_longest": 0,
+        "b_longest": 0
+      },
+      "observations": [
+        {
+          "id": 0,
+          "round": 0,
+          "length": 4
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "length": 2
+        }
+      ],
+      "deaths": [
+        [
+          0,
+          0,
+          "S"
+        ],
+        [
+          1,
+          0,
+          "A"
+        ]
+      ],
+      "movements": [
+        {
+          "id": 0,
+          "round": 0,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            17,
+            9
+          ],
+          "length": 4
+        }
+      ],
+      "splits": []
+    }
+  ]
+}

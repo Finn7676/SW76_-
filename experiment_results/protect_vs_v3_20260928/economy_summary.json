@@ -1,0 +1,1001 @@
+{
+  "generated_at_utc": "2026-09-28T16:14:35.505012+00:00",
+  "git_commit_at_summary_time": "dd601f5b21051fce3995cd1cd215f3ea68afbb09",
+  "git_commit_note": "Current commit only; does not identify uncommitted sources at match time. Use snapshot hashes.",
+  "baseline": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+  "metric_definition": "Summarize completed games and paired outcomes without treating failures as losses.\n\nExample:\n  python3 summarize_runs.py economy_dev economy_champion_dev     --baseline ../protect_local_20260927/full_v1 --output summary.json\n\nKeys are (opponent, seed, map, bot1_side). Win rate means wins/completed;\ndraws stay in the denominator. Seed standard deviation is the sample SD of\nper-seed win rates, not a binomial standard error or significance test.\n",
+  "runs": [
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "overall": {
+        "recorded": 20,
+        "completed": 20,
+        "wins": 9,
+        "losses": 11,
+        "draws": 0,
+        "failures": 0,
+        "win_rate": 0.45
+      },
+      "by_opponent": [
+        {
+          "opponent": "V3_portal",
+          "recorded": 20,
+          "completed": 20,
+          "wins": 9,
+          "losses": 11,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.45
+        }
+      ],
+      "by_map": [
+        {
+          "opponent": "V3_portal",
+          "map": "autarky",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "default",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "devil",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "dilemma",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "portals",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "queen_of_spades",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "schooltime",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "slithery_fight",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trauma",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "map": "trophy",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        }
+      ],
+      "by_seed": [
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "recorded": 20,
+          "completed": 20,
+          "wins": 9,
+          "losses": 11,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.45
+        }
+      ],
+      "by_seed_map": [
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "autarky",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "default",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "devil",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "dilemma",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "portals",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "queen_of_spades",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "schooltime",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 0,
+          "losses": 2,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.0
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "slithery_fight",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trauma",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 1,
+          "losses": 1,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.5
+        },
+        {
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trophy",
+          "recorded": 2,
+          "completed": 2,
+          "wins": 2,
+          "losses": 0,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 1.0
+        }
+      ],
+      "seed_statistics": [
+        {
+          "opponent": "V3_portal",
+          "n_seeds": 1,
+          "by_seed": [
+            {
+              "seed": "20260927",
+              "recorded": 20,
+              "completed": 20,
+              "wins": 9,
+              "losses": 11,
+              "draws": 0,
+              "failures": 0,
+              "win_rate": 0.45
+            }
+          ],
+          "mean_win_rate": 0.45,
+          "sample_std_win_rate": null,
+          "same_completed_conditions_each_seed": true,
+          "test": "descriptive only; no significance test"
+        }
+      ],
+      "failures": [],
+      "raw_results": [
+        {
+          "game": "1",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "autarky",
+          "bot1_side": "A",
+          "outcome": "win",
+          "winner": "A",
+          "rounds": "345",
+          "reason": "team A wins after 345 rounds (by elimination) (4.5s)",
+          "seconds": "5.237",
+          "replay": "0001_V3_portal_autarky_seed20260927_A.replay",
+          "log": "0001_V3_portal_autarky_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "2",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "autarky",
+          "bot1_side": "B",
+          "outcome": "win",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (8.2s)",
+          "seconds": "8.957",
+          "replay": "0002_V3_portal_autarky_seed20260927_B.replay",
+          "log": "0002_V3_portal_autarky_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "3",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "default",
+          "bot1_side": "A",
+          "outcome": "loss",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (7.8s)",
+          "seconds": "8.445",
+          "replay": "0003_V3_portal_default_seed20260927_A.replay",
+          "log": "0003_V3_portal_default_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "4",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "default",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "500",
+          "reason": "team A wins after 500 rounds (on length) (9.1s)",
+          "seconds": "9.702",
+          "replay": "0004_V3_portal_default_seed20260927_B.replay",
+          "log": "0004_V3_portal_default_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "5",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "devil",
+          "bot1_side": "A",
+          "outcome": "win",
+          "winner": "A",
+          "rounds": "288",
+          "reason": "team A wins after 288 rounds (by elimination) (5.3s)",
+          "seconds": "5.877",
+          "replay": "0005_V3_portal_devil_seed20260927_A.replay",
+          "log": "0005_V3_portal_devil_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "6",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "devil",
+          "bot1_side": "B",
+          "outcome": "win",
+          "winner": "B",
+          "rounds": "288",
+          "reason": "team B wins after 288 rounds (by elimination) (4.6s)",
+          "seconds": "5.181",
+          "replay": "0006_V3_portal_devil_seed20260927_B.replay",
+          "log": "0006_V3_portal_devil_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "7",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "portals",
+          "bot1_side": "A",
+          "outcome": "loss",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (11.4s)",
+          "seconds": "12.03",
+          "replay": "0007_V3_portal_portals_seed20260927_A.replay",
+          "log": "0007_V3_portal_portals_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "9",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "dilemma",
+          "bot1_side": "A",
+          "outcome": "win",
+          "winner": "A",
+          "rounds": "353",
+          "reason": "team A wins after 353 rounds (by elimination) (1.6s)",
+          "seconds": "2.12",
+          "replay": "0009_V3_portal_dilemma_seed20260927_A.replay",
+          "log": "0009_V3_portal_dilemma_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "10",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "dilemma",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "235",
+          "reason": "team A wins after 235 rounds (by elimination) (0.9s)",
+          "seconds": "1.461",
+          "replay": "0010_V3_portal_dilemma_seed20260927_B.replay",
+          "log": "0010_V3_portal_dilemma_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "8",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "portals",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "500",
+          "reason": "team A wins after 500 rounds (on length) (10.9s)",
+          "seconds": "11.575",
+          "replay": "0008_V3_portal_portals_seed20260927_B.replay",
+          "log": "0008_V3_portal_portals_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "12",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "queen_of_spades",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "239",
+          "reason": "team A wins after 239 rounds (by elimination) (1.7s)",
+          "seconds": "2.323",
+          "replay": "0012_V3_portal_queen_of_spades_seed20260927_B.replay",
+          "log": "0012_V3_portal_queen_of_spades_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "11",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "queen_of_spades",
+          "bot1_side": "A",
+          "outcome": "loss",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (5.1s)",
+          "seconds": "5.649",
+          "replay": "0011_V3_portal_queen_of_spades_seed20260927_A.replay",
+          "log": "0011_V3_portal_queen_of_spades_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "13",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "schooltime",
+          "bot1_side": "A",
+          "outcome": "loss",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (22.3s)",
+          "seconds": "22.954",
+          "replay": "0013_V3_portal_schooltime_seed20260927_A.replay",
+          "log": "0013_V3_portal_schooltime_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "14",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "schooltime",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "500",
+          "reason": "team A wins after 500 rounds (on length) (26.0s)",
+          "seconds": "26.735",
+          "replay": "0014_V3_portal_schooltime_seed20260927_B.replay",
+          "log": "0014_V3_portal_schooltime_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "15",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "slithery_fight",
+          "bot1_side": "A",
+          "outcome": "win",
+          "winner": "A",
+          "rounds": "500",
+          "reason": "team A wins after 500 rounds (on length) (30.2s)",
+          "seconds": "30.935",
+          "replay": "0015_V3_portal_slithery_fight_seed20260927_A.replay",
+          "log": "0015_V3_portal_slithery_fight_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "17",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trauma",
+          "bot1_side": "A",
+          "outcome": "loss",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (4.0s)",
+          "seconds": "4.582",
+          "replay": "0017_V3_portal_trauma_seed20260927_A.replay",
+          "log": "0017_V3_portal_trauma_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "16",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "slithery_fight",
+          "bot1_side": "B",
+          "outcome": "loss",
+          "winner": "A",
+          "rounds": "500",
+          "reason": "team A wins after 500 rounds (on length) (30.0s)",
+          "seconds": "30.714",
+          "replay": "0016_V3_portal_slithery_fight_seed20260927_B.replay",
+          "log": "0016_V3_portal_slithery_fight_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "18",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trauma",
+          "bot1_side": "B",
+          "outcome": "win",
+          "winner": "B",
+          "rounds": "500",
+          "reason": "team B wins after 500 rounds (on length) (4.5s)",
+          "seconds": "5.087",
+          "replay": "0018_V3_portal_trauma_seed20260927_B.replay",
+          "log": "0018_V3_portal_trauma_seed20260927_B.log",
+          "error": ""
+        },
+        {
+          "game": "19",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trophy",
+          "bot1_side": "A",
+          "outcome": "win",
+          "winner": "A",
+          "rounds": "436",
+          "reason": "team A wins after 436 rounds (by elimination) (7.5s)",
+          "seconds": "8.177",
+          "replay": "0019_V3_portal_trophy_seed20260927_A.replay",
+          "log": "0019_V3_portal_trophy_seed20260927_A.log",
+          "error": ""
+        },
+        {
+          "game": "20",
+          "opponent": "V3_portal",
+          "seed": "20260927",
+          "map": "trophy",
+          "bot1_side": "B",
+          "outcome": "win",
+          "winner": "B",
+          "rounds": "282",
+          "reason": "team B wins after 282 rounds (by elimination) (5.3s)",
+          "seconds": "6.032",
+          "replay": "0020_V3_portal_trophy_seed20260927_B.replay",
+          "log": "0020_V3_portal_trophy_seed20260927_B.log",
+          "error": ""
+        }
+      ],
+      "provenance": {
+        "run_config": {
+          "sources": [
+            "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_protect_economy",
+            "/home/tyhh/SW76_-/tyhh_test/V3_portal"
+          ],
+          "built": [
+            "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/sources/0/tyhh_qos_protect_economy/.unswbc-build/bot",
+            "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/sources/1/V3_portal/.unswbc-build/bot"
+          ],
+          "hashes": {
+            "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_protect_economy/main.cpp": "e1463058c1cdc8733173eb403bb4aa89b1ba75c2ee8b2e85330e2bcd2ea4fab2",
+            "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_protect_economy/helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+            "/home/tyhh/SW76_-/tyhh_test/tyhh_qos_protect_economy/bot.toml": "07c41864fdfd4626594bbd562fecdaad36ef2f4554dec88262a86ebd6f9273cb",
+            "/home/tyhh/SW76_-/tyhh_test/V3_portal/main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+            "/home/tyhh/SW76_-/tyhh_test/V3_portal/helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+            "/home/tyhh/SW76_-/tyhh_test/V3_portal/bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5"
+          },
+          "maps": {
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/autarky.map": "35737755c5a3123fcd4c3fd1cf1ecb08513adf9ac14c351f00f76c23e9bd6dbd",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/default.map": "6bd7abf2ed51a7f667552c243ad038f4177e450cf2f9dd9be52f826f9e526f95",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/devil.map": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/portals.map": "39aa8bafee6284d940315a7b107aa606014b68149909b77eea7796058f536412",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/dilemma.map": "d76d7ad9ada3a8d089b52f4a973e7e9acf7ae4b7f695e9f018caf6ae75bdb109",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/queen_of_spades.map": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/schooltime.map": "726c404f3b34b4ed7b21cef83628407e70b717cd919f114e4a0e57f7f6d66520",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/slithery_fight.map": "821b20ed69d5d324d065766cb54ebb86cc554b05c2724262bb64388e2fb0a76b",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/trauma.map": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+            "/home/tyhh/SW76_-/battlecode_quickstart/maps/trophy.map": "5f1f6b23d6edb944954a9a31b95f229fd9966bec0875a9f04bca680aa3de33f5"
+          },
+          "seeds": [
+            20260927
+          ],
+          "jobs": 2,
+          "verbose": false
+        },
+        "snapshot_file_sha256": {
+          "sources/0/tyhh_qos_protect_economy/bot.toml": "07c41864fdfd4626594bbd562fecdaad36ef2f4554dec88262a86ebd6f9273cb",
+          "sources/0/tyhh_qos_protect_economy/helper.hpp": "6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc",
+          "sources/0/tyhh_qos_protect_economy/main.cpp": "e1463058c1cdc8733173eb403bb4aa89b1ba75c2ee8b2e85330e2bcd2ea4fab2",
+          "sources/1/V3_portal/.gitignore": "2c147c477a5e7050bebb482645844eda308cf71e61f85e491d5d2d0d4fb71b89",
+          "sources/1/V3_portal/V3_NOTES.md": "892497ecd8162146b07c438a929388f2795610420d56165070e5ac9ce33b78fe",
+          "sources/1/V3_portal/action.hpp": "c4e88b54d77b88c2c8376e029221758a513ed8649aa3fd6f34157366e0a54183",
+          "sources/1/V3_portal/body.hpp": "24286d613ba4b1a681d2d1d6837dffac98c616d6c3dda41464c9c500e5c37172",
+          "sources/1/V3_portal/bot.toml": "d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5",
+          "sources/1/V3_portal/core.hpp": "0cad691e6310798b6ea73897205956bce20a9a638c9db2575b2083431ca97a61",
+          "sources/1/V3_portal/debug.hpp": "4e2c682611d65d29c4dd76e4ec8e230abe3d6c2df236620c898b9137a6e6bbf4",
+          "sources/1/V3_portal/helper.hpp": "7bb7a75cdcb1a2e6cdc415485a5c8cb839473d1744ce40f72cbb0a8e9495fa7c",
+          "sources/1/V3_portal/main.cpp": "3323482722c3c01e85d3fe7d7366e02a46ee1047ebd1d7c24bd07b109f246632",
+          "sources/1/V3_portal/observer.hpp": "d15e874bf6f66bacf79c1fa5a892ed8575e8aeeda7177399a979f4eb3bd3bbfd",
+          "sources/1/V3_portal/occupancy.hpp": "98a63c97b572c7d1981c14709eb9d21784c2e3bcaf29347825240292136a0a8f",
+          "sources/1/V3_portal/planner.hpp": "5517d00108434109939163d604c78b7d5e31c389e60c3e56bc909d18f3181788",
+          "sources/1/V3_portal/roles.hpp": "984b4d57e1181914c878ac6f6d0a37dfb96a88c447341ef8c55fcaddccda56eb",
+          "sources/1/V3_portal/search.hpp": "1a81636ac8062b5cbcab22a891464e4f6a8a55199f972437c9828855de66dfd6",
+          "sources/1/V3_portal/sonar.hpp": "7c1d9b5a619323dff821ffe80bb174621b351b9824f0ad3ba1315c194cde6339",
+          "sources/1/V3_portal/topology.hpp": "492a54469c09961d23949619022f8ea1fc90f8baeab774ecfe275f53024a4138",
+          "sources/1/V3_portal/verification/short_avoid.cpp.txt": "9f43aeb65f402e0a6cd09312490040787a316ead825c21e23ac27087509c2e09",
+          "sources/1/V3_portal/verification/v3_tests.cpp.txt": "0b5530c3a6567fa5480de168b3536aa3464a1bcd7f4310c9284c74b591c4807a",
+          "sources/1/V3_portal/world.hpp": "60f44faaf0467b648f67d13a67da69372a103a1c29917247a85af8e99dbb5819"
+        },
+        "map_hash_checks": [
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/autarky.map",
+            "recorded_sha256": "35737755c5a3123fcd4c3fd1cf1ecb08513adf9ac14c351f00f76c23e9bd6dbd",
+            "current_sha256": "35737755c5a3123fcd4c3fd1cf1ecb08513adf9ac14c351f00f76c23e9bd6dbd",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/default.map",
+            "recorded_sha256": "6bd7abf2ed51a7f667552c243ad038f4177e450cf2f9dd9be52f826f9e526f95",
+            "current_sha256": "6bd7abf2ed51a7f667552c243ad038f4177e450cf2f9dd9be52f826f9e526f95",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/devil.map",
+            "recorded_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+            "current_sha256": "a09e8f2d3bdd1e40fad31a0ecdf00166cd1090c232c56dcc2557729de737f6aa",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/dilemma.map",
+            "recorded_sha256": "d76d7ad9ada3a8d089b52f4a973e7e9acf7ae4b7f695e9f018caf6ae75bdb109",
+            "current_sha256": "d76d7ad9ada3a8d089b52f4a973e7e9acf7ae4b7f695e9f018caf6ae75bdb109",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/portals.map",
+            "recorded_sha256": "39aa8bafee6284d940315a7b107aa606014b68149909b77eea7796058f536412",
+            "current_sha256": "39aa8bafee6284d940315a7b107aa606014b68149909b77eea7796058f536412",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/queen_of_spades.map",
+            "recorded_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+            "current_sha256": "126d71b46443268596285918d910b7f8d875bf3028ca9c5ff6bad97b4e868938",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/schooltime.map",
+            "recorded_sha256": "726c404f3b34b4ed7b21cef83628407e70b717cd919f114e4a0e57f7f6d66520",
+            "current_sha256": "726c404f3b34b4ed7b21cef83628407e70b717cd919f114e4a0e57f7f6d66520",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/slithery_fight.map",
+            "recorded_sha256": "821b20ed69d5d324d065766cb54ebb86cc554b05c2724262bb64388e2fb0a76b",
+            "current_sha256": "821b20ed69d5d324d065766cb54ebb86cc554b05c2724262bb64388e2fb0a76b",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/trauma.map",
+            "recorded_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+            "current_sha256": "dcf39d713c060e5ded2d031a7ffe1a27ea60fe4b72ff8fb3fffbabc4f81e2066",
+            "matches_recorded": true
+          },
+          {
+            "path": "/home/tyhh/SW76_-/battlecode_quickstart/maps/trophy.map",
+            "recorded_sha256": "5f1f6b23d6edb944954a9a31b95f229fd9966bec0875a9f04bca680aa3de33f5",
+            "current_sha256": "5f1f6b23d6edb944954a9a31b95f229fd9966bec0875a9f04bca680aa3de33f5",
+            "matches_recorded": true
+          }
+        ]
+      },
+      "paired_to_baseline": {
+        "pairs": 20,
+        "baseline": {
+          "recorded": 20,
+          "completed": 20,
+          "wins": 9,
+          "losses": 11,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.45
+        },
+        "candidate": {
+          "recorded": 20,
+          "completed": 20,
+          "wins": 9,
+          "losses": 11,
+          "draws": 0,
+          "failures": 0,
+          "win_rate": 0.45
+        },
+        "win_delta": 0,
+        "win_rate_delta": 0.0,
+        "loss_to_win": 1,
+        "win_to_loss": 1,
+        "transitions": {
+          "loss->loss": 10,
+          "loss->win": 1,
+          "win->loss": 1,
+          "win->win": 8
+        },
+        "improved_points": 1,
+        "regressed_points": 1,
+        "by_opponent": [
+          {
+            "opponent": "V3_portal",
+            "pairs": 20,
+            "baseline": {
+              "recorded": 20,
+              "completed": 20,
+              "wins": 9,
+              "losses": 11,
+              "draws": 0,
+              "failures": 0,
+              "win_rate": 0.45
+            },
+            "candidate": {
+              "recorded": 20,
+              "completed": 20,
+              "wins": 9,
+              "losses": 11,
+              "draws": 0,
+              "failures": 0,
+              "win_rate": 0.45
+            },
+            "win_delta": 0,
+            "win_rate_delta": 0.0,
+            "loss_to_win": 1,
+            "win_to_loss": 1,
+            "transitions": {
+              "loss->loss": 10,
+              "loss->win": 1,
+              "win->loss": 1,
+              "win->win": 8
+            },
+            "improved_points": 1,
+            "regressed_points": 1
+          }
+        ],
+        "unmatched": [],
+        "failed_pairs": [],
+        "conditions": [
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "autarky",
+            "bot1_side": "A",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0001_V3_portal_autarky_seed20260927_A.replay",
+            "baseline_replay": "0061_V3_portal_autarky_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "autarky",
+            "bot1_side": "B",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0002_V3_portal_autarky_seed20260927_B.replay",
+            "baseline_replay": "0062_V3_portal_autarky_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "default",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0003_V3_portal_default_seed20260927_A.replay",
+            "baseline_replay": "0063_V3_portal_default_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "default",
+            "bot1_side": "B",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0004_V3_portal_default_seed20260927_B.replay",
+            "baseline_replay": "0064_V3_portal_default_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "devil",
+            "bot1_side": "A",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0005_V3_portal_devil_seed20260927_A.replay",
+            "baseline_replay": "0065_V3_portal_devil_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "devil",
+            "bot1_side": "B",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0006_V3_portal_devil_seed20260927_B.replay",
+            "baseline_replay": "0066_V3_portal_devil_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "portals",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0007_V3_portal_portals_seed20260927_A.replay",
+            "baseline_replay": "0067_V3_portal_portals_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "dilemma",
+            "bot1_side": "A",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0009_V3_portal_dilemma_seed20260927_A.replay",
+            "baseline_replay": "0069_V3_portal_dilemma_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "dilemma",
+            "bot1_side": "B",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0010_V3_portal_dilemma_seed20260927_B.replay",
+            "baseline_replay": "0070_V3_portal_dilemma_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "portals",
+            "bot1_side": "B",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0008_V3_portal_portals_seed20260927_B.replay",
+            "baseline_replay": "0068_V3_portal_portals_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "queen_of_spades",
+            "bot1_side": "B",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0012_V3_portal_queen_of_spades_seed20260927_B.replay",
+            "baseline_replay": "0072_V3_portal_queen_of_spades_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "queen_of_spades",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0011_V3_portal_queen_of_spades_seed20260927_A.replay",
+            "baseline_replay": "0071_V3_portal_queen_of_spades_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "schooltime",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0013_V3_portal_schooltime_seed20260927_A.replay",
+            "baseline_replay": "0073_V3_portal_schooltime_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "schooltime",
+            "bot1_side": "B",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0014_V3_portal_schooltime_seed20260927_B.replay",
+            "baseline_replay": "0074_V3_portal_schooltime_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "slithery_fight",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "win",
+            "candidate_replay": "0015_V3_portal_slithery_fight_seed20260927_A.replay",
+            "baseline_replay": "0075_V3_portal_slithery_fight_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "trauma",
+            "bot1_side": "A",
+            "baseline": "loss",
+            "candidate": "loss",
+            "candidate_replay": "0017_V3_portal_trauma_seed20260927_A.replay",
+            "baseline_replay": "0077_V3_portal_trauma_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "slithery_fight",
+            "bot1_side": "B",
+            "baseline": "win",
+            "candidate": "loss",
+            "candidate_replay": "0016_V3_portal_slithery_fight_seed20260927_B.replay",
+            "baseline_replay": "0076_V3_portal_slithery_fight_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "trauma",
+            "bot1_side": "B",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0018_V3_portal_trauma_seed20260927_B.replay",
+            "baseline_replay": "0078_V3_portal_trauma_seed20260927_B.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "trophy",
+            "bot1_side": "A",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0019_V3_portal_trophy_seed20260927_A.replay",
+            "baseline_replay": "0079_V3_portal_trophy_seed20260927_A.replay"
+          },
+          {
+            "opponent": "V3_portal",
+            "seed": "20260927",
+            "map": "trophy",
+            "bot1_side": "B",
+            "baseline": "win",
+            "candidate": "win",
+            "candidate_replay": "0020_V3_portal_trophy_seed20260927_B.replay",
+            "baseline_replay": "0080_V3_portal_trophy_seed20260927_B.replay"
+          }
+        ]
+      }
+    }
+  ]
+}

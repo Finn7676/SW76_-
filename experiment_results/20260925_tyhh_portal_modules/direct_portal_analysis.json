@@ -1,0 +1,171 @@
+{
+  "design": "12 maps x A/B, one game per deterministic condition",
+  "candidate": "tyhh_test/tyhh_portal_direct",
+  "control": "tyhh vs identical copy",
+  "summary": [
+    {
+      "comparison": "candidate",
+      "wins": 13,
+      "losses": 11,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.5416666666666666
+    },
+    {
+      "comparison": "control",
+      "wins": 12,
+      "losses": 12,
+      "draws": 0,
+      "games": 24,
+      "winrate": 0.5
+    }
+  ],
+  "pair_counts": {
+    "win->win": 7,
+    "loss->win": 6,
+    "loss->loss": 6,
+    "win->loss": 5
+  },
+  "flips": [
+    {
+      "map": "Colosseum.map",
+      "side": "B",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "big_empty.map",
+      "side": "A",
+      "control": "win",
+      "candidate": "loss"
+    },
+    {
+      "map": "big_empty.map",
+      "side": "B",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "default.map",
+      "side": "A",
+      "control": "win",
+      "candidate": "loss"
+    },
+    {
+      "map": "default_small.map",
+      "side": "B",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "devil.map",
+      "side": "A",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "queen_of_spades.map",
+      "side": "A",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "queen_of_spades.map",
+      "side": "B",
+      "control": "win",
+      "candidate": "loss"
+    },
+    {
+      "map": "stronghold.map",
+      "side": "A",
+      "control": "loss",
+      "candidate": "win"
+    },
+    {
+      "map": "trauma.map",
+      "side": "A",
+      "control": "win",
+      "candidate": "loss"
+    },
+    {
+      "map": "trophy.map",
+      "side": "A",
+      "control": "win",
+      "candidate": "loss"
+    }
+  ],
+  "by_map": [
+    {
+      "map": "Colosseum.map",
+      "control_wins": 1,
+      "candidate_wins": 2,
+      "flips": 1
+    },
+    {
+      "map": "arena.map",
+      "control_wins": 1,
+      "candidate_wins": 1,
+      "flips": 0
+    },
+    {
+      "map": "big_empty.map",
+      "control_wins": 1,
+      "candidate_wins": 1,
+      "flips": 2
+    },
+    {
+      "map": "default.map",
+      "control_wins": 1,
+      "candidate_wins": 0,
+      "flips": 1
+    },
+    {
+      "map": "default_small.map",
+      "control_wins": 1,
+      "candidate_wins": 2,
+      "flips": 1
+    },
+    {
+      "map": "devil.map",
+      "control_wins": 1,
+      "candidate_wins": 2,
+      "flips": 1
+    },
+    {
+      "map": "help.map",
+      "control_wins": 1,
+      "candidate_wins": 1,
+      "flips": 0
+    },
+    {
+      "map": "queen_of_spades.map",
+      "control_wins": 1,
+      "candidate_wins": 1,
+      "flips": 2
+    },
+    {
+      "map": "schooltime.map",
+      "control_wins": 1,
+      "candidate_wins": 1,
+      "flips": 0
+    },
+    {
+      "map": "stronghold.map",
+      "control_wins": 1,
+      "candidate_wins": 2,
+      "flips": 1
+    },
+    {
+      "map": "trauma.map",
+      "control_wins": 1,
+      "candidate_wins": 0,
+      "flips": 1
+    },
+    {
+      "map": "trophy.map",
+      "control_wins": 1,
+      "candidate_wins": 0,
+      "flips": 1
+    }
+  ]
+}

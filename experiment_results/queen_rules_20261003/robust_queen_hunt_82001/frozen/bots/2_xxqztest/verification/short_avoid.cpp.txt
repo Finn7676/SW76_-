@@ -1,0 +1,42 @@
+#define DEBUG_PORTAL
+#include "planner.hpp"
+#include <cassert>
+
+using namespace bot;
+
+long eastScoreFor(int ourLength, int enemyExactLength, int enemyObservedLength = -1) {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    PortalDebug debug;
+    Controller ct{7, Team::A, Direction::NORTH, Vision{}, 64};
+    turn.here = 60;
+    turn.round = 10;
+    turn.myId = 7;
+    turn.length = ct.length = ourLength;
+    turn.population = ct.unit_count = 62;
+    turn.enemyHeads = {62};
+    turn.enemyHeadLen = {enemyObservedLength < 0 ? std::min(enemyExactLength, 4) : enemyObservedLength};
+    turn.enemyHeadExactLen = {enemyExactLength};
+    occupancy.beginTurn();
+    std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+    std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    planner.choose(ct, debug);
+    return debug.scores[1];
+}
+
+int main() {
+    assert(eastScoreFor(11, 8) <= eastScoreFor(11, 9) - 1000);
+    assert(eastScoreFor(10, 7) <= eastScoreFor(10, 8) - 1000);
+    assert(eastScoreFor(9, 6) <= eastScoreFor(9, 7) - 1000);
+    assert(eastScoreFor(8, 5) <= eastScoreFor(8, 6) - 1000);
+    assert(eastScoreFor(5, 2) <= eastScoreFor(5, 3) - 1000);
+    assert(eastScoreFor(3, 1) > eastScoreFor(3, 2) - 1000);
+    assert(eastScoreFor(9, -1, 6) <= eastScoreFor(9, -1, 7) - 1000);
+    assert(eastScoreFor(11, -1, 8) <= eastScoreFor(11, -1, 9) - 1000);
+}

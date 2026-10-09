@@ -1,0 +1,140 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef COMBAT_FIRST
+#define COMBAT_FIRST 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct CombatFixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+
+    void put(int c, int id, bool mine, bool head, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = freeAt;
+        occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+    }
+
+    void setup(int length = 6, int id = 2, int round = 0, int population = 10) {
+        W = H = 32; NC = W * H; MYTEAM = Team::A; MYID = id;
+        POP = population; ROUND = round; STAMP = 1; TARGET = 62;
+        LEN = length; HERE = cid(16, 8); CT = &ct;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team(MYTEAM); ct.head.dir = Direction::EAST;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        for (int y = 5; y <= 11; ++y)
+            for (int x = 13; x <= 19; ++x) visStamp[cid(x, y)] = STAMP;
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0);
+        bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); trail.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        sightings.clear(); pendingPath.clear(); pendingPortalKey = -1;
+        queenSeededScout = false; consolidateHoldUntil = -1; consolidateObserver = -1;
+        queenFeedObserver = -1; queenFeedFirstRound = queenFeedLastEnemy = -1;
+        v41Target = -1; v41TargetPhase = -1; v41LowFrontierRounds = 0;
+        v41ExplorationMode = true; teamFrontier = 0; teamFrontierRound = -1;
+        chosenAction = {}; trailId = MYID;
+        for (int i = LEN - 1; i >= 0; --i) trail.push_back(cid(16 - i, 8));
+        for (int i = 0; i < LEN; ++i)
+            put(cid(16 - i, 8), MYID, true, i == 0, LEN + 1 - i);
+    }
+
+    int route(std::vector<int> const& dirs, bool enemy = true) {
+        int c = HERE;
+        for (int d : dirs) { setEdge(c, d, E_OPEN, -1); c = geo(c, d); }
+        if (enemy) {
+            assert(visible(c));
+            put(c, 7, false, true);
+            idCount.push_back({7, LEN + 2});
+            enemyHeads.push_back(c); enemyHeadLen.push_back(LEN + 2);
+        }
+        return c;
+    }
+
+    void splitEligible() {
+        assert(!championPolicy() && LEN >= 4 && POP < TARGET);
+        assert(ct.can_split(2) && splitSafe(2) && !consolidateHolding());
+    }
+
+    void expectAttack(std::vector<int> const& dirs) {
+        splitEligible();
+        assert(sprintRamAction(false, POP >= 12).dirs == dirs);
+        takeTurn(ct);
+#if COMBAT_FIRST
+        assert(chosenAction.split == 0 && chosenAction.dirs == dirs);
+        assert(!chosenAction.scored && !chosenAction.donation);
+#else
+        assert(chosenAction.split == 2 && chosenAction.dirs.empty());
+#endif
+    }
+};
+
+int main() {
+    CombatFixture f;
+#ifdef LEN2_ALLOWED
+    f.setup(2);
+    int queen = f.route({1, 1}, false);
+    f.put(queen, enemyQueenId(), false, true);
+    idCount.push_back({enemyQueenId(), 2});
+    enemyHeads.push_back(queen); enemyHeadLen.push_back(2);
+    visPearl[geo(HERE, 1)] = 1;
+    takeTurn(f.ct);
+#if LEN2_ALLOWED
+    assert(chosenAction.dirs == std::vector<int>({1, 1}) && chosenAction.split == 0);
+    assert(!chosenAction.scored && !chosenAction.donation);
+#else
+    assert(chosenAction.dirs == std::vector<int>({1}) && chosenAction.split == 0);
+    assert(chosenAction.scored && !chosenAction.donation);
+#endif
+#endif
+    for (auto const& route : std::vector<std::vector<int>>{{1, 1}, {1, 1, 1}, {1, 1, 2, 2}}) {
+        f.setup(); f.route(route); f.expectAttack(route);
+    }
+
+    // Initial length four needs a pre-collision pearl for the fourth paid step.
+    f.setup(4); f.route({1, 1, 2, 2});
+    visPearl[geo(HERE, 1)] = 1;
+    f.expectAttack({1, 1, 2, 2});
+
+    f.setup(); f.route({1, 1, 2, 2}, false); f.splitEligible();
+    assert(sprintRamAction(false, false).dirs.empty());
+    takeTurn(f.ct);
+    assert(chosenAction.split == 2 && chosenAction.dirs.empty());
+
+    // The existing adjacent first-ram has priority over this moved block.
+    f.setup(); f.route({1}); f.splitEligible();
+    takeTurn(f.ct);
+    assert(chosenAction.split == 0 && chosenAction.dirs == std::vector<int>({1}));
+
+    // Queen bootstrap remains identical, even with a valuable remote head.
+    f.setup(6, queenId(), 0, 1); f.route({1, 1});
+    assert(sprintRamAction(true, false).dirs.empty());
+    takeTurn(f.ct);
+    assert(chosenAction.split == 2 && chosenAction.dirs.empty() && queenSeededScout);
+
+    // Protected late champions do not use this proactive attack or routine growth.
+    f.setup(6, 8, 300, 10); f.route({1, 1, 1});
+    assert(championPolicy() && sprintRamAction(true, false).dirs.empty());
+    takeTurn(f.ct);
+    assert(chosenAction.split == 0 && chosenAction.dirs == std::vector<int>({1}));
+    assert(chosenAction.scored && !chosenAction.donation);
+
+    std::cout << "combatfirst: " <<
+#ifdef LEN2_ALLOWED
+              (LEN2_ALLOWED ? "R16 candidate" : "actual R13 control")
+#else
+              (COMBAT_FIRST ? "candidate" : "R4 parent")
+#endif
+              << " takeTurn order, growth fallback, first-ram, queen and champion assertions passed\n";
+}

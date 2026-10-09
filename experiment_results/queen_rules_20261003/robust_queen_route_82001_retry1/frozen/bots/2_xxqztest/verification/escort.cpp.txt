@@ -1,0 +1,136 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include "sonar.hpp"
+#include <cassert>
+#include <sstream>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Observer observer{turn, world, topology, occupancy, body};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{1, Team::A, Direction::NORTH, Vision{}, 64};
+
+    void boot(int id, int length, int pearlCell = -1, int allyCell = -1) {
+        turn.round = 420;
+        turn.here = 60;
+        turn.myId = id;
+        turn.myTeam = Team::A;
+        turn.length = ct.length = length;
+        turn.population = ct.unit_count = 20;
+        world.firstObservedRound = 0;
+        world.lastEnemyIntelRound = 0;
+        int cx = 5, cy = 5;
+        std::vector<Tile> tiles;
+        for (int dy = -3; dy <= 3; ++dy)
+            for (int dx = -3; dx <= 3; ++dx) {
+                int x = cx + dx, y = cy + dy;
+                int c = y * config.width + x;
+                std::optional<DragonPart> part;
+                if (c == turn.here) part.emplace(Position{x, y}, id, Team::A, Direction::NORTH, true);
+                if (allyCell >= 0 && c == allyCell)
+                    part.emplace(Position{x, y}, 9, Team::A, Direction::WEST, true);
+                tiles.emplace_back(Position{x, y}, part, -1, c == pearlCell);
+            }
+        ct.vision = Vision(std::move(tiles));
+        observer.observe(ct);
+        if (allyCell >= 0)
+            world.allyRallies[9] = {allyCell, turn.round, 20, turn.round};
+        else
+            world.allyRallies[9] = {5, turn.round, 20, turn.round};
+    }
+};
+
+int main() {
+    Fixture fodder;
+    fodder.boot(7, 4, -1, 61);
+    assert(!EscortPolicy::isEscort(fodder.turn));
+    assert(fodder.planner.choose(fodder.ct).type == ActionType::SUICIDE);
+
+    Fixture escort;
+    escort.boot(1, 4, -1, 61);
+    assert(EscortPolicy::isEscort(escort.turn));
+    assert(escort.planner.choose(escort.ct).type != ActionType::SUICIDE);
+
+    Fixture early;
+    early.turn.round = 300;
+    early.turn.here = 60;
+    early.turn.myId = 8;
+    early.turn.length = early.ct.length = 9;
+    early.turn.population = early.ct.unit_count = 10;
+    Action shatter = early.planner.choose(early.ct);
+    assert(shatter.type == ActionType::SPLIT);
+    assert(shatter.splitSize == 7);
+
+    Fixture called;
+    called.boot(7, 4, -1, 61);
+    called.turn.round = 360;
+    called.world.firstObservedRound = 360;
+    called.world.lastEnemyIntelRound = 360;
+    called.world.allyRallies[9].summoned = true;
+    called.world.allyRallies[9].round = 360;
+    assert(called.planner.choose(called.ct).type == ActionType::SUICIDE);
+
+    Fixture uncalled;
+    uncalled.boot(7, 4, -1, 61);
+    uncalled.turn.round = 360;
+    uncalled.world.firstObservedRound = 360;
+    uncalled.world.lastEnemyIntelRound = 360;
+    uncalled.world.allyRallies[9].summoned = false;
+    uncalled.world.allyRallies[9].round = 360;
+    assert(uncalled.planner.choose(uncalled.ct).type != ActionType::SUICIDE);
+
+    Fixture escortCalled;
+    escortCalled.boot(1, 4, -1, 61);
+    escortCalled.turn.round = 360;
+    escortCalled.world.allyRallies[9].summoned = true;
+    escortCalled.world.allyRallies[9].round = 360;
+    assert(EscortPolicy::isEscort(escortCalled.turn));
+    assert(escortCalled.planner.choose(escortCalled.ct).type != ActionType::SUICIDE);
+
+    Fixture watcher;
+    watcher.boot(1, 4, 59, -1);
+    Action watch = watcher.planner.choose(watcher.ct);
+    assert(watch.type == ActionType::MOVE);
+    assert(watch.dirs[0] != 3);
+
+    Fixture giant;
+    giant.boot(8, 15);
+    giant.world.pearlDue[16] = giant.turn.round;
+    giant.world.pearlInfo[16] = giant.turn.round;
+    Action collect = giant.planner.choose(giant.ct);
+    assert(collect.type == ActionType::MOVE);
+    assert(collect.dirs[0] == 0);
+
+    Fixture radio;
+    radio.boot(1, 4, 59, -1);
+    radio.ct.sonar_protocol3 = true;
+    Sonar sonar{radio.config, radio.turn, radio.world, radio.topology, radio.occupancy};
+    uint64_t pearl = sonar.escortPearlMessage();
+    assert(pearl != 0);
+    std::ostringstream output;
+    auto *old = std::cout.rdbuf(output.rdbuf());
+    sonar.send(radio.ct);
+    std::cout.rdbuf(old);
+    assert(output.str().find("SONAR N " + std::to_string(pearl)) != std::string::npos);
+    assert(output.str().find("SONAR E " + std::to_string(pearl)) != std::string::npos);
+    assert(output.str().find("SONAR S " + std::to_string(pearl)) != std::string::npos);
+    assert(output.str().find("SONAR W " + std::to_string(pearl)) != std::string::npos);
+
+    Fixture caller;
+    caller.boot(8, 15);
+    caller.turn.round = 360;
+    caller.ct.sonar_protocol3 = true;
+    Sonar callerSonar{caller.config, caller.turn, caller.world, caller.topology, caller.occupancy};
+    uint64_t rally = callerSonar.allyRallyMessage();
+    assert(rally != 0);
+    caller.turn.length = 4;
+    assert(callerSonar.allyRallyMessage() == 0);
+}

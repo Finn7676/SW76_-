@@ -1,0 +1,125 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef ROOM_BOUND_CANDIDATE
+#define ROOM_BOUND_CANDIDATE 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include "self_observed_cells.hpp.txt"
+
+struct Fixture {
+    Controller ct{5, Team::B, Direction::NORTH, Vision{}, 64};
+
+    bool within(int c, int h) { return cheb(c, h) <= 3; }
+
+    void put(int x, int y, int id, bool head, int release, bool mine = true) {
+        int c = cid(x, y); occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = release; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 0, mine, head});
+        if (mine && id != MYID) friendParts.push_back(c);
+    }
+
+    void setup(bool r39, bool historical) {
+        W = H = 32; NC = W * H; HERE = cid(4, 4); MYID = 5; MYTEAM = Team::B;
+        ROUND = r39 ? 39 : 55; STAMP = 1; LEN = ct.length = 2;
+        POP = ct.unit_count = r39 ? 6 : 8; TARGET = 62;
+        CT = &ct; ct.head.dragon_id = MYID; ct.head.team = Team::B;
+        ct.head.dir = Direction::EAST;
+        edgeT.assign(NC * 4, E_UNKNOWN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 0);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+        occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail = {cid(3, 4), HERE}; trailId = MYID;
+        pendingPath.clear(); pendingPortalKey = -1;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999; queenSeededScout = true;
+        queenFeedObserver = MYID; queenFeedFirstRound = queenFeedLastEnemy = 0;
+        consolidateObserver = MYID; consolidateHoldUntil = -1; chosenAction = {};
+        yieldStreak = 0;
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+        for (int c = 0; c < NC; ++c) {
+            if (within(c, HERE)) visStamp[c] = STAMP;
+            if (within(c, HERE) || within(c, cid(24, r39 ? 7 : 8))) seenRound[c] = 1;
+        }
+        if (historical) {
+            std::fill(seenRound.begin(), seenRound.end(), 0);
+            for (int c : r39 ? observedR39 : observedR55) seenRound[c] = 1;
+        }
+        std::ifstream map("../../battlecode_quickstart/maps/default.map");
+        assert(map.is_open());
+        std::string line;
+        while (std::getline(map, line)) {
+            std::istringstream row(line); std::string tag; row >> tag;
+            if (tag != "EDGE") continue;
+            int key, kind, pid; row >> key >> kind >> pid;
+            int boundary = key / (W + 1), x = key % (W + 1);
+            int c = boundary % 2 == 0 ? cid(x % W, (boundary / 2) % H) :
+                                      cid(x % W, ((boundary - 1) / 2) % H);
+            int d = boundary % 2 == 0 ? 0 : 3;
+            if (!seenRound[c] && !seenRound[geo(c, d)]) continue;
+            setEdge(c, d, kind == 0 ? E_OPEN : kind == 1 ? E_KELP : E_PORTAL, pid);
+        }
+        put(4, 4, 5, true, 3); put(3, 4, 5, false, 2); idCount.push_back({5, 2});
+        if (r39) {
+            put(5, 5, 10, true, 4); put(4, 5, 10, false, 3); put(4, 6, 10, false, 2);
+            idCount.push_back({10, 3});
+        }
+        std::vector<int> pearls = r39 ? std::vector<int>{cid(5, 3)} :
+                                      std::vector<int>{cid(4, 5), cid(6, 4), cid(6, 6)};
+        for (int c : pearls) { visPearl[c] = 1; visPearls.push_back(c); pearlDue[c] = ROUND; }
+    }
+
+    void run(bool r39, bool historical) {
+        setup(r39, historical);
+        int room = occupiedPortalId = provenResourceRoom(HERE);
+        auto rememberedEdges = edgeT;
+        for (int c = 0; c < NC; ++c)
+            for (int d = 0; d < 4; ++d)
+                if (!within(c, HERE) && !within(geo(c, d), HERE)) edgeT[c * 4 + d] = E_UNKNOWN;
+        int currentOnlyRoom = provenResourceRoom(HERE);
+        edgeT = rememberedEdges;
+        assert(room == (ROOM_BOUND_CANDIDATE ? 0 : -1));
+        assert(currentOnlyRoom == room);
+        bool claimed = portalRoomClaimed(0);
+        assert(claimed == bool(ROOM_BOUND_CANDIDATE));
+        if (!queenFeedAction(ct) && !consolidateAction(ct)) takeTurn(ct);
+        freeHarvest(); reviewProtection(ct); reviewPortalSafety(ct); reviewQueenSurvival(ct);
+        auto p = projectAction(chosenAction);
+        assert(chosenAction.split == 0 && p.survives);
+        assert(chosenAction.dirs == std::vector<int>{ROOM_BOUND_CANDIDATE && !r39 ? 2 : 0});
+        assert(p.len - LEN == (ROOM_BOUND_CANDIDATE && !r39 ? 1 : 0));
+        std::cout << "{\"fixture\":\"r" << ROUND << "\",\"history\":\""
+                  << (historical ? "self_observed_union" : "current_plus_entry_view")
+                  << "\",\"cap\":" << (ROOM_BOUND_CANDIDATE ? 49 : 24) << ",\"pre_room_pid\":" << room
+                  << ",\"current_only_room_pid\":" << currentOnlyRoom
+                  << ",\"portal0_claimed\":" << claimed << ",\"action\":\"";
+        for (int d : chosenAction.dirs) std::cout << DCH[d];
+        std::cout << "\",\"split\":" << chosenAction.split << ",\"projected_gain\":" << p.len - LEN
+                  << ",\"projected_survives\":" << p.survives << ",\"post_room_pid\":"
+                  << (p.known && p.survives ? provenResourceRoom(p.head) : -1)
+                  << ",\"move_scores\":[";
+        for (int d = 0; d < 4; ++d) std::cout << (d ? "," : "") << moveScores[d];
+        std::cout << "]}\n";
+    }
+};
+
+int main() {
+    Fixture fixture;
+    for (bool historical : {false, true})
+        for (bool r39 : {false, true})
+            fixture.run(r39, historical);
+}

@@ -1,0 +1,6398 @@
+{
+  "metric_definition": "Reconstruct cumulative body growth, splits and deaths with length conservation.\n\nThe engine emits one initial dragon-position notification before round 0 for\neach initial dragon. These are checked against the map and never counted as\nmovement or growth. Runtime position events insert the new head and trim to\nthe reported tail. Positive/negative net body changes are kept separately;\npositive growth is not gross pearl intake when sprint costs offset eating.\n",
+  "games": [
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0063_V3_portal_default_seed20260927_A.replay",
+      "replay_sha256": "4d78b1dedf00be598dfee1190e3467f908e20166d8c03fcc495e3e5a1114a2c5",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 25,
+          "max_length": 4,
+          "growth": 22,
+          "movement_shrink": 0,
+          "splits": 12,
+          "death_length": 13,
+          "steps": 387,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 5,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 11,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 18,
+          "max_length": 3,
+          "growth": 19,
+          "movement_shrink": 0,
+          "splits": 10,
+          "death_length": 17,
+          "steps": 362,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 5,
+            "self": 1,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 12,
+            "self": 3,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 22,
+          "max_length": 3,
+          "growth": 34,
+          "movement_shrink": 0,
+          "splits": 18,
+          "death_length": 28,
+          "steps": 882,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 2,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 22,
+            "self": 4,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 17,
+          "total_length": 38,
+          "max_length": 3,
+          "growth": 55,
+          "movement_shrink": 0,
+          "splits": 26,
+          "death_length": 33,
+          "steps": 932,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 3,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 24,
+            "self": 7,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 12,
+          "total_length": 30,
+          "max_length": 4,
+          "growth": 73,
+          "movement_shrink": 0,
+          "splits": 33,
+          "death_length": 59,
+          "steps": 1799,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 17,
+            "self": 4,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "head": 43,
+            "self": 8,
+            "body": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 24,
+          "total_length": 62,
+          "max_length": 4,
+          "growth": 178,
+          "movement_shrink": 0,
+          "splits": 75,
+          "death_length": 132,
+          "steps": 2947,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 33,
+            "self": 14,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 80,
+            "self": 33,
+            "body": 19
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 6,
+          "total_length": 12,
+          "max_length": 2,
+          "growth": 194,
+          "movement_shrink": 0,
+          "splits": 84,
+          "death_length": 198,
+          "steps": 4270,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 65,
+            "self": 10,
+            "body": 7
+          },
+          "death_length_by_reason": {
+            "head": 162,
+            "self": 21,
+            "body": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 29,
+          "total_length": 117,
+          "max_length": 11,
+          "growth": 606,
+          "movement_shrink": 0,
+          "splits": 223,
+          "death_length": 505,
+          "steps": 12759,
+          "sprint_actions": 4,
+          "sprint_requested_extra_steps": 4,
+          "deaths_by_reason": {
+            "head": 123,
+            "self": 33,
+            "body": 42
+          },
+          "death_length_by_reason": {
+            "head": 329,
+            "self": 76,
+            "body": 100
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "63",
+      "seed": "20260927",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0064_V3_portal_default_seed20260927_B.replay",
+      "replay_sha256": "abb4f604f76442036ed16ef3320440bec49c164f8a5a2197601058a4f0af45fb",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 13,
+          "total_length": 31,
+          "max_length": 5,
+          "growth": 33,
+          "movement_shrink": 0,
+          "splits": 17,
+          "death_length": 18,
+          "steps": 461,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 8
+          },
+          "death_length_by_reason": {
+            "head": 18
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 15,
+          "max_length": 3,
+          "growth": 12,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 13,
+          "steps": 360,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 6
+          },
+          "death_length_by_reason": {
+            "head": 13
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 25,
+          "total_length": 62,
+          "max_length": 3,
+          "growth": 92,
+          "movement_shrink": 0,
+          "splits": 40,
+          "death_length": 46,
+          "steps": 1305,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 18,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 44,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 6,
+          "total_length": 16,
+          "max_length": 3,
+          "growth": 23,
+          "movement_shrink": 0,
+          "splits": 12,
+          "death_length": 23,
+          "steps": 678,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 10
+          },
+          "death_length_by_reason": {
+            "head": 23
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 31,
+          "total_length": 76,
+          "max_length": 4,
+          "growth": 212,
+          "movement_shrink": 0,
+          "splits": 90,
+          "death_length": 152,
+          "steps": 4040,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 46,
+            "self": 9,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 114,
+            "self": 18,
+            "body": 20
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 18,
+          "max_length": 4,
+          "growth": 40,
+          "movement_shrink": 0,
+          "splits": 19,
+          "death_length": 38,
+          "steps": 1207,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 16
+          },
+          "death_length_by_reason": {
+            "head": 38
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 38,
+          "total_length": 149,
+          "max_length": 13,
+          "growth": 696,
+          "movement_shrink": 0,
+          "splits": 253,
+          "death_length": 563,
+          "steps": 17315,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 127,
+            "self": 41,
+            "body": 51
+          },
+          "death_length_by_reason": {
+            "head": 339,
+            "self": 89,
+            "body": 135
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 1,
+          "total_length": 3,
+          "max_length": 3,
+          "growth": 116,
+          "movement_shrink": 0,
+          "splits": 53,
+          "death_length": 129,
+          "steps": 2410,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 47,
+            "body": 3,
+            "self": 6
+          },
+          "death_length_by_reason": {
+            "head": 111,
+            "body": 6,
+            "self": 12
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "64",
+      "seed": "20260927",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0072_V3_portal_queen_of_spades_seed20260927_B.replay",
+      "replay_sha256": "d4e107fcf2febd554317fbbf177aabb7fc803bc468550bf4a51d1ba594eefc68",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 6,
+          "total_length": 15,
+          "max_length": 4,
+          "growth": 11,
+          "movement_shrink": 0,
+          "splits": 5,
+          "death_length": 2,
+          "steps": 112,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 5,
+          "total_length": 10,
+          "max_length": 2,
+          "growth": 6,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 2,
+          "steps": 136,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 51,
+          "movement_shrink": 0,
+          "splits": 23,
+          "death_length": 48,
+          "steps": 411,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7,
+            "self": 10,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "head": 17,
+            "self": 22,
+            "body": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 5,
+          "total_length": 11,
+          "max_length": 3,
+          "growth": 12,
+          "movement_shrink": 0,
+          "splits": 6,
+          "death_length": 7,
+          "steps": 399,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 7
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 25,
+          "total_length": 59,
+          "max_length": 4,
+          "growth": 203,
+          "movement_shrink": 0,
+          "splits": 88,
+          "death_length": 150,
+          "steps": 1791,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 15,
+            "self": 36,
+            "body": 14
+          },
+          "death_length_by_reason": {
+            "head": 40,
+            "self": 77,
+            "body": 33
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 1,
+          "total_length": 3,
+          "max_length": 3,
+          "growth": 22,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 25,
+          "steps": 760,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 23,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 239,
+          "initial_total_length": 6,
+          "population": 27,
+          "total_length": 63,
+          "max_length": 4,
+          "growth": 256,
+          "movement_shrink": 0,
+          "splits": 112,
+          "death_length": 199,
+          "steps": 2888,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 20,
+            "self": 46,
+            "body": 21
+          },
+          "death_length_by_reason": {
+            "head": 52,
+            "self": 99,
+            "body": 48
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 239,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 25,
+          "movement_shrink": 0,
+          "splits": 11,
+          "death_length": 31,
+          "steps": 804,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 12,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 29,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "72",
+      "seed": "20260927",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0071_V3_portal_queen_of_spades_seed20260927_A.replay",
+      "replay_sha256": "ae8eb9e5c177165e2f9d06651f2b0a96720465453dfb1e497f1134041557936f",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 3,
+          "total_length": 8,
+          "max_length": 3,
+          "growth": 2,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 0,
+          "steps": 126,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 2,
+          "total_length": 6,
+          "max_length": 3,
+          "growth": 0,
+          "movement_shrink": 0,
+          "splits": 0,
+          "death_length": 0,
+          "steps": 100,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 11,
+          "max_length": 4,
+          "growth": 10,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 5,
+          "steps": 328,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 8,
+          "total_length": 20,
+          "max_length": 3,
+          "growth": 36,
+          "movement_shrink": 0,
+          "splits": 16,
+          "death_length": 22,
+          "steps": 397,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2,
+            "body": 3,
+            "self": 5
+          },
+          "death_length_by_reason": {
+            "head": 5,
+            "body": 7,
+            "self": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 7,
+          "total_length": 15,
+          "max_length": 3,
+          "growth": 36,
+          "movement_shrink": 0,
+          "splits": 17,
+          "death_length": 27,
+          "steps": 1008,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 8,
+            "self": 3,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 19,
+            "self": 6,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 18,
+          "total_length": 43,
+          "max_length": 3,
+          "growth": 168,
+          "movement_shrink": 0,
+          "splits": 73,
+          "death_length": 131,
+          "steps": 1784,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 18,
+            "body": 15,
+            "self": 24
+          },
+          "death_length_by_reason": {
+            "head": 40,
+            "body": 37,
+            "self": 54
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 6,
+          "population": 1,
+          "total_length": 2,
+          "max_length": 2,
+          "growth": 79,
+          "movement_shrink": 0,
+          "splits": 34,
+          "death_length": 83,
+          "steps": 2247,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 26,
+            "self": 7,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 62,
+            "self": 16,
+            "body": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 6,
+          "population": 27,
+          "total_length": 91,
+          "max_length": 13,
+          "growth": 625,
+          "movement_shrink": 0,
+          "splits": 246,
+          "death_length": 540,
+          "steps": 8699,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 66,
+            "body": 74,
+            "self": 81
+          },
+          "death_length_by_reason": {
+            "head": 177,
+            "body": 179,
+            "self": 184
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "71",
+      "seed": "20260927",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0073_V3_portal_schooltime_seed20260927_A.replay",
+      "replay_sha256": "f614713cbc7f98fd076dd7c453328f2eb0c13c9b879ae593eda0855ae8c089c9",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 4,
+          "total_length": 10,
+          "max_length": 3,
+          "growth": 6,
+          "movement_shrink": 0,
+          "splits": 5,
+          "death_length": 8,
+          "steps": 205,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 8,
+          "total_length": 21,
+          "max_length": 5,
+          "growth": 18,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 9,
+          "steps": 283,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 17,
+          "total_length": 45,
+          "max_length": 4,
+          "growth": 46,
+          "movement_shrink": 0,
+          "splits": 20,
+          "death_length": 13,
+          "steps": 628,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 6
+          },
+          "death_length_by_reason": {
+            "head": 13
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 46,
+          "total_length": 114,
+          "max_length": 4,
+          "growth": 181,
+          "movement_shrink": 0,
+          "splits": 76,
+          "death_length": 79,
+          "steps": 1353,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 8,
+            "self": 17,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 19,
+            "self": 41,
+            "body": 19
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 38,
+          "total_length": 91,
+          "max_length": 4,
+          "growth": 204,
+          "movement_shrink": 0,
+          "splits": 83,
+          "death_length": 125,
+          "steps": 3030,
+          "sprint_actions": 12,
+          "sprint_requested_extra_steps": 12,
+          "deaths_by_reason": {
+            "head": 48
+          },
+          "death_length_by_reason": {
+            "head": 125
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 205,
+          "max_length": 8,
+          "growth": 690,
+          "movement_shrink": 0,
+          "splits": 252,
+          "death_length": 497,
+          "steps": 7207,
+          "sprint_actions": 8,
+          "sprint_requested_extra_steps": 8,
+          "deaths_by_reason": {
+            "head": 54,
+            "self": 87,
+            "body": 52
+          },
+          "death_length_by_reason": {
+            "head": 159,
+            "self": 210,
+            "body": 128
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 36,
+          "total_length": 195,
+          "max_length": 20,
+          "growth": 962,
+          "movement_shrink": 0,
+          "splits": 324,
+          "death_length": 779,
+          "steps": 17952,
+          "sprint_actions": 37,
+          "sprint_requested_extra_steps": 37,
+          "deaths_by_reason": {
+            "head": 148,
+            "body": 55,
+            "self": 88
+          },
+          "death_length_by_reason": {
+            "head": 426,
+            "body": 150,
+            "self": 203
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 40,
+          "total_length": 267,
+          "max_length": 23,
+          "growth": 1827,
+          "movement_shrink": 0,
+          "splits": 556,
+          "death_length": 1572,
+          "steps": 25224,
+          "sprint_actions": 31,
+          "sprint_requested_extra_steps": 31,
+          "deaths_by_reason": {
+            "head": 172,
+            "self": 190,
+            "body": 157
+          },
+          "death_length_by_reason": {
+            "head": 683,
+            "self": 457,
+            "body": 432
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "73",
+      "seed": "20260927",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0074_V3_portal_schooltime_seed20260927_B.replay",
+      "replay_sha256": "052e199a648c0d931ac62c8ce5b638721cb9988d7a5f5c006a4bbc408454a07c",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 11,
+          "total_length": 26,
+          "max_length": 3,
+          "growth": 14,
+          "movement_shrink": 0,
+          "splits": 8,
+          "death_length": 0,
+          "steps": 346,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 15,
+          "total_length": 35,
+          "max_length": 3,
+          "growth": 25,
+          "movement_shrink": 0,
+          "splits": 13,
+          "death_length": 2,
+          "steps": 335,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 35,
+          "total_length": 87,
+          "max_length": 5,
+          "growth": 180,
+          "movement_shrink": 0,
+          "splits": 76,
+          "death_length": 105,
+          "steps": 1314,
+          "sprint_actions": 3,
+          "sprint_requested_extra_steps": 3,
+          "deaths_by_reason": {
+            "head": 16,
+            "self": 22,
+            "body": 6
+          },
+          "death_length_by_reason": {
+            "head": 42,
+            "self": 49,
+            "body": 14
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 36,
+          "total_length": 88,
+          "max_length": 4,
+          "growth": 156,
+          "movement_shrink": 0,
+          "splits": 65,
+          "death_length": 80,
+          "steps": 1543,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "self": 12,
+            "head": 16,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "self": 26,
+            "head": 44,
+            "body": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 166,
+          "max_length": 5,
+          "growth": 767,
+          "movement_shrink": 0,
+          "splits": 314,
+          "death_length": 613,
+          "steps": 6445,
+          "sprint_actions": 15,
+          "sprint_requested_extra_steps": 15,
+          "deaths_by_reason": {
+            "head": 99,
+            "self": 107,
+            "body": 49
+          },
+          "death_length_by_reason": {
+            "head": 256,
+            "self": 244,
+            "body": 113
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 180,
+          "max_length": 8,
+          "growth": 501,
+          "movement_shrink": 0,
+          "splits": 188,
+          "death_length": 333,
+          "steps": 6998,
+          "sprint_actions": 18,
+          "sprint_requested_extra_steps": 18,
+          "deaths_by_reason": {
+            "self": 27,
+            "head": 93,
+            "body": 9
+          },
+          "death_length_by_reason": {
+            "self": 62,
+            "head": 249,
+            "body": 22
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 30,
+          "total_length": 285,
+          "max_length": 20,
+          "growth": 2255,
+          "movement_shrink": 0,
+          "splits": 792,
+          "death_length": 1982,
+          "steps": 24034,
+          "sprint_actions": 48,
+          "sprint_requested_extra_steps": 48,
+          "deaths_by_reason": {
+            "head": 242,
+            "self": 299,
+            "body": 224
+          },
+          "death_length_by_reason": {
+            "head": 755,
+            "self": 697,
+            "body": 530
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 37,
+          "total_length": 147,
+          "max_length": 12,
+          "growth": 1240,
+          "movement_shrink": 0,
+          "splits": 424,
+          "death_length": 1105,
+          "steps": 24397,
+          "sprint_actions": 57,
+          "sprint_requested_extra_steps": 57,
+          "deaths_by_reason": {
+            "self": 111,
+            "head": 234,
+            "body": 45
+          },
+          "death_length_by_reason": {
+            "self": 259,
+            "head": 730,
+            "body": 116
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "74",
+      "seed": "20260927",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0084_V3_portal_default_seed20260928_B.replay",
+      "replay_sha256": "942db7f25347ffedf855978ecda971e6e71836e16c275ddc1a744efa85f3c69f",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 6,
+          "total_length": 14,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 15,
+          "steps": 302,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7
+          },
+          "death_length_by_reason": {
+            "head": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 5,
+          "total_length": 12,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 8,
+          "death_length": 17,
+          "steps": 287,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7
+          },
+          "death_length_by_reason": {
+            "head": 17
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 12,
+          "total_length": 35,
+          "max_length": 4,
+          "growth": 64,
+          "movement_shrink": 0,
+          "splits": 26,
+          "death_length": 45,
+          "steps": 780,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 10,
+            "self": 2,
+            "body": 6
+          },
+          "death_length_by_reason": {
+            "head": 22,
+            "self": 4,
+            "body": 19
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 11,
+          "total_length": 28,
+          "max_length": 3,
+          "growth": 37,
+          "movement_shrink": 0,
+          "splits": 18,
+          "death_length": 25,
+          "steps": 756,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 8,
+            "self": 2,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 19,
+            "self": 4,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 20,
+          "total_length": 44,
+          "max_length": 3,
+          "growth": 159,
+          "movement_shrink": 0,
+          "splits": 69,
+          "death_length": 131,
+          "steps": 2289,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 39,
+            "self": 6,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 94,
+            "self": 12,
+            "body": 25
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 21,
+          "total_length": 47,
+          "max_length": 3,
+          "growth": 92,
+          "movement_shrink": 0,
+          "splits": 43,
+          "death_length": 61,
+          "steps": 2380,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 17,
+            "self": 7,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 41,
+            "self": 16,
+            "body": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 19,
+          "total_length": 84,
+          "max_length": 18,
+          "growth": 479,
+          "movement_shrink": 0,
+          "splits": 183,
+          "death_length": 411,
+          "steps": 8029,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 112,
+            "self": 25,
+            "body": 31
+          },
+          "death_length_by_reason": {
+            "head": 275,
+            "self": 52,
+            "body": 84
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 9,
+          "total_length": 73,
+          "max_length": 14,
+          "growth": 303,
+          "movement_shrink": 0,
+          "splits": 102,
+          "death_length": 246,
+          "steps": 7651,
+          "sprint_actions": 3,
+          "sprint_requested_extra_steps": 3,
+          "deaths_by_reason": {
+            "head": 70,
+            "self": 16,
+            "body": 11
+          },
+          "death_length_by_reason": {
+            "head": 186,
+            "self": 36,
+            "body": 24
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "84",
+      "seed": "20260928",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0083_V3_portal_default_seed20260928_A.replay",
+      "replay_sha256": "ffe07ba49cb5909893bdfa028f6b4ada69334013f68bc1999ce2a37f86305e9e",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 9,
+          "total_length": 21,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 8,
+          "steps": 367,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 9,
+          "total_length": 21,
+          "max_length": 3,
+          "growth": 15,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 10,
+          "steps": 332,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 14,
+          "total_length": 29,
+          "max_length": 3,
+          "growth": 50,
+          "movement_shrink": 0,
+          "splits": 27,
+          "death_length": 37,
+          "steps": 914,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 17
+          },
+          "death_length_by_reason": {
+            "head": 37
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 26,
+          "max_length": 4,
+          "growth": 37,
+          "movement_shrink": 0,
+          "splits": 17,
+          "death_length": 27,
+          "steps": 847,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 11
+          },
+          "death_length_by_reason": {
+            "head": 27
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 14,
+          "total_length": 34,
+          "max_length": 3,
+          "growth": 115,
+          "movement_shrink": 0,
+          "splits": 53,
+          "death_length": 97,
+          "steps": 2536,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 27,
+            "body": 9,
+            "self": 7
+          },
+          "death_length_by_reason": {
+            "head": 60,
+            "body": 23,
+            "self": 14
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 16,
+          "total_length": 43,
+          "max_length": 3,
+          "growth": 115,
+          "movement_shrink": 0,
+          "splits": 48,
+          "death_length": 88,
+          "steps": 2279,
+          "sprint_actions": 3,
+          "sprint_requested_extra_steps": 3,
+          "deaths_by_reason": {
+            "head": 31,
+            "body": 2,
+            "self": 3
+          },
+          "death_length_by_reason": {
+            "head": 78,
+            "body": 4,
+            "self": 6
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 5,
+          "total_length": 11,
+          "max_length": 3,
+          "growth": 292,
+          "movement_shrink": 0,
+          "splits": 126,
+          "death_length": 297,
+          "steps": 5152,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 74,
+            "body": 20,
+            "self": 31
+          },
+          "death_length_by_reason": {
+            "head": 173,
+            "body": 54,
+            "self": 70
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 36,
+          "total_length": 126,
+          "max_length": 10,
+          "growth": 510,
+          "movement_shrink": 0,
+          "splits": 180,
+          "death_length": 400,
+          "steps": 14823,
+          "sprint_actions": 6,
+          "sprint_requested_extra_steps": 6,
+          "deaths_by_reason": {
+            "head": 96,
+            "body": 32,
+            "self": 20
+          },
+          "death_length_by_reason": {
+            "head": 277,
+            "body": 77,
+            "self": 46
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "83",
+      "seed": "20260928",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0091_V3_portal_queen_of_spades_seed20260928_A.replay",
+      "replay_sha256": "ad540686dc71d1e15c591e560ed19dc523291ba2465cf4b6ee01372ebeac9aa8",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 6,
+          "movement_shrink": 0,
+          "splits": 3,
+          "death_length": 3,
+          "steps": 147,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 2,
+          "total_length": 4,
+          "max_length": 2,
+          "growth": 1,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 3,
+          "steps": 72,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 12,
+          "total_length": 32,
+          "max_length": 4,
+          "growth": 61,
+          "movement_shrink": 0,
+          "splits": 25,
+          "death_length": 35,
+          "steps": 513,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2,
+            "self": 12,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 6,
+            "self": 27,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 1,
+          "total_length": 3,
+          "max_length": 3,
+          "growth": 2,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 5,
+          "steps": 146,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 149,
+          "initial_total_length": 6,
+          "population": 12,
+          "total_length": 31,
+          "max_length": 4,
+          "growth": 107,
+          "movement_shrink": 0,
+          "splits": 43,
+          "death_length": 82,
+          "steps": 1127,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 5,
+            "self": 23,
+            "body": 5
+          },
+          "death_length_by_reason": {
+            "head": 15,
+            "self": 54,
+            "body": 13
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 149,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 3,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 9,
+          "steps": 195,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 9
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "91",
+      "seed": "20260928",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0092_V3_portal_queen_of_spades_seed20260928_B.replay",
+      "replay_sha256": "ddb970c5d0b327e0ef35940bcddb194849cab69b9cb7f68c64014d6d1cbf2e48",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 7,
+          "total_length": 14,
+          "max_length": 2,
+          "growth": 8,
+          "movement_shrink": 0,
+          "splits": 5,
+          "death_length": 0,
+          "steps": 148,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 3,
+          "movement_shrink": 0,
+          "splits": 2,
+          "death_length": 0,
+          "steps": 160,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 14,
+          "total_length": 38,
+          "max_length": 4,
+          "growth": 89,
+          "movement_shrink": 0,
+          "splits": 37,
+          "death_length": 57,
+          "steps": 686,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "self": 12,
+            "head": 3,
+            "body": 10
+          },
+          "death_length_by_reason": {
+            "self": 25,
+            "head": 7,
+            "body": 25
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 8,
+          "max_length": 2,
+          "growth": 4,
+          "movement_shrink": 0,
+          "splits": 3,
+          "death_length": 2,
+          "steps": 386,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 22,
+          "total_length": 53,
+          "max_length": 3,
+          "growth": 198,
+          "movement_shrink": 0,
+          "splits": 85,
+          "death_length": 151,
+          "steps": 2281,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "self": 31,
+            "head": 16,
+            "body": 18
+          },
+          "death_length_by_reason": {
+            "self": 65,
+            "head": 41,
+            "body": 45
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 2,
+          "total_length": 5,
+          "max_length": 3,
+          "growth": 7,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 8,
+          "steps": 631,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 330,
+          "initial_total_length": 6,
+          "population": 28,
+          "total_length": 70,
+          "max_length": 4,
+          "growth": 378,
+          "movement_shrink": 0,
+          "splits": 161,
+          "death_length": 314,
+          "steps": 5243,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "self": 60,
+            "head": 29,
+            "body": 46
+          },
+          "death_length_by_reason": {
+            "self": 130,
+            "head": 76,
+            "body": 108
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 330,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 10,
+          "movement_shrink": 0,
+          "splits": 5,
+          "death_length": 16,
+          "steps": 816,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7
+          },
+          "death_length_by_reason": {
+            "head": 16
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "92",
+      "seed": "20260928",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0093_V3_portal_schooltime_seed20260928_A.replay",
+      "replay_sha256": "7ea50f820343c65464fb62c159c11752746ebdc6b58f0afcef94a1c93f463969",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 4,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 4,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 7,
+          "steps": 198,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 7
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 7,
+          "total_length": 18,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 7,
+          "steps": 256,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 7
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 8,
+          "total_length": 23,
+          "max_length": 4,
+          "growth": 34,
+          "movement_shrink": 0,
+          "splits": 14,
+          "death_length": 23,
+          "steps": 592,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9
+          },
+          "death_length_by_reason": {
+            "head": 23
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 37,
+          "total_length": 91,
+          "max_length": 4,
+          "growth": 148,
+          "movement_shrink": 0,
+          "splits": 63,
+          "death_length": 69,
+          "steps": 1156,
+          "sprint_actions": 2,
+          "sprint_requested_extra_steps": 2,
+          "deaths_by_reason": {
+            "head": 9,
+            "body": 9,
+            "self": 11
+          },
+          "death_length_by_reason": {
+            "head": 24,
+            "body": 19,
+            "self": 26
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 10,
+          "total_length": 23,
+          "max_length": 3,
+          "growth": 112,
+          "movement_shrink": 0,
+          "splits": 48,
+          "death_length": 101,
+          "steps": 1628,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 32,
+            "self": 8,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 81,
+            "self": 18,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 264,
+          "max_length": 34,
+          "growth": 639,
+          "movement_shrink": 0,
+          "splits": 214,
+          "death_length": 387,
+          "steps": 6740,
+          "sprint_actions": 3,
+          "sprint_requested_extra_steps": 3,
+          "deaths_by_reason": {
+            "head": 34,
+            "body": 50,
+            "self": 71
+          },
+          "death_length_by_reason": {
+            "head": 97,
+            "body": 118,
+            "self": 172
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 27,
+          "total_length": 157,
+          "max_length": 14,
+          "growth": 1279,
+          "movement_shrink": 0,
+          "splits": 444,
+          "death_length": 1134,
+          "steps": 12084,
+          "sprint_actions": 24,
+          "sprint_requested_extra_steps": 24,
+          "deaths_by_reason": {
+            "head": 105,
+            "self": 236,
+            "body": 79
+          },
+          "death_length_by_reason": {
+            "head": 382,
+            "self": 551,
+            "body": 201
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 29,
+          "total_length": 250,
+          "max_length": 23,
+          "growth": 1823,
+          "movement_shrink": 0,
+          "splits": 488,
+          "death_length": 1585,
+          "steps": 24547,
+          "sprint_actions": 21,
+          "sprint_requested_extra_steps": 21,
+          "deaths_by_reason": {
+            "head": 115,
+            "body": 202,
+            "self": 145
+          },
+          "death_length_by_reason": {
+            "head": 564,
+            "body": 591,
+            "self": 430
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "93",
+      "seed": "20260928",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0094_V3_portal_schooltime_seed20260928_B.replay",
+      "replay_sha256": "32f0b74f1d2d8adeae2ef056a0ff224e26f0820bdf702471b01d2701ceca51d7",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 14,
+          "total_length": 33,
+          "max_length": 3,
+          "growth": 21,
+          "movement_shrink": 0,
+          "splits": 11,
+          "death_length": 0,
+          "steps": 350,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 10,
+          "total_length": 22,
+          "max_length": 3,
+          "growth": 10,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 0,
+          "steps": 308,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 40,
+          "total_length": 104,
+          "max_length": 4,
+          "growth": 206,
+          "movement_shrink": 0,
+          "splits": 86,
+          "death_length": 114,
+          "steps": 1809,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 14,
+            "body": 8,
+            "self": 27
+          },
+          "death_length_by_reason": {
+            "head": 34,
+            "body": 18,
+            "self": 62
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 14,
+          "total_length": 35,
+          "max_length": 4,
+          "growth": 70,
+          "movement_shrink": 0,
+          "splits": 29,
+          "death_length": 47,
+          "steps": 984,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 14,
+            "self": 3,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 37,
+            "self": 7,
+            "body": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 174,
+          "max_length": 11,
+          "growth": 593,
+          "movement_shrink": 0,
+          "splits": 232,
+          "death_length": 431,
+          "steps": 7482,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 68,
+            "body": 30,
+            "self": 75
+          },
+          "death_length_by_reason": {
+            "head": 183,
+            "body": 71,
+            "self": 177
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 146,
+          "max_length": 4,
+          "growth": 386,
+          "movement_shrink": 0,
+          "splits": 160,
+          "death_length": 252,
+          "steps": 4984,
+          "sprint_actions": 12,
+          "sprint_requested_extra_steps": 12,
+          "deaths_by_reason": {
+            "head": 58,
+            "self": 42,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 146,
+            "self": 103,
+            "body": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 34,
+          "total_length": 222,
+          "max_length": 19,
+          "growth": 1990,
+          "movement_shrink": 0,
+          "splits": 671,
+          "death_length": 1780,
+          "steps": 25173,
+          "sprint_actions": 30,
+          "sprint_requested_extra_steps": 30,
+          "deaths_by_reason": {
+            "head": 217,
+            "body": 190,
+            "self": 233
+          },
+          "death_length_by_reason": {
+            "head": 735,
+            "body": 488,
+            "self": 557
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 35,
+          "total_length": 170,
+          "max_length": 13,
+          "growth": 1431,
+          "movement_shrink": 0,
+          "splits": 487,
+          "death_length": 1273,
+          "steps": 22801,
+          "sprint_actions": 50,
+          "sprint_requested_extra_steps": 50,
+          "deaths_by_reason": {
+            "head": 213,
+            "self": 190,
+            "body": 52
+          },
+          "death_length_by_reason": {
+            "head": 692,
+            "self": 447,
+            "body": 134
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "94",
+      "seed": "20260928",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0103_V3_portal_default_seed20260929_A.replay",
+      "replay_sha256": "2b75655a035b38e4de6489b2a44ae9024dad9f15232c5bfec84d431edcc33c8a",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 8,
+          "total_length": 18,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 8,
+          "death_length": 11,
+          "steps": 313,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "body": 1,
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "body": 2,
+            "head": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 11,
+          "total_length": 24,
+          "max_length": 3,
+          "growth": 24,
+          "movement_shrink": 0,
+          "splits": 14,
+          "death_length": 16,
+          "steps": 405,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7
+          },
+          "death_length_by_reason": {
+            "head": 16
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 18,
+          "total_length": 44,
+          "max_length": 4,
+          "growth": 57,
+          "movement_shrink": 0,
+          "splits": 26,
+          "death_length": 29,
+          "steps": 961,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "body": 1,
+            "head": 10,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "body": 2,
+            "head": 25,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 17,
+          "max_length": 3,
+          "growth": 38,
+          "movement_shrink": 0,
+          "splits": 18,
+          "death_length": 37,
+          "steps": 777,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 14,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 35,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 27,
+          "total_length": 64,
+          "max_length": 4,
+          "growth": 126,
+          "movement_shrink": 0,
+          "splits": 56,
+          "death_length": 78,
+          "steps": 3239,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "body": 2,
+            "head": 24,
+            "self": 7
+          },
+          "death_length_by_reason": {
+            "body": 5,
+            "head": 58,
+            "self": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 14,
+          "total_length": 35,
+          "max_length": 4,
+          "growth": 86,
+          "movement_shrink": 0,
+          "splits": 38,
+          "death_length": 67,
+          "steps": 1687,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 22,
+            "body": 4,
+            "self": 2
+          },
+          "death_length_by_reason": {
+            "head": 55,
+            "body": 8,
+            "self": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 25,
+          "total_length": 117,
+          "max_length": 15,
+          "growth": 584,
+          "movement_shrink": 0,
+          "splits": 209,
+          "death_length": 483,
+          "steps": 11915,
+          "sprint_actions": 2,
+          "sprint_requested_extra_steps": 2,
+          "deaths_by_reason": {
+            "body": 42,
+            "head": 103,
+            "self": 43
+          },
+          "death_length_by_reason": {
+            "body": 103,
+            "head": 287,
+            "self": 93
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 5,
+          "total_length": 11,
+          "max_length": 3,
+          "growth": 226,
+          "movement_shrink": 0,
+          "splits": 92,
+          "death_length": 231,
+          "steps": 3901,
+          "sprint_actions": 4,
+          "sprint_requested_extra_steps": 4,
+          "deaths_by_reason": {
+            "head": 77,
+            "body": 8,
+            "self": 6
+          },
+          "death_length_by_reason": {
+            "head": 198,
+            "body": 20,
+            "self": 13
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "103",
+      "seed": "20260929",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "win"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0104_V3_portal_default_seed20260929_B.replay",
+      "replay_sha256": "6f0a6a7e9947a4a7955f7e19b8c5453eb22d330e1a693da8dcbc3ff25b69c9f1",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 14,
+          "max_length": 2,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 15,
+          "steps": 242,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 6
+          },
+          "death_length_by_reason": {
+            "head": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 16,
+          "max_length": 3,
+          "growth": 18,
+          "movement_shrink": 0,
+          "splits": 10,
+          "death_length": 18,
+          "steps": 274,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 6,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 16,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 12,
+          "total_length": 31,
+          "max_length": 4,
+          "growth": 47,
+          "movement_shrink": 0,
+          "splits": 21,
+          "death_length": 32,
+          "steps": 728,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 11,
+            "self": 1,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 26,
+            "self": 3,
+            "body": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 9,
+          "total_length": 21,
+          "max_length": 3,
+          "growth": 38,
+          "movement_shrink": 0,
+          "splits": 18,
+          "death_length": 33,
+          "steps": 767,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 11,
+            "self": 1,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 28,
+            "self": 2,
+            "body": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 20,
+          "total_length": 48,
+          "max_length": 3,
+          "growth": 134,
+          "movement_shrink": 0,
+          "splits": 54,
+          "death_length": 102,
+          "steps": 2393,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 32,
+            "self": 4,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 86,
+            "self": 10,
+            "body": 6
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 28,
+          "max_length": 4,
+          "growth": 103,
+          "movement_shrink": 0,
+          "splits": 42,
+          "death_length": 91,
+          "steps": 1640,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 28,
+            "self": 4,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "head": 71,
+            "self": 10,
+            "body": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 36,
+          "total_length": 137,
+          "max_length": 15,
+          "growth": 522,
+          "movement_shrink": 0,
+          "splits": 175,
+          "death_length": 401,
+          "steps": 12081,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 92,
+            "self": 22,
+            "body": 29
+          },
+          "death_length_by_reason": {
+            "head": 274,
+            "self": 49,
+            "body": 78
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 5,
+          "total_length": 12,
+          "max_length": 3,
+          "growth": 260,
+          "movement_shrink": 0,
+          "splits": 108,
+          "death_length": 264,
+          "steps": 3532,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 68,
+            "self": 18,
+            "body": 21
+          },
+          "death_length_by_reason": {
+            "head": 167,
+            "self": 42,
+            "body": 55
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "104",
+      "seed": "20260929",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0111_V3_portal_queen_of_spades_seed20260929_A.replay",
+      "replay_sha256": "5a32518792a0964eeea1c3478c720877279b7f5e50e804365dec5513a806842c",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 11,
+          "max_length": 3,
+          "growth": 5,
+          "movement_shrink": 0,
+          "splits": 2,
+          "death_length": 0,
+          "steps": 156,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 3,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 3,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 0,
+          "steps": 118,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 8,
+          "total_length": 16,
+          "max_length": 2,
+          "growth": 12,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 2,
+          "steps": 467,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 16,
+          "total_length": 38,
+          "max_length": 3,
+          "growth": 75,
+          "movement_shrink": 0,
+          "splits": 32,
+          "death_length": 43,
+          "steps": 622,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "body": 3,
+            "self": 12,
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "body": 9,
+            "self": 25,
+            "head": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 7,
+          "total_length": 20,
+          "max_length": 3,
+          "growth": 39,
+          "movement_shrink": 0,
+          "splits": 15,
+          "death_length": 25,
+          "steps": 1143,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7,
+            "self": 1,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 18,
+            "self": 2,
+            "body": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 25,
+          "total_length": 65,
+          "max_length": 4,
+          "growth": 210,
+          "movement_shrink": 0,
+          "splits": 88,
+          "death_length": 151,
+          "steps": 2308,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "body": 15,
+            "self": 35,
+            "head": 15
+          },
+          "death_length_by_reason": {
+            "body": 36,
+            "self": 77,
+            "head": 38
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 413,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 69,
+          "movement_shrink": 0,
+          "splits": 27,
+          "death_length": 75,
+          "steps": 2107,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 24,
+            "self": 3,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 64,
+            "self": 6,
+            "body": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 413,
+          "initial_total_length": 6,
+          "population": 34,
+          "total_length": 85,
+          "max_length": 5,
+          "growth": 538,
+          "movement_shrink": 0,
+          "splits": 221,
+          "death_length": 459,
+          "steps": 8549,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "body": 49,
+            "self": 76,
+            "head": 64
+          },
+          "death_length_by_reason": {
+            "body": 119,
+            "self": 170,
+            "head": 170
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "111",
+      "seed": "20260929",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0112_V3_portal_queen_of_spades_seed20260929_B.replay",
+      "replay_sha256": "1e70a47dba18400768492f186445a8728ce3590ed4f77c7543f3cbe448c6ee63",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 9,
+          "total_length": 23,
+          "max_length": 4,
+          "growth": 23,
+          "movement_shrink": 0,
+          "splits": 10,
+          "death_length": 6,
+          "steps": 217,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 6
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 7,
+          "total_length": 15,
+          "max_length": 3,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 6,
+          "death_length": 4,
+          "steps": 136,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 21,
+          "total_length": 48,
+          "max_length": 3,
+          "growth": 112,
+          "movement_shrink": 0,
+          "splits": 49,
+          "death_length": 70,
+          "steps": 996,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 8,
+            "self": 16,
+            "body": 6
+          },
+          "death_length_by_reason": {
+            "head": 19,
+            "self": 36,
+            "body": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 3,
+          "total_length": 7,
+          "max_length": 3,
+          "growth": 21,
+          "movement_shrink": 0,
+          "splits": 8,
+          "death_length": 20,
+          "steps": 407,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 6,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 17,
+            "body": 3
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 27,
+          "total_length": 63,
+          "max_length": 3,
+          "growth": 254,
+          "movement_shrink": 0,
+          "splits": 109,
+          "death_length": 197,
+          "steps": 3227,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 11,
+            "self": 50,
+            "body": 23
+          },
+          "death_length_by_reason": {
+            "head": 27,
+            "self": 115,
+            "body": 55
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 5,
+          "total_length": 12,
+          "max_length": 3,
+          "growth": 39,
+          "movement_shrink": 0,
+          "splits": 15,
+          "death_length": 33,
+          "steps": 887,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "body": 2,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 25,
+            "body": 6,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 494,
+          "initial_total_length": 6,
+          "population": 29,
+          "total_length": 113,
+          "max_length": 19,
+          "growth": 609,
+          "movement_shrink": 0,
+          "splits": 236,
+          "death_length": 502,
+          "steps": 10864,
+          "sprint_actions": 2,
+          "sprint_requested_extra_steps": 2,
+          "deaths_by_reason": {
+            "head": 55,
+            "self": 102,
+            "body": 52
+          },
+          "death_length_by_reason": {
+            "head": 143,
+            "self": 234,
+            "body": 125
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 494,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 104,
+          "movement_shrink": 0,
+          "splits": 40,
+          "death_length": 110,
+          "steps": 2470,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 37,
+            "body": 2,
+            "self": 3
+          },
+          "death_length_by_reason": {
+            "head": 97,
+            "body": 6,
+            "self": 7
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "112",
+      "seed": "20260929",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0113_V3_portal_schooltime_seed20260929_A.replay",
+      "replay_sha256": "c3d7e2dd34d52df259720a5fe39d6d8d1d1b156283f46f080fd873f4291bb257",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 8,
+          "total_length": 21,
+          "max_length": 4,
+          "growth": 13,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 4,
+          "steps": 293,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 8,
+          "total_length": 18,
+          "max_length": 3,
+          "growth": 10,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 4,
+          "steps": 303,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 18,
+          "total_length": 47,
+          "max_length": 3,
+          "growth": 82,
+          "movement_shrink": 0,
+          "splits": 36,
+          "death_length": 47,
+          "steps": 977,
+          "sprint_actions": 3,
+          "sprint_requested_extra_steps": 3,
+          "deaths_by_reason": {
+            "head": 16,
+            "self": 5
+          },
+          "death_length_by_reason": {
+            "head": 36,
+            "self": 11
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 26,
+          "total_length": 71,
+          "max_length": 4,
+          "growth": 120,
+          "movement_shrink": 0,
+          "splits": 49,
+          "death_length": 61,
+          "steps": 1123,
+          "sprint_actions": 2,
+          "sprint_requested_extra_steps": 2,
+          "deaths_by_reason": {
+            "head": 18,
+            "body": 3,
+            "self": 5
+          },
+          "death_length_by_reason": {
+            "head": 45,
+            "body": 6,
+            "self": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 61,
+          "total_length": 141,
+          "max_length": 3,
+          "growth": 320,
+          "movement_shrink": 0,
+          "splits": 136,
+          "death_length": 191,
+          "steps": 4415,
+          "sprint_actions": 10,
+          "sprint_requested_extra_steps": 10,
+          "deaths_by_reason": {
+            "head": 64,
+            "self": 12,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 160,
+            "self": 27,
+            "body": 4
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 59,
+          "total_length": 142,
+          "max_length": 4,
+          "growth": 587,
+          "movement_shrink": 0,
+          "splits": 244,
+          "death_length": 457,
+          "steps": 5656,
+          "sprint_actions": 8,
+          "sprint_requested_extra_steps": 8,
+          "deaths_by_reason": {
+            "head": 72,
+            "body": 38,
+            "self": 78
+          },
+          "death_length_by_reason": {
+            "head": 189,
+            "body": 88,
+            "self": 180
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 33,
+          "total_length": 192,
+          "max_length": 23,
+          "growth": 1380,
+          "movement_shrink": 0,
+          "splits": 488,
+          "death_length": 1200,
+          "steps": 22098,
+          "sprint_actions": 26,
+          "sprint_requested_extra_steps": 26,
+          "deaths_by_reason": {
+            "head": 172,
+            "self": 209,
+            "body": 77
+          },
+          "death_length_by_reason": {
+            "head": 491,
+            "self": 520,
+            "body": 189
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 41,
+          "total_length": 272,
+          "max_length": 34,
+          "growth": 1753,
+          "movement_shrink": 0,
+          "splits": 548,
+          "death_length": 1493,
+          "steps": 23427,
+          "sprint_actions": 26,
+          "sprint_requested_extra_steps": 26,
+          "deaths_by_reason": {
+            "head": 184,
+            "body": 140,
+            "self": 186
+          },
+          "death_length_by_reason": {
+            "head": 644,
+            "body": 413,
+            "self": 436
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "113",
+      "seed": "20260929",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1/0114_V3_portal_schooltime_seed20260929_B.replay",
+      "replay_sha256": "5c612d8e85bba185cbcd08ee49a7810db294f8597111c460abd1f38009d982b5",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 12,
+          "total_length": 29,
+          "max_length": 3,
+          "growth": 22,
+          "movement_shrink": 0,
+          "splits": 11,
+          "death_length": 5,
+          "steps": 342,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 10,
+          "total_length": 24,
+          "max_length": 3,
+          "growth": 18,
+          "movement_shrink": 0,
+          "splits": 10,
+          "death_length": 6,
+          "steps": 305,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 4,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 35,
+          "total_length": 85,
+          "max_length": 4,
+          "growth": 169,
+          "movement_shrink": 0,
+          "splits": 71,
+          "death_length": 96,
+          "steps": 1457,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 13,
+            "body": 10,
+            "self": 16
+          },
+          "death_length_by_reason": {
+            "head": 33,
+            "body": 25,
+            "self": 38
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 22,
+          "total_length": 60,
+          "max_length": 4,
+          "growth": 88,
+          "movement_shrink": 0,
+          "splits": 36,
+          "death_length": 40,
+          "steps": 1050,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 13,
+            "self": 4
+          },
+          "death_length_by_reason": {
+            "head": 31,
+            "self": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 58,
+          "total_length": 151,
+          "max_length": 4,
+          "growth": 674,
+          "movement_shrink": 0,
+          "splits": 270,
+          "death_length": 535,
+          "steps": 6384,
+          "sprint_actions": 4,
+          "sprint_requested_extra_steps": 4,
+          "deaths_by_reason": {
+            "head": 81,
+            "body": 57,
+            "self": 77
+          },
+          "death_length_by_reason": {
+            "head": 210,
+            "body": 140,
+            "self": 185
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 62,
+          "total_length": 172,
+          "max_length": 8,
+          "growth": 451,
+          "movement_shrink": 0,
+          "splits": 169,
+          "death_length": 291,
+          "steps": 5808,
+          "sprint_actions": 11,
+          "sprint_requested_extra_steps": 11,
+          "deaths_by_reason": {
+            "head": 81,
+            "self": 22,
+            "body": 7
+          },
+          "death_length_by_reason": {
+            "head": 224,
+            "self": 49,
+            "body": 18
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 30,
+          "total_length": 245,
+          "max_length": 32,
+          "growth": 1797,
+          "movement_shrink": 0,
+          "splits": 597,
+          "death_length": 1564,
+          "steps": 24053,
+          "sprint_actions": 25,
+          "sprint_requested_extra_steps": 25,
+          "deaths_by_reason": {
+            "head": 195,
+            "body": 190,
+            "self": 185
+          },
+          "death_length_by_reason": {
+            "head": 607,
+            "body": 465,
+            "self": 492
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 44,
+          "total_length": 185,
+          "max_length": 18,
+          "growth": 1596,
+          "movement_shrink": 0,
+          "splits": 558,
+          "death_length": 1423,
+          "steps": 23657,
+          "sprint_actions": 27,
+          "sprint_requested_extra_steps": 27,
+          "deaths_by_reason": {
+            "head": 187,
+            "self": 247,
+            "body": 83
+          },
+          "death_length_by_reason": {
+            "head": 573,
+            "self": 607,
+            "body": 243
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "game": "114",
+      "seed": "20260929",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0003_V3_portal_default_seed20260927_A.replay",
+      "replay_sha256": "37240569ae04d231cff9e3d2df864604fee5cf36af650d370c6ba23c297be513",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 25,
+          "max_length": 4,
+          "growth": 22,
+          "movement_shrink": 0,
+          "splits": 12,
+          "death_length": 13,
+          "steps": 387,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 5,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 11,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 18,
+          "max_length": 3,
+          "growth": 19,
+          "movement_shrink": 0,
+          "splits": 10,
+          "death_length": 17,
+          "steps": 362,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 5,
+            "self": 1,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 12,
+            "self": 3,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 10,
+          "total_length": 22,
+          "max_length": 3,
+          "growth": 34,
+          "movement_shrink": 0,
+          "splits": 18,
+          "death_length": 28,
+          "steps": 882,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 2,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 22,
+            "self": 4,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 17,
+          "total_length": 38,
+          "max_length": 3,
+          "growth": 55,
+          "movement_shrink": 0,
+          "splits": 26,
+          "death_length": 33,
+          "steps": 932,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 3,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 24,
+            "self": 7,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 12,
+          "total_length": 30,
+          "max_length": 4,
+          "growth": 73,
+          "movement_shrink": 0,
+          "splits": 33,
+          "death_length": 59,
+          "steps": 1799,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 17,
+            "self": 4,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "head": 43,
+            "self": 8,
+            "body": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 24,
+          "total_length": 62,
+          "max_length": 4,
+          "growth": 178,
+          "movement_shrink": 0,
+          "splits": 75,
+          "death_length": 132,
+          "steps": 2947,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 33,
+            "self": 14,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 80,
+            "self": 33,
+            "body": 19
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 6,
+          "total_length": 12,
+          "max_length": 2,
+          "growth": 194,
+          "movement_shrink": 0,
+          "splits": 84,
+          "death_length": 198,
+          "steps": 4270,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 65,
+            "self": 10,
+            "body": 7
+          },
+          "death_length_by_reason": {
+            "head": 162,
+            "self": 21,
+            "body": 15
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 29,
+          "total_length": 117,
+          "max_length": 11,
+          "growth": 606,
+          "movement_shrink": 0,
+          "splits": 223,
+          "death_length": 505,
+          "steps": 12759,
+          "sprint_actions": 4,
+          "sprint_requested_extra_steps": 4,
+          "deaths_by_reason": {
+            "head": 123,
+            "self": 33,
+            "body": 42
+          },
+          "death_length_by_reason": {
+            "head": 329,
+            "self": 76,
+            "body": 100
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "3",
+      "seed": "20260927",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0004_V3_portal_default_seed20260927_B.replay",
+      "replay_sha256": "1befc21fba70dabb75d78be023ae4adcd75d19bbcf20382d0b91b190e7daf53a",
+      "format_version": 2,
+      "width": 32,
+      "height": 32,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 16,
+        "B": 16
+      },
+      "initial_position_notifications_skipped": 8,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 13,
+          "total_length": 31,
+          "max_length": 5,
+          "growth": 33,
+          "movement_shrink": 0,
+          "splits": 17,
+          "death_length": 18,
+          "steps": 461,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 8
+          },
+          "death_length_by_reason": {
+            "head": 18
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 15,
+          "max_length": 3,
+          "growth": 12,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 13,
+          "steps": 360,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 6
+          },
+          "death_length_by_reason": {
+            "head": 13
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 25,
+          "total_length": 62,
+          "max_length": 3,
+          "growth": 92,
+          "movement_shrink": 0,
+          "splits": 40,
+          "death_length": 46,
+          "steps": 1305,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 18,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 44,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 16,
+          "population": 6,
+          "total_length": 16,
+          "max_length": 3,
+          "growth": 23,
+          "movement_shrink": 0,
+          "splits": 12,
+          "death_length": 23,
+          "steps": 678,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 10
+          },
+          "death_length_by_reason": {
+            "head": 23
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 31,
+          "total_length": 76,
+          "max_length": 4,
+          "growth": 212,
+          "movement_shrink": 0,
+          "splits": 90,
+          "death_length": 152,
+          "steps": 4040,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 46,
+            "self": 9,
+            "body": 8
+          },
+          "death_length_by_reason": {
+            "head": 114,
+            "self": 18,
+            "body": 20
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 16,
+          "population": 7,
+          "total_length": 18,
+          "max_length": 4,
+          "growth": 40,
+          "movement_shrink": 0,
+          "splits": 19,
+          "death_length": 38,
+          "steps": 1207,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 16
+          },
+          "death_length_by_reason": {
+            "head": 38
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 38,
+          "total_length": 149,
+          "max_length": 13,
+          "growth": 696,
+          "movement_shrink": 0,
+          "splits": 253,
+          "death_length": 563,
+          "steps": 17315,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 127,
+            "self": 41,
+            "body": 51
+          },
+          "death_length_by_reason": {
+            "head": 339,
+            "self": 89,
+            "body": 135
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 16,
+          "population": 1,
+          "total_length": 3,
+          "max_length": 3,
+          "growth": 116,
+          "movement_shrink": 0,
+          "splits": 53,
+          "death_length": 129,
+          "steps": 2410,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 47,
+            "body": 3,
+            "self": 6
+          },
+          "death_length_by_reason": {
+            "head": 111,
+            "body": 6,
+            "self": 12
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "4",
+      "seed": "20260927",
+      "map": "default",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0012_V3_portal_queen_of_spades_seed20260927_B.replay",
+      "replay_sha256": "ecec1612f47bae085f3b464c33b788bb40ff8faf2d5aa4565f59750ac468a1d9",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 6,
+          "total_length": 15,
+          "max_length": 4,
+          "growth": 11,
+          "movement_shrink": 0,
+          "splits": 5,
+          "death_length": 2,
+          "steps": 112,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 5,
+          "total_length": 10,
+          "max_length": 2,
+          "growth": 6,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 2,
+          "steps": 136,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 1
+          },
+          "death_length_by_reason": {
+            "head": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 9,
+          "max_length": 3,
+          "growth": 51,
+          "movement_shrink": 0,
+          "splits": 23,
+          "death_length": 48,
+          "steps": 411,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 7,
+            "self": 10,
+            "body": 4
+          },
+          "death_length_by_reason": {
+            "head": 17,
+            "self": 22,
+            "body": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 5,
+          "total_length": 11,
+          "max_length": 3,
+          "growth": 12,
+          "movement_shrink": 0,
+          "splits": 6,
+          "death_length": 7,
+          "steps": 399,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 3
+          },
+          "death_length_by_reason": {
+            "head": 7
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 25,
+          "total_length": 59,
+          "max_length": 4,
+          "growth": 203,
+          "movement_shrink": 0,
+          "splits": 88,
+          "death_length": 150,
+          "steps": 1791,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 15,
+            "self": 36,
+            "body": 14
+          },
+          "death_length_by_reason": {
+            "head": 40,
+            "self": 77,
+            "body": 33
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 1,
+          "total_length": 3,
+          "max_length": 3,
+          "growth": 22,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 25,
+          "steps": 760,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 9,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 23,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 239,
+          "initial_total_length": 6,
+          "population": 27,
+          "total_length": 63,
+          "max_length": 4,
+          "growth": 256,
+          "movement_shrink": 0,
+          "splits": 112,
+          "death_length": 199,
+          "steps": 2888,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 20,
+            "self": 46,
+            "body": 21
+          },
+          "death_length_by_reason": {
+            "head": 52,
+            "self": 99,
+            "body": 48
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 239,
+          "initial_total_length": 6,
+          "population": 0,
+          "total_length": 0,
+          "max_length": 0,
+          "growth": 25,
+          "movement_shrink": 0,
+          "splits": 11,
+          "death_length": 31,
+          "steps": 804,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 12,
+            "self": 1
+          },
+          "death_length_by_reason": {
+            "head": 29,
+            "self": 2
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "12",
+      "seed": "20260927",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0011_V3_portal_queen_of_spades_seed20260927_A.replay",
+      "replay_sha256": "fb059cd22fc6f5e2db41c1c51aa8a638ce80b6f6d278b66c670095d429de9f38",
+      "format_version": 2,
+      "width": 25,
+      "height": 35,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 6,
+        "B": 6
+      },
+      "initial_position_notifications_skipped": 4,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 3,
+          "total_length": 8,
+          "max_length": 3,
+          "growth": 2,
+          "movement_shrink": 0,
+          "splits": 1,
+          "death_length": 0,
+          "steps": 126,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 6,
+          "population": 2,
+          "total_length": 6,
+          "max_length": 3,
+          "growth": 0,
+          "movement_shrink": 0,
+          "splits": 0,
+          "death_length": 0,
+          "steps": 100,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 4,
+          "total_length": 11,
+          "max_length": 4,
+          "growth": 10,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 5,
+          "steps": 328,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2
+          },
+          "death_length_by_reason": {
+            "head": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 6,
+          "population": 8,
+          "total_length": 20,
+          "max_length": 3,
+          "growth": 36,
+          "movement_shrink": 0,
+          "splits": 16,
+          "death_length": 22,
+          "steps": 397,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 2,
+            "body": 3,
+            "self": 5
+          },
+          "death_length_by_reason": {
+            "head": 5,
+            "body": 7,
+            "self": 10
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 7,
+          "total_length": 15,
+          "max_length": 3,
+          "growth": 36,
+          "movement_shrink": 0,
+          "splits": 17,
+          "death_length": 27,
+          "steps": 1008,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 8,
+            "self": 3,
+            "body": 1
+          },
+          "death_length_by_reason": {
+            "head": 19,
+            "self": 6,
+            "body": 2
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 6,
+          "population": 18,
+          "total_length": 43,
+          "max_length": 3,
+          "growth": 168,
+          "movement_shrink": 0,
+          "splits": 73,
+          "death_length": 131,
+          "steps": 1784,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 18,
+            "body": 15,
+            "self": 24
+          },
+          "death_length_by_reason": {
+            "head": 40,
+            "body": 37,
+            "self": 54
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 6,
+          "population": 1,
+          "total_length": 2,
+          "max_length": 2,
+          "growth": 79,
+          "movement_shrink": 0,
+          "splits": 34,
+          "death_length": 83,
+          "steps": 2247,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 26,
+            "self": 7,
+            "body": 2
+          },
+          "death_length_by_reason": {
+            "head": 62,
+            "self": 16,
+            "body": 5
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 6,
+          "population": 27,
+          "total_length": 91,
+          "max_length": 13,
+          "growth": 625,
+          "movement_shrink": 0,
+          "splits": 246,
+          "death_length": 540,
+          "steps": 8699,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "head": 66,
+            "body": 74,
+            "self": 81
+          },
+          "death_length_by_reason": {
+            "head": 177,
+            "body": 179,
+            "self": 184
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "11",
+      "seed": "20260927",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0013_V3_portal_schooltime_seed20260927_A.replay",
+      "replay_sha256": "7b0c1c5010cede84cc79363d257fb488a359f0d4ff8cfb28a1236c806cd4e90a",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "A",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 3,
+          "total_length": 9,
+          "max_length": 4,
+          "growth": 5,
+          "movement_shrink": 0,
+          "splits": 4,
+          "death_length": 8,
+          "steps": 196,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 8
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 8,
+          "total_length": 21,
+          "max_length": 5,
+          "growth": 18,
+          "movement_shrink": 0,
+          "splits": 9,
+          "death_length": 9,
+          "steps": 283,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 4
+          },
+          "death_length_by_reason": {
+            "head": 9
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 21,
+          "total_length": 55,
+          "max_length": 4,
+          "growth": 105,
+          "movement_shrink": 0,
+          "splits": 46,
+          "death_length": 62,
+          "steps": 762,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "head": 12,
+            "body": 3,
+            "self": 13
+          },
+          "death_length_by_reason": {
+            "head": 27,
+            "body": 8,
+            "self": 27
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 25,
+          "total_length": 62,
+          "max_length": 3,
+          "growth": 131,
+          "movement_shrink": 0,
+          "splits": 57,
+          "death_length": 81,
+          "steps": 1184,
+          "sprint_actions": 1,
+          "sprint_requested_extra_steps": 1,
+          "deaths_by_reason": {
+            "head": 12,
+            "self": 16,
+            "body": 7
+          },
+          "death_length_by_reason": {
+            "head": 29,
+            "self": 36,
+            "body": 16
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 63,
+          "total_length": 176,
+          "max_length": 6,
+          "growth": 472,
+          "movement_shrink": 0,
+          "splits": 184,
+          "death_length": 308,
+          "steps": 5026,
+          "sprint_actions": 21,
+          "sprint_requested_extra_steps": 21,
+          "deaths_by_reason": {
+            "head": 60,
+            "body": 11,
+            "self": 53
+          },
+          "death_length_by_reason": {
+            "head": 160,
+            "body": 28,
+            "self": 120
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 36,
+          "total_length": 89,
+          "max_length": 4,
+          "growth": 420,
+          "movement_shrink": 0,
+          "splits": 173,
+          "death_length": 343,
+          "steps": 4807,
+          "sprint_actions": 6,
+          "sprint_requested_extra_steps": 6,
+          "deaths_by_reason": {
+            "head": 62,
+            "self": 50,
+            "body": 28
+          },
+          "death_length_by_reason": {
+            "head": 162,
+            "self": 117,
+            "body": 64
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 30,
+          "total_length": 169,
+          "max_length": 20,
+          "growth": 1620,
+          "movement_shrink": 0,
+          "splits": 558,
+          "death_length": 1463,
+          "steps": 22621,
+          "sprint_actions": 50,
+          "sprint_requested_extra_steps": 50,
+          "deaths_by_reason": {
+            "head": 198,
+            "body": 80,
+            "self": 253
+          },
+          "death_length_by_reason": {
+            "head": 646,
+            "body": 226,
+            "self": 591
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 40,
+          "total_length": 225,
+          "max_length": 23,
+          "growth": 1375,
+          "movement_shrink": 0,
+          "splits": 489,
+          "death_length": 1162,
+          "steps": 20007,
+          "sprint_actions": 32,
+          "sprint_requested_extra_steps": 32,
+          "deaths_by_reason": {
+            "head": 200,
+            "self": 157,
+            "body": 95
+          },
+          "death_length_by_reason": {
+            "head": 566,
+            "self": 368,
+            "body": 228
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "13",
+      "seed": "20260927",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev/0014_V3_portal_schooltime_seed20260927_B.replay",
+      "replay_sha256": "95e6595d4fc658e5779f8a91b7f2cd750c3ef3fc2afe6793d9b7f926e28ce936",
+      "format_version": 2,
+      "width": 60,
+      "height": 40,
+      "candidate_side": "B",
+      "initial_total_length": {
+        "A": 12,
+        "B": 12
+      },
+      "initial_position_notifications_skipped": 6,
+      "all_initial_dragons_notified": true,
+      "split_conservation_ok": true,
+      "final_standings_ok": true,
+      "checkpoints": [
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 10,
+          "total_length": 26,
+          "max_length": 4,
+          "growth": 14,
+          "movement_shrink": 0,
+          "splits": 7,
+          "death_length": 0,
+          "steps": 346,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 50,
+          "completed_rounds": 50,
+          "initial_total_length": 12,
+          "population": 15,
+          "total_length": 41,
+          "max_length": 4,
+          "growth": 29,
+          "movement_shrink": 0,
+          "splits": 12,
+          "death_length": 0,
+          "steps": 364,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {},
+          "death_length_by_reason": {},
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 32,
+          "total_length": 80,
+          "max_length": 4,
+          "growth": 149,
+          "movement_shrink": 0,
+          "splits": 63,
+          "death_length": 81,
+          "steps": 1334,
+          "sprint_actions": 0,
+          "sprint_requested_extra_steps": 0,
+          "deaths_by_reason": {
+            "self": 16,
+            "head": 9,
+            "body": 9
+          },
+          "death_length_by_reason": {
+            "self": 40,
+            "head": 20,
+            "body": 21
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 100,
+          "completed_rounds": 100,
+          "initial_total_length": 12,
+          "population": 36,
+          "total_length": 91,
+          "max_length": 4,
+          "growth": 153,
+          "movement_shrink": 0,
+          "splits": 64,
+          "death_length": 74,
+          "steps": 1473,
+          "sprint_actions": 5,
+          "sprint_requested_extra_steps": 5,
+          "deaths_by_reason": {
+            "self": 16,
+            "body": 6,
+            "head": 9
+          },
+          "death_length_by_reason": {
+            "self": 37,
+            "body": 15,
+            "head": 22
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 54,
+          "total_length": 130,
+          "max_length": 4,
+          "growth": 470,
+          "movement_shrink": 0,
+          "splits": 194,
+          "death_length": 352,
+          "steps": 5439,
+          "sprint_actions": 10,
+          "sprint_requested_extra_steps": 10,
+          "deaths_by_reason": {
+            "self": 62,
+            "head": 61,
+            "body": 20
+          },
+          "death_length_by_reason": {
+            "self": 148,
+            "head": 157,
+            "body": 47
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": 200,
+          "completed_rounds": 200,
+          "initial_total_length": 12,
+          "population": 59,
+          "total_length": 212,
+          "max_length": 10,
+          "growth": 634,
+          "movement_shrink": 0,
+          "splits": 214,
+          "death_length": 434,
+          "steps": 7293,
+          "sprint_actions": 20,
+          "sprint_requested_extra_steps": 20,
+          "deaths_by_reason": {
+            "self": 79,
+            "body": 18,
+            "head": 61
+          },
+          "death_length_by_reason": {
+            "self": 182,
+            "body": 45,
+            "head": 207
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "A",
+          "owner": "opponent",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 45,
+          "total_length": 245,
+          "max_length": 35,
+          "growth": 1602,
+          "movement_shrink": 0,
+          "splits": 537,
+          "death_length": 1369,
+          "steps": 23353,
+          "sprint_actions": 30,
+          "sprint_requested_extra_steps": 30,
+          "deaths_by_reason": {
+            "self": 180,
+            "head": 191,
+            "body": 124
+          },
+          "death_length_by_reason": {
+            "self": 463,
+            "head": 604,
+            "body": 302
+          },
+          "length_conservation_ok": true
+        },
+        {
+          "team": "B",
+          "owner": "candidate",
+          "checkpoint": "final",
+          "completed_rounds": 500,
+          "initial_total_length": 12,
+          "population": 34,
+          "total_length": 193,
+          "max_length": 26,
+          "growth": 1838,
+          "movement_shrink": 0,
+          "splits": 651,
+          "death_length": 1657,
+          "steps": 24949,
+          "sprint_actions": 41,
+          "sprint_requested_extra_steps": 41,
+          "deaths_by_reason": {
+            "self": 356,
+            "body": 99,
+            "head": 165
+          },
+          "death_length_by_reason": {
+            "self": 832,
+            "body": 256,
+            "head": 569
+          },
+          "length_conservation_ok": true
+        }
+      ],
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "game": "14",
+      "seed": "20260927",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "outcome": "loss"
+    }
+  ],
+  "group_means": [
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 39.833333333333336,
+      "movement_shrink": 0,
+      "splits": 19.833333333333332,
+      "death_length": 29.166666666666668,
+      "steps": 826.3333333333334,
+      "population": 11.333333333333334,
+      "total_length": 26.666666666666668,
+      "max_length": 3.1666666666666665,
+      "sprint_actions": 0.3333333333333333
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 55.5,
+      "movement_shrink": 0,
+      "splits": 24.666666666666668,
+      "death_length": 36.666666666666664,
+      "steps": 894.8333333333334,
+      "population": 13.833333333333334,
+      "total_length": 34.833333333333336,
+      "max_length": 3.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 91.5,
+      "movement_shrink": 0,
+      "splits": 41,
+      "death_length": 70.66666666666667,
+      "steps": 2133.5,
+      "population": 15.166666666666666,
+      "total_length": 36.833333333333336,
+      "max_length": 3.6666666666666665,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 147.33333333333334,
+      "movement_shrink": 0,
+      "splits": 62.333333333333336,
+      "death_length": 112,
+      "steps": 2605.8333333333335,
+      "population": 20.833333333333332,
+      "total_length": 51.333333333333336,
+      "max_length": 3.5,
+      "sprint_actions": 0.8333333333333334
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 15.166666666666666,
+      "movement_shrink": 0,
+      "splits": 9.333333333333334,
+      "death_length": 13.333333333333334,
+      "steps": 331.3333333333333,
+      "population": 7.666666666666667,
+      "total_length": 17.833333333333332,
+      "max_length": 3.1666666666666665,
+      "sprint_actions": 0.16666666666666666
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 19.5,
+      "movement_shrink": 0,
+      "splits": 11.333333333333334,
+      "death_length": 15.166666666666666,
+      "steps": 350.6666666666667,
+      "population": 8.833333333333334,
+      "total_length": 20.333333333333332,
+      "max_length": 3.1666666666666665,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 291.5,
+      "movement_shrink": 0,
+      "splits": 113.66666666666667,
+      "death_length": 269.5,
+      "steps": 5821.666666666667,
+      "population": 8.5,
+      "total_length": 38,
+      "max_length": 6.666666666666667,
+      "sprint_actions": 2.8333333333333335
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 506.5,
+      "movement_shrink": 0,
+      "splits": 184.33333333333334,
+      "death_length": 418.5,
+      "steps": 11484.666666666666,
+      "population": 27.166666666666668,
+      "total_length": 104,
+      "max_length": 11.666666666666666,
+      "sprint_actions": 2.6666666666666665
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 20,
+      "movement_shrink": 0,
+      "splits": 8.833333333333334,
+      "death_length": 11.833333333333334,
+      "steps": 416.6666666666667,
+      "population": 6,
+      "total_length": 14.166666666666666,
+      "max_length": 3,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 60.833333333333336,
+      "movement_shrink": 0,
+      "splits": 26.333333333333332,
+      "death_length": 40.833333333333336,
+      "steps": 543,
+      "population": 10.666666666666666,
+      "total_length": 26,
+      "max_length": 3.1666666666666665,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 5,
+      "growth": 28.6,
+      "movement_shrink": 0,
+      "splits": 12,
+      "death_length": 23.6,
+      "steps": 885.8,
+      "population": 4.4,
+      "total_length": 11,
+      "max_length": 3,
+      "sprint_actions": 0.2
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 5,
+      "growth": 206.6,
+      "movement_shrink": 0,
+      "splits": 88.6,
+      "death_length": 156,
+      "steps": 2278.2,
+      "population": 23.4,
+      "total_length": 56.6,
+      "max_length": 3.4,
+      "sprint_actions": 0.2
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 5.833333333333333,
+      "movement_shrink": 0,
+      "splits": 3,
+      "death_length": 1.5,
+      "steps": 143.5,
+      "population": 4.5,
+      "total_length": 10.333333333333334,
+      "max_length": 2.8333333333333335,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 7.666666666666667,
+      "movement_shrink": 0,
+      "splits": 3.6666666666666665,
+      "death_length": 1.8333333333333333,
+      "steps": 127.83333333333333,
+      "population": 4.833333333333333,
+      "total_length": 11.833333333333334,
+      "max_length": 3,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 65.66666666666667,
+      "movement_shrink": 0,
+      "splits": 26.666666666666668,
+      "death_length": 66.16666666666667,
+      "steps": 1595.1666666666667,
+      "population": 2.1666666666666665,
+      "total_length": 5.5,
+      "max_length": 1,
+      "sprint_actions": 0.3333333333333333
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 401.5,
+      "movement_shrink": 0,
+      "splits": 162.83333333333334,
+      "death_length": 337.1666666666667,
+      "steps": 6073,
+      "population": 24.166666666666668,
+      "total_length": 70.33333333333333,
+      "max_length": 7.5,
+      "sprint_actions": 1.3333333333333333
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 79.33333333333333,
+      "movement_shrink": 0,
+      "splits": 33.333333333333336,
+      "death_length": 41.666666666666664,
+      "steps": 962.3333333333334,
+      "population": 19.166666666666668,
+      "total_length": 49.666666666666664,
+      "max_length": 3.8333333333333335,
+      "sprint_actions": 1.6666666666666667
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 167.33333333333334,
+      "movement_shrink": 0,
+      "splits": 70.16666666666667,
+      "death_length": 87.33333333333333,
+      "steps": 1368.6666666666667,
+      "population": 36.5,
+      "total_length": 92,
+      "max_length": 4.166666666666667,
+      "sprint_actions": 1.3333333333333333
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 329,
+      "movement_shrink": 0,
+      "splits": 130.66666666666666,
+      "death_length": 215.5,
+      "steps": 4477.166666666667,
+      "population": 49.166666666666664,
+      "total_length": 125.5,
+      "max_length": 5,
+      "sprint_actions": 11.333333333333334
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 658.3333333333334,
+      "movement_shrink": 0,
+      "splits": 254.33333333333334,
+      "death_length": 486.6666666666667,
+      "steps": 6652.333333333333,
+      "population": 60.833333333333336,
+      "total_length": 183.66666666666666,
+      "max_length": 11,
+      "sprint_actions": 7.166666666666667
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 12.666666666666666,
+      "movement_shrink": 0,
+      "splits": 7.666666666666667,
+      "death_length": 4.5,
+      "steps": 274,
+      "population": 8.5,
+      "total_length": 20.166666666666668,
+      "max_length": 3.1666666666666665,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 16.333333333333332,
+      "movement_shrink": 0,
+      "splits": 8.833333333333334,
+      "death_length": 4.166666666666667,
+      "steps": 313.3333333333333,
+      "population": 10,
+      "total_length": 24.166666666666668,
+      "max_length": 3.3333333333333335,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 6,
+      "growth": 1314.6666666666667,
+      "movement_shrink": 0,
+      "splits": 454.1666666666667,
+      "death_length": 1152.3333333333333,
+      "steps": 20498.166666666668,
+      "population": 35.333333333333336,
+      "total_length": 174.33333333333334,
+      "max_length": 16.666666666666668,
+      "sprint_actions": 36.833333333333336
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_local_20260927/full_v1",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 6,
+      "growth": 1907.5,
+      "movement_shrink": 0,
+      "splits": 608.6666666666666,
+      "death_length": 1662.6666666666667,
+      "steps": 24409.666666666668,
+      "population": 34,
+      "total_length": 256.8333333333333,
+      "max_length": 25.166666666666668,
+      "sprint_actions": 30.166666666666668
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 28.5,
+      "movement_shrink": 0,
+      "splits": 15,
+      "death_length": 25.5,
+      "steps": 780,
+      "population": 8,
+      "total_length": 19,
+      "max_length": 3,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 73.5,
+      "movement_shrink": 0,
+      "splits": 33,
+      "death_length": 39.5,
+      "steps": 1118.5,
+      "population": 21,
+      "total_length": 50,
+      "max_length": 3,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 56.5,
+      "movement_shrink": 0,
+      "splits": 26,
+      "death_length": 48.5,
+      "steps": 1503,
+      "population": 9.5,
+      "total_length": 24,
+      "max_length": 4,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 195,
+      "movement_shrink": 0,
+      "splits": 82.5,
+      "death_length": 142,
+      "steps": 3493.5,
+      "population": 27.5,
+      "total_length": 69,
+      "max_length": 4,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 17,
+      "movement_shrink": 0,
+      "splits": 10.5,
+      "death_length": 13,
+      "steps": 373.5,
+      "population": 8.5,
+      "total_length": 20,
+      "max_length": 3.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 26,
+      "movement_shrink": 0,
+      "splits": 13.5,
+      "death_length": 17.5,
+      "steps": 411.5,
+      "population": 10,
+      "total_length": 24.5,
+      "max_length": 4,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 155,
+      "movement_shrink": 0,
+      "splits": 68.5,
+      "death_length": 163.5,
+      "steps": 3340,
+      "population": 3.5,
+      "total_length": 7.5,
+      "max_length": 2.5,
+      "sprint_actions": 3
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "default",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 651,
+      "movement_shrink": 0,
+      "splits": 238,
+      "death_length": 534,
+      "steps": 15037,
+      "population": 33.5,
+      "total_length": 133,
+      "max_length": 12,
+      "sprint_actions": 2
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 11,
+      "movement_shrink": 0,
+      "splits": 5,
+      "death_length": 6,
+      "steps": 363.5,
+      "population": 4.5,
+      "total_length": 11,
+      "max_length": 3.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 43.5,
+      "movement_shrink": 0,
+      "splits": 19.5,
+      "death_length": 35,
+      "steps": 404,
+      "population": 6,
+      "total_length": 14.5,
+      "max_length": 3,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 29,
+      "movement_shrink": 0,
+      "splits": 13,
+      "death_length": 26,
+      "steps": 884,
+      "population": 4,
+      "total_length": 9,
+      "max_length": 3,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 185.5,
+      "movement_shrink": 0,
+      "splits": 80.5,
+      "death_length": 140.5,
+      "steps": 1787.5,
+      "population": 21.5,
+      "total_length": 51,
+      "max_length": 3.5,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 4,
+      "movement_shrink": 0,
+      "splits": 2.5,
+      "death_length": 1,
+      "steps": 131,
+      "population": 4,
+      "total_length": 9,
+      "max_length": 2.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 5.5,
+      "movement_shrink": 0,
+      "splits": 2.5,
+      "death_length": 1,
+      "steps": 106,
+      "population": 4,
+      "total_length": 10.5,
+      "max_length": 3.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 52,
+      "movement_shrink": 0,
+      "splits": 22.5,
+      "death_length": 57,
+      "steps": 1525.5,
+      "population": 0.5,
+      "total_length": 1,
+      "max_length": 1,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "queen_of_spades",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 440.5,
+      "movement_shrink": 0,
+      "splits": 179,
+      "death_length": 369.5,
+      "steps": 5793.5,
+      "population": 27,
+      "total_length": 77,
+      "max_length": 8.5,
+      "sprint_actions": 2.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 129,
+      "movement_shrink": 0,
+      "splits": 55,
+      "death_length": 68,
+      "steps": 1117.5,
+      "population": 28.5,
+      "total_length": 73,
+      "max_length": 4,
+      "sprint_actions": 2.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "100",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 140,
+      "movement_shrink": 0,
+      "splits": 60,
+      "death_length": 81,
+      "steps": 1259,
+      "population": 28.5,
+      "total_length": 71,
+      "max_length": 3.5,
+      "sprint_actions": 0.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 553,
+      "movement_shrink": 0,
+      "splits": 199,
+      "death_length": 371,
+      "steps": 6159.5,
+      "population": 61,
+      "total_length": 194,
+      "max_length": 8,
+      "sprint_actions": 20.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "200",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 445,
+      "movement_shrink": 0,
+      "splits": 183.5,
+      "death_length": 347.5,
+      "steps": 5123,
+      "population": 45,
+      "total_length": 109.5,
+      "max_length": 4,
+      "sprint_actions": 8
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 17,
+      "movement_shrink": 0,
+      "splits": 8,
+      "death_length": 4,
+      "steps": 280,
+      "population": 9,
+      "total_length": 25,
+      "max_length": 4,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "50",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 16,
+      "movement_shrink": 0,
+      "splits": 8,
+      "death_length": 4.5,
+      "steps": 314.5,
+      "population": 9,
+      "total_length": 23.5,
+      "max_length": 4.5,
+      "sprint_actions": 0
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "candidate",
+      "n": 2,
+      "growth": 1729,
+      "movement_shrink": 0,
+      "splits": 604.5,
+      "death_length": 1560,
+      "steps": 23785,
+      "population": 32,
+      "total_length": 181,
+      "max_length": 23,
+      "sprint_actions": 45.5
+    },
+    {
+      "run_dir": "/home/tyhh/SW76_-/experiment_results/protect_vs_v3_20260928/economy_dev",
+      "map": "schooltime",
+      "opponent": "V3_portal",
+      "checkpoint": "final",
+      "owner": "opponent",
+      "n": 2,
+      "growth": 1488.5,
+      "movement_shrink": 0,
+      "splits": 513,
+      "death_length": 1265.5,
+      "steps": 21680,
+      "population": 42.5,
+      "total_length": 235,
+      "max_length": 29,
+      "sprint_actions": 31
+    }
+  ],
+  "note": "Descriptive statistics only; seeds and both sides are reported in raw games."
+}

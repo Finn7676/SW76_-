@@ -1,0 +1,108 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <sstream>
+
+Controller controller(3, Team::A, Direction::NORTH, Vision{}, 64);
+
+void place(int cell, int id, bool head, bool mine = true, int facing = 0) {
+    occStamp[cell] = STAMP; occId[cell] = id; occMine[cell] = mine;
+    occHead[cell] = head; occFree[cell] = INF; occPart[cell] = int(parts.size());
+    parts.push_back({cell, id, facing, mine, head});
+    auto it = std::find_if(idCount.begin(), idCount.end(), [&](auto const& p) { return p.first == id; });
+    if (it == idCount.end()) idCount.push_back({id, 1}); else ++it->second;
+}
+void reset(int length = 4, int round = 440, int id = 3) {
+    W = H = 16; NC = W * H; MYID = id; MYTEAM = Team::A; ROUND = round;
+    LEN = controller.length = length; POP = controller.unit_count = 10; TARGET = 62;
+    CT = &controller; HERE = cid(6, 6); STAMP = 1; bfsStamp = 0;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1); learnedExit.assign(NC * 4, -1);
+    seenRound.assign(NC, ROUND); pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1); occFree.assign(NC, INF);
+    occPart.assign(NC, -1); occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    parts.clear(); idCount.clear(); friendParts.clear(); friendGuards.clear(); friendStatuses.clear();
+    sightings.clear(); visPearls.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+    trail.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+    chosenAction = {}; crownClues.clear(); crownPreviousFriends.clear();
+    crownMemoryId = MYID; crownFirstRound = ROUND - 30; crownLastEnemy = ROUND - 30;
+    crownTarget = crownIgnoreId = -1; crownBestDistance = INF; crownProgressRound = -1; crownIgnoreUntil = -1;
+    for (int j = length - 1; j >= 0; --j) trail.push_back(cid((6 - j + W) % W, 6));
+    for (int j = 0; j < length; ++j) place(cid((6 - j + W) % W, 6), MYID, j == 0, true, 1);
+    controller.head.position = Position{6, 6};
+}
+CrownRecipient recipient(int x = 6, int y = 5, int length = 8, int id = 5) {
+    int head = cid(x, y);
+    place(head, id, true, true, 3);
+    for (int j = 1; j < length; ++j) place(cid((x + j) % W, y), id, false, true, 3);
+    return {id, head, length};
+}
+
+int main() {
+    std::ostringstream captured; auto* out = std::cout.rdbuf(captured.rdbuf());
+    reset();
+    assert(crownQuiet() && !crownAllowExpansion());
+    assert(crownPolicy().reserve == 4 && crownPolicy().maxDonor == 20);
+    auto r = recipient();
+    assert(crownCanCollect(r));
+    assert(crownAction(controller) && chosenAction.donation && chosenAction.dirs.empty());
+    assert(!projectAction(chosenAction).survives);
+    reviewProtection(controller);
+    assert(chosenAction.donation && chosenAction.dirs.empty());
+    auto before = captured.str().size(); emitAction();
+    assert(captured.str().size() == before); // no MOVE, SPLIT, or malformed empty MOVE
+
+    reset(4, 399); recipient(); assert(!crownQuiet() && !crownAction(controller));
+    reset(4, 400); recipient(); assert(crownPolicy().reserve == 6 && crownAction(controller));
+    reset(4, 460); recipient(); assert(crownPolicy().reserve == 2 && crownAction(controller));
+    reset(4, 494); recipient(); assert(!crownHorizon(0) && !crownAction(controller));
+    reset(); recipient(); crownFirstRound = ROUND - 2; assert(!crownAction(controller));
+    reset(); recipient(); crownLastEnemy = ROUND - 1; assert(!crownAction(controller));
+    reset(); recipient(); POP = crownPolicy().reserve; assert(!crownAction(controller));
+    reset(); recipient(); POP = 2; assert(crownAllowExpansion());
+    reset(12, 410); recipient(6, 5, 13); assert(!crownAction(controller)); // phase cap
+    reset(8); r = recipient(6, 5, 8); assert(!crownCanCollect(r) && !crownAction(controller));
+    reset(4); r = recipient(6, 5, 7); assert(!crownCanCollect(r) && !crownAction(controller));
+
+    reset(); r = recipient();
+    occHead[r.head] = false; assert(!crownCanCollect(r));
+    reset(); r = recipient();
+    occMine[r.head] = false; assert(!crownCanCollect(r));
+    reset(); r = recipient();
+    std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(r.head, 2, E_OPEN, -1);
+    assert(!crownCanCollect(r)); // receiving head pearl has no onward exit
+    setEdge(HERE, 3, E_OPEN, -1);
+    assert(crownCanCollect(r)); // donor's body vacates on death
+    setEdge(r.head, 2, E_UNKNOWN, -1); assert(!crownCanCollect(r));
+    setEdge(r.head, 2, E_PORTAL, 77); assert(!crownCanCollect(r)); // unknown exit
+
+    reset(); r = recipient(6, 3);
+    assert(!crownCanCollect(r));
+    assert(crownAction(controller) && !chosenAction.donation && chosenAction.dirs.size() == 1);
+    assert(moveCell(HERE, chosenAction.dirs[0]) != r.head);
+    crownProgressRound = ROUND - 4; chosenAction = {};
+    assert(!crownAction(controller) && crownIgnoreId == r.id);
+
+    reset(8);
+    assert(crownPreserve());
+    crownClues.push_back({cid(6, 5), ROUND}); visPearl[cid(6, 5)] = 1;
+    assert(crownAction(controller) && chosenAction.dirs == std::vector<int>{0});
+    assert(!chosenAction.donation);
+    reset(8);
+    crownPreviousFriends.push_back({cid(6, 5), 8, 0, true, true});
+    crownPreviousFriends.push_back({cid(7, 5), 8, 0, true, false});
+    crownObserve(); assert(crownClues.empty()); // disappearance alone is not enough
+    crownPreviousFriends.push_back({cid(6, 5), 8, 0, true, true});
+    visPearl[cid(6, 5)] = 1; crownObserve(); assert(crownClues.size() == 1);
+    visPearl[cid(6, 5)] = 0; crownObserve(); assert(crownClues.empty());
+
+    reset(4, 440, 8); recipient(); // modulo-selected Champion is not an absolute donor veto
+    assert(crownAction(controller) && chosenAction.donation);
+    reset();
+    r = recipient(6, 5, 6); friendStatuses.push_back({r.id, r.head, 12, ROUND});
+    assert(friendLength(r.id) == 12);
+    assert(crownAction(controller) && chosenAction.donation);
+    std::cout.rdbuf(out); std::cout << "crown donation/collection/protection checks passed\n";
+}

@@ -1,0 +1,1639 @@
+{
+  "scope": "102 audited H14/xx development games only, bases82001/83001/84001",
+  "h14_sha256": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+  "script_sha256": "678d32e1fa78a09f4da5cb9e6043d2e6f7ec6002d477de430682591101e396a6",
+  "audits": [
+    {
+      "base": 82001,
+      "audit_sha256": "41459021d6d4a679a221cf4fffcde9d30ef8fc7ff32f613a8f47bd1c9445086a",
+      "games": 34
+    },
+    {
+      "base": 83001,
+      "audit_sha256": "dc0595ff347858b4141c68b4d54ebce26a8107b2c7e2d470b24843afef7f78fe",
+      "games": 34
+    },
+    {
+      "base": 84001,
+      "audit_sha256": "15acf7e0f3d2cc00bf2533023181609015ed427f644617afa3f87ac9a22ee135",
+      "games": 34
+    }
+  ],
+  "queen_head_deaths": 44,
+  "eligibility": {
+    "attacker_body_partial_or_portal": 10,
+    "own_body_partial": 18,
+    "intervening_turn": 13,
+    "own_action_or_friendly_hit": 2,
+    "eligible": 1
+  },
+  "positive_count": 1,
+  "elapsed_seconds": 58.58952414698433,
+  "findings": [
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0035_xxqztest_australia_seed82001_A.replay",
+      "replay_sha256": "5e8dcb501c07e9db99183fd7d2a7de55f97b52e05ca69e1bf9619abada25ba0f",
+      "map": "australia",
+      "seed": "82001",
+      "side": "A",
+      "death_event": 8103,
+      "death_round": 43,
+      "attack_id": 3,
+      "attack_action": [
+        0,
+        1
+      ],
+      "queen_action_event": 8080,
+      "queen_action_round": 43,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0036_xxqztest_australia_seed82001_B.replay",
+      "replay_sha256": "0249bbd079371803b44121b53aed9ba8d75fd35580af2d9c4f17f62b2a9bb5f4",
+      "map": "australia",
+      "seed": "82001",
+      "side": "B",
+      "death_event": 18154,
+      "death_round": 87,
+      "attack_id": 21,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 18041,
+      "queen_action_round": 87,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0038_xxqztest_autarky_seed82002_B.replay",
+      "replay_sha256": "8c3f2f308a3e1920962de5611d257e477ce4bdb684b8ff1fd6889b6c6e94e3d3",
+      "map": "autarky",
+      "seed": "82002",
+      "side": "B",
+      "death_event": 22288,
+      "death_round": 130,
+      "attack_id": 38,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 22266,
+      "queen_action_round": 130,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0040_xxqztest_default_seed82003_B.replay",
+      "replay_sha256": "ea41d973e058ac8fcc7d544562a853a2943881202cac6e884b543c56db0bc907",
+      "map": "default",
+      "seed": "82003",
+      "side": "B",
+      "death_event": 6954,
+      "death_round": 53,
+      "attack_id": 13,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 6883,
+      "queen_action_round": 53,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0039_xxqztest_default_seed82003_A.replay",
+      "replay_sha256": "03558c792b675643b83c1533f7ba44b5ac50b53aa0e3dfa6b5ad2652235c2bdf",
+      "map": "default",
+      "seed": "82003",
+      "side": "A",
+      "death_event": 6550,
+      "death_round": 48,
+      "attack_id": 5,
+      "attack_action": [
+        0
+      ],
+      "queen_action_event": 6528,
+      "queen_action_round": 48,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0042_xxqztest_devil_seed82004_B.replay",
+      "replay_sha256": "423345210c36b0e8b270ae6ee1a06ab08458239d39125a5c216038ac23f52983",
+      "map": "devil",
+      "seed": "82004",
+      "side": "B",
+      "death_event": 16661,
+      "death_round": 88,
+      "attack_id": 47,
+      "attack_action": [
+        2,
+        1
+      ],
+      "queen_action_event": 16567,
+      "queen_action_round": 88,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0047_xxqztest_queen_of_spades_seed82007_A.replay",
+      "replay_sha256": "10d82ba51e520d998fe6fc1a4b3fba05d53a96122f4f218ee52dcc00d80159ec",
+      "map": "queen_of_spades",
+      "seed": "82007",
+      "side": "A",
+      "death_event": 31025,
+      "death_round": 210,
+      "attack_id": 92,
+      "attack_action": [
+        0,
+        1
+      ],
+      "queen_action_event": 30808,
+      "queen_action_round": 210,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0046_xxqztest_dilemma_seed82006_B.replay",
+      "replay_sha256": "241b174088b121c05394f67513d7c6f34ef61602691cdfe2dd2a3c03f07479ca",
+      "map": "dilemma",
+      "seed": "82006",
+      "side": "B",
+      "death_event": 15141,
+      "death_round": 177,
+      "attack_id": 30,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 15077,
+      "queen_action_round": 177,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0048_xxqztest_queen_of_spades_seed82007_B.replay",
+      "replay_sha256": "e655eaef86b820516c75ece7943310052375ac2d3ac2a464493330e283df5ed7",
+      "map": "queen_of_spades",
+      "seed": "82007",
+      "side": "B",
+      "death_event": 21611,
+      "death_round": 159,
+      "attack_id": 45,
+      "attack_action": [
+        0,
+        1
+      ],
+      "queen_action_event": 21525,
+      "queen_action_round": 159,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0055_xxqztest_trophy_seed82011_A.replay",
+      "replay_sha256": "2076a2667523cfc2b0fb3396f2c1eaf8c93797b940f128c336b128042591331e",
+      "map": "trophy",
+      "seed": "82011",
+      "side": "A",
+      "death_event": 11060,
+      "death_round": 94,
+      "attack_id": 40,
+      "attack_action": [
+        2,
+        2,
+        2
+      ],
+      "queen_action_event": 10942,
+      "queen_action_round": 94,
+      "queen_action": [
+        0,
+        0,
+        3
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0056_xxqztest_trophy_seed82011_B.replay",
+      "replay_sha256": "9373bf7a846969a2a778f2c164c1ab7e481a83989e37b2d177dcb2093126cb32",
+      "map": "trophy",
+      "seed": "82011",
+      "side": "B",
+      "death_event": 4518,
+      "death_round": 54,
+      "attack_id": 24,
+      "attack_action": [
+        2
+      ],
+      "queen_action_event": 4350,
+      "queen_action_round": 54,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0057_xxqztest_islands_seed82012_A.replay",
+      "replay_sha256": "423cdf74aa9537bdc9577ee90cc68d85fc709f55b629fd7b00f676b1dfadb389",
+      "map": "islands",
+      "seed": "82012",
+      "side": "A",
+      "death_event": 6324,
+      "death_round": 41,
+      "attack_id": 27,
+      "attack_action": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "queen_action_event": 6191,
+      "queen_action_round": 41,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0058_xxqztest_islands_seed82012_B.replay",
+      "replay_sha256": "fd127491fadc16bc832ad79c4427d918aca3f4785ef4508a4bfc094ef703375b",
+      "map": "islands",
+      "seed": "82012",
+      "side": "B",
+      "death_event": 4360,
+      "death_round": 30,
+      "attack_id": 16,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 4267,
+      "queen_action_round": 30,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0061_xxqztest_stripes_seed82014_A.replay",
+      "replay_sha256": "fc1f87d4b2b46f7e1fba43fb0f6559a943c4366f56c2e2e653a4ae929c540ee4",
+      "map": "stripes",
+      "seed": "82014",
+      "side": "A",
+      "death_event": 8730,
+      "death_round": 105,
+      "attack_id": 10,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 8701,
+      "queen_action_round": 105,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0062_xxqztest_stripes_seed82014_B.replay",
+      "replay_sha256": "412826d8c6c628f6e3d229c2b9a11d81dbccd17844dc37eff98a2f0d7929c515",
+      "map": "stripes",
+      "seed": "82014",
+      "side": "B",
+      "death_event": 7381,
+      "death_round": 96,
+      "attack_id": 18,
+      "attack_action": [
+        2
+      ],
+      "queen_action_event": 7338,
+      "queen_action_round": 96,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0035_xxqztest_australia_seed83001_A.replay",
+      "replay_sha256": "0120e065da9808750aedf8736dc155dc78c5dc31325f801798b6594141485fed",
+      "map": "australia",
+      "seed": "83001",
+      "side": "A",
+      "death_event": 12830,
+      "death_round": 69,
+      "attack_id": 7,
+      "attack_action": [
+        3,
+        2
+      ],
+      "queen_action_event": 12779,
+      "queen_action_round": 69,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0036_xxqztest_australia_seed83001_B.replay",
+      "replay_sha256": "6eca84b2b2c701e9a91945bd7cb084d8690aad6bdf66ad200b10d430cb57124a",
+      "map": "australia",
+      "seed": "83001",
+      "side": "B",
+      "death_event": 159607,
+      "death_round": 284,
+      "attack_id": 356,
+      "attack_action": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "queen_action_event": 159043,
+      "queen_action_round": 284,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0038_xxqztest_autarky_seed83002_B.replay",
+      "replay_sha256": "329537a718ebe222578fd302ac6ed3a1b9509928a78703ef80a49db27f834d3f",
+      "map": "autarky",
+      "seed": "83002",
+      "side": "B",
+      "death_event": 22600,
+      "death_round": 127,
+      "attack_id": 68,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 22451,
+      "queen_action_round": 127,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0040_xxqztest_default_seed83003_B.replay",
+      "replay_sha256": "2d5371b106832d5bfc0c7f65315f6dc4c74455a7796270043faced3a305fdc1a",
+      "map": "default",
+      "seed": "83003",
+      "side": "B",
+      "death_event": 26768,
+      "death_round": 160,
+      "attack_id": 20,
+      "attack_action": [
+        0,
+        0
+      ],
+      "queen_action_event": 26731,
+      "queen_action_round": 160,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0039_xxqztest_default_seed83003_A.replay",
+      "replay_sha256": "5918b5324dfef8007754535e5de315683d332c3ccd578c90a5f94703e963f41e",
+      "map": "default",
+      "seed": "83003",
+      "side": "A",
+      "death_event": 9579,
+      "death_round": 75,
+      "attack_id": 10,
+      "attack_action": [
+        2,
+        2
+      ],
+      "queen_action_event": 9520,
+      "queen_action_round": 75,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0047_xxqztest_queen_of_spades_seed83007_A.replay",
+      "replay_sha256": "a535434a2c6a27fb3401eabe03910f61d3bb9a9671711205efaab422ae96ec2a",
+      "map": "queen_of_spades",
+      "seed": "83007",
+      "side": "A",
+      "death_event": 28240,
+      "death_round": 228,
+      "attack_id": 85,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 28041,
+      "queen_action_round": 228,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0048_xxqztest_queen_of_spades_seed83007_B.replay",
+      "replay_sha256": "8916028efa4a74acd86b318b9f20e98c5db4ae6f3607b2b3d2ad82ac647993cc",
+      "map": "queen_of_spades",
+      "seed": "83007",
+      "side": "B",
+      "death_event": 28107,
+      "death_round": 187,
+      "attack_id": 29,
+      "attack_action": [
+        0,
+        1
+      ],
+      "queen_action_event": 28076,
+      "queen_action_round": 187,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0044_xxqztest_portals_seed83005_B.replay",
+      "replay_sha256": "eed4c27e68ac00bafebd2ba7aa5d7b67bda9be9fe036f600f2811ece3ede2122",
+      "map": "portals",
+      "seed": "83005",
+      "side": "B",
+      "death_event": 83460,
+      "death_round": 266,
+      "attack_id": 458,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 83053,
+      "queen_action_round": 266,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_action_or_friendly_hit"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0055_xxqztest_trophy_seed83011_A.replay",
+      "replay_sha256": "ffa1a5c6628d35a3c0ccd7e836a6dcd9d3d0f1b0cfc3066ec579c9458559e1ab",
+      "map": "trophy",
+      "seed": "83011",
+      "side": "A",
+      "death_event": 8607,
+      "death_round": 66,
+      "attack_id": 5,
+      "attack_action": [
+        2,
+        3
+      ],
+      "queen_action_event": 8583,
+      "queen_action_round": 66,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0056_xxqztest_trophy_seed83011_B.replay",
+      "replay_sha256": "72a241dc0196824b799a98dfec62e557f532b272d050553f9febe6e8c3c6a5dc",
+      "map": "trophy",
+      "seed": "83011",
+      "side": "B",
+      "death_event": 2987,
+      "death_round": 44,
+      "attack_id": 5,
+      "attack_action": [
+        0,
+        0,
+        3
+      ],
+      "queen_action_event": 2956,
+      "queen_action_round": 44,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0057_xxqztest_islands_seed83012_A.replay",
+      "replay_sha256": "3add439aaa210a6fabd4d2a78ac37216be05e0fde05013e99fa3459a6a5af696",
+      "map": "islands",
+      "seed": "83012",
+      "side": "A",
+      "death_event": 19195,
+      "death_round": 77,
+      "attack_id": 83,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 18869,
+      "queen_action_round": 77,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0058_xxqztest_islands_seed83012_B.replay",
+      "replay_sha256": "4845b43997b2b52ed5093e96551dadcaaaa498b456df5763be06aa86884d5303",
+      "map": "islands",
+      "seed": "83012",
+      "side": "B",
+      "death_event": 4465,
+      "death_round": 30,
+      "attack_id": 17,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 4366,
+      "queen_action_round": 30,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_83001/0065_xxqztest_unsw_seed83016_A.replay",
+      "replay_sha256": "5fe79fd78001bb17d357bdff2efa2cd583d95106a2d295c5c78f588406c94daa",
+      "map": "unsw",
+      "seed": "83016",
+      "side": "A",
+      "death_event": 12404,
+      "death_round": 45,
+      "attack_id": 17,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 12290,
+      "queen_action_round": 45,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0035_xxqztest_australia_seed84001_A.replay",
+      "replay_sha256": "eb375db6b631e47387140e148bb3ba11ca1e71534b68a125121a7151b31c0349",
+      "map": "australia",
+      "seed": "84001",
+      "side": "A",
+      "death_event": 71333,
+      "death_round": 184,
+      "attack_id": 150,
+      "attack_action": [
+        3,
+        2,
+        3
+      ],
+      "queen_action_event": 70879,
+      "queen_action_round": 184,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0036_xxqztest_australia_seed84001_B.replay",
+      "replay_sha256": "2add758a0eb9ac0bb141cf99d58351bb7e1547b18e06f112871b1b7c7af09797",
+      "map": "australia",
+      "seed": "84001",
+      "side": "B",
+      "death_event": 74063,
+      "death_round": 205,
+      "attack_id": 121,
+      "attack_action": [
+        2,
+        3,
+        3,
+        2
+      ],
+      "queen_action_event": 73691,
+      "queen_action_round": 205,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0038_xxqztest_autarky_seed84002_B.replay",
+      "replay_sha256": "0773fcc199c48a54a2efb66cf26caeaa68366b49966aca249181b87fd41f5441",
+      "map": "autarky",
+      "seed": "84002",
+      "side": "B",
+      "death_event": 15794,
+      "death_round": 95,
+      "attack_id": 52,
+      "attack_action": [
+        3,
+        3
+      ],
+      "queen_action_event": 15715,
+      "queen_action_round": 95,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0040_xxqztest_default_seed84003_B.replay",
+      "replay_sha256": "8107ed38657a0a9e4b5de04dde885842c5798568c4877b23af79547a8bc84d5d",
+      "map": "default",
+      "seed": "84003",
+      "side": "B",
+      "death_event": 25909,
+      "death_round": 150,
+      "attack_id": 72,
+      "attack_action": [
+        0,
+        1
+      ],
+      "queen_action_event": 25701,
+      "queen_action_round": 150,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0039_xxqztest_default_seed84003_A.replay",
+      "replay_sha256": "7b5480432a79fe46110e4160eb176451d4723f9522e42a7ed813cf992bfb293f",
+      "map": "default",
+      "seed": "84003",
+      "side": "A",
+      "death_event": 4650,
+      "death_round": 32,
+      "attack_id": 15,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 4571,
+      "queen_action_round": 32,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0045_xxqztest_dilemma_seed84006_A.replay",
+      "replay_sha256": "b762d013933f195a0b7e8003f71ea5d62f8b71434f64cebc0157eeb98a575832",
+      "map": "dilemma",
+      "seed": "84006",
+      "side": "A",
+      "death_event": 19734,
+      "death_round": 199,
+      "attack_id": 14,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 19726,
+      "queen_action_round": 199,
+      "queen_action": [
+        0
+      ],
+      "eligible": true,
+      "own_body": [
+        [
+          24,
+          3
+        ],
+        [
+          25,
+          3
+        ],
+        [
+          26,
+          3
+        ],
+        [
+          26,
+          4
+        ],
+        [
+          25,
+          4
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          24,
+          5
+        ],
+        [
+          24,
+          6
+        ]
+      ],
+      "visible_cells": [
+        [
+          21,
+          0
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          21,
+          6
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          1
+        ],
+        [
+          22,
+          2
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          22,
+          5
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          23,
+          0
+        ],
+        [
+          23,
+          1
+        ],
+        [
+          23,
+          2
+        ],
+        [
+          23,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          23,
+          5
+        ],
+        [
+          23,
+          6
+        ],
+        [
+          24,
+          0
+        ],
+        [
+          24,
+          1
+        ],
+        [
+          24,
+          2
+        ],
+        [
+          24,
+          3
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          24,
+          5
+        ],
+        [
+          24,
+          6
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          25,
+          2
+        ],
+        [
+          25,
+          3
+        ],
+        [
+          25,
+          4
+        ],
+        [
+          25,
+          5
+        ],
+        [
+          25,
+          6
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          26,
+          1
+        ],
+        [
+          26,
+          2
+        ],
+        [
+          26,
+          3
+        ],
+        [
+          26,
+          4
+        ],
+        [
+          26,
+          5
+        ],
+        [
+          26,
+          6
+        ],
+        [
+          27,
+          0
+        ],
+        [
+          27,
+          1
+        ],
+        [
+          27,
+          2
+        ],
+        [
+          27,
+          3
+        ],
+        [
+          27,
+          4
+        ],
+        [
+          27,
+          5
+        ],
+        [
+          27,
+          6
+        ]
+      ],
+      "visible_parts": [
+        {
+          "id": 0,
+          "head": [
+            24,
+            3
+          ],
+          "shown_body": [
+            [
+              24,
+              3
+            ],
+            [
+              25,
+              3
+            ],
+            [
+              26,
+              3
+            ],
+            [
+              26,
+              4
+            ],
+            [
+              25,
+              4
+            ],
+            [
+              24,
+              4
+            ],
+            [
+              24,
+              5
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "full_body_visible": true
+        },
+        {
+          "id": 14,
+          "head": [
+            25,
+            2
+          ],
+          "shown_body": [
+            [
+              25,
+              2
+            ],
+            [
+              25,
+              1
+            ]
+          ],
+          "full_body_visible": true
+        },
+        {
+          "id": 16,
+          "head": [
+            27,
+            3
+          ],
+          "shown_body": [
+            [
+              27,
+              3
+            ],
+            [
+              27,
+              4
+            ]
+          ],
+          "full_body_visible": true
+        },
+        {
+          "id": 38,
+          "head": [
+            9,
+            4
+          ],
+          "shown_body": [
+            [
+              26,
+              5
+            ],
+            [
+              26,
+              6
+            ]
+          ],
+          "full_body_visible": false
+        }
+      ],
+      "visible_pearls": [],
+      "attacker_body": [
+        [
+          25,
+          2
+        ],
+        [
+          25,
+          1
+        ]
+      ],
+      "original_projection": {
+        "known": true,
+        "survives": true,
+        "body": [
+          [
+            24,
+            2
+          ],
+          [
+            24,
+            3
+          ],
+          [
+            25,
+            3
+          ],
+          [
+            26,
+            3
+          ],
+          [
+            26,
+            4
+          ],
+          [
+            25,
+            4
+          ],
+          [
+            24,
+            4
+          ],
+          [
+            24,
+            5
+          ]
+        ],
+        "eaten": [],
+        "initial_free_steps": 2,
+        "trace": [
+          {
+            "step": 1,
+            "direction": "N",
+            "paid": false,
+            "eats": false,
+            "head": [
+              24,
+              2
+            ],
+            "length": 8
+          }
+        ]
+      },
+      "baseline_witness": {
+        "confirmed": true,
+        "directions": "W",
+        "projection": {
+          "known": true,
+          "survives": false,
+          "reason": "hit_target",
+          "trace": [],
+          "hit_step": 1
+        },
+        "nodes": 4,
+        "initial_length": 2,
+        "initial_free_steps": 1
+      },
+      "candidate_count": 8,
+      "alternatives": [
+        {
+          "directions": "NN",
+          "projection": {
+            "known": true,
+            "survives": true,
+            "body": [
+              [
+                24,
+                1
+              ],
+              [
+                24,
+                2
+              ],
+              [
+                24,
+                3
+              ],
+              [
+                25,
+                3
+              ],
+              [
+                26,
+                3
+              ],
+              [
+                26,
+                4
+              ],
+              [
+                25,
+                4
+              ],
+              [
+                24,
+                4
+              ]
+            ],
+            "eaten": [],
+            "initial_free_steps": 2,
+            "trace": [
+              {
+                "step": 1,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  2
+                ],
+                "length": 8
+              },
+              {
+                "step": 2,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  1
+                ],
+                "length": 8
+              }
+            ]
+          },
+          "continuation": "N",
+          "attacker_witness": {
+            "confirmed": false,
+            "unknown": false,
+            "beyond_four_steps_unknown": true,
+            "nodes": 8
+          },
+          "all_visible_complete_witnesses": [
+            {
+              "id": 14,
+              "confirmed": false,
+              "unknown": false,
+              "beyond_four_steps_unknown": true,
+              "nodes": 8
+            }
+          ]
+        },
+        {
+          "directions": "NNN",
+          "projection": {
+            "known": true,
+            "survives": true,
+            "body": [
+              [
+                24,
+                0
+              ],
+              [
+                24,
+                1
+              ],
+              [
+                24,
+                2
+              ],
+              [
+                24,
+                3
+              ],
+              [
+                25,
+                3
+              ],
+              [
+                26,
+                3
+              ],
+              [
+                26,
+                4
+              ]
+            ],
+            "eaten": [],
+            "initial_free_steps": 2,
+            "trace": [
+              {
+                "step": 1,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  2
+                ],
+                "length": 8
+              },
+              {
+                "step": 2,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  1
+                ],
+                "length": 8
+              },
+              {
+                "step": 3,
+                "direction": "N",
+                "paid": true,
+                "eats": false,
+                "head": [
+                  24,
+                  0
+                ],
+                "length": 7
+              }
+            ]
+          },
+          "continuation": "E",
+          "attacker_witness": {
+            "confirmed": false,
+            "unknown": false,
+            "beyond_four_steps_unknown": true,
+            "nodes": 8
+          },
+          "all_visible_complete_witnesses": [
+            {
+              "id": 14,
+              "confirmed": false,
+              "unknown": false,
+              "beyond_four_steps_unknown": true,
+              "nodes": 8
+            }
+          ]
+        },
+        {
+          "directions": "NNW",
+          "projection": {
+            "known": true,
+            "survives": true,
+            "body": [
+              [
+                23,
+                1
+              ],
+              [
+                24,
+                1
+              ],
+              [
+                24,
+                2
+              ],
+              [
+                24,
+                3
+              ],
+              [
+                25,
+                3
+              ],
+              [
+                26,
+                3
+              ],
+              [
+                26,
+                4
+              ]
+            ],
+            "eaten": [],
+            "initial_free_steps": 2,
+            "trace": [
+              {
+                "step": 1,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  2
+                ],
+                "length": 8
+              },
+              {
+                "step": 2,
+                "direction": "N",
+                "paid": false,
+                "eats": false,
+                "head": [
+                  24,
+                  1
+                ],
+                "length": 8
+              },
+              {
+                "step": 3,
+                "direction": "W",
+                "paid": true,
+                "eats": false,
+                "head": [
+                  23,
+                  1
+                ],
+                "length": 7
+              }
+            ]
+          },
+          "continuation": "N",
+          "attacker_witness": {
+            "confirmed": false,
+            "unknown": false,
+            "beyond_four_steps_unknown": true,
+            "nodes": 8
+          },
+          "all_visible_complete_witnesses": [
+            {
+              "id": 14,
+              "confirmed": false,
+              "unknown": false,
+              "beyond_four_steps_unknown": true,
+              "nodes": 8
+            }
+          ]
+        }
+      ],
+      "positive": true,
+      "search_nodes": 64,
+      "original_all_visible_complete_witnesses": [
+        {
+          "id": 14,
+          "confirmed": true,
+          "directions": "W",
+          "projection": {
+            "known": true,
+            "survives": false,
+            "reason": "hit_target",
+            "trace": [],
+            "hit_step": 1
+          },
+          "nodes": 4,
+          "initial_length": 2,
+          "initial_free_steps": 1
+        }
+      ]
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0047_xxqztest_queen_of_spades_seed84007_A.replay",
+      "replay_sha256": "c7b2dbcd638a7872ed930d8898e81d940bd5fad7e13d0c8cd79eeceecaa8bb4e",
+      "map": "queen_of_spades",
+      "seed": "84007",
+      "side": "A",
+      "death_event": 9651,
+      "death_round": 137,
+      "attack_id": 19,
+      "attack_action": [
+        0
+      ],
+      "queen_action_event": 9573,
+      "queen_action_round": 137,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0048_xxqztest_queen_of_spades_seed84007_B.replay",
+      "replay_sha256": "730dbe2a5565d763fda271bbf855ba3f5ff10f4d31af6557f577d12f88436796",
+      "map": "queen_of_spades",
+      "seed": "84007",
+      "side": "B",
+      "death_event": 6499,
+      "death_round": 79,
+      "attack_id": 19,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 6406,
+      "queen_action_round": 79,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "own_body_partial"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0055_xxqztest_trophy_seed84011_A.replay",
+      "replay_sha256": "c373dfb64d5beaa2f5975ca23a60c5569700bffb4cb039d8cd3d798e1e50a16e",
+      "map": "trophy",
+      "seed": "84011",
+      "side": "A",
+      "death_event": 6723,
+      "death_round": 59,
+      "attack_id": 24,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 6602,
+      "queen_action_round": 59,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0056_xxqztest_trophy_seed84011_B.replay",
+      "replay_sha256": "76af780f28b020f6f39dcfa2430e4e6fb4f1d4ae1ad0ec5b657a8dcb72a20260",
+      "map": "trophy",
+      "seed": "84011",
+      "side": "B",
+      "death_event": 4664,
+      "death_round": 55,
+      "attack_id": 19,
+      "attack_action": [
+        1,
+        2
+      ],
+      "queen_action_event": 4550,
+      "queen_action_round": 55,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0057_xxqztest_islands_seed84012_A.replay",
+      "replay_sha256": "7566192d105b2d19506826a1efeca2d6801e8cde9ea8f610b033eb1fad1090bf",
+      "map": "islands",
+      "seed": "84012",
+      "side": "A",
+      "death_event": 7047,
+      "death_round": 43,
+      "attack_id": 22,
+      "attack_action": [
+        0,
+        0,
+        3,
+        3
+      ],
+      "queen_action_event": 6936,
+      "queen_action_round": 43,
+      "queen_action": [
+        1
+      ],
+      "eligible": false,
+      "reason": "attacker_body_partial_or_portal"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0058_xxqztest_islands_seed84012_B.replay",
+      "replay_sha256": "fcc037d07267d94457b5fc3def3fd6e2c68d06a01d67ef57e88722ca94249519",
+      "map": "islands",
+      "seed": "84012",
+      "side": "B",
+      "death_event": 4412,
+      "death_round": 30,
+      "attack_id": 16,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 4319,
+      "queen_action_round": 30,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0054_xxqztest_trauma_seed84010_B.replay",
+      "replay_sha256": "69e6882e023e9032acc4461dd3d1cc97901d7a6fec34aad52758abc71c54a5c9",
+      "map": "trauma",
+      "seed": "84010",
+      "side": "B",
+      "death_event": 18115,
+      "death_round": 139,
+      "attack_id": 58,
+      "attack_action": [
+        1
+      ],
+      "queen_action_event": 18002,
+      "queen_action_round": 139,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "own_action_or_friendly_hit"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0061_xxqztest_stripes_seed84014_A.replay",
+      "replay_sha256": "8296b9ca7d21efbf7b7373d0b37a260c3b0675f595874baad017518ff9c7b8d9",
+      "map": "stripes",
+      "seed": "84014",
+      "side": "A",
+      "death_event": 7111,
+      "death_round": 95,
+      "attack_id": 23,
+      "attack_action": [
+        2
+      ],
+      "queen_action_event": 7040,
+      "queen_action_round": 95,
+      "queen_action": [
+        3
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0062_xxqztest_stripes_seed84014_B.replay",
+      "replay_sha256": "3c6f5d0763da69471012f04165d67f9d3803a464f4e6a351a0e5a9a17f56c7c3",
+      "map": "stripes",
+      "seed": "84014",
+      "side": "B",
+      "death_event": 1605,
+      "death_round": 30,
+      "attack_id": 0,
+      "attack_action": [
+        0
+      ],
+      "queen_action_event": 1555,
+      "queen_action_round": 29,
+      "queen_action": [
+        2
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    },
+    {
+      "replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_84001/0063_xxqztest_tower_defense_seed84015_A.replay",
+      "replay_sha256": "032b6d225094f8fdc747d957aa8a0acec3cacbee55c84bf937f3a6bbb7cd0579",
+      "map": "tower_defense",
+      "seed": "84015",
+      "side": "A",
+      "death_event": 42910,
+      "death_round": 322,
+      "attack_id": 58,
+      "attack_action": [
+        3
+      ],
+      "queen_action_event": 42741,
+      "queen_action_round": 322,
+      "queen_action": [
+        0
+      ],
+      "eligible": false,
+      "reason": "intervening_turn"
+    }
+  ],
+  "limitation": "No attack witness within four is a bounded absence, never global enemy safety. Partial body, hidden geometry, portals and attacks beyond four remain unknown."
+}

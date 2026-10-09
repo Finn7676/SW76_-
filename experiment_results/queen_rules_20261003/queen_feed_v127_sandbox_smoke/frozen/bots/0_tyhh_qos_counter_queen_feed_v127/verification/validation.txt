@@ -1,0 +1,14 @@
+2026-09-29, cwd /home/tyhh/SW76_-
+
+clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic tyhh_test/tyhh_qos_relay_counter/main.cpp -o /tmp/tyhh_qos_relay_counter_native
+Exit 0; inherited unused function enemyEscapes warning.
+
+clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ tyhh_test/tyhh_qos_relay_counter/verification/counter_tests.cpp.txt -o /tmp/tyhh_qos_relay_counter_tests
+Exit 0; inherited unused enemyEscapes and renamed bot_program_main missing-return warnings.
+
+ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 /tmp/tyhh_qos_relay_counter_tests
+Exit 0; stdout: counter proactive-trade boundary assertions passed
+No sanitizer diagnostic.
+
+Native binary SHA256: 737c20dd47416a3f260af5c7a91b75eb002ee0e37c4220492274e701467b0649
+Sanitizer test binary SHA256: 662a72b165b2fd7435cd2275c0de58d85869bb61a92957f9d7e08f2aea9777e8

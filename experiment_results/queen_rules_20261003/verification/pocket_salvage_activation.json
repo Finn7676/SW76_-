@@ -1,0 +1,807 @@
+[
+  {
+    "side": "A",
+    "candidate_rounds": 141,
+    "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_pocket_salvage_82001/0061_xxqztest_stripes_seed82014_A.replay",
+    "H14_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0061_xxqztest_stripes_seed82014_A.replay",
+    "candidate_sha256": "9c1e4b203cbf55a80dc074d65bf2f72e9ea206016dca82d4e60c06b34ada5880",
+    "H14_sha256": "fc1f87d4b2b46f7e1fba43fb0f6559a943c4366f56c2e2e653a4ae929c540ee4",
+    "committed_triggers": [
+      {
+        "round": 14,
+        "event": 770,
+        "id": 2,
+        "body_before": [
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            18,
+            8
+          ]
+        ],
+        "tags": [
+          {
+            "event": 771,
+            "text": "POCKET_SALVAGE 14 2 pickup 4"
+          }
+        ],
+        "moves": [
+          {
+            "event": 774,
+            "body_after": [
+              [
+                17,
+                10
+              ],
+              [
+                16,
+                10
+              ],
+              [
+                16,
+                9
+              ],
+              [
+                17,
+                8
+              ],
+              [
+                18,
+                8
+              ]
+            ]
+          }
+        ],
+        "action": "MOVE E",
+        "action_event": 772,
+        "death": {
+          "round": 16,
+          "event": 889,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ]
+        },
+        "committed_match": true
+      },
+      {
+        "round": 15,
+        "event": 827,
+        "id": 2,
+        "body_before": [
+          [
+            17,
+            10
+          ],
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            18,
+            8
+          ]
+        ],
+        "tags": [
+          {
+            "event": 828,
+            "text": "POCKET_SALVAGE 15 2 reverse 5"
+          }
+        ],
+        "moves": [],
+        "action": "SPLIT 3",
+        "action_event": 829,
+        "split": {
+          "round": 15,
+          "event": 830,
+          "parent": 2,
+          "child": 6,
+          "parent_body": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              16,
+              9
+            ]
+          ]
+        },
+        "death": {
+          "round": 16,
+          "event": 889,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ]
+        },
+        "child_death": {
+          "round": 22,
+          "event": 1244,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ]
+        },
+        "first_child_turns": [
+          {
+            "round": 15,
+            "event": 853,
+            "id": 6,
+            "body_before": [
+              [
+                18,
+                8
+              ],
+              [
+                17,
+                8
+              ],
+              [
+                16,
+                9
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 855,
+                "body_after": [
+                  [
+                    18,
+                    7
+                  ],
+                  [
+                    18,
+                    8
+                  ],
+                  [
+                    17,
+                    8
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE N",
+            "action_event": 854
+          },
+          {
+            "round": 16,
+            "event": 905,
+            "id": 6,
+            "body_before": [
+              [
+                18,
+                7
+              ],
+              [
+                18,
+                8
+              ],
+              [
+                17,
+                8
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 907,
+                "body_after": [
+                  [
+                    17,
+                    7
+                  ],
+                  [
+                    18,
+                    7
+                  ],
+                  [
+                    18,
+                    8
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE W",
+            "action_event": 906
+          },
+          {
+            "round": 17,
+            "event": 957,
+            "id": 6,
+            "body_before": [
+              [
+                17,
+                7
+              ],
+              [
+                18,
+                7
+              ],
+              [
+                18,
+                8
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 959,
+                "body_after": [
+                  [
+                    17,
+                    8
+                  ],
+                  [
+                    17,
+                    7
+                  ],
+                  [
+                    18,
+                    7
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE S",
+            "action_event": 958
+          }
+        ],
+        "committed_match": true
+      },
+      {
+        "round": 20,
+        "event": 1111,
+        "id": 6,
+        "body_before": [
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            17,
+            7
+          ]
+        ],
+        "tags": [
+          {
+            "event": 1112,
+            "text": "POCKET_SALVAGE 20 6 pickup 4"
+          }
+        ],
+        "moves": [
+          {
+            "event": 1115,
+            "body_after": [
+              [
+                17,
+                10
+              ],
+              [
+                16,
+                10
+              ],
+              [
+                16,
+                9
+              ],
+              [
+                17,
+                8
+              ],
+              [
+                17,
+                7
+              ]
+            ]
+          }
+        ],
+        "action": "MOVE E",
+        "action_event": 1113,
+        "death": {
+          "round": 22,
+          "event": 1244,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ]
+        },
+        "committed_match": true
+      },
+      {
+        "round": 21,
+        "event": 1170,
+        "id": 6,
+        "body_before": [
+          [
+            17,
+            10
+          ],
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            17,
+            7
+          ]
+        ],
+        "tags": [
+          {
+            "event": 1171,
+            "text": "POCKET_SALVAGE 21 6 reverse 5"
+          }
+        ],
+        "moves": [],
+        "action": "SPLIT 3",
+        "action_event": 1172,
+        "split": {
+          "round": 21,
+          "event": 1173,
+          "parent": 6,
+          "child": 8,
+          "parent_body": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ],
+          "child_body": [
+            [
+              17,
+              7
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              16,
+              9
+            ]
+          ]
+        },
+        "death": {
+          "round": 22,
+          "event": 1244,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ]
+        },
+        "child_death": {
+          "round": 24,
+          "event": 1375,
+          "reason": 1,
+          "body_before": [
+            [
+              17,
+              9
+            ],
+            [
+              16,
+              8
+            ],
+            [
+              16,
+              7
+            ],
+            [
+              17,
+              7
+            ]
+          ]
+        },
+        "first_child_turns": [
+          {
+            "round": 21,
+            "event": 1185,
+            "id": 8,
+            "body_before": [
+              [
+                17,
+                7
+              ],
+              [
+                17,
+                8
+              ],
+              [
+                16,
+                9
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 1187,
+                "body_after": [
+                  [
+                    16,
+                    7
+                  ],
+                  [
+                    17,
+                    7
+                  ],
+                  [
+                    17,
+                    8
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE W",
+            "action_event": 1186
+          },
+          {
+            "round": 22,
+            "event": 1253,
+            "id": 8,
+            "body_before": [
+              [
+                16,
+                7
+              ],
+              [
+                17,
+                7
+              ],
+              [
+                17,
+                8
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 1255,
+                "body_after": [
+                  [
+                    16,
+                    8
+                  ],
+                  [
+                    16,
+                    7
+                  ],
+                  [
+                    17,
+                    7
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE S",
+            "action_event": 1254
+          },
+          {
+            "round": 23,
+            "event": 1314,
+            "id": 8,
+            "body_before": [
+              [
+                16,
+                8
+              ],
+              [
+                16,
+                7
+              ],
+              [
+                17,
+                7
+              ]
+            ],
+            "tags": [],
+            "moves": [
+              {
+                "event": 1317,
+                "body_after": [
+                  [
+                    17,
+                    9
+                  ],
+                  [
+                    16,
+                    8
+                  ],
+                  [
+                    16,
+                    7
+                  ],
+                  [
+                    17,
+                    7
+                  ]
+                ]
+              }
+            ],
+            "action": "MOVE E",
+            "action_event": 1315
+          }
+        ],
+        "committed_match": true
+      }
+    ],
+    "H14_matching_actor_rounds": [
+      {
+        "round": 14,
+        "event": 770,
+        "id": 2,
+        "body_before": [
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            18,
+            8
+          ]
+        ],
+        "tags": [],
+        "moves": [],
+        "action": "SPLIT 2",
+        "action_event": 771,
+        "split": {
+          "round": 14,
+          "event": 772,
+          "parent": 2,
+          "child": 5,
+          "parent_body": [
+            [
+              16,
+              10
+            ],
+            [
+              16,
+              9
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "round": 15,
+        "event": 832,
+        "id": 2,
+        "body_before": [
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ]
+        ],
+        "tags": [],
+        "moves": [
+          {
+            "event": 835,
+            "body_after": [
+              [
+                17,
+                10
+              ],
+              [
+                16,
+                10
+              ],
+              [
+                16,
+                9
+              ]
+            ]
+          }
+        ],
+        "action": "MOVE E",
+        "action_event": 833
+      },
+      {
+        "round": 20,
+        "event": 1126,
+        "id": 6,
+        "body_before": [
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            3
+          ]
+        ],
+        "tags": [],
+        "moves": [
+          {
+            "event": 1128,
+            "body_after": [
+              [
+                7,
+                4
+              ],
+              [
+                7,
+                3
+              ]
+            ]
+          }
+        ],
+        "action": "MOVE S",
+        "action_event": 1127
+      },
+      {
+        "round": 21,
+        "event": 1188,
+        "id": 6,
+        "body_before": [
+          [
+            7,
+            4
+          ],
+          [
+            7,
+            3
+          ]
+        ],
+        "tags": [],
+        "moves": [
+          {
+            "event": 1190,
+            "body_after": [
+              [
+                8,
+                4
+              ],
+              [
+                7,
+                4
+              ]
+            ]
+          }
+        ],
+        "action": "MOVE E",
+        "action_event": 1189
+      }
+    ],
+    "H14_actor_deaths": {
+      "2": {
+        "round": 16,
+        "event": 894,
+        "reason": 1,
+        "body_before": [
+          [
+            17,
+            10
+          ],
+          [
+            16,
+            10
+          ],
+          [
+            16,
+            9
+          ]
+        ]
+      },
+      "6": null
+    }
+  },
+  {
+    "side": "B",
+    "candidate_rounds": 124,
+    "candidate_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_pocket_salvage_82001/0062_xxqztest_stripes_seed82014_B.replay",
+    "H14_replay": "/home/tyhh/SW76_-/experiment_results/queen_rules_20261003/robust_h14_82001/0062_xxqztest_stripes_seed82014_B.replay",
+    "candidate_sha256": "816ba589c7202f796d0e4baeb15e2a95d945c4609fa4cf51fef995a977d238b0",
+    "H14_sha256": "412826d8c6c628f6e3d229c2b9a11d81dbccd17844dc37eff98a2f0d7929c515",
+    "committed_triggers": [],
+    "H14_matching_actor_rounds": [],
+    "H14_actor_deaths": {}
+  }
+]

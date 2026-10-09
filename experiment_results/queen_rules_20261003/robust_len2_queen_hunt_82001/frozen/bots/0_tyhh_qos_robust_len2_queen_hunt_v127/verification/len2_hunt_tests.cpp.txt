@@ -1,0 +1,195 @@
+#ifndef LEN2_ALLOWED
+#define LEN2_ALLOWED 1
+#endif
+#define HUNT_FIXTURE_ONLY
+#include "queen_hunt_tests.cpp.txt"
+#include <random>
+#include <string>
+
+void expectNewRoute(HuntFixture& f, std::vector<int> const& dirs,
+                    bool attrition = false) {
+#if LEN2_ALLOWED
+    assert(f.hunt(false, attrition).dirs == dirs);
+#else
+    assert(f.hunt(false, attrition).dirs.empty());
+#endif
+}
+
+void lengthTwoCases() {
+    HuntFixture f;
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    auto prefix = projectAction({{1}, 0, false, false});
+    assert(prefix.known && prefix.survives && prefix.len == 3);
+    expectNewRoute(f, {1, 1});
+
+    // Eligibility precedes eating on the currently attempted paid step.
+    visPearl[f.east(1)] = 0;
+    assert(f.hunt().dirs.empty());
+    visPearl[f.east(2)] = 1;
+    assert(f.hunt().dirs.empty());
+    f.setup(2); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    visPearl[f.east(2)] = 1;
+    assert(f.hunt().dirs.empty());
+
+    // Free budget is fixed by initial length, not the first pearl's growth.
+    f.setup(2); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    prefix = projectAction({{1, 1}, 0, false, false});
+    assert(prefix.known && prefix.survives && prefix.len == 2);
+    assert(f.hunt().dirs.empty());
+    visPearl[f.east(3)] = 1;
+    assert(f.hunt().dirs.empty());
+    visPearl[f.east(2)] = 1;
+    expectNewRoute(f, {1, 1, 1});
+    f.setup(2); f.eastRoute(4); f.enemy(f.east(4), 2, enemyQueenId());
+    visPearl[f.east(1)] = visPearl[f.east(2)] = visPearl[f.east(3)] = 1;
+    expectNewRoute(f, {1, 1, 1, 1});
+    f.setup(2); f.eastRoute(5); f.enemy(f.east(5), 2, enemyQueenId());
+    for (int i = 1; i <= 4; ++i) visPearl[f.east(i)] = 1;
+    assert(f.hunt().dirs.empty());
+
+    // Collision is checked before the current own tail would be released.
+    f.setup(2); f.body({cid(16, 8), cid(17, 8)});
+    f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    prefix = projectAction({{1}, 0, false, false});
+    assert(!prefix.survives && prefix.head == HERE);
+    assert(f.hunt().dirs.empty());
+
+    f.setup(2); f.eastRoute(1); visPearl[f.east(1)] = 1;
+    prefix = projectAction({{1, 3}, 0, false, false});
+    assert(!prefix.survives && prefix.head == f.east(1));
+    setEdge(HERE, 3, E_OPEN, -1);
+    prefix = projectAction({{3}, 0, false, false});
+    assert(!prefix.survives && prefix.head == HERE);
+
+    // A cell released by an earlier paid step is genuinely reusable later.
+    f.setup(2); f.eastRoute(1);
+    setEdge(f.east(1), 0, E_OPEN, -1);
+    setEdge(cid(17, 7), 3, E_OPEN, -1);
+    setEdge(cid(16, 7), 2, E_OPEN, -1);
+    visPearl[f.east(1)] = visPearl[cid(17, 7)] = visPearl[cid(16, 7)] = 1;
+    prefix = projectAction({{1, 0, 3, 2}, 0, false, false});
+    assert(prefix.known && prefix.survives && prefix.head == HERE && prefix.len == 2);
+
+    for (int kind = 0; kind < 5; ++kind) {
+        f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+        visPearl[f.east(1)] = 1;
+        if (kind == 0) f.put(f.east(1), 5, false, false, 1);
+        if (kind == 1) f.put(f.east(1), 4, true, true, 1);
+        if (kind == 2) {
+            setEdge(HERE, 1, E_PORTAL, 0);
+            learnedExit[HERE * 4 + 1] = f.east(1);
+        }
+        if (kind == 3) setEdge(HERE, 1, E_UNKNOWN, -1);
+        if (kind == 4) visStamp[f.east(1)] = 0;
+        assert(f.hunt().dirs.empty());
+    }
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    setEdge(f.east(1), 1, E_PORTAL, 0);
+    learnedExit[f.east(1) * 4 + 1] = f.east(2);
+    assert(f.hunt().dirs.empty());
+    setEdge(f.east(1), 1, E_UNKNOWN, -1);
+    assert(f.hunt().dirs.empty());
+    setEdge(f.east(1), 1, E_OPEN, -1); visStamp[f.east(2)] = 0;
+    assert(f.hunt().dirs.empty());
+
+    // Queen, champion, population and full-body gates are not relaxed.
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    assert(f.hunt(true).dirs.empty());
+    POP = 3; assert(f.hunt().dirs.empty());
+    POP = 4; expectNewRoute(f, {1, 1});
+    MYID = queenId(); assert(f.hunt().dirs.empty());
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    trail.resize(1); parts.clear(); assert(f.hunt().dirs.empty());
+    f.setup(1); f.eastRoute(1); f.enemy(f.east(1), 2, enemyQueenId());
+    assert(f.hunt().dirs.empty());
+
+    // Ordinary thresholds still require >=5 normally and >=4 in attrition.
+    for (int target : {2, 3, 4, 5, 8})
+        for (bool attrition : {false, true}) {
+            f.setup(2); f.eastRoute(2); f.enemy(f.east(2), target, 7);
+            visPearl[f.east(1)] = 1;
+            bool worth = target >= 5 || (attrition && target >= 4);
+            if (worth) expectNewRoute(f, {1, 1}, attrition);
+            else assert(f.hunt(false, attrition).dirs.empty());
+        }
+
+    // This is an entry change, so it also admits unchanged one-step worth.
+    f.setup(2); f.eastRoute(1); f.enemy(f.east(1), 2, enemyQueenId());
+    expectNewRoute(f, {1});
+    f.setup(2); f.eastRoute(1); f.enemy(f.east(1), 5, 7);
+    expectNewRoute(f, {1});
+    f.setup(2); f.eastRoute(1); f.enemy(f.east(1), 4, 7);
+    assert(f.hunt().dirs.empty()); expectNewRoute(f, {1}, true);
+    f.setup(2); MYTEAM = Team::B;
+    f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    visPearl[f.east(1)] = 1;
+    assert(enemyQueenId() == 0); expectNewRoute(f, {1, 1});
+
+    // Wide ordinary topology retains the four-step queen value preference.
+    f.setup(2);
+    for (int y = 4; y <= 12; ++y)
+        for (int x = 12; x <= 20; ++x) {
+            int c = cid(x, y);
+            if (!occupied(c)) visPearl[c] = 1;
+            for (int d = 0; d < 4; ++d) setEdge(c, d, E_OPEN, -1);
+        }
+    f.enemy(f.north(1), 20, 7);
+    f.enemy(cid(16, 12), 2, enemyQueenId());
+    expectNewRoute(f, {2, 2, 2, 2});
+}
+
+// Compile this same generator against the actual candidate and R13 sources.
+// Compare all emitted actions, not a copied control implementation or hash.
+void emitLengthThreeControls() {
+    std::mt19937 rng(127016);
+    HuntFixture f;
+    for (int sample = 0; sample < 200; ++sample) {
+        int length = 3 + int(rng() % 10);
+        f.setup(length);
+        if (rng() % 2) MYTEAM = Team::B;
+        POP = 3 + int(rng() % 14);
+        for (int y = 4; y <= 12; ++y)
+            for (int x = 12; x <= 20; ++x) {
+                int c = cid(x, y);
+                if (!occupied(c)) visPearl[c] = rng() % 4 == 0;
+                if (rng() % 9 == 0 && !occupied(c)) visStamp[c] = 0;
+                for (int d = 0; d < 4; ++d) {
+                    int level = int(rng() % 10);
+                    setEdge(c, d, level < 7 ? E_OPEN :
+                            level == 7 ? E_UNKNOWN :
+                            level == 8 ? E_PORTAL : E_KELP,
+                            level == 8 ? 0 : -1);
+                }
+            }
+        for (int i = 0; i < 8; ++i) {
+            int c = cid(13 + int(rng() % 8), 5 + int(rng() % 7));
+            if (occupied(c)) continue;
+            if (i < 5) f.enemy(c, 2 + int(rng() % 18),
+                               i == 0 ? enemyQueenId() : 7 + i * 2);
+            else f.put(c, 30 + i, i % 2 == 0, i % 3 == 0, 1);
+        }
+        bool champion = rng() % 10 == 0, attrition = rng() % 2;
+        ChosenAction a = f.hunt(champion, attrition);
+        std::cout << sample << ':' << length << ':' << POP << ':'
+                  << champion << ':' << attrition << ':' << a.split << ':'
+                  << a.scored << ':' << a.donation << ':';
+        for (int d : a.dirs) std::cout << d;
+        std::cout << '\n';
+    }
+}
+
+int main(int argc, char** argv) {
+    if (argc == 2 && std::string(argv[1]) == "--controls") {
+        emitLengthThreeControls();
+        return 0;
+    }
+    lengthTwoCases();
+    std::cout << "len2_hunt: " << (LEN2_ALLOWED ? "candidate" : "actual R13 control")
+              << " paid/free funding, body, topology, gates and ordinary-worth passed\n";
+}

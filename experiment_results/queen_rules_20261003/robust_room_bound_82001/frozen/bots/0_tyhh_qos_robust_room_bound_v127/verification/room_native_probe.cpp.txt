@@ -1,0 +1,36 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <iostream>
+
+int main() {
+    auto [ct, game] = init();
+    CT = &ct;
+    W = game.width; H = game.height; NC = W * H;
+    TARGET = std::min(62, game.get_unit_limit() - 2);
+    edgeT.assign(NC * 4, E_UNKNOWN);
+    edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1);
+    seenRound.assign(NC, 0);
+    pearlDue.assign(NC, -1);
+    pearlInfo.assign(NC, -1000);
+    visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1); occFree.assign(NC, INF);
+    occPart.assign(NC, -1); occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    if (!update(ct, game)) return 1;
+    ROUND = game.get_round_num(); LEN = ct.get_length(); POP = ct.get_unit_count();
+    MYID = ct.get_id(); MYTEAM = ct.get_team().value;
+    HERE = cid(ct.get_position().x, ct.get_position().y);
+    trail = {HERE}; trailId = MYID;
+    receive(ct); observe(ct); queenFeedObserve(); consolidateObserve();
+    occupiedPortalId = provenResourceRoom(HERE);
+    std::cout << "{\"id\":" << MYID << ",\"round\":" << ROUND
+              << ",\"length\":" << LEN << ",\"unit_count\":" << POP
+              << ",\"head\":[" << cx(HERE) << "," << cy(HERE)
+              << "],\"room_pid\":" << occupiedPortalId
+              << ",\"num_sonar_messages\":" << ct.get_sonar_messages().size()
+              << ",\"visible_tiles\":" << ct.get_tiles().size() << "}\n";
+}

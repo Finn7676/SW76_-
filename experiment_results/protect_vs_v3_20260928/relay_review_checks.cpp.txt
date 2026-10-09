@@ -1,0 +1,79 @@
+#define main reviewed_relay_main
+#include "../../tyhh_test/tyhh_qos_protect_relay/main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+void resetReview(int width = 12, int height = 12, uint8_t terrain = E_UNKNOWN) {
+    W = width; H = height; NC = W * H; ROUND = 50; MYID = 3; MYTEAM = Team::A;
+    edgeT.assign(NC * 4, terrain); edgePid.assign(NC * 4, -1); learnedExit.assign(NC * 4, -1);
+    pearlDue.assign(NC, INF); pearlInfo.assign(NC, -1000);
+    portalEnds.clear(); portalKeys.clear(); portalRelayCursor = 0;
+    portalClaimRound.clear(); friendStatuses.clear(); sightings.clear();
+    teamFrontier = 0; teamFrontierRound = -1;
+}
+
+int main() {
+    resetReview(64, 64);
+    int a = cid(0, 0) * 4 + 2, b = cid(63, 63) * 4 + 2;
+    setEdge(a / 4, 2, E_PORTAL, 8191); setEdge(b / 4, 2, E_PORTAL, 8191);
+    uint64_t maxPair = portalPairMessage(a);
+    assert(maxPair);
+    resetReview(64, 64);
+    assert(receivePortalPair(maxPair));
+    assert(edgePid[a] == 8191 && edgePid[b] == 8191);
+    assert(portalEnds[8191].size() == 2);
+    resetReview(12, 12);
+    assert(!receivePortalPair(maxPair));
+    assert(portalKeys.empty());
+
+    resetReview(64, 16, E_KELP);
+    int start = cid(0, 4);
+    for (int x = 0; x < 23; ++x) setEdge(cid(x, 4), 1, E_OPEN, -1);
+    setEdge(start, 0, E_PORTAL, 17); pearlDue[start] = 100;
+    assert(provenResourceRoom(start) == 17);
+    setEdge(cid(23, 4), 1, E_OPEN, -1);
+    assert(provenResourceRoom(start) == -1);
+    setEdge(cid(23, 4), 1, E_KELP, -1);
+    setEdge(cid(10, 4), 0, E_PORTAL, 17);
+    assert(provenResourceRoom(start) == -1); // Same PID, distinct boundary.
+
+    resetReview();
+    Controller receiver(MYID, Team(MYTEAM), Direction('N'), Vision(), 64);
+    int c = cid(4, 4);
+    setEdge(c, 1, E_KELP, -1);
+    uint32_t rawLegacy = pack(M_PORTAL, c, 34); // PID 17, canonical E.
+    receiver.sonar_messages = {uint64_t(rawLegacy)};
+    receive(receiver);
+    assert(edgeT[c * 4 + 1] == E_PORTAL && edgePid[c * 4 + 1] == 17);
+    std::cout << "confirmed compatibility boundary: raw legacy packet can replace known kelp\n";
+
+    resetReview();
+    MYTEAM = Team::B; uint64_t enemyWrapped = ordinaryWire(pack(M_PORTAL, c, 34)); MYTEAM = Team::A;
+    receiver.sonar_messages = {enemyWrapped}; receive(receiver);
+    assert(portalKeys.empty());
+
+    resetReview();
+    for (int round = 0; round < 500; ++round) {
+        ROUND = round; MYID = 2; uint64_t status = packStatus(c, 8);
+        assert(((status >> 40) & 255) != PORTAL_PAIR_MAGIC);
+        MYID = 3; FriendStatus decoded; assert(decodeStatus(status, decoded));
+        receiver.sonar_messages = {status}; receive(receiver);
+        assert(friendStatuses.size() == 1);
+    }
+    ROUND = 736; MYID = 2; uint64_t laterStatus = packStatus(c, 8); MYID = 3;
+    FriendStatus decoded; assert(decodeStatus(laterStatus, decoded));
+    assert(((laterStatus >> 40) & 255) == PORTAL_PAIR_MAGIC);
+    receiver.sonar_messages = {laterStatus}; receive(receiver);
+    assert(friendStatuses.empty());
+    std::cout << "confirmed out-of-scope boundary: round 736 status is routed as a portal pair\n";
+
+    resetReview();
+    uint64_t randomState = 0xD31A72E69B05C843ull;
+    for (int i = 0; i < 20000; ++i) {
+        randomState ^= randomState << 13; randomState ^= randomState >> 7; randomState ^= randomState << 17;
+        receiver.sonar_messages = {randomState}; receive(receiver);
+    }
+    for (int key : portalKeys) assert(key >= 0 && key < NC * 4);
+    std::cout << "review boundary assertions and 20000 arbitrary-packet probes passed\n";
+}

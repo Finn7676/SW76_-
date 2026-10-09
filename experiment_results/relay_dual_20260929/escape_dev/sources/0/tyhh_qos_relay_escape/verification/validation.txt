@@ -1,0 +1,39 @@
+2026-09-29, cwd /home/tyhh/SW76_-
+
+clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic tyhh_test/tyhh_qos_relay_escape/main.cpp -o /tmp/tyhh_qos_relay_escape_native
+Exit 0. One inherited unused enemyEscapes warning.
+
+clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ tyhh_test/tyhh_qos_relay_escape/verification/escape_tests.cpp.txt -o /tmp/tyhh_qos_relay_escape_tests
+Exit 0. Inherited unused enemyEscapes and renamed bot_program_main missing-return warnings.
+ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 /tmp/tyhh_qos_relay_escape_tests
+Exit 0; stdout: escape known-dead-end / alternative / portal boundary assertions passed
+No sanitizer diagnostic.
+
+clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ tyhh_test/tyhh_qos_relay_escape/verification/relay_tests.cpp.txt -o /tmp/tyhh_qos_relay_escape_relay_tests
+Exit 0. Same two inherited warnings.
+ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 /tmp/tyhh_qos_relay_escape_relay_tests
+Exit 0; stdout: relay room/topology assertions passed
+No sanitizer diagnostic.
+
+Source diff scope: header provenance, two predicate functions, one earlyPortal
+condition and one ordinary-scorer exclusion. Parent source remains unchanged.
+helper.hpp, bot.toml and inherited relay_tests.cpp.txt exactly match parent.
+No competitive matches were run by this agent.
+
+Boundary coverage:
+- Ordinary and resolved-portal 2->3 pearl traps with a safe alternative.
+- Shared earlyPortal / scorer filtering; 3->4 entry still selected.
+- No alternative and two equally trapped alternatives retain the original choice.
+- Unknown entry, landing, landing-edge type and unresolved onward portal are not proven dead ends.
+- Unknown/invisible/occupied/claimed alternative cannot justify filtering.
+- Own claimed room follows the unchanged scorer exception.
+- Non-eating short trap is filtered; original last-resort own-neck fallback remains.
+
+SHA-256:
+Parent main.cpp c65cfa425e09b38662610fd19fc309b419e5c82edc2c6e7cddadeab8337b4961
+Escape main.cpp f3cb7786f11dbb61f32a15ae38fbe8c5042b5fd661b98b58947c7bc5019071cf
+helper.hpp 6bd3b258ad4db850bd209279db0d8a836e3ed4fb1589190cfeda0012bbae7bcc
+bot.toml d56d20b38e5961083cba1d7e00ff47397f567bf55c2b4a4748ac0f32fcba9cd5
+Native binary bb39fc2bc09a17a5f989a1959259f2d5c62785838d2ac7858ea18f6ce491b755
+Focused sanitizer binary 1fdc3ffc77e15d719f9928faf0a22464d4633fe1468540198620b98311b91910
+Inherited sanitizer binary beaba8bb315c8a379323452729d80c0d8e1df865cea52441b0d2e4e63ec1f2d9

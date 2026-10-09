@@ -1,0 +1,1355 @@
+{
+  "passed": true,
+  "case_count": 4,
+  "toolkit_version": "1.2.7",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "source_sha256": "c7236fd697193401d2e79bb39b39bf1ab93d1ce2d218bba0a6eb9bb1a281259f",
+  "original_autarky_map_sha256": "c622b9afe8fea2d034999511f07fc561a4e5e7120615f0f9bf454b3f27fc0a16",
+  "termination": "Every survivor intentionally receives ENDTURN at round one; those deaths are not competitive outcomes.",
+  "cases": [
+    {
+      "candidate": false,
+      "length": 7,
+      "binary_sha256": "9c417c402e5742764a5a425571cf51283690d2c41b165b68ed13c1974f2671b7",
+      "fixture_map_sha256": "441351575d7a6b61f3c90ec236630a5079625cb86b153318795db35ced57d4d3",
+      "initial_body": [
+        [
+          18,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          18,
+          5
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          7
+        ],
+        [
+          18,
+          8
+        ]
+      ],
+      "expected_split_sizes": [
+        2
+      ],
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 2\nSONAR N 5859273484140380306\nSONAR E 5859273484140380306\nSONAR S 5859273484140380306\nSONAR W 5859273484140380306\nLOG PSTAT 0 2 len 7 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "MOVE E\nSONAR N 5859273481992888850\nSONAR E 5859273481992888850\nSONAR S 5859273481992888850\nSONAR W 5859273481992888850\nLOG PSTAT 0 3 len 2 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "event": 13,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              18,
+              2
+            ],
+            [
+              18,
+              3
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              6
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              7
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "event": 0,
+          "id": 0,
+          "head": [
+            0,
+            0
+          ],
+          "tail": [
+            1,
+            0
+          ]
+        },
+        {
+          "round": -1,
+          "event": 1,
+          "id": 1,
+          "head": [
+            40,
+            10
+          ],
+          "tail": [
+            41,
+            10
+          ]
+        },
+        {
+          "round": -1,
+          "event": 2,
+          "id": 2,
+          "head": [
+            18,
+            2
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 0,
+          "event": 6,
+          "id": 0,
+          "head": [
+            53,
+            0
+          ],
+          "tail": [
+            0,
+            0
+          ]
+        },
+        {
+          "round": 0,
+          "event": 9,
+          "id": 1,
+          "head": [
+            39,
+            10
+          ],
+          "tail": [
+            40,
+            10
+          ]
+        },
+        {
+          "round": 0,
+          "event": 21,
+          "id": 3,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "reason": "A"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "candidate": false,
+      "length": 14,
+      "binary_sha256": "9c417c402e5742764a5a425571cf51283690d2c41b165b68ed13c1974f2671b7",
+      "fixture_map_sha256": "a8ad43412c8d16b60bee2960db79a2fca7e4775459ccb7cafc8e88bbb4dc6f79",
+      "initial_body": [
+        [
+          18,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          18,
+          5
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          7
+        ],
+        [
+          18,
+          8
+        ],
+        [
+          18,
+          9
+        ],
+        [
+          18,
+          10
+        ],
+        [
+          18,
+          11
+        ],
+        [
+          18,
+          12
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          18,
+          15
+        ]
+      ],
+      "expected_split_sizes": [
+        2
+      ],
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 2\nSONAR N 5859273485482545298\nSONAR E 13002455074180481170\nSONAR S 5859273485482545298\nSONAR W 5859273485482545298\nLOG PSTAT 0 2 len 14 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "MOVE S\nSONAR N 5859273482261324754\nSONAR E 5859273482261324754\nSONAR S 5859273482261324754\nSONAR W 5859273482261324754\nLOG PSTAT 0 3 len 2 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "event": 13,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              18,
+              2
+            ],
+            [
+              18,
+              3
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              18,
+              13
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              15
+            ],
+            [
+              18,
+              14
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "event": 0,
+          "id": 0,
+          "head": [
+            0,
+            0
+          ],
+          "tail": [
+            1,
+            0
+          ]
+        },
+        {
+          "round": -1,
+          "event": 1,
+          "id": 1,
+          "head": [
+            40,
+            10
+          ],
+          "tail": [
+            41,
+            10
+          ]
+        },
+        {
+          "round": -1,
+          "event": 2,
+          "id": 2,
+          "head": [
+            18,
+            2
+          ],
+          "tail": [
+            18,
+            15
+          ]
+        },
+        {
+          "round": 0,
+          "event": 6,
+          "id": 0,
+          "head": [
+            53,
+            0
+          ],
+          "tail": [
+            0,
+            0
+          ]
+        },
+        {
+          "round": 0,
+          "event": 9,
+          "id": 1,
+          "head": [
+            39,
+            10
+          ],
+          "tail": [
+            40,
+            10
+          ]
+        },
+        {
+          "round": 0,
+          "event": 21,
+          "id": 3,
+          "head": [
+            18,
+            16
+          ],
+          "tail": [
+            18,
+            15
+          ]
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "reason": "A"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "candidate": true,
+      "length": 7,
+      "binary_sha256": "2ae55dbec7cb7860fb22f682847488380c8e5d7839e8d09d64de903ea147926e",
+      "fixture_map_sha256": "441351575d7a6b61f3c90ec236630a5079625cb86b153318795db35ced57d4d3",
+      "initial_body": [
+        [
+          18,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          18,
+          5
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          7
+        ],
+        [
+          18,
+          8
+        ]
+      ],
+      "expected_split_sizes": [
+        5,
+        3
+      ],
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 5\nSONAR N 5859273484140380306\nSONAR E 5859273484140380306\nSONAR S 5859273484140380306\nSONAR W 5859273484140380306\nLOG PSTAT 0 2 len 7 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "SPLIT 3\nSONAR N 5859273482798203410\nSONAR E 5859273482798203410\nSONAR S 5859273482798203410\nSONAR W 5859273482798203410\nLOG PSTAT 0 3 len 5 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 4,
+          "round": 0,
+          "output": "MOVE E\nSONAR N 5859273482798194962\nSONAR E 5859273482798194962\nSONAR S 5859273482798194962\nSONAR W 5859273482798194962\nLOG PSTAT 0 4 len 3 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 4,
+          "round": 1,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "event": 13,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              18,
+              2
+            ],
+            [
+              18,
+              3
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              4
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 21,
+          "parent": 3,
+          "child": 4,
+          "parent_body": [
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              6
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "event": 0,
+          "id": 0,
+          "head": [
+            0,
+            0
+          ],
+          "tail": [
+            1,
+            0
+          ]
+        },
+        {
+          "round": -1,
+          "event": 1,
+          "id": 1,
+          "head": [
+            40,
+            10
+          ],
+          "tail": [
+            41,
+            10
+          ]
+        },
+        {
+          "round": -1,
+          "event": 2,
+          "id": 2,
+          "head": [
+            18,
+            2
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 0,
+          "event": 6,
+          "id": 0,
+          "head": [
+            53,
+            0
+          ],
+          "tail": [
+            0,
+            0
+          ]
+        },
+        {
+          "round": 0,
+          "event": 9,
+          "id": 1,
+          "head": [
+            39,
+            10
+          ],
+          "tail": [
+            40,
+            10
+          ]
+        },
+        {
+          "round": 0,
+          "event": 29,
+          "id": 4,
+          "head": [
+            19,
+            4
+          ],
+          "tail": [
+            18,
+            5
+          ]
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 4,
+          "round": 1,
+          "reason": "A"
+        }
+      ],
+      "notices": []
+    },
+    {
+      "candidate": true,
+      "length": 14,
+      "binary_sha256": "2ae55dbec7cb7860fb22f682847488380c8e5d7839e8d09d64de903ea147926e",
+      "fixture_map_sha256": "a8ad43412c8d16b60bee2960db79a2fca7e4775459ccb7cafc8e88bbb4dc6f79",
+      "initial_body": [
+        [
+          18,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          18,
+          4
+        ],
+        [
+          18,
+          5
+        ],
+        [
+          18,
+          6
+        ],
+        [
+          18,
+          7
+        ],
+        [
+          18,
+          8
+        ],
+        [
+          18,
+          9
+        ],
+        [
+          18,
+          10
+        ],
+        [
+          18,
+          11
+        ],
+        [
+          18,
+          12
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          18,
+          15
+        ]
+      ],
+      "expected_split_sizes": [
+        12,
+        10,
+        8,
+        6,
+        4,
+        2
+      ],
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 12\nSONAR N 5859273485482545298\nSONAR E 5859273485482545298\nSONAR S 5859273485482545298\nSONAR W 5859273485482545298\nLOG PSTAT 0 2 len 14 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "SPLIT 10\nSONAR N 5859273484677239762\nSONAR E 5859273484677239762\nSONAR S 5859273484677239762\nSONAR W 5859273484677239762\nLOG PSTAT 0 3 len 12 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 4,
+          "round": 0,
+          "output": "SPLIT 8\nSONAR N 5859273483066622226\nSONAR E 5859273483066622226\nSONAR S 5859273483066622226\nSONAR W 5859273483066622226\nLOG PSTAT 0 4 len 10 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 5,
+          "round": 0,
+          "output": "SPLIT 6\nSONAR N 5859273484945683282\nSONAR E 5859273484945683282\nSONAR S 5859273484945683282\nSONAR W 5859273484945683282\nLOG PSTAT 0 5 len 8 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 6,
+          "round": 0,
+          "output": "SPLIT 4\nSONAR N 5859273482261324178\nSONAR E 5859273482261324178\nSONAR S 5859273482261324178\nSONAR W 5859273482261324178\nLOG PSTAT 0 6 len 6 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 7,
+          "round": 0,
+          "output": "SPLIT 2\nSONAR N 5859273483335066322\nSONAR E 5859273483335066322\nSONAR S 5859273483335066322\nSONAR W 5859273483335066322\nLOG PSTAT 0 7 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 8,
+          "round": 0,
+          "output": "MOVE E\nSONAR N 5859273481992888850\nSONAR E 5859273481992888850\nSONAR S 5859273481992888850\nSONAR W 5859273481992888850\nLOG PSTAT 0 8 len 2 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 4,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 5,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 6,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 7,
+          "round": 1,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 8,
+          "round": 1,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "event": 13,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              18,
+              2
+            ],
+            [
+              18,
+              3
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              15
+            ],
+            [
+              18,
+              14
+            ],
+            [
+              18,
+              13
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              4
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 21,
+          "parent": 3,
+          "child": 4,
+          "parent_body": [
+            [
+              18,
+              15
+            ],
+            [
+              18,
+              14
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              18,
+              13
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 29,
+          "parent": 4,
+          "child": 5,
+          "parent_body": [
+            [
+              18,
+              4
+            ],
+            [
+              18,
+              5
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              13
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              6
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 37,
+          "parent": 5,
+          "child": 6,
+          "parent_body": [
+            [
+              18,
+              13
+            ],
+            [
+              18,
+              12
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              11
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 45,
+          "parent": 6,
+          "child": 7,
+          "parent_body": [
+            [
+              18,
+              6
+            ],
+            [
+              18,
+              7
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              10
+            ],
+            [
+              18,
+              9
+            ],
+            [
+              18,
+              8
+            ]
+          ]
+        },
+        {
+          "round": 0,
+          "event": 53,
+          "parent": 7,
+          "child": 8,
+          "parent_body": [
+            [
+              18,
+              11
+            ],
+            [
+              18,
+              10
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              18,
+              9
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "event": 0,
+          "id": 0,
+          "head": [
+            0,
+            0
+          ],
+          "tail": [
+            1,
+            0
+          ]
+        },
+        {
+          "round": -1,
+          "event": 1,
+          "id": 1,
+          "head": [
+            40,
+            10
+          ],
+          "tail": [
+            41,
+            10
+          ]
+        },
+        {
+          "round": -1,
+          "event": 2,
+          "id": 2,
+          "head": [
+            18,
+            2
+          ],
+          "tail": [
+            18,
+            15
+          ]
+        },
+        {
+          "round": 0,
+          "event": 6,
+          "id": 0,
+          "head": [
+            53,
+            0
+          ],
+          "tail": [
+            0,
+            0
+          ]
+        },
+        {
+          "round": 0,
+          "event": 9,
+          "id": 1,
+          "head": [
+            39,
+            10
+          ],
+          "tail": [
+            40,
+            10
+          ]
+        },
+        {
+          "round": 0,
+          "event": 61,
+          "id": 8,
+          "head": [
+            19,
+            8
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        }
+      ],
+      "deaths": [
+        {
+          "id": 0,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 4,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 5,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 6,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 7,
+          "round": 1,
+          "reason": "A"
+        },
+        {
+          "id": 8,
+          "round": 1,
+          "reason": "A"
+        }
+      ],
+      "notices": []
+    }
+  ]
+}

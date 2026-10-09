@@ -1,0 +1,330 @@
+{
+  "date": "2026-09-25",
+  "design": {
+    "baseline": "/home/tyhh/SW76_-/replays/20260925-161827-2hh_lxby/results.csv",
+    "baseline_unique_conditions": 24,
+    "games_per_map_per_variant": 2,
+    "maps": 12,
+    "note": "One game per side per map; prior 10 repeats per condition were identical."
+  },
+  "baseline": {
+    "wins": 14,
+    "games": 24,
+    "winrate": 0.5833333333333334
+  },
+  "ablations": [
+    {
+      "feature": "FEAT_V3_EXPLORED_BONUS",
+      "variant": "no_explored_bonus",
+      "wins": 14,
+      "games": 24,
+      "winrate": 0.5833333333333334,
+      "delta_wins_vs_baseline": 0,
+      "delta_pp_vs_baseline": 0.0,
+      "changed_conditions": 0,
+      "seconds": 377.7,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-173300-izydmdtu/results.csv"
+    },
+    {
+      "feature": "FEAT_V3_PEARL_ECONOMY",
+      "variant": "no_pearl_economy",
+      "wins": 14,
+      "games": 24,
+      "winrate": 0.5833333333333334,
+      "delta_wins_vs_baseline": 0,
+      "delta_pp_vs_baseline": 0.0,
+      "changed_conditions": 8,
+      "seconds": 387.4,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-173305-8ybsggla/results.csv"
+    },
+    {
+      "feature": "FEAT_V3_PORTAL_CLAIM",
+      "variant": "no_portal_claim",
+      "wins": 12,
+      "games": 24,
+      "winrate": 0.5,
+      "delta_wins_vs_baseline": -2,
+      "delta_pp_vs_baseline": -8.333333333333337,
+      "changed_conditions": 4,
+      "seconds": 333.9,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-172731-d6pfst07/results.csv"
+    },
+    {
+      "feature": "FEAT_V3_RELAY",
+      "variant": "no_relay",
+      "wins": 10,
+      "games": 24,
+      "winrate": 0.4166666666666667,
+      "delta_wins_vs_baseline": -4,
+      "delta_pp_vs_baseline": -16.666666666666668,
+      "changed_conditions": 4,
+      "seconds": 328.5,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-172731-qu3m5hcz/results.csv"
+    },
+    {
+      "feature": "FEAT_V3_SCOUT",
+      "variant": "no_scout",
+      "wins": 11,
+      "games": 24,
+      "winrate": 0.4583333333333333,
+      "delta_wins_vs_baseline": -3,
+      "delta_pp_vs_baseline": -12.500000000000005,
+      "changed_conditions": 5,
+      "seconds": 332.0,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-172731-lq7g5uag/results.csv"
+    },
+    {
+      "feature": "FEAT_V3_SHORT_AVOID",
+      "variant": "no_short_avoid",
+      "wins": 15,
+      "games": 24,
+      "winrate": 0.625,
+      "delta_wins_vs_baseline": 1,
+      "delta_pp_vs_baseline": 4.1666666666666625,
+      "changed_conditions": 1,
+      "seconds": 380.5,
+      "results_csv": "/home/tyhh/SW76_-/replays/20260925-173303-grgulmhx/results.csv"
+    }
+  ],
+  "details": {
+    "FEAT_V3_EXPLORED_BONUS": {
+      "flips": [],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.0,
+        "default.map": 1.0,
+        "default_small.map": 0.5,
+        "devil.map": 1.0,
+        "help.map": 0.5,
+        "queen_of_spades.map": 0.0,
+        "schooltime.map": 1.0,
+        "stronghold.map": 0.5,
+        "trauma.map": 1.0,
+        "trophy.map": 0.0
+      }
+    },
+    "FEAT_V3_PEARL_ECONOMY": {
+      "flips": [
+        {
+          "map": "big_empty.map",
+          "side": "B",
+          "baseline": "loss",
+          "ablated": "win"
+        },
+        {
+          "map": "default_small.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "devil.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "A",
+          "baseline": "loss",
+          "ablated": "win"
+        },
+        {
+          "map": "schooltime.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "stronghold.map",
+          "side": "A",
+          "baseline": "loss",
+          "ablated": "win"
+        },
+        {
+          "map": "trauma.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "trophy.map",
+          "side": "B",
+          "baseline": "loss",
+          "ablated": "win"
+        }
+      ],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.5,
+        "default.map": 1.0,
+        "default_small.map": 0.0,
+        "devil.map": 0.5,
+        "help.map": 1.0,
+        "queen_of_spades.map": 0.0,
+        "schooltime.map": 0.5,
+        "stronghold.map": 1.0,
+        "trauma.map": 0.5,
+        "trophy.map": 0.5
+      }
+    },
+    "FEAT_V3_PORTAL_CLAIM": {
+      "flips": [
+        {
+          "map": "default.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "schooltime.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "stronghold.map",
+          "side": "A",
+          "baseline": "loss",
+          "ablated": "win"
+        }
+      ],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.0,
+        "default.map": 0.5,
+        "default_small.map": 0.5,
+        "devil.map": 1.0,
+        "help.map": 0.0,
+        "queen_of_spades.map": 0.0,
+        "schooltime.map": 0.5,
+        "stronghold.map": 1.0,
+        "trauma.map": 1.0,
+        "trophy.map": 0.0
+      }
+    },
+    "FEAT_V3_RELAY": {
+      "flips": [
+        {
+          "map": "default.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "schooltime.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "trauma.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        }
+      ],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.0,
+        "default.map": 0.5,
+        "default_small.map": 0.5,
+        "devil.map": 1.0,
+        "help.map": 0.0,
+        "queen_of_spades.map": 0.0,
+        "schooltime.map": 0.5,
+        "stronghold.map": 0.5,
+        "trauma.map": 0.5,
+        "trophy.map": 0.0
+      }
+    },
+    "FEAT_V3_SCOUT": {
+      "flips": [
+        {
+          "map": "default.map",
+          "side": "A",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "help.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "queen_of_spades.map",
+          "side": "A",
+          "baseline": "loss",
+          "ablated": "win"
+        },
+        {
+          "map": "stronghold.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        },
+        {
+          "map": "trauma.map",
+          "side": "B",
+          "baseline": "win",
+          "ablated": "loss"
+        }
+      ],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.0,
+        "default.map": 0.5,
+        "default_small.map": 0.5,
+        "devil.map": 1.0,
+        "help.map": 0.0,
+        "queen_of_spades.map": 0.5,
+        "schooltime.map": 1.0,
+        "stronghold.map": 0.0,
+        "trauma.map": 0.5,
+        "trophy.map": 0.0
+      }
+    },
+    "FEAT_V3_SHORT_AVOID": {
+      "flips": [
+        {
+          "map": "help.map",
+          "side": "A",
+          "baseline": "loss",
+          "ablated": "win"
+        }
+      ],
+      "map_rates": {
+        "Colosseum.map": 1.0,
+        "arena.map": 0.5,
+        "big_empty.map": 0.0,
+        "default.map": 1.0,
+        "default_small.map": 0.5,
+        "devil.map": 1.0,
+        "help.map": 1.0,
+        "queen_of_spades.map": 0.0,
+        "schooltime.map": 1.0,
+        "stronghold.map": 0.5,
+        "trauma.map": 1.0,
+        "trophy.map": 0.0
+      }
+    }
+  }
+}
