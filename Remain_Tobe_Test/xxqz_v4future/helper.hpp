@@ -629,7 +629,7 @@ inline bool update(Controller& controller, Game& game_state) {
 
 // Ends the turn and flushes, which is the one write a turn costs.
 inline void end_turn() {
-    std::cout << "ENDTURN" << std::endl;
+    std::cout << "PROTOCOL " << Constants::PROTOCOL_MAJOR << "\nENDTURN" << std::endl;
 }
 
 } // end namespace unswbc
