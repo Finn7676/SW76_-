@@ -1,0 +1,67 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+Controller testController{8, Team::A, Direction::EAST, Vision{}, 64};
+
+void put(int c, int id, bool head, int length, bool mine = true) {
+    occStamp[c] = STAMP; occMine[c] = mine; occId[c] = id; occHead[c] = head;
+    parts.push_back({c, id, 1, mine, head});
+    if (length) idCount.push_back({id, length});
+}
+
+void setup() {
+    W = H = 20; NC = W * H; HERE = cid(5, 5); LEN = 4;
+    MYID = 8; MYTEAM = Team::A; ROUND = 360; POP = 4; STAMP = 1; CT = &testController;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1); learnedExit.assign(NC * 4, -1);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occMine.assign(NC, 0);
+    occId.assign(NC, -1); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    occPart.assign(NC, 0); occFree.assign(NC, 0);
+    parts.clear(); idCount.clear(); friendStatuses.clear(); sightings.clear(); enemyHeads.clear();
+    friendGuards.clear(); queenFeedFirstRound = queenFeedLastEnemy = 350;
+    trail = {cid(5, 8), cid(5, 7), cid(5, 6), HERE};
+    for (int c : trail) put(c, MYID, c == HERE, c == HERE ? LEN : 0);
+    put(cid(10, 5), 2, true, 6); put(cid(11, 5), 2, false, 0);
+    chosenAction = {};
+}
+
+int main() {
+    setup(); auto route = donorRoute();
+    assert(route.direction == 1 && route.receiver == 2 && route.distance == 3);
+    assert(donorRouteAction(testController) && chosenAction.dirs == std::vector<int>{1});
+    assert(!chosenAction.donation && chosenAction.split == 0);
+    setup(); MYID = queenId(); assert(donorRoute().direction < 0);
+    setup(); put(cid(3, 3), queenId(), true, 2); assert(donorRoute().direction < 0);
+    setup(); put(cid(3, 3), 3, true, 2, false); assert(donorRoute().direction < 0);
+    setup(); LEN = 25; assert(donorRoute().direction < 0);
+    setup(); idCount.back().second = 3; assert(donorRoute().direction < 0);
+    setup(); idCount.back().second = 4; assert(donorRoute().direction == 1);
+    setup(); parts.back().id = 10; parts[parts.size() - 2].id = 10;
+    occId[cid(10, 5)] = occId[cid(11, 5)] = 10; idCount.back() = {10, 4};
+    assert(donorRoute().direction < 0);
+    setup(); visStamp[cid(10, 5)] = 0; assert(donorRoute().direction < 0);
+    setup(); occHead[cid(10, 5)] = 0; assert(donorRoute().direction < 0);
+    setup(); ROUND = 349; assert(donorRoute().direction < 0);
+    setup(); queenFeedLastEnemy = ROUND - 7; assert(donorRoute().direction < 0);
+    setup(); POP = 3; assert(donorRoute().direction < 0);
+    setup(); std::fill(edgeT.begin(), edgeT.end(), E_UNKNOWN); assert(donorRoute().direction < 0);
+    setup(); std::fill(edgeT.begin(), edgeT.end(), E_PORTAL); assert(donorRoute().direction < 0);
+    setup(); for (int d = 0; d < 4; ++d) put(geo(HERE, d), 20, false, 0);
+    assert(donorRoute().direction < 0);
+    setup(); setEdge(HERE, 1, E_KELP, -1); assert(donorRoute().direction == 0);
+    setup(); friendGuards.push_back({0, cid(7, 5), 2, cid(6, 5), {cid(6, 5)}, 0});
+    assert(donorRoute().direction == 0);
+    setup(); friendGuards.push_back({0, cid(7, 5), 2, cid(6, 5), {cid(6, 5), cid(7, 4)}, 0});
+    assert(donorRoute().direction == 0);
+    setup(); ROUND = 490; assert(donorRoute().direction < 0);
+    setup(); parts.clear(); idCount.clear(); std::fill(occStamp.begin(), occStamp.end(), 0);
+    for (int c : trail) put(c, MYID, c == HERE, c == HERE ? LEN : 0);
+    put(cid(7, 5), 2, true, 6); put(cid(8, 5), 2, false, 0);
+    assert(consolidateReceiver(MYID, HERE, LEN) == 2 && donorRoute().direction < 0);
+    setup(); parts.clear(); idCount.clear(); std::fill(occStamp.begin(), occStamp.end(), 0);
+    for (int c : trail) put(c, MYID, c == HERE, c == HERE ? LEN : 0);
+    put(cid(15, 5), 2, true, 6); put(cid(16, 5), 2, false, 0);
+    assert(donorRoute().direction < 0);
+    std::cout << "donor_route: 24 routing and exclusion assertions passed\n";
+}

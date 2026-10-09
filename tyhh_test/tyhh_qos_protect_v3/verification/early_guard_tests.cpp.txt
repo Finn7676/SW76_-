@@ -1,0 +1,48 @@
+#define main early_guard_bot_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+void resetWorld() {
+    W = H = 12; NC = W * H; ROUND = 40; LEN = 4; POP = 4; MYID = 3;
+    HERE = cid(6, 6); STAMP = 1; TARGET = 62;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+    pearlDue.assign(NC, INF); pearlInfo.assign(NC, 0);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occFree.assign(NC, INF); occPart.assign(NC, -1);
+    occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    bfsStamp = 0; scoutPearls.clear(); scoutScores.clear();
+    portalEnds.clear(); portalKeys.clear(); scoutExploredPortals.clear(); portalClaimRound.clear();
+    occupiedPortalId = -1; parts.clear(); friendParts.clear(); idCount.clear(); friendStatuses.clear();
+    enemyHeads.clear(); enemyHeadLen.clear(); visPearls.clear(); trail.clear();
+    chosenAction = {}; teamFrontier = 0; v41Target = -1; v41TargetPhase = -1;
+    setEdge(HERE, 0, E_PORTAL, 7);
+}
+
+int main() {
+    resetWorld();
+    Controller controller(MYID, Team(Team::A), Direction('E'), Vision(), 64);
+    controller.length = LEN; controller.unit_count = POP; CT = &controller;
+    // With no room claim, a locally explored portal must not preempt the
+    // ordinary split opportunity. This invokes takeTurn, not a test copy.
+    scoutExploredPortals.insert(7);
+    assert(!portalRoomClaimed(7));
+    takeTurn(controller);
+    assert(chosenAction.split == 2 && chosenAction.dirs.empty());
+
+    resetWorld();
+    CT = &controller;
+    takeTurn(controller);
+    assert(chosenAction.split == 0 && chosenAction.dirs.size() == 1 && chosenAction.dirs[0] == 0);
+
+    resetWorld();
+    CT = &controller;
+    scoutExploredPortals.insert(7);
+    setEdge(HERE, 1, E_PORTAL, 8);
+    takeTurn(controller);
+    assert(chosenAction.split == 0 && chosenAction.dirs.size() == 1 && chosenAction.dirs[0] == 1);
+    std::cout << "early explored-portal guard scenarios passed\n";
+}

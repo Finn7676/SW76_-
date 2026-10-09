@@ -1,0 +1,89 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct Fixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+
+    void put(int c, int id, bool head, int length, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = 1;
+        occHead[c] = head; occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, true, head});
+        if (head) idCount.push_back({id, length});
+    }
+
+    void setup() {
+        W = H = 12; NC = W * H; HERE = cid(7, 5); LEN = 4;
+        MYID = 2; MYTEAM = Team::A; ROUND = 360; POP = 4;
+        STAMP = 1; TARGET = 62; CT = &ct;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team::A; ct.head.dir = Direction::EAST;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0);
+        occId.assign(NC, -1); occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); friendStatuses.clear(); sightings.clear();
+        enemyHeads.clear(); enemyHeadLen.clear(); friendParts.clear();
+        visPearls.clear(); friendGuards.clear(); portalEnds.clear(); portalKeys.clear();
+        portalClaimRound.clear(); occupiedPortalId = -1;
+        trail = {cid(7, 8), cid(7, 7), cid(7, 6), HERE}; trailId = MYID;
+        for (int i = 0; i < LEN; ++i)
+            put(trail[LEN - 1 - i], MYID, i == 0, LEN, LEN + 1 - i);
+        put(cid(5, 5), 8, true, 4); put(cid(4, 5), 8, false, 0);
+        queenFeedObserver = MYID; queenFeedFirstRound = 350; queenFeedLastEnemy = 350;
+        consolidateObserver = -1; consolidateHoldUntil = -1;
+        queenSeededScout = false; chosenAction = {};
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999;
+    }
+};
+
+int main() {
+    Fixture f;
+    int checks = 0;
+    f.setup();
+    assert(consolidateReceiver(8, cid(5, 5), 4) == MYID); ++checks;
+    consolidateObserve();
+    assert(consolidateObserver == MYID && consolidateHoldUntil == Constants::MAX_ROUNDS);
+    assert(consolidateHolding()); ++checks;
+
+    ROUND = 373;
+    parts.erase(parts.end() - 2, parts.end());
+    consolidateObserve();
+    assert(consolidateHolding()); ++checks;
+    ROUND = Constants::MAX_ROUNDS; assert(consolidateHolding()); ++checks;
+    ROUND = Constants::MAX_ROUNDS + 1; assert(!consolidateHolding()); ++checks;
+
+    f.setup(); ROUND = 349; consolidateObserve();
+    assert(consolidateHoldUntil == -1 && !consolidateHolding()); ++checks;
+    f.setup(); MYID = queenId(); consolidateHoldUntil = Constants::MAX_ROUNDS;
+    consolidateObserver = MYID; consolidateObserve();
+    assert(!consolidateHolding()); ++checks;
+
+    f.setup(); consolidateObserve(); MYID = 10; consolidateObserve();
+    assert(consolidateObserver == 10 && consolidateHoldUntil == -1);
+    assert(!consolidateHolding()); ++checks;
+    f.setup(); queenFeedFirstRound = ROUND - 7; consolidateObserve();
+    assert(consolidateHoldUntil == -1 && !consolidateHolding()); ++checks;
+
+    f.setup(); takeTurn(f.ct);
+    assert(chosenAction.split == 2); ++checks;
+    f.setup(); consolidateObserve(); takeTurn(f.ct);
+    assert(chosenAction.split == 0 && !chosenAction.dirs.empty()); ++checks;
+    ROUND = 480; chosenAction = {}; takeTurn(f.ct);
+    assert(POP < 8 && chosenAction.split == 0); ++checks;
+
+    f.setup(); consolidateObserve();
+    for (int d = 0; d < 4; ++d) edgeT[HERE * 4 + d] = E_KELP;
+    takeTurn(f.ct);
+    assert(consolidateHolding() && chosenAction.split == 2); ++checks;
+
+    std::cout << "receiver_hold: " << checks
+              << " source-bound eligibility, epoch, queen and split checks passed\n";
+}

@@ -1,0 +1,146 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct Fixture {
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+    void setup(int enemyLength = 3) {
+        W = H = 15; NC = W * H; HERE = cid(7, 7); LEN = 2; POP = 10;
+        MYID = 7; MYTEAM = Team::A; ROUND = 100; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); sightings.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail = {HERE - 1, HERE}; trailId = MYID;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = teamFrontier = 0; chosenAction = {};
+        reclaimOldParts.clear(); reclaimUntil.assign(NC, -1);
+        reclaimObserver = MYID; reclaimRound = -1;
+        reclaimDetected = reclaimRefused = reclaimCollected = 0;
+        put(HERE, MYID, true, true, 1);
+        put(HERE - 1, MYID, true, false, 1);
+        idCount.push_back({MYID, 2});
+        if (enemyLength) {
+            for (int i = 0; i < enemyLength; ++i) put(HERE + 1 + i, 3, false, i == 0, 3);
+            idCount.push_back({3, enemyLength});
+            enemyHeads.push_back(HERE + 1); enemyHeadLen.push_back(enemyLength);
+        }
+    }
+    void put(int c, int id, bool mine, bool head, int facing) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = INF; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+        if (mine && id != MYID) friendParts.push_back(c);
+    }
+    void addThird(int c, bool mine) {
+        put(c, 20, mine, true, 0); idCount.push_back({20, 2});
+        if (!mine) { enemyHeads.push_back(c); enemyHeadLen.push_back(2); }
+    }
+    void removeId(int id) {
+        for (auto const& p : parts) if (p.id == id) occStamp[p.c] = 0;
+        parts.erase(std::remove_if(parts.begin(), parts.end(), [id](Part const& p) { return p.id == id; }), parts.end());
+        idCount.erase(std::remove_if(idCount.begin(), idCount.end(), [id](auto p) { return p.first == id; }), idCount.end());
+        enemyHeads.clear(); enemyHeadLen.clear();
+        for (auto const& p : parts) if (!p.mine && p.head) {
+            enemyHeads.push_back(p.c); enemyHeadLen.push_back(countOf(p.id));
+        }
+    }
+    bool east() {
+        takeTurn(ct);
+        return chosenAction.split == 0 && chosenAction.dirs == std::vector<int>{1};
+    }
+};
+
+int main() {
+    Fixture f;
+    f.setup();
+    assert(reclaimTradeRace(HERE + 1).allowed && f.east()); // no third party
+    f.setup(); f.addThird(HERE + W, false);
+    auto enemyOnly = reclaimTradeRace(HERE + 1);
+    assert(!enemyOnly.allowed && enemyOnly.enemy > 0 && enemyOnly.friendly == 0);
+    assert(!f.east()); // live target cannot count as its own third party
+    f.setup(); f.addThird(HERE + W, true);
+    auto friendlyOnly = reclaimTradeRace(HERE + 1);
+    assert(friendlyOnly.allowed && friendlyOnly.friendly > 0 && friendlyOnly.enemy == 0);
+    assert(f.east());
+
+    f.setup(); f.addThird(cid(1, 1), false);
+    for (int d = 0; d < 4; ++d) setEdge(cid(1, 1), d, E_KELP, -1);
+    assert(reclaimTradeRace(HERE + 1).allowed); // geometric proximity cannot cross kelp
+    setEdge(cid(1, 1), 1, E_PORTAL, 123);
+    assert(reclaimTradeRace(HERE + 1).allowed); // unknown exit is not a path
+    learnedExit[cid(1, 1) * 4 + 1] = HERE + W;
+    assert(!reclaimTradeRace(HERE + 1).allowed); // known portal establishes short path
+    edgeT[cid(1, 1) * 4 + 1] = E_UNKNOWN;
+    assert(reclaimTradeRace(HERE + 1).allowed);
+
+    // Equal reachable third-party distance preserves the existing trade-up.
+    f.setup(); f.addThird(HERE - W, true);
+    f.put(HERE + W, 21, false, true, 0); idCount.push_back({21, 2});
+    assert(reclaimTradeRace(HERE + 1).allowed);
+
+    // A rejected longest target must not hide a second beneficial target.
+    f.setup(5); f.addThird(HERE + W, false);
+    int north = HERE - W;
+    f.put(north, 4, false, true, 2); f.put(north - W, 4, false, false, 2);
+    f.put(north - 2 * W, 4, false, false, 2); idCount.push_back({4, 3});
+    enemyHeads.push_back(north); enemyHeadLen.push_back(3);
+    // Isolate the northern route from the third party by allowing only own
+    // cell/head pearls, which are at equal distance to our close northern ally.
+    f.put(north - 1, 22, true, true, 1); idCount.push_back({22, 2});
+    auto eastRace = reclaimTradeRace(HERE + 1), northRace = reclaimTradeRace(north);
+    assert(!eastRace.allowed && northRace.allowed);
+    takeTurn(f.ct); assert(chosenAction.dirs == std::vector<int>{0});
+
+    f.setup(); f.addThird(HERE + W, false);
+    std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(HERE, 1, E_OPEN, -1);
+    // The third party can reach the corpse through a known portal, but we
+    // cannot take that portal ourselves. No legal safe move/split remains.
+    setEdge(HERE + W, 1, E_PORTAL, 12);
+    learnedExit[(HERE + W) * 4 + 1] = HERE + 1;
+    assert(!reclaimTradeRace(HERE + 1).allowed);
+    assert(f.east()); // explicit last-resort exception
+
+    f.setup(); reclaimObserve();
+    int old = HERE + 1;
+    f.removeId(3); ++ROUND;
+    reclaimObserve();
+    assert(reclaimUntil[old] < ROUND && reclaimDetected == 0); // absence is not death
+    f.setup(); pearlDue[HERE + 1] = ROUND + 1; reclaimObserve();
+    f.removeId(3); ++ROUND; visPearl[HERE + 1] = 1; visPearls.push_back(HERE + 1);
+    reclaimObserve();
+    assert(reclaimUntil[HERE + 1] < ROUND); // known natural respawn is not a clue
+    f.setup(); reclaimObserve();
+    f.removeId(3); ++ROUND; visPearl[HERE + 1] = 1; visPearls.push_back(HERE + 1);
+    reclaimObserve();
+    assert(reclaimUntil[HERE + 1] >= ROUND && reclaimDetected == 1);
+    assert(reclaimCollect() && chosenAction.dirs == std::vector<int>{1});
+    f.addThird(HERE + W + 1, false);
+    assert(!reclaimCollect()); // adjacent enemy denies safe recovery
+    f.setup(); reclaimObserve();
+    f.removeId(3); ++ROUND; visPearl[HERE + 1] = 1; visPearls.push_back(HERE + 1);
+    visStamp[HERE + 1] = 0; reclaimObserve();
+    assert(reclaimDetected == 0); // remembered/missing pearl is not visible evidence
+
+    // Sprint uses the same gate and its post-first-move body as the corpse.
+    f.setup(0); LEN = 3; f.ct.length = 3; trail = {HERE - 2, HERE - 1, HERE};
+    f.put(HERE - 2, MYID, true, false, 1); idCount[0].second = 3;
+    for (int i = 0; i < 5; ++i) f.put(HERE + 2 + i, 3, false, i == 0, 3);
+    idCount.push_back({3, 5}); enemyHeads.push_back(HERE + 2); enemyHeadLen.push_back(5);
+    takeTurn(f.ct); assert(chosenAction.dirs == (std::vector<int>{1, 1}));
+    f.addThird(HERE + W, false);
+    assert(!reclaimTradeRace(HERE + 2, HERE + 1).allowed);
+    takeTurn(f.ct); assert(chosenAction.dirs != (std::vector<int>{1, 1}));
+    std::cout << "reclaim trade, topology, observation, collection and fallback assertions passed\n";
+}

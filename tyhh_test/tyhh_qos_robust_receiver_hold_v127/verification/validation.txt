@@ -1,0 +1,23 @@
+R2 local verification, 2026-10-04. No competitive matches launched.
+
+Build:
+g++-10 -std=c++20 -O2 -x c++ tyhh_test/tyhh_qos_robust_receiver_hold_v127/verification/receiver_hold_tests.cpp.txt -o /tmp/receiver_hold_tests_v127
+Exit code 0. Including main.cpp under a renamed test entrypoint produces
+the inherited no-return warning in bot_program_main; no test-build errors.
+
+Run:
+/tmp/receiver_hold_tests_v127
+Exit code 0.
+receiver_hold: 13 source-bound eligibility, epoch, queen and split checks passed
+
+Native build:
+g++-10 -std=c++20 -O2 tyhh_test/tyhh_qos_robust_receiver_hold_v127/main.cpp -o /tmp/robust_receiver_hold_bot_v127
+Exit code 0; no compiler output.
+
+Structured byte comparison:
+4 parent source files byte-identical; consolidate has exactly the
+preregistered assignment change. Main contains all unchanged ordinary and
+emergency split call sites; fixture verifies held ordinary splitting is
+suppressed while a trapped receiver can still issue its emergency split.
+
+Competitive performance, judge points and memory have not been evaluated.

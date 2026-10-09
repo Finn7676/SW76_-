@@ -1,0 +1,22 @@
+main.cpp SHA256: 6597c25508d261b7758363cad277f2b15629993656e140040f7c28ba8bd7200e
+This matches antiram_dev/sources/0/tyhh_qos_protect_antiram/main.cpp.
+
+Command:
+clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic tyhh_test/tyhh_qos_protect_antiram/main.cpp -o /tmp/tyhh_qos_protect_antiram_native
+Exit: 0
+Warning: inherited unused enemyEscapes function.
+
+Command:
+clang++ -x c++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer tyhh_test/tyhh_qos_protect_antiram/verification/antiram_tests.cpp.txt -o /tmp/tyhh_qos_protect_antiram_tests
+Exit: 0
+Warning: the include renames the unused bot main, which then lacks an explicit return.
+
+Command:
+ASAN_OPTIONS=detect_leaks=0 /tmp/tyhh_qos_protect_antiram_tests
+Exit: 0
+Output:
+LOG ANTIRAM 300 8 len 8 from 0 to 3
+antiram reachability and fallback scenarios passed
+
+These records transcribe observed command results from tool output; they are
+not full captured compiler stderr logs. LeakSanitizer is disabled, not passed.

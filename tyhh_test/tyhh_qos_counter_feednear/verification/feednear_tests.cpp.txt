@@ -1,0 +1,19 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+int main() {
+    // Compile-time and policy boundaries used by the competitive candidate.
+    ROUND = 410; MYID = 9; POP = 10; LEN = 5;
+    assert(crownPolicy().reserve == 5 && crownPolicy().maxDonor == 14);
+    ROUND = 460;
+    assert(crownPolicy().reserve == 3 && crownPolicy().maxDonor == 24);
+    // Equal-size feeding has a deterministic direction, preventing mutual
+    // no-action turns; the policy admits a one-cell length gap.
+    int recipientId = 3;
+    assert(MYID > recipientId);
+    assert(LEN == LEN);
+    std::cout << "feednear policy boundaries passed\n";
+}

@@ -1,0 +1,101 @@
+#define main antiram_bot_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+std::unique_ptr<Game> fixtureGame;
+std::unique_ptr<Controller> fixtureController;
+
+void part(int c, int id, bool mine, bool head, int freeAfter = INF) {
+    occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+    occHead[c] = head; occFree[c] = freeAfter;
+}
+void reset() {
+    W = H = 12; NC = W * H; ROUND = 300; LEN = 8; POP = 20;
+    MYID = 8; MYTEAM = Team::A; HERE = cid(5, 5); STAMP = 1; bfsStamp = 0;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+    pearlDue.assign(NC, INF); pearlInfo.assign(NC, 0);
+    visStamp.assign(NC, STAMP); visPearl.assign(NC, 0);
+    occStamp.assign(NC, 0); occId.assign(NC, -1); occFree.assign(NC, INF);
+    occMine.assign(NC, 0); occHead.assign(NC, 0); occPart.assign(NC, -1);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    enemyHeads.clear(); enemyHeadLen.clear(); enemyExactLength.clear();
+    friendGuards.clear(); friendStatuses.clear(); friendParts.clear();
+    idCount.clear(); parts.clear(); sightings.clear(); visPearls.clear();
+    portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+    occupiedPortalId = -1; yieldStreak = 0; chosenAction = {};
+    trail.clear();
+    for (int i = LEN - 1; i >= 0; --i) {
+        int c = cid(5, (5 + i) % H);
+        trail.push_back(c); part(c, MYID, true, i == 0, LEN - i + 1);
+    }
+    fixtureGame = std::make_unique<Game>(W, H, 64);
+    fixtureController = std::make_unique<Controller>(MYID, Team::A, Direction('N'), Vision(), 64);
+    fixtureController->length = LEN; fixtureController->unit_count = POP;
+    fixtureController->head.position = Position(5, 5);
+    unswbc::game = fixtureGame.get(); CT = fixtureController.get();
+}
+void enemy(int c, int length, bool exact = true) {
+    part(c, 9, false, true);
+    enemyHeads.push_back(c); enemyHeadLen.push_back(length); idCount.push_back({9, length});
+    if (exact) enemyExactLength[9] = length;
+}
+ActionProjection north() { return projectAction(ChosenAction{{0}, 0, true, false}); }
+
+int main() {
+    reset(); enemy(cid(6, 4), 2);
+    assert(enemyCanRamHead(north())); // ordinary ram, no length advantage needed
+
+    reset(); enemy(cid(6, 5), 3);
+    assert(enemyCanRamHead(north())); // N,W two-step sprint
+    enemyExactLength[9] = 2;
+    assert(!enemyCanRamHead(north())); // proven short, no pearl on intermediate
+    visPearl[cid(6, 4)] = 1;
+    assert(enemyCanRamHead(north())); // length 2 eats then can pay second step
+    visPearl[cid(6, 4)] = 0;
+    enemyExactLength.clear();
+    assert(enemyCanRamHead(north())); // a visible lower bound is not exact length
+
+    reset(); enemy(cid(6, 5), 3);
+    part(cid(6, 4), 20, true, false);
+    assert(!enemyCanRamHead(north())); // other body blocks N,W; our neck blocks W,N
+    occId[cid(6, 4)] = 9; occMine[cid(6, 4)] = false;
+    assert(!enemyCanRamHead(north())); // enemy's own tail is also collision-blocked
+    occStamp[cid(6, 4)] = 0;
+    setEdge(cid(6, 5), 0, E_KELP, -1);
+    assert(!enemyCanRamHead(north())); // HERE is a newly formed neck
+    auto withoutNeck = north();
+    withoutNeck.body.erase(std::remove(withoutNeck.body.begin(), withoutNeck.body.end(), HERE), withoutNeck.body.end());
+    assert(enemyCanRamHead(withoutNeck)); // a truly vacated own cell may be crossed
+
+    reset(); enemy(cid(1, 1), 2);
+    ActionProjection remote; remote.head = cid(9, 9); remote.body = {remote.head, HERE}; remote.len = 8;
+    setEdge(cid(1, 1), 1, E_PORTAL, 5);
+    assert(!enemyCanRamHead(remote)); // unknown portal exit is not invented
+    setEdge(cid(8, 9), 1, E_PORTAL, 5);
+    assert(enemyCanRamHead(remote)); // actual resolved portal reaches remote head
+    reset(); enemy(cid(1, 1), 2);
+    remote.head = cid(2, 1); remote.body = {remote.head, HERE};
+    setEdge(cid(1, 1), 1, E_UNKNOWN, -1);
+    assert(!enemyCanRamHead(remote)); // unknown ordinary terrain also is not proof
+
+    reset(); enemy(cid(6, 4), 2); doMove(0);
+    reviewEnemyRams(*CT);
+    assert(chosenAction.dirs.size() == 1 && chosenAction.dirs[0] == 3);
+    assert(!enemyCanRamHead(projectAction(chosenAction))); // safe detour retains ordinary scorer ranking
+
+    reset(); enemy(cid(6, 4), 2);
+    setEdge(HERE, 1, E_KELP, -1); setEdge(HERE, 3, E_KELP, -1);
+    doMove(0); reviewEnemyRams(*CT);
+    assert(chosenAction.dirs == std::vector<int>{0}); // no safe alternative: retain proposal
+
+    reset(); enemy(cid(6, 4), 2); LEN = 7; doMove(0); reviewEnemyRams(*CT);
+    assert(chosenAction.dirs == std::vector<int>{0}); // short agents retain aggression
+    reset(); enemy(cid(6, 4), 2); doSplit(2); reviewEnemyRams(*CT);
+    assert(chosenAction.split == 2); // splits are outside the intervention
+    reset(); enemy(cid(6, 4), 2); setEdge(HERE, 0, E_PORTAL, 12);
+    doMove(0); reviewEnemyRams(*CT);
+    assert(chosenAction.dirs == std::vector<int>{0}); // unresolved landing is unchanged
+    std::cout << "antiram reachability and fallback scenarios passed\n";
+}

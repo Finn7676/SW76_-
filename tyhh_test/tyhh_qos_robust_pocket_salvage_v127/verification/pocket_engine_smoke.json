@@ -1,0 +1,1431 @@
+{
+  "passed": true,
+  "case_count": 5,
+  "toolkit_version": "1.2.7",
+  "engine_sha256": "26e68680e45eb0f221db702aead9eefde776c2ad2ba066f4ddf8c12500c6a546",
+  "source_sha256": "c9c93b33585c8d603135acdfd26fcf90a77a3f700e480f06c0da66ab21cd5ea5",
+  "stripes_map_sha256": "31b22a24c467edb146f8c6fc291beccce1493617d90ff5bb6eff538c3af24715",
+  "cases": [
+    {
+      "candidate": false,
+      "mirror": false,
+      "terminal_enemy": false,
+      "binary_sha256": "98a8c546c653a6a9ae1aabdae284a22ef460ac3bc525bf842ed31223f3232c9f",
+      "fixture_map_sha256": "6fa6f1754517c6fe0b77650560ccb0cf7d7389ca084f10a33eb62b9a0f277ead",
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 2\nSONAR N 5859273484105945744\nSONAR E 5859273484072395280\nSONAR S 5859273484072395280\nSONAR W 1966023547505934864\nLOG PSTAT 0 2 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "MOVE N\nSONAR N 1966023547505934864\nSONAR E 5859273481388069268\nSONAR S 5859273481388069268\nSONAR W 5859273481388069268\nLOG PSTAT 0 3 len 2 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "MOVE E\nSONAR N 1966023547505934864\nSONAR E 5859273481421591185\nSONAR S 5859273482126234193\nSONAR W 5859273482126234193\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "MOVE W\nSONAR N 5859273482126234193\nSONAR E 1966023547505934864\nSONAR S 5859273482126234193\nSONAR W 5859273482126234193\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "output": "MOVE W\nSONAR N 5859273481656476240\nSONAR E 8081067554084831891\nSONAR S 5859273481656476240\nSONAR W 5859273481656476240\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 2,
+          "output": "MOVE S\nSONAR N 5859273482730254741\nSONAR E 5859273482730254741\nSONAR S 8081067554084831891\nSONAR W 5859273482730254741\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 3,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              16,
+              10
+            ],
+            [
+              16,
+              9
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              8
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "id": 0,
+          "head": [
+            11,
+            5
+          ],
+          "tail": [
+            12,
+            5
+          ]
+        },
+        {
+          "round": -1,
+          "id": 1,
+          "head": [
+            12,
+            6
+          ],
+          "tail": [
+            11,
+            6
+          ]
+        },
+        {
+          "round": -1,
+          "id": 2,
+          "head": [
+            16,
+            10
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "head": [
+            11,
+            4
+          ],
+          "tail": [
+            11,
+            5
+          ]
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "head": [
+            12,
+            7
+          ],
+          "tail": [
+            12,
+            6
+          ]
+        },
+        {
+          "round": 0,
+          "id": 3,
+          "head": [
+            18,
+            7
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "head": [
+            11,
+            3
+          ],
+          "tail": [
+            11,
+            4
+          ]
+        },
+        {
+          "round": 1,
+          "id": 1,
+          "head": [
+            12,
+            8
+          ],
+          "tail": [
+            12,
+            7
+          ]
+        },
+        {
+          "round": 1,
+          "id": 2,
+          "head": [
+            17,
+            10
+          ],
+          "tail": [
+            16,
+            9
+          ]
+        },
+        {
+          "round": 1,
+          "id": 3,
+          "head": [
+            17,
+            7
+          ],
+          "tail": [
+            18,
+            7
+          ]
+        },
+        {
+          "round": 2,
+          "id": 0,
+          "head": [
+            10,
+            3
+          ],
+          "tail": [
+            11,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 1,
+          "head": [
+            13,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ]
+        },
+        {
+          "round": 2,
+          "id": 3,
+          "head": [
+            17,
+            8
+          ],
+          "tail": [
+            17,
+            7
+          ]
+        }
+      ],
+      "deaths": [
+        [
+          2,
+          2,
+          "S"
+        ],
+        [
+          0,
+          3,
+          "A"
+        ],
+        [
+          1,
+          3,
+          "A"
+        ],
+        [
+          3,
+          3,
+          "A"
+        ]
+      ],
+      "notices": []
+    },
+    {
+      "candidate": false,
+      "mirror": true,
+      "terminal_enemy": false,
+      "binary_sha256": "98a8c546c653a6a9ae1aabdae284a22ef460ac3bc525bf842ed31223f3232c9f",
+      "fixture_map_sha256": "cf8b8ff8e88c1751677d507785b4caa7ef9e892b2bf040ec84d9c8fd2c0f5492",
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "SPLIT 2\nSONAR N 5859273483032199239\nSONAR E 5859273482998674058\nSONAR S 5859273482998674058\nSONAR W 17077852097129242758\nLOG PSTAT 0 2 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 0,
+          "output": "MOVE S\nSONAR N 14900924764787851267\nSONAR E 5859273484340875267\nSONAR S 5859273484340875267\nSONAR W 5859273484340875267\nLOG PSTAT 0 3 len 2 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "MOVE W\nSONAR N 17077852097129242758\nSONAR E 5859273481421586502\nSONAR S 5859273483468411014\nSONAR W 5859273483468411014\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "MOVE E\nSONAR N 5859273483468411014\nSONAR E 14900924764787851267\nSONAR S 5859273483468411014\nSONAR W 5859273483468411014\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "output": "MOVE E\nSONAR N 5859273483804004356\nSONAR E 14900924764787851267\nSONAR S 5859273483804004356\nSONAR W 5859273483804004356\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 2,
+          "output": "MOVE N\nSONAR N 5859273483804004356\nSONAR E 5859273483804004356\nSONAR S 17077852097129242758\nSONAR W 5859273483804004356\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 3,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 0,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ]
+          ],
+          "child_body": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "id": 0,
+          "head": [
+            11,
+            5
+          ],
+          "tail": [
+            12,
+            5
+          ]
+        },
+        {
+          "round": -1,
+          "id": 1,
+          "head": [
+            12,
+            6
+          ],
+          "tail": [
+            11,
+            6
+          ]
+        },
+        {
+          "round": -1,
+          "id": 2,
+          "head": [
+            7,
+            1
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "head": [
+            11,
+            4
+          ],
+          "tail": [
+            11,
+            5
+          ]
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "head": [
+            12,
+            7
+          ],
+          "tail": [
+            12,
+            6
+          ]
+        },
+        {
+          "round": 0,
+          "id": 3,
+          "head": [
+            5,
+            4
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "head": [
+            11,
+            3
+          ],
+          "tail": [
+            11,
+            4
+          ]
+        },
+        {
+          "round": 1,
+          "id": 1,
+          "head": [
+            12,
+            8
+          ],
+          "tail": [
+            12,
+            7
+          ]
+        },
+        {
+          "round": 1,
+          "id": 2,
+          "head": [
+            6,
+            1
+          ],
+          "tail": [
+            7,
+            2
+          ]
+        },
+        {
+          "round": 1,
+          "id": 3,
+          "head": [
+            6,
+            4
+          ],
+          "tail": [
+            5,
+            4
+          ]
+        },
+        {
+          "round": 2,
+          "id": 0,
+          "head": [
+            10,
+            3
+          ],
+          "tail": [
+            11,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 1,
+          "head": [
+            13,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ]
+        },
+        {
+          "round": 2,
+          "id": 3,
+          "head": [
+            6,
+            3
+          ],
+          "tail": [
+            6,
+            4
+          ]
+        }
+      ],
+      "deaths": [
+        [
+          2,
+          2,
+          "S"
+        ],
+        [
+          0,
+          3,
+          "A"
+        ],
+        [
+          1,
+          3,
+          "A"
+        ],
+        [
+          3,
+          3,
+          "A"
+        ]
+      ],
+      "notices": []
+    },
+    {
+      "candidate": true,
+      "mirror": false,
+      "terminal_enemy": false,
+      "binary_sha256": "1af2fb29896e265679f095a92f056749dc6f1d107896dd716c9af0ad402d14cd",
+      "fixture_map_sha256": "6fa6f1754517c6fe0b77650560ccb0cf7d7389ca084f10a33eb62b9a0f277ead",
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "LOG POCKET_SALVAGE 0 2 pickup 4\nMOVE E\nSONAR N 5859273481421591185\nSONAR E 5859273484072395280\nSONAR S 5859273484072395280\nSONAR W 1966023547505934864\nLOG PSTAT 0 2 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "LOG POCKET_SALVAGE 1 2 reverse 5\nSPLIT 3\nSONAR N 1966023547505934864\nSONAR E 5859273481421591185\nSONAR S 5859273482126234193\nSONAR W 5859273482126234193\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "MOVE N\nSONAR N 5859273481388069268\nSONAR E 1966023547505934864\nSONAR S 5859273481388069268\nSONAR W 5859273481388069268\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "output": "MOVE W\nSONAR N 5859273481656476240\nSONAR E 8081067554084831891\nSONAR S 5859273481656476240\nSONAR W 5859273481656476240\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 2,
+          "output": "MOVE W\nSONAR N 5859273484273721937\nSONAR E 5859273484273721937\nSONAR S 1966023547505934864\nSONAR W 5859273484273721937\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 3,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 1,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              17,
+              10
+            ],
+            [
+              16,
+              10
+            ]
+          ],
+          "child_body": [
+            [
+              18,
+              8
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              16,
+              9
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "id": 0,
+          "head": [
+            11,
+            5
+          ],
+          "tail": [
+            12,
+            5
+          ]
+        },
+        {
+          "round": -1,
+          "id": 1,
+          "head": [
+            12,
+            6
+          ],
+          "tail": [
+            11,
+            6
+          ]
+        },
+        {
+          "round": -1,
+          "id": 2,
+          "head": [
+            16,
+            10
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "head": [
+            11,
+            4
+          ],
+          "tail": [
+            11,
+            5
+          ]
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "head": [
+            12,
+            7
+          ],
+          "tail": [
+            12,
+            6
+          ]
+        },
+        {
+          "round": 0,
+          "id": 2,
+          "head": [
+            17,
+            10
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "head": [
+            11,
+            3
+          ],
+          "tail": [
+            11,
+            4
+          ]
+        },
+        {
+          "round": 1,
+          "id": 1,
+          "head": [
+            12,
+            8
+          ],
+          "tail": [
+            12,
+            7
+          ]
+        },
+        {
+          "round": 1,
+          "id": 3,
+          "head": [
+            18,
+            7
+          ],
+          "tail": [
+            17,
+            8
+          ]
+        },
+        {
+          "round": 2,
+          "id": 0,
+          "head": [
+            10,
+            3
+          ],
+          "tail": [
+            11,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 1,
+          "head": [
+            13,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ]
+        },
+        {
+          "round": 2,
+          "id": 3,
+          "head": [
+            17,
+            7
+          ],
+          "tail": [
+            18,
+            8
+          ]
+        }
+      ],
+      "deaths": [
+        [
+          2,
+          2,
+          "S"
+        ],
+        [
+          0,
+          3,
+          "A"
+        ],
+        [
+          1,
+          3,
+          "A"
+        ],
+        [
+          3,
+          3,
+          "A"
+        ]
+      ],
+      "notices": []
+    },
+    {
+      "candidate": true,
+      "mirror": true,
+      "terminal_enemy": false,
+      "binary_sha256": "1af2fb29896e265679f095a92f056749dc6f1d107896dd716c9af0ad402d14cd",
+      "fixture_map_sha256": "cf8b8ff8e88c1751677d507785b4caa7ef9e892b2bf040ec84d9c8fd2c0f5492",
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "LOG POCKET_SALVAGE 0 2 pickup 4\nMOVE W\nSONAR N 5859273481421586502\nSONAR E 5859273482998674058\nSONAR S 5859273482998674058\nSONAR W 17077852097129242758\nLOG PSTAT 0 2 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "MOVE N\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "MOVE S\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "LOG POCKET_SALVAGE 1 2 reverse 5\nSPLIT 3\nSONAR N 17077852097129242758\nSONAR E 5859273481421586502\nSONAR S 5859273483468411014\nSONAR W 5859273483468411014\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "MOVE S\nSONAR N 5859273484340875267\nSONAR E 14900924764787851267\nSONAR S 5859273484340875267\nSONAR W 5859273484340875267\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "output": "MOVE E\nSONAR N 5859273483804004356\nSONAR E 14900924764787851267\nSONAR S 5859273483804004356\nSONAR W 5859273483804004356\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 2,
+          "output": "MOVE E\nSONAR N 5859273481320931462\nSONAR E 5859273481320931462\nSONAR S 14900924764787851267\nSONAR W 5859273481320931462\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 3,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 1,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              6,
+              1
+            ],
+            [
+              7,
+              1
+            ]
+          ],
+          "child_body": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "id": 0,
+          "head": [
+            11,
+            5
+          ],
+          "tail": [
+            12,
+            5
+          ]
+        },
+        {
+          "round": -1,
+          "id": 1,
+          "head": [
+            12,
+            6
+          ],
+          "tail": [
+            11,
+            6
+          ]
+        },
+        {
+          "round": -1,
+          "id": 2,
+          "head": [
+            7,
+            1
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "head": [
+            11,
+            4
+          ],
+          "tail": [
+            11,
+            5
+          ]
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "head": [
+            12,
+            7
+          ],
+          "tail": [
+            12,
+            6
+          ]
+        },
+        {
+          "round": 0,
+          "id": 2,
+          "head": [
+            6,
+            1
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "head": [
+            11,
+            3
+          ],
+          "tail": [
+            11,
+            4
+          ]
+        },
+        {
+          "round": 1,
+          "id": 1,
+          "head": [
+            12,
+            8
+          ],
+          "tail": [
+            12,
+            7
+          ]
+        },
+        {
+          "round": 1,
+          "id": 3,
+          "head": [
+            5,
+            4
+          ],
+          "tail": [
+            6,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 0,
+          "head": [
+            10,
+            3
+          ],
+          "tail": [
+            11,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 1,
+          "head": [
+            13,
+            8
+          ],
+          "tail": [
+            12,
+            8
+          ]
+        },
+        {
+          "round": 2,
+          "id": 3,
+          "head": [
+            6,
+            4
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        }
+      ],
+      "deaths": [
+        [
+          2,
+          2,
+          "S"
+        ],
+        [
+          0,
+          3,
+          "A"
+        ],
+        [
+          1,
+          3,
+          "A"
+        ],
+        [
+          3,
+          3,
+          "A"
+        ]
+      ],
+      "notices": []
+    },
+    {
+      "candidate": true,
+      "mirror": true,
+      "terminal_enemy": true,
+      "binary_sha256": "1af2fb29896e265679f095a92f056749dc6f1d107896dd716c9af0ad402d14cd",
+      "fixture_map_sha256": "91637a78f30de3a669e53973d056aff1a85ca7c9ba0fc4c1d4822919c569b783",
+      "replies": [
+        {
+          "id": 0,
+          "round": 0,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 0,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 0,
+          "output": "LOG POCKET_SALVAGE 0 2 pickup 4\nMOVE W\nSONAR N 5859273481421586502\nSONAR E 5859273482998674058\nSONAR S 5859273482998674058\nSONAR W 17077852097129242758\nLOG PSTAT 0 2 len 4 seen 0 guards 0 heard 0 rejected 0 yield 0\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 1,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 1,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 1,
+          "output": "SPLIT 2\nSONAR N 17077852097129242758\nSONAR E 5859273481421586502\nSONAR S 5859273485116772996\nSONAR W 5859273485116772996\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 1,
+          "output": "MOVE S\nSONAR N 5859273484340875267\nSONAR E 14900924764787851267\nSONAR S 5859273484340875267\nSONAR W 5859273484340875267\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 2,
+          "output": "MOVE W\nENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 2,
+          "output": "MOVE E\nENDTURN\n"
+        },
+        {
+          "id": 2,
+          "round": 2,
+          "output": "MOVE E\nSONAR N 5859273484579906181\nSONAR E 14900924764787851267\nSONAR S 5859273484579906181\nSONAR W 5859273484579906181\nPROTOCOL 3\n"
+        },
+        {
+          "id": 3,
+          "round": 2,
+          "output": "MOVE E\nSONAR N 5859273482931544199\nSONAR E 5859273482931544199\nSONAR S 14900924764787851267\nSONAR W 5859273482931544199\nPROTOCOL 3\n"
+        },
+        {
+          "id": 0,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 1,
+          "round": 3,
+          "output": "ENDTURN\n"
+        },
+        {
+          "id": 3,
+          "round": 3,
+          "output": "ENDTURN\n"
+        }
+      ],
+      "splits": [
+        {
+          "round": 1,
+          "parent": 2,
+          "child": 3,
+          "parent_body": [
+            [
+              6,
+              1
+            ],
+            [
+              7,
+              1
+            ],
+            [
+              7,
+              2
+            ]
+          ],
+          "child_body": [
+            [
+              5,
+              3
+            ],
+            [
+              6,
+              3
+            ]
+          ]
+        }
+      ],
+      "moves": [
+        {
+          "round": -1,
+          "id": 0,
+          "head": [
+            21,
+            1
+          ],
+          "tail": [
+            22,
+            1
+          ]
+        },
+        {
+          "round": -1,
+          "id": 1,
+          "head": [
+            2,
+            10
+          ],
+          "tail": [
+            1,
+            10
+          ]
+        },
+        {
+          "round": -1,
+          "id": 2,
+          "head": [
+            7,
+            1
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 0,
+          "id": 0,
+          "head": [
+            20,
+            1
+          ],
+          "tail": [
+            21,
+            1
+          ]
+        },
+        {
+          "round": 0,
+          "id": 1,
+          "head": [
+            3,
+            10
+          ],
+          "tail": [
+            2,
+            10
+          ]
+        },
+        {
+          "round": 0,
+          "id": 2,
+          "head": [
+            6,
+            1
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 1,
+          "id": 0,
+          "head": [
+            19,
+            1
+          ],
+          "tail": [
+            20,
+            1
+          ]
+        },
+        {
+          "round": 1,
+          "id": 1,
+          "head": [
+            4,
+            10
+          ],
+          "tail": [
+            3,
+            10
+          ]
+        },
+        {
+          "round": 1,
+          "id": 3,
+          "head": [
+            5,
+            4
+          ],
+          "tail": [
+            5,
+            3
+          ]
+        },
+        {
+          "round": 2,
+          "id": 0,
+          "head": [
+            18,
+            1
+          ],
+          "tail": [
+            19,
+            1
+          ]
+        },
+        {
+          "round": 2,
+          "id": 1,
+          "head": [
+            5,
+            10
+          ],
+          "tail": [
+            4,
+            10
+          ]
+        },
+        {
+          "round": 2,
+          "id": 3,
+          "head": [
+            6,
+            4
+          ],
+          "tail": [
+            5,
+            4
+          ]
+        }
+      ],
+      "deaths": [
+        [
+          2,
+          2,
+          "S"
+        ],
+        [
+          0,
+          3,
+          "A"
+        ],
+        [
+          1,
+          3,
+          "A"
+        ],
+        [
+          3,
+          3,
+          "A"
+        ]
+      ],
+      "notices": []
+    }
+  ]
+}

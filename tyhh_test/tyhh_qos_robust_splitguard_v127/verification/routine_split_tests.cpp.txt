@@ -1,0 +1,111 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct SplitFixture {
+    Controller ct{2, Team::A, Direction::NORTH, Vision{}, 64};
+
+    void setup(std::vector<int> const& body, int id = 2, int population = 8) {
+        W = H = 32; NC = W * H; LEN = int(body.size()); HERE = body[0];
+        MYID = id; MYTEAM = Team::A; POP = population; ROUND = 100; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team::A; ct.head.dir = Direction::NORTH; CT = &ct;
+        queenSeededScout = false;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); sightings.clear();
+        friendStatuses.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail.assign(body.rbegin(), body.rend()); trailId = MYID;
+        for (int i = 0; i < LEN; ++i) {
+            int c = body[i]; occStamp[c] = STAMP; occId[c] = MYID;
+            occMine[c] = true; occHead[c] = i == 0; occFree[c] = LEN + 1 - i;
+            occPart[c] = int(parts.size());
+            parts.push_back({c, MYID, 0, true, i == 0});
+        }
+        idCount.push_back({MYID, LEN});
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999; chosenAction = {};
+        consolidateObserver = -1; consolidateHoldUntil = -1;
+    }
+
+    void close(int c) {
+        for (int d = 0; d < 4; ++d) edgeT[c * 4 + d] = E_KELP;
+    }
+};
+
+int main() {
+    W = H = 32;
+    const std::vector<int> line6{cid(16, 8), cid(16, 9), cid(16, 10),
+                               cid(16, 11), cid(16, 12), cid(16, 13)};
+    const std::vector<int> u8{cid(16, 8), cid(16, 9), cid(17, 9), cid(17, 8),
+                            cid(17, 7), cid(16, 7), cid(15, 7), cid(15, 8)};
+    SplitFixture f;
+
+    f.setup(line6);
+    assert(routineSplitSafeParent(2));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 2); // Ordinary safe expansion is preserved.
+
+    f.setup(u8);
+    auto p = projectAction({{}, 2, false, false});
+    assert(p.len == 6 && p.body.size() == 8 && tailCanEscape());
+    assert(!routineSplitSafeParent(2));
+    p.body.resize(6);
+    assert(projectedEscape(p)); // Dropping child cells would falsely open the tail exit.
+    takeTurn(f.ct);
+    assert(chosenAction.split == 6); // Rejected routine split reaches unchanged emergency scorer.
+
+    f.setup(line6);
+    f.close(ownSeg(0));
+    assert(projectedEscape(projectAction({{}, 2, false, false})));
+    assert(!tailCanEscape() && !routineSplitSafeParent(2));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 0 && projectAction(chosenAction).survives);
+
+    f.setup(line6);
+    for (int d = 0; d < 4; ++d)
+        if (geo(HERE, d) != line6[1]) edgeT[HERE * 4 + d] = E_UNKNOWN;
+    assert(!routineSplitSafeParent(2)); // Unknown geometry is not a proven parent exit.
+
+    f.setup(line6);
+    for (int d = 0; d < 4; ++d) visStamp[geo(HERE, d)] = 0;
+    assert(!routineSplitSafeParent(2)); // Learned geometry alone is insufficient.
+
+    f.setup({cid(16, 8), cid(16, 9), cid(16, 10), cid(16, 11)});
+    assert(routineSplitSafeParent(2));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 2); // Nonqueen parent length2 remains legal.
+
+    f.setup(u8, 0, 1);
+    assert(isQueen() && !routineSplitSafeParent(2));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 2 && queenSeededScout); // Existing bootstrap proposal unchanged.
+
+    f.setup(line6);
+    f.close(HERE);
+    assert(!routineSplitSafeParent(2) && tailCanEscape());
+    chooseScoredAction(f.ct, false, false, false, -1);
+    assert(chosenAction.split == 4); // Emergency reverse split remains available.
+
+    f.setup(line6);
+    f.close(HERE); f.close(ownSeg(0));
+    assert(!routineSplitSafeParent(2) && !tailCanEscape());
+    chooseScoredAction(f.ct, false, false, false, -1);
+    assert(chosenAction.split == 2); // Existing last-resort split was not gated.
+
+    f.setup({cid(16, 8), cid(16, 9), cid(17, 9), cid(24, 24)});
+    assert(!splitSafe(2));
+    takeTurn(f.ct);
+    assert(chosenAction.split == 0); // Existing portal-bridge rejection remains in caller.
+
+    std::cout << "routine_split: 10 parent/child/unchanged-policy cases passed\n";
+}

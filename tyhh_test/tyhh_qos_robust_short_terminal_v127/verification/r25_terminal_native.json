@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "scope": "Fresh-process native source-bound action fixture; no competition",
+  "source_state": "/home/tyhh/SW76_-/experiment_results/xxqz_robust_20261004/r25_terminal_actual_state.json",
+  "source_state_sha256": "eeb2d0917751edd7b018b6606ae6a5d7b3349fe9a796c39c94fbe4843f9edcb0",
+  "raw_input_sha256": "ef5eff379593964e41aed03e42432a9f5f2e660f08d58e2c84c5705346170163",
+  "spawn_sha256": "3e61c61e1ae632f4100ee3cd479ba967578994703ae7b3d08f80869cd3eda661",
+  "parent_main_sha256": "ce879d9510e5a4844f24af61b1d2db4b67e22061b27e46316cbd892fe4f670dc",
+  "candidate_main_sha256": "2f682b33094ce2ed644cefd730cbcaad2ed400999f99c813c3579185db10e0a9",
+  "candidate_module_sha256": "74f24a1a78d63371543cdd985cd6a53b0bf9860badbe05234bf35205d86b6c52",
+  "target": {
+    "round": 188,
+    "id": 75,
+    "original_action": "MOVE S",
+    "candidate_action": "MOVE E"
+  },
+  "arms": [
+    {
+      "label": "H14",
+      "binary_sha256": "98a8c546c653a6a9ae1aabdae284a22ef460ac3bc525bf842ed31223f3232c9f",
+      "action": "MOVE S",
+      "output": "MOVE S\nSONAR N 5859273488904250659\nSONAR E 5859273488904250659\nSONAR S 5859273488904250659\nSONAR W 5859273488904250659\nPROTOCOL 3\n",
+      "stderr": "",
+      "fresh_process": true
+    },
+    {
+      "label": "R25",
+      "binary_sha256": "3cae09d054780153ff9f56e12b437406dafc29d4bb120ec787b9a1cdd3ee2542",
+      "action": "MOVE E",
+      "output": "MOVE E\nSONAR N 5859273488904250659\nSONAR E 5859273488904250659\nSONAR S 5859273488904250659\nSONAR W 5859273488904250659\nPROTOCOL 3\n",
+      "stderr": "",
+      "fresh_process": true
+    }
+  ],
+  "limitations": [
+    "Fresh processes receive the exact target input but no prior-round persistent memory.",
+    "This proves action selection at the registered input, not a counterfactual next-round escape.",
+    "No competitive win-rate, hidden-body, future-enemy or global safety claim is made."
+  ]
+}

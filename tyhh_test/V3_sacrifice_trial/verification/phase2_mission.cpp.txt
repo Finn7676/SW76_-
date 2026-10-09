@@ -1,0 +1,62 @@
+#include "planner.hpp"
+#include "observer.hpp"
+#include <cassert>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::NORTH, Vision{}, 64};
+
+    Fixture() {
+        turn.here = 60;
+        turn.length = ct.length = 2;
+        turn.population = ct.unit_count = 10;
+        turn.myId = 7;
+        turn.round = 10;
+        ct.sonar_protocol3 = true;
+        occupancy.beginTurn();
+        std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+        topology.setEdge(turn.here, 1, E_PORTAL, 23);
+    }
+};
+
+int main() {
+#if FEAT_V32_SCOUT_MISSION
+    Fixture f;
+    assert(RolePolicy::assign(f.config, f.turn, f.world).scout);
+    f.planner.choose(f.ct);
+    assert(f.planner.currentMission().type == MissionType::SCOUT_PORTAL);
+    assert(f.planner.currentMission().targetId == 23);
+
+    // A tactical interruption does not cancel the portal intent.
+    f.turn.enemyHeads = {62};
+    f.turn.enemyHeadLen = {2};
+    f.planner.choose(f.ct);
+    assert(f.planner.currentMission().targetId == 23);
+
+    // Crossing/reporting the target terminates the mission.
+    f.world.exploredPortals.insert(23);
+    f.planner.choose(f.ct);
+    assert(f.planner.currentMission().type == MissionType::NONE);
+#endif
+
+#if FEAT_V32_ENEMY_RELEVANCE
+    Fixture far;
+    far.turn.enemyHeads = {0};
+    far.turn.enemyHeadLen = {2};
+    far.planner.choose(far.ct);
+    assert(far.planner.situation().enemyVisible);
+    assert(!far.planner.situation().enemyRelevant);
+    assert(!far.planner.situation().immediateThreat);
+#endif
+    return 0;
+}

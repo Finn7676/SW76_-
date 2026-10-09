@@ -1,0 +1,50 @@
+#define main path_bot_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+void resetWorld() {
+    W = H = 12; NC = W * H; ROUND = 100; LEN = 4; POP = 8; MYID = 3;
+    HERE = cid(6, 6); STAMP = 1;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occFree.assign(NC, INF); occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    bfsStamp = 0; routePearls.clear(); routeScores.clear();
+    portalEnds.clear(); portalKeys.clear(); parts.clear(); friendParts.clear(); idCount.clear(); friendStatuses.clear();
+    prepareRouteQuality();
+}
+
+int main() {
+    resetWorld();
+    visPearl[cid(7, 6)] = 1;
+    assert(bfsFirstDir([](int c) { return c == cid(6, 4) || c == cid(8, 6); }, 24, 320) == 1);
+
+    resetWorld();
+    visPearl[cid(7, 6)] = 1;
+    // Two routes to the same cell must retain the richer one, not queue order.
+    assert(bfsFirstDir([](int c) { return c == cid(7, 5); }, 24, 320) == 1);
+
+    resetWorld();
+    visPearl[cid(7, 6)] = 1;
+    // More pearls never override a strictly shorter target.
+    assert(bfsFirstDir([](int c) { return c == cid(6, 5) || c == cid(8, 6); }, 24, 320) == 0);
+
+    resetWorld();
+    friendParts.push_back(cid(6, 2)); prepareRouteQuality();
+    assert(bfsFirstDir([](int c) { return c == cid(6, 4) || c == cid(8, 6); }, 24, 320) == 1);
+
+    resetWorld();
+    int head = cid(6, 5);
+    occStamp[head] = STAMP; occMine[head] = occHead[head] = 1; occId[head] = 9; occFree[head] = 0;
+    idCount.push_back({9, 2});
+    assert(bfsFirstDir([=](int c) { return c == head; }, 1, 320) == -1);
+
+    resetWorld();
+    setEdge(HERE, 0, E_PORTAL, 4);
+    assert(bfsFirstDir([](int c) { return c == cid(6, 5); }, 1, 320) == -1);
+    assert(bfsFirstDir([](int c) { return c == cid(0, 0); }, 2, 320) == -1);
+    std::cout << "Ordinary route scenarios passed\n";
+}

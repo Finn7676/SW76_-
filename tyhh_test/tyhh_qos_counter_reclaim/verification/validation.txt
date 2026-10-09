@@ -1,0 +1,29 @@
+2026-10-01; Linux x86_64; cwd /home/tyhh/SW76_-
+
+Parent: tyhh_test/tyhh_qos_relay_counter. Production files copied before
+changes; `main.cpp` differs only by importing reclaim.hpp, gating every
+proactive adjacent/sprint target individually, restoring the ungated target
+for the explicit no-safe-exit fallback, trying safe clue collection before
+ordinary expansion, and updating actual observation clues each turn.
+
+Native C++20 build:
+PATH=/tmp/clang-toolchain:$PATH python3 -c 'from pathlib import Path; from unswbc.project import Project; p=Project(Path("tyhh_test/tyhh_qos_counter_reclaim"), "c++", Path("/tmp/reclaim-build"), ["*.cpp", "*.hpp", "*.cc", "*.hh", "*.c", "*.h"]); print(p.compile())'
+Exit 0; binary emitted to /tmp/reclaim-build.
+
+Focused fixture:
+clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ tyhh_test/tyhh_qos_counter_reclaim/verification/reclaim_tests.cpp.txt -o /tmp/reclaim_tests
+ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 /tmp/reclaim_tests
+Exit 0; assertions cover own/enemy/no third-party, blockers, known and unresolved
+portal paths, equal collection value, multiple targets, forced last-resort
+fallback, no inference from disappearance or natural pearl timer, observed new
+death pearl, safe/unsafe collection, and the sprint gate. No sanitizer finding.
+Compiler emitted the inherited warnings for the pre-existing unused
+enemyEscapes function and renamed bot_program_main missing return.
+
+Installed-engine death/drop check:
+python3 tyhh_test/tyhh_qos_counter_reclaim/verification/death_engine.py
+Exit 0; six EngineModule cases confirmed dropped pearls on head-index 0,2,4
+for length 2/3/4/5/6 and actual pearl consumption by a living receiver.
+
+This verifies mechanism boundaries, not competitive improvement. Root owns
+the 40-match tournament; no competition games were launched by this agent.

@@ -1,0 +1,148 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct EscapeFixture {
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+    int landing = -1;
+    void put(int c, int id, bool mine, bool head, int freeAt) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+    }
+    void portal(int from, int d, int to, int pid) {
+        edgeT[from * 4 + d] = E_PORTAL; edgePid[from * 4 + d] = pid;
+        learnedExit[from * 4 + d] = to;
+    }
+    void reset(int length = 2, bool viaPortal = false) {
+        W = H = 16; NC = W * H; HERE = cid(8, 8); LEN = length; POP = 10;
+        MYID = 7; MYTEAM = Team::A; ROUND = 100; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount = {{MYID, LEN}}; enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); sightings.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail.clear(); pendingPath.clear(); trailId = MYID;
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = teamFrontier = 0; chosenAction = {};
+        for (int i = 0; i < LEN; ++i) put(HERE - i, MYID, true, i == 0, LEN - i + 1);
+        for (int i = LEN - 1; i >= 0; --i) trail.push_back(HERE - i);
+        landing = viaPortal ? cid(3, 3) : HERE + 1;
+        if (viaPortal) { portal(HERE, 1, landing, 17); portal(landing, 3, HERE, 17); }
+        else setEdge(HERE, 1, E_OPEN, -1);
+        visPearl[landing] = 1; visPearls.push_back(landing);
+    }
+    void alternative() {
+        setEdge(HERE, 0, E_OPEN, -1);
+        setEdge(HERE - W, 0, E_OPEN, -1);
+    }
+    int choose(bool early = false) {
+        ROUND = early ? 50 : 100;
+        takeTurn(ct);
+        assert(chosenAction.split == 0 && chosenAction.dirs.size() == 1);
+        return chosenAction.dirs[0];
+    }
+};
+
+int main() {
+    EscapeFixture f;
+    for (bool viaPortal : {false, true}) {
+        f.reset(2, viaPortal); f.alternative();
+        assert(onwardSafe(f.landing, true) == 0);
+        assert(knownShortDeadEndEntry(1));
+        assert(avoidKnownShortDeadEnd(1));
+        assert(!avoidKnownShortDeadEnd(0));
+        assert(f.choose() == 0); // 2->3 pearl trap rejected by ordinary scorer
+        f.reset(2, viaPortal); f.alternative();
+        assert(f.choose(true) == 0); // ordinary / early-portal parity
+
+        f.reset(3, viaPortal); f.alternative();
+        assert(onwardSafe(f.landing, true) == 0);
+        assert(!knownShortDeadEndEntry(1));
+        assert(!avoidKnownShortDeadEnd(1));
+        assert(f.choose() == 1); // 3->4 remains eligible
+        f.reset(3, viaPortal); f.alternative();
+        assert(f.choose(true) == 1);
+
+        f.reset(2, viaPortal);
+        assert(knownShortDeadEndEntry(1));
+        assert(!avoidKnownShortDeadEnd(1));
+        assert(f.choose() == 1); // no alternative preserves original move
+        f.reset(2, viaPortal);
+        assert(f.choose(true) == 1);
+
+        f.reset(2, viaPortal); f.alternative();
+        visStamp[f.landing] = 0;
+        assert(!knownShortDeadEndEntry(1)); // pearl status/landing not observed
+        assert(!avoidKnownShortDeadEnd(1));
+
+        f.reset(2, viaPortal); f.alternative();
+        edgeT[f.landing * 4] = E_UNKNOWN;
+        f.put(geo(f.landing, 0), 9, false, false, INF);
+        assert(onwardSafe(f.landing, true) == 0);
+        assert(!knownShortDeadEndEntry(1)); // zero count is not proof with unknown edge
+
+        f.reset(2, viaPortal); f.alternative();
+        f.portal(f.landing, 0, -1, 19);
+        assert(onwardSafe(f.landing, true) > 0);
+        assert(!knownShortDeadEndEntry(1)); // unresolved onward portal preserved
+
+        f.reset(2, viaPortal); f.alternative();
+        visStamp[HERE - W] = 0;
+        assert(!avoidKnownShortDeadEnd(1)); // invisible alternative is not known safe
+
+        f.reset(2, viaPortal); f.alternative();
+        edgeT[HERE * 4] = E_UNKNOWN;
+        assert(!avoidKnownShortDeadEnd(1)); // unknown entry is not known safe
+
+        f.reset(2, viaPortal);
+        f.portal(HERE, 0, -1, 23);
+        assert(!avoidKnownShortDeadEnd(1)); // unresolved alternative is not known safe
+
+        f.reset(2, viaPortal); f.alternative();
+        f.put(HERE - W, 9, true, false, INF); idCount.push_back({9, 8});
+        assert(!avoidKnownShortDeadEnd(1)); // occupied/long-friendly alternative rejected
+
+        f.reset(2, viaPortal);
+        setEdge(HERE, 0, E_OPEN, -1);
+        assert(knownShortDeadEndEntry(0));
+        assert(!avoidKnownShortDeadEnd(0));
+        assert(!avoidKnownShortDeadEnd(1)); // two equal traps do not exclude each other
+        assert(f.choose() == 1);
+
+        f.reset(2, viaPortal); f.alternative();
+        visPearl[f.landing] = 0; visPearls.clear();
+        assert(knownShortDeadEndEntry(1)); // non-eating length-two trap also in scope
+        assert(avoidKnownShortDeadEnd(1));
+        assert(f.choose() == 0);
+    }
+
+    f.reset(2, true); f.alternative(); learnedExit[HERE * 4 + 1] = -1;
+    assert(!knownShortDeadEndEntry(1));
+    assert(!avoidKnownShortDeadEnd(1));
+    assert(f.choose(true) == 1); // original unknown-portal exploration survives
+
+    f.reset(2);
+    int alt = HERE - W;
+    f.portal(HERE, 0, alt, 31); setEdge(alt, 0, E_OPEN, -1);
+    portalClaimRound[31] = ROUND;
+    assert(!avoidKnownShortDeadEnd(1)); // claimed alternative would be ineligible
+    occupiedPortalId = 31;
+    assert(avoidKnownShortDeadEnd(1)); // scorer permits one's own claimed room
+
+    f.reset(2);
+    setEdge(HERE, 1, E_KELP, -1); setEdge(HERE, 3, E_OPEN, -1);
+    visPearls.clear(); visPearl[f.landing] = 0;
+    assert(f.choose() == 3); // last-resort neck fallback deliberately unchanged
+
+    std::cout << "escape known-dead-end / alternative / portal boundary assertions passed\n";
+}

@@ -25,6 +25,7 @@ struct Constants {
     static constexpr int VISION_SIZE = 2 * VISION_RADIUS + 1;
     static constexpr int INITIAL_LENGTH = 3;
     static constexpr int MIN_SIZE = 2;
+    static constexpr int PROTOCOL_MAJOR = 3;
 };
 
 // The protocol's direction letters.
@@ -289,6 +290,14 @@ class Vision {
     }
 };
 
+struct SonarEchoes {
+    int kelp = 0;
+    int ally = 0;
+    int ally_head = 0;
+    int enemy = 0;
+    int enemy_head = 0;
+};
+
 // What the dragon knows about itself and what it can see this turn.
 class Controller {
   public:
@@ -297,10 +306,11 @@ class Controller {
     int unit_limit;
     DragonPart head;
     Vision vision;
-    std::vector<std::uint32_t> sonar_messages;
+    std::vector<std::uint64_t> sonar_messages;
+    SonarEchoes sonar_echoes;
 
     Controller(int dragon_id, Team team, Direction direction, Vision vision, int unit_limit,
-               std::vector<std::uint32_t> sonar_messages = {})
+               std::vector<std::uint64_t> sonar_messages = {})
         : unit_limit(unit_limit), head(Position(0, 0), dragon_id, team, direction, true),
           vision(std::move(vision)), sonar_messages(std::move(sonar_messages)) {}
 
@@ -368,9 +378,11 @@ class Controller {
         std::cout << "INDICATOR " << message << "\n";
     }
     // This turn's messages, in the order they were sent.
-    std::vector<std::uint32_t> get_sonar_messages() const { return sonar_messages; }
-    // Pings along the dragon's facing once the turn's action is applied.
-    // Refuses a value that is not an unsigned 32-bit integer.
+    std::vector<std::uint64_t> get_sonar_messages() const { return sonar_messages; }
+    SonarEchoes get_sonar_echoes() const { return sonar_echoes; }
+    void send_sonar(Direction direction, std::uint64_t message) {
+        std::cout << "SONAR " << static_cast<char>(direction.value) << " " << message << "\n";
+    }
     bool send_sonar(std::uint64_t message) {
         if (message > UINT32_MAX)
             return false;
@@ -502,14 +514,24 @@ inline bool update(Controller& controller, Game& game_state) {
         auto const line = parse_util::read_data_line();
         if (line.size() != 1)
             throw std::runtime_error("missing sonar message value");
-        controller.sonar_messages.push_back(parse_util::parse_integer<std::uint32_t>(line.front()));
+        controller.sonar_messages.push_back(parse_util::parse_integer<std::uint64_t>(line.front()));
+    }
+
+    auto first_tile_values = parse_util::read_data_line();
+    controller.sonar_echoes = {};
+    if (first_tile_values.front() == "ECHOES") {
+        if (first_tile_values.size() != 6)
+            throw std::runtime_error("ECHOES requires 5 values");
+        auto const echo = [&](std::size_t index) { return parse_util::parse_integer<int>(first_tile_values[index]); };
+        controller.sonar_echoes = {echo(1), echo(2), echo(3), echo(4), echo(5)};
+        first_tile_values = parse_util::read_data_line();
     }
 
     std::vector<Tile> tiles;
     std::unordered_map<Position, std::size_t, PositionHash> tile_indices;
     tiles.reserve(Constants::VISION_SIZE * Constants::VISION_SIZE);
     for (int index = 0; index < Constants::VISION_SIZE * Constants::VISION_SIZE; index++) {
-        auto const values = parse_util::read_data_line();
+        auto const values = index == 0 ? first_tile_values : parse_util::read_data_line();
         if (values.size() != 4)
             throw std::runtime_error("each vision tile requires: x y hasPearl pearlIn");
 
@@ -607,7 +629,7 @@ inline bool update(Controller& controller, Game& game_state) {
 
 // Ends the turn and flushes, which is the one write a turn costs.
 inline void end_turn() {
-    std::cout << "ENDTURN" << std::endl;
+    std::cout << "PROTOCOL " << Constants::PROTOCOL_MAJOR << "\nENDTURN" << std::endl;
 }
 
 } // end namespace unswbc

@@ -1,0 +1,78 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef REAR_CASCADE
+#define REAR_CASCADE 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+
+struct Fixture {
+    Controller ct{3, Team::B, Direction::SOUTH, Vision{}, 64};
+    void setup(int length, int round = 100, int id = 3, int population = 8) {
+        W = H = 32; NC = W * H; LEN = length; HERE = cid(16, 8);
+        MYID = id; MYTEAM = Team::B; POP = population; ROUND = round; STAMP = 1;
+        TARGET = 62; ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, -1); pearlInfo.assign(NC, -1000);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; consolidateObserver = -1; consolidateHoldUntil = -1;
+        queenFeedObserver = -1; queenFeedFirstRound = queenFeedLastEnemy = -1;
+        queenSeededScout = false; yieldStreak = 0; chosenAction = {};
+        std::vector<int> body;
+        for (int i = 0; i < LEN; ++i) body.push_back(cid(16, 8 + i));
+        loadBody(body);
+    }
+    void loadBody(std::vector<int> const& body) {
+        LEN = int(body.size()); HERE = body[0]; ct.length = LEN;
+        trail.assign(body.rbegin(), body.rend()); trailId = MYID;
+        std::fill(occStamp.begin(), occStamp.end(), 0);
+        parts.clear(); idCount = {{MYID, LEN}};
+        for (int i = 0; i < LEN; ++i) {
+            int c = body[i]; occStamp[c] = STAMP; occId[c] = MYID;
+            occMine[c] = true; occHead[c] = i == 0; occFree[c] = LEN + 1 - i;
+            parts.push_back({c, MYID, 2, true, i == 0});
+        }
+    }
+    void turn() { takeTurn(ct); }
+};
+
+int main() {
+    Fixture f;
+    f.setup(5); f.turn(); assert(chosenAction.split == (REAR_CASCADE ? 3 : 2));
+    f.setup(7); f.turn(); assert(chosenAction.split == (REAR_CASCADE ? 5 : 2));
+    f.setup(14); f.turn(); assert(chosenAction.split == (REAR_CASCADE ? 12 : 2));
+    f.setup(4); f.turn(); assert(chosenAction.split == 2);
+    f.setup(7, 349); f.turn(); assert(chosenAction.split == (REAR_CASCADE ? 5 : 2));
+    f.setup(7, 350); f.turn(); assert(chosenAction.split == 2);
+    f.setup(7, 300, 8); f.turn(); assert(chosenAction.split == 0);
+    f.setup(23); f.turn(); assert(chosenAction.split == 0);
+    f.setup(7, 350); consolidateHoldUntil = 400; f.turn(); assert(chosenAction.split == 0);
+    f.setup(5, 10); edgeT[HERE * 4 + 1] = E_PORTAL; edgePid[HERE * 4 + 1] = 9;
+    f.turn(); assert(chosenAction.split == 0 && chosenAction.dirs == std::vector<int>{1});
+    f.setup(7, 100, 1); f.turn(); assert(chosenAction.split == 0);
+    f.setup(7, 0, 1, 1); f.turn(); assert(chosenAction.split == 2 && queenSeededScout);
+    f.setup(7, 100, 3, 62); f.turn(); assert(chosenAction.split == 0);
+    f.setup(7); f.ct.unit_count = f.ct.unit_limit; f.turn(); assert(chosenAction.split == 0);
+    f.setup(7);
+    f.loadBody({cid(16,8),cid(22,8),cid(22,9),cid(22,10),cid(22,11),cid(22,12),cid(22,13)});
+    assert(splitSafe(2) && !splitSafe(5)); f.turn(); assert(chosenAction.split == 2);
+    f.setup(7);
+    f.loadBody({cid(16,8),cid(16,9),cid(16,10),cid(16,11),cid(16,12),cid(16,13),cid(22,13)});
+    assert(!splitSafe(2)); f.turn(); assert(chosenAction.split == 0);
+    f.setup(7, 100, 3, 62);
+    for (int d = 0; d < 4; ++d) edgeT[HERE * 4 + d] = E_KELP;
+    chooseScoredAction(f.ct, false, false, false, -1);
+    assert(chosenAction.split == 5);
+    std::cout << "rear cascade: 17 candidate/control growth and fallback boundaries passed\n";
+}

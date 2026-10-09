@@ -1,0 +1,76 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef ROOM_BOUND
+#define ROOM_BOUND 49
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+
+struct Fixture {
+    void reset() {
+        W = H = 64; NC = W * H;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        pearlDue.assign(NC, INF); portalEnds.clear(); portalKeys.clear();
+    }
+    int rectangle(int width, int height, bool resource = true) {
+        reset();
+        for (int y = 2; y < 2 + height; ++y)
+            for (int x = 2; x < 2 + width; ++x) {
+                int c = cid(x, y);
+                if (x + 1 < 2 + width) setEdge(c, 1, E_OPEN, -1);
+                if (y + 1 < 2 + height) setEdge(c, 2, E_OPEN, -1);
+            }
+        int start = cid(2, 2);
+        setEdge(start, 0, E_PORTAL, 17);
+        if (resource) pearlDue[cid(1 + width, 1 + height)] = 0;
+        return start;
+    }
+};
+
+int main() {
+    Fixture f;
+    int start = f.rectangle(6, 4);
+    assert(provenResourceRoom(start) == 17); // Exact original bound.
+    start = f.rectangle(5, 5);
+    assert(provenResourceRoom(start) == (ROOM_BOUND >= 25 ? 17 : -1));
+    start = f.rectangle(7, 7);
+    assert(provenResourceRoom(start) == (ROOM_BOUND >= 49 ? 17 : -1));
+    start = f.rectangle(10, 5);
+    assert(provenResourceRoom(start) == -1); // No silent bound overrun.
+    start = f.rectangle(3, 4, false);
+    assert(provenResourceRoom(start) == -1);
+    pearlDue[cid(4, 5)] = -1;
+    assert(provenResourceRoom(start) == -1);
+    pearlDue[cid(4, 5)] = INF;
+    assert(provenResourceRoom(start) == -1);
+    pearlDue[cid(4, 5)] = 400;
+    assert(provenResourceRoom(start) == 17); // Future source remains admitted.
+    setEdge(cid(4, 5), 2, E_UNKNOWN, -1);
+    assert(provenResourceRoom(start) == -1);
+    start = f.rectangle(3, 4);
+    setEdge(cid(4, 5), 2, E_PORTAL, 18);
+    assert(provenResourceRoom(start) == -1);
+    start = f.rectangle(3, 4);
+    setEdge(cid(4, 5), 2, E_PORTAL, 17);
+    assert(provenResourceRoom(start) == -1); // Same ID, distinct boundary.
+    start = f.rectangle(3, 4);
+    setEdge(start, 0, E_KELP, -1);
+    assert(provenResourceRoom(start) == -1);
+    assert(provenResourceRoom(-1) == -1 && provenResourceRoom(NC) == -1);
+    f.reset();
+    // The two sides of one internal portal share one canonical boundary.
+    for (int y = 2; y < 7; ++y)
+        for (int x = 2; x < 7; ++x) {
+            if (x < 6) setEdge(cid(x, y), 1, E_OPEN, -1);
+            if (y < 6) setEdge(cid(x, y), 2, E_OPEN, -1);
+        }
+    setEdge(cid(4, 4), 0, E_PORTAL, 21);
+    pearlDue[cid(6, 6)] = 0;
+    for (int y = 2; y < 7; ++y)
+        for (int x = 2; x < 7; ++x)
+            assert(provenResourceRoom(cid(x, y)) == (ROOM_BOUND >= 25 ? 21 : -1));
+    std::cout << "room bound: candidate/control 24/25/49/50 and rejection cases passed\n";
+}

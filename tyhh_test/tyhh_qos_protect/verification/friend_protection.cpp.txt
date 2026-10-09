@@ -1,0 +1,83 @@
+#define main qos_protect_bot_main
+#include "../main.cpp"
+#undef main
+
+#include <cassert>
+
+namespace {
+
+void resetScenario(int ourLength, int friendLength) {
+    W = H = 7;
+    NC = W * H;
+    HERE = cid(2, 2);
+    LEN = ourLength;
+    ROUND = 300;
+    MYID = 1;
+    STAMP = 1;
+    edgeT.assign(NC * 4, E_OPEN);
+    edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1);
+    portalEnds.clear();
+    occStamp.assign(NC, 0);
+    occId.assign(NC, -1);
+    occMine.assign(NC, 0);
+    occHead.assign(NC, 0);
+    occFree.assign(NC, INF);
+    parts.clear();
+    idCount.clear();
+
+    int const head = cid(3, 3);
+    parts.push_back({head, 9, 1, true, true});
+    idCount.push_back({9, friendLength});
+    occStamp[head] = STAMP;
+    occId[head] = 9;
+    occMine[head] = 1;
+    occHead[head] = 1;
+    occStamp[cid(2, 3)] = STAMP;
+    occId[cid(2, 3)] = 9;
+    occMine[cid(2, 3)] = 1;
+}
+
+void blockLongExit(int direction) {
+    int const head = cid(3, 3);
+    int const cell = moveCell(head, direction);
+    occStamp[cell] = STAMP;
+    occId[cell] = 99;
+    occMine[cell] = 0;
+}
+
+} // namespace
+
+int main() {
+    W = H = 7;
+    int const longHead = cid(3, 3);
+    int const northExit = cid(3, 2);
+
+    resetScenario(3, 8);
+    blockLongExit(1);
+    blockLongExit(2);
+    assert(friendSafeExits(parts.front(), 2) == 1);
+    assert(friendSpaceImpact(northExit, 4, 2).protectedLoss == 1);
+    assert(harmsProtectedFriend(northExit));
+
+    resetScenario(3, 4);
+    FriendSpaceImpact peerSafe = friendSpaceImpact(northExit, 6, 2);
+    FriendSpaceImpact peerUnsafe = friendSpaceImpact(northExit, 2, 1);
+    assert(peerSafe.peerLoss == 1);
+    assert(peerUnsafe.peerLoss == 0);
+    assert(peerSafe.protectedLoss == 0);
+
+    resetScenario(3, 8);
+    FriendSpaceImpact selfSafe = friendSpaceImpact(northExit, 6, 2);
+    FriendSpaceImpact selfAtRisk = friendSpaceImpact(northExit, 1, 0);
+    assert(selfSafe.protectedLoss == selfAtRisk.protectedLoss);
+    assert(selfAtRisk.protectedLoss == 1);
+
+    resetScenario(3, 8);
+    edgeT[longHead * 4] = E_PORTAL;
+    edgePid[longHead * 4] = 7;
+    blockLongExit(1);
+    blockLongExit(2);
+    assert(friendSafeExits(parts.front(), 2) == 1);
+    assert(!harmsProtectedFriend(northExit));
+}

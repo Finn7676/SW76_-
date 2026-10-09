@@ -1,0 +1,137 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct SprintFixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+    void put(int c, int id, bool mine, bool head, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = freeAt;
+        occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+    }
+    void body(std::vector<int> const& cells) {
+        for (int c : trail) if (c >= 0) occStamp[c] = 0;
+        parts.clear();
+        LEN = int(cells.size()); HERE = cells[0]; ct.length = LEN;
+        trail.assign(cells.rbegin(), cells.rend());
+        for (int i = 0; i < LEN; ++i)
+            put(cells[i], MYID, true, i == 0, LEN + 1 - i);
+    }
+    void setup(int length = 6) {
+        W = H = 32; NC = W * H; MYTEAM = Team::A; MYID = 2;
+        POP = 10; ROUND = 0; STAMP = 1; TARGET = 62;
+        ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team(MYTEAM); ct.head.dir = Direction::EAST; CT = &ct;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        parts.clear(); trail.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        std::vector<int> cells;
+        for (int i = 0; i < length; ++i) cells.push_back(cid(16 - i, 8));
+        body(cells); trailId = MYID; chosenAction = {};
+    }
+    int east(int n) const { return cid(16 + n, 8); }
+    void eastRoute(int n) {
+        for (int i = 0; i < n; ++i) setEdge(east(i), 1, E_OPEN, -1);
+    }
+    void enemy(int c, int size, int id = 7) {
+        put(c, id, false, true);
+        idCount.push_back({id, size}); enemyHeads.push_back(c); enemyHeadLen.push_back(size);
+    }
+    ChosenAction ram(bool champion = false, bool attrition = false) {
+        return sprintRamAction(champion, attrition);
+    }
+};
+
+int main() {
+    SprintFixture f;
+
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 8);
+    assert(f.ram().dirs == std::vector<int>({1, 1, 1, 1}));
+    auto prefix = projectAction({{1, 1, 1}, 0, false, false});
+    assert(prefix.known && prefix.survives && prefix.len == 5);
+
+    // A pearl at the attempted paid-step collision cannot restore eligibility.
+    f.setup(3); f.eastRoute(3); f.enemy(f.east(3), 5); visPearl[f.east(3)] = 1;
+    assert(f.ram().dirs.empty());
+    visPearl[f.east(2)] = 1;
+    assert(f.ram().dirs == std::vector<int>({1, 1, 1}));
+    prefix = projectAction({{1, 1}, 0, false, false});
+    assert(prefix.survives && prefix.len == 3 && prefix.body.size() == 3);
+
+    // Eating on the first move does not increase this action's free-step count.
+    f.setup(4); f.eastRoute(4); f.enemy(f.east(4), 6); visPearl[f.east(1)] = 1;
+    assert(f.ram().dirs == std::vector<int>({1, 1, 1, 1}));
+    prefix = projectAction({{1, 1, 1}, 0, false, false});
+    assert(prefix.survives && prefix.len == 3);
+    f.setup(8); f.eastRoute(4); f.enemy(f.east(4), 10); visPearl[f.east(1)] = 1;
+    assert(f.ram().dirs.size() == 4);
+    prefix = projectAction({{1, 1, 1}, 0, false, false});
+    assert(prefix.survives && prefix.len == 8);
+
+    // Collision happens before the current tail is released, even on a paid step.
+    f.setup(4); f.body({cid(16, 8), cid(16, 9), cid(17, 9), cid(18, 9)});
+    f.eastRoute(1); setEdge(f.east(1), 2, E_OPEN, -1);
+    setEdge(cid(17, 9), 2, E_OPEN, -1); f.enemy(cid(17, 10), 6);
+    assert(f.ram().dirs.empty());
+    prefix = projectAction({{1, 2}, 0, false, false});
+    assert(!prefix.survives && prefix.head == f.east(1));
+
+    // A segment actually removed by the prior paid step is usable later.
+    f.setup(3); f.body({cid(16, 8), cid(16, 9), cid(17, 9)});
+    f.eastRoute(1); setEdge(f.east(1), 1, E_OPEN, -1);
+    setEdge(f.east(2), 2, E_OPEN, -1); setEdge(cid(18, 9), 3, E_OPEN, -1);
+    visPearl[f.east(2)] = visPearl[cid(18, 9)] = 1;
+    prefix = projectAction({{1, 1, 2, 3}, 0, false, false});
+    assert(prefix.survives && prefix.head == cid(17, 9));
+
+    // Other dragons do not move between sprint steps, regardless of occFree.
+    f.setup(6); f.eastRoute(3); f.enemy(f.east(3), 8);
+    f.put(f.east(2), 5, false, false, 1);
+    assert(f.ram().dirs.empty());
+
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 8);
+    MYID = queenId(); assert(f.ram().dirs.empty());
+    MYID = 2; assert(f.ram(true).dirs.empty());
+    POP = 3; assert(f.ram().dirs.empty());
+    POP = 4; assert(f.ram().dirs.size() == 4);
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 5);
+    assert(f.ram().dirs.empty());
+
+    // Original worth thresholds remain tied to initial donor length.
+    f.setup(3); f.eastRoute(2); f.enemy(f.east(2), 4);
+    assert(f.ram().dirs.empty());
+    assert(f.ram(false, true).dirs == std::vector<int>({1, 1}));
+    f.setup(6); f.eastRoute(2); f.enemy(f.east(2), 7);
+    assert(f.ram().dirs.empty() && f.ram(false, true).dirs.size() == 2);
+
+    // Greatest observed target size takes priority; equal size uses fewer steps.
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 10);
+    setEdge(HERE, 0, E_OPEN, -1); f.enemy(geo(HERE, 0), 8, 9);
+    assert(f.ram().dirs.size() == 4);
+    idCount[1].second = 10;
+    assert(f.ram().dirs == std::vector<int>({0}));
+
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 8);
+    setEdge(f.east(2), 1, E_PORTAL, 0); learnedExit[f.east(2) * 4 + 1] = f.east(3);
+    assert(f.ram().dirs.empty());
+    setEdge(f.east(2), 1, E_UNKNOWN, -1); assert(f.ram().dirs.empty());
+    setEdge(f.east(2), 1, E_OPEN, -1); visStamp[f.east(3)] = 0;
+    assert(f.ram().dirs.empty());
+    visStamp[f.east(3)] = STAMP; visStamp[f.east(4)] = 0;
+    assert(f.ram().dirs.empty());
+
+    // Fresh-memory incomplete body positions cannot certify a sprint route.
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 8);
+    trail.resize(1); parts.clear(); assert(f.ram().dirs.empty());
+
+    std::cout << "sprint4: reach, paid/free rules, exact body and eligibility assertions passed\n";
+}

@@ -1,0 +1,187 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+// Frozen R4's function, renamed only, supplies the unchanged ordinary-target control.
+ChosenAction r4SprintRamAction(bool champion, bool attrition) {
+    if (isQueen() || champion || LEN < 3 || POP < 4) return {};
+    for (int i = 0; i < LEN; ++i) if (ownSeg(i) < 0) return {};
+    const size_t freeSteps = (LEN + 3) / 4;
+    int nodes = 0, bestSz = -1;
+    ChosenAction path, best;
+    auto search = [&](auto&& self, int c, int currentLength) -> void {
+        if (path.dirs.size() >= 4 || nodes >= 256) return;
+        for (int d = 0; d < 4 && nodes < 256; ++d) {
+            // Sprint scouting never uses a portal or an unobserved edge/cell.
+            if (edgeT[c * 4 + d] != E_OPEN) continue;
+            int q = geo(c, d);
+            if (!visible(q)) continue;
+            ++nodes;
+            // Eligibility is checked before a paid step's collision or pearl.
+            if (path.dirs.size() >= freeSteps && currentLength <= 2) continue;
+            path.dirs.push_back(d);
+            if (isEnemyHead(q)) {
+                int sz = countOf(occId[q]);
+                bool worth = sz >= LEN + 2 && sz >= 5;
+                if (attrition && sz >= LEN + 1 && sz >= 4) worth = true;
+                if (worth && (sz > bestSz ||
+                              (sz == bestSz && path.dirs.size() < best.dirs.size()))) {
+                    bestSz = sz;
+                    best = path;
+                }
+            } else {
+                // Reuse exact own-body release and eat-then-payment semantics;
+                // other dragons remain static during this single action.
+                auto p = projectAction(path);
+                if (p.known && p.survives) self(self, p.head, p.len);
+            }
+            path.dirs.pop_back();
+        }
+    };
+    search(search, HERE, LEN);
+    return best;
+}
+
+struct HuntFixture {
+    Controller ct{2, Team::A, Direction::EAST, Vision{}, 64};
+    void put(int c, int id, bool mine, bool head, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occFree[c] = freeAt;
+        occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+    }
+    void body(std::vector<int> const& cells) {
+        for (int c : trail) if (c >= 0) occStamp[c] = 0;
+        parts.clear();
+        LEN = int(cells.size()); HERE = cells[0]; ct.length = LEN;
+        trail.assign(cells.rbegin(), cells.rend());
+        for (int i = 0; i < LEN; ++i)
+            put(cells[i], MYID, true, i == 0, LEN + 1 - i);
+    }
+    void setup(int length = 6) {
+        W = H = 32; NC = W * H; MYTEAM = Team::A; MYID = 2;
+        POP = 10; ROUND = 0; STAMP = 1; TARGET = 62;
+        ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team(MYTEAM); ct.head.dir = Direction::EAST; CT = &ct;
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        parts.clear(); trail.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        std::vector<int> cells;
+        for (int i = 0; i < length; ++i) cells.push_back(cid(16 - i, 8));
+        body(cells); trailId = MYID; chosenAction = {};
+    }
+    int east(int n) const { return cid(16 + n, 8); }
+    void eastRoute(int n) {
+        for (int i = 0; i < n; ++i) setEdge(east(i), 1, E_OPEN, -1);
+    }
+    int north(int n) const { return cid(16, 8 - n); }
+    void northRoute(int n) {
+        for (int i = 0; i < n; ++i) setEdge(north(i), 0, E_OPEN, -1);
+    }
+    void enemy(int c, int size, int id = 7) {
+        put(c, id, false, true);
+        idCount.push_back({id, size}); enemyHeads.push_back(c); enemyHeadLen.push_back(size);
+    }
+    ChosenAction hunt(bool champion = false, bool attrition = false) {
+        return sprintRamAction(champion, attrition);
+    }
+    void equalControl(bool champion = false, bool attrition = false) {
+        assert(hunt(champion, attrition).dirs == r4SprintRamAction(champion, attrition).dirs);
+    }
+};
+
+int main() {
+    HuntFixture f;
+
+    // A visible length-two queen becomes valuable at each legal route depth.
+    for (int distance : {2, 3, 4}) {
+        f.setup(6); f.eastRoute(distance); f.enemy(f.east(distance), 2, enemyQueenId());
+        assert(f.hunt().dirs == std::vector<int>(distance, 1));
+        assert(r4SprintRamAction(false, false).dirs.empty());
+        auto prefix = projectAction({std::vector<int>(distance - 1, 1), 0, false, false});
+        assert(prefix.known && prefix.survives);
+    }
+    f.setup(6); MYTEAM = Team::B; f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    assert(enemyQueenId() == 0 && f.hunt().dirs == std::vector<int>({1, 1, 1}));
+
+    // The final collision pearl cannot restore paid-step eligibility.
+    f.setup(3); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    visPearl[f.east(3)] = 1; assert(f.hunt().dirs.empty());
+    visPearl[f.east(2)] = 1;
+    assert(f.hunt().dirs == std::vector<int>({1, 1, 1}));
+    f.setup(3); f.eastRoute(4); f.enemy(f.east(4), 2, enemyQueenId());
+    visPearl[f.east(2)] = 1; assert(f.hunt().dirs.empty());
+    visPearl[f.east(3)] = 1;
+    assert(f.hunt().dirs == std::vector<int>({1, 1, 1, 1}));
+
+    // Exact prefixes reject current own body, static other bodies, and friendly heads.
+    f.setup(4); f.body({cid(16, 8), cid(16, 9), cid(17, 9), cid(18, 9)});
+    f.eastRoute(1); setEdge(f.east(1), 2, E_OPEN, -1);
+    setEdge(cid(17, 9), 2, E_OPEN, -1); f.enemy(cid(17, 10), 2, enemyQueenId());
+    assert(f.hunt().dirs.empty());
+    f.setup(6); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    f.put(f.east(2), 5, false, false, 1); assert(f.hunt().dirs.empty());
+    f.setup(6); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    f.put(f.east(2), 4, true, true, 1); assert(f.hunt().dirs.empty());
+
+    // A short queen outranks a larger ordinary head; ordinary fallback is unchanged.
+    f.setup(6); f.northRoute(1); f.enemy(f.north(1), 20, 9);
+    f.eastRoute(4); f.enemy(f.east(4), 2, enemyQueenId());
+    assert(r4SprintRamAction(false, false).dirs == std::vector<int>({0}));
+    assert(f.hunt().dirs == std::vector<int>({1, 1, 1, 1}));
+    visStamp[f.east(4)] = 0; f.equalControl();
+    assert(f.hunt().dirs == std::vector<int>({0}));
+
+    // Search reaches the same queen by two ordinary routes and retains the shortest.
+    f.setup(6); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    setEdge(HERE, 0, E_OPEN, -1);
+    setEdge(f.north(1), 1, E_OPEN, -1);
+    setEdge(cid(17, 7), 1, E_OPEN, -1);
+    setEdge(cid(18, 7), 2, E_OPEN, -1);
+    assert(f.hunt().dirs == std::vector<int>({1, 1}));
+
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 2, enemyQueenId());
+    setEdge(f.east(2), 1, E_PORTAL, 0); learnedExit[f.east(2) * 4 + 1] = f.east(3);
+    assert(f.hunt().dirs.empty());
+    setEdge(f.east(2), 1, E_UNKNOWN, -1); assert(f.hunt().dirs.empty());
+    setEdge(f.east(2), 1, E_OPEN, -1); visStamp[f.east(3)] = 0;
+    assert(f.hunt().dirs.empty());
+    visStamp[f.east(3)] = STAMP; visStamp[f.east(4)] = 0;
+    assert(f.hunt().dirs.empty());
+
+    // Existing eligibility and full initial-body proof are not relaxed.
+    f.setup(6); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    assert(f.hunt(true).dirs.empty());
+    MYID = queenId(); assert(f.hunt().dirs.empty());
+    MYID = 2; POP = 3; assert(f.hunt().dirs.empty());
+    f.setup(2); f.eastRoute(2); f.enemy(f.east(2), 2, enemyQueenId());
+    assert(f.hunt().dirs.empty());
+    f.setup(6); f.eastRoute(3); f.enemy(f.east(3), 2, enemyQueenId());
+    trail.resize(1); parts.clear(); assert(f.hunt().dirs.empty());
+
+    // Ordinary enemies compare against the frozen control at thresholds and ties.
+    int controls = 0;
+    for (int length : {3, 4, 6, 8, 12})
+        for (int distance : {1, 2, 3, 4})
+            for (int target : {3, 4, 5, 8, 16})
+                for (bool attrition : {false, true}) {
+                    f.setup(length); f.eastRoute(distance); f.enemy(f.east(distance), target, 7);
+                    f.northRoute(2); f.enemy(f.north(2), target + 1, 9);
+                    if (distance >= 3) visPearl[f.east(2)] = 1;
+                    f.equalControl(false, attrition);
+                    ++controls;
+                }
+    f.setup(6); f.eastRoute(4); f.enemy(f.east(4), 10, 7);
+    f.northRoute(1); f.enemy(f.north(1), 10, 9);
+    f.equalControl(); assert(f.hunt().dirs == std::vector<int>({0}));
+    std::cout << "queen_hunt: short-queen reach, exact legality, priority and "
+              << controls << " frozen R4 ordinary controls passed\n";
+}

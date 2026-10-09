@@ -1,0 +1,272 @@
+#include "planner.hpp"
+#include "sonar.hpp"
+#include "action.hpp"
+#include "observer.hpp"
+#include <cassert>
+#include <sstream>
+#include <iostream>
+
+using namespace bot;
+
+struct Fixture {
+    GameConfig config{11, 11};
+    TurnState turn;
+    WorldModel world{config};
+    Topology topology{config, world};
+    OccupancyModel occupancy{config, turn};
+    BodyMemory body{turn, topology, occupancy};
+    Search search{config, turn, topology, occupancy};
+    Sonar sonar{config, turn, world, topology, occupancy};
+    Planner planner{config, turn, world, topology, occupancy, search, body};
+    Controller ct{7, Team::A, Direction::NORTH, Vision{}, 64};
+    Executor executor{ct, turn, world, topology, body};
+
+    Fixture() {
+        turn.here = 60;
+        turn.length = ct.length = 2;
+        turn.population = ct.unit_count = 10;
+        turn.myId = 7;
+        turn.round = 10;
+        ct.sonar_protocol3 = true;
+        occupancy.beginTurn();
+        std::fill(world.edgeT.begin(), world.edgeT.end(), E_OPEN);
+        std::fill(world.seenRound.begin(), world.seenRound.end(), 1);
+    }
+    void portal(int c = 60, int pid = 23) { topology.setEdge(c, 1, E_PORTAL, pid); }
+    void wall(int c, int d) { topology.setEdge(c, d, E_KELP, -1); }
+    void pearls(std::initializer_list<int> cells) {
+        std::vector<Tile> tiles;
+        for (int dy = -3; dy <= 3; ++dy)
+            for (int dx = -3; dx <= 3; ++dx) {
+                int x = 5 + dx, y = 5 + dy;
+                int c = y * config.width + x;
+                std::optional<DragonPart> part;
+                if (c == turn.here) part.emplace(Position{x, y}, 7, Team::A, Direction::NORTH, true);
+                tiles.emplace_back(Position{x, y}, part, 0,
+                                   std::find(cells.begin(), cells.end(), c) != cells.end());
+            }
+        ct.vision = Vision(std::move(tiles));
+        Observer observer{turn, world, topology, occupancy, body};
+        observer.observe(ct);
+    }
+};
+
+int main() {
+    std::ostringstream sent;
+    auto *old = std::cout.rdbuf(sent.rdbuf());
+
+    {
+        Fixture f;
+        f.portal();
+        assert(RolePolicy::assign(f.config, f.turn, f.world).scout);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+        assert(f.planner.activeClaimPortal() == 23);
+    }
+    {
+        Fixture f;
+        f.portal();
+        f.turn.length = f.ct.length = 6;
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+        assert(f.planner.activeClaimPortal() == 23);
+    }
+    {
+        Fixture sender, receiver;
+        receiver.turn.myId = 8;
+        uint64_t claim = sender.sonar.claimMessage(23);
+        assert(claim > UINT32_MAX);
+        receiver.ct.sonar_messages = {claim};
+        receiver.sonar.receive(receiver.ct);
+        assert(receiver.world.portalKeys.empty());
+        assert(receiver.topology.claimedByEarlierScout(23, 8, 10));
+        receiver.portal();
+        assert(receiver.search.scoutPortalRoute(15).dir == -1);
+        receiver.turn.round = 13;
+        receiver.ct.sonar_messages.clear();
+        receiver.sonar.receive(receiver.ct);
+        assert(!receiver.topology.claimedByEarlierScout(23, 8, 13));
+    }
+    {
+        Fixture low, high, receiver;
+        low.turn.myId = 3;
+        high.turn.myId = 5;
+        high.turn.round = receiver.turn.round = 11;
+        receiver.turn.myId = 8;
+        receiver.ct.sonar_messages = {low.sonar.claimMessage(23), high.sonar.claimMessage(23)};
+        receiver.sonar.receive(receiver.ct);
+        assert(receiver.world.portalClaims.at(23).owner == 3);
+        assert(receiver.topology.claimedByEarlierScout(23, 8, 11));
+    }
+    {
+        Fixture f;
+        f.portal(); f.portal(90);
+        f.executor.execute(Action::move(1));
+        assert(f.world.crossedPortals.empty());
+        f.topology.resolvePendingLanding(91);
+        f.topology.confirmExploration(7, 91);
+        assert(f.world.crossedPortals.count(23));
+        assert(f.world.exploredPortals.count(23));
+        uint64_t pair = f.sonar.portalMessage(241);
+        assert(pair > UINT32_MAX);
+        f.world.activeClaimPortal = 24;
+        f.turn.enemyHeads = {49}; f.turn.enemyHeadLen = {7};
+        sent.str(""); sent.clear();
+        f.sonar.send(f.ct);
+        std::istringstream lines(sent.str());
+        int pairs = 0, claims = 0, ordinary = 0;
+        for (int n = 0; n < 4; ++n) {
+            std::string cmd; char direction; uint64_t value;
+            assert(lines >> cmd >> direction >> value);
+            assert(cmd == "SONAR");
+            int marker = (value >> 40) & 255;
+            if (marker == Sonar::PAIR_MAGIC) ++pairs;
+            else if (marker == Sonar::CLAIM_MAGIC) ++claims;
+            else ++ordinary;
+        }
+        // The first confirmed crossing also occupies the ordinary slot with
+        // an urgent pair report; subsequent turns may use it for combat data.
+        assert(pairs >= 1 && claims == 2 && pairs + claims + ordinary == 4);
+        std::string extra; assert(!(lines >> extra));
+    }
+    {
+        Fixture f;
+        f.portal(); f.portal(90);
+        f.world.exploredPortals.insert(23);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+    }
+    {
+        Fixture f;
+        f.pearls({61});
+        for (int d : {0, 1, 2}) f.wall(61, d);
+        PocketInfo pocket = f.search.pocketBeyond(61, 60);
+        assert(pocket.proven && pocket.pearls == 1);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type != ActionType::MOVE || a.dirs[0] != 1);
+        for (int d : {0, 2, 3}) f.wall(60, d);
+        a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::NONE); // do not re-enter through fallback
+    }
+    {
+        Fixture f;
+        f.pearls({61, 62, 63});
+        for (int c : {61, 62, 63}) { f.wall(c, 0); f.wall(c, 2); }
+        f.wall(63, 1);
+        PocketInfo pocket = f.search.pocketBeyond(61, 60);
+        assert(pocket.proven && pocket.pearls == 3);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+    }
+    {
+        Fixture f;
+        f.turn.length = f.ct.length = 5;
+        f.turn.round = 480;
+        f.pearls({});
+        for (int d = 0; d < 4; ++d) f.wall(60, d);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::SPLIT && a.splitSize == 3);
+    }
+    {
+        Fixture f;
+        f.pearls({});
+        auto *tile = f.ct.get_tile(Position{6, 5});
+        assert(tile);
+        tile->dragon_part.emplace(Position{6, 5}, 3, Team::A, Direction::NORTH, true);
+        Observer observer{f.turn, f.world, f.topology, f.occupancy, f.body};
+        observer.observe(f.ct);
+        assert(f.occupancy.teammateHeadAt(61));
+        assert(f.planner.avoidTeammateHead(Action::move(1)).type == ActionType::NONE);
+        assert(f.planner.avoidTeammateHead(Action::sprint2(1, 1)).type == ActionType::NONE);
+        for (int d : {0, 2, 3}) f.wall(60, d);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::NONE);
+    }
+    {
+        Fixture f;
+        f.pearls({});
+        auto *entrance = f.ct.get_tile(Position{6, 5});
+        auto *otherSide = f.ct.get_tile(Position{7, 5});
+        assert(entrance && otherSide);
+        entrance->get_edge(Direction::EAST) = Edge(false, EdgeType::PORTAL, 23);
+        otherSide->get_edge(Direction::WEST) = Edge(false, EdgeType::PORTAL, 23);
+        entrance->dragon_part.emplace(Position{6, 5}, 3, Team::A, Direction::NORTH, false);
+        Observer observer{f.turn, f.world, f.topology, f.occupancy, f.body};
+        observer.observe(f.ct);
+        assert(!f.world.exploredPortals.count(23)); // merely beside the door
+        entrance->dragon_part->dir = Direction::EAST;
+        observer.observe(f.ct);
+        assert(f.world.exploredPortals.count(23)); // body link crosses the door
+        f.portal(90);
+        uint64_t report = f.sonar.portalMessage(61 * 4 + 1);
+        assert(report > UINT32_MAX && ((report >> 38) & 1));
+    }
+    {
+        Fixture f;
+        f.portal(73);
+        f.turn.parts.push_back({61, 3, 0, true, true});
+        f.turn.idCount.push_back({3, 2});
+        assert(f.search.scoutPortalRoute(15).dir == -1); // visible closer scout yields
+    }
+    {
+        Fixture f;
+        f.pearls({49, 38}); // new area: a nearby pearl cluster and a new eastern portal
+        f.portal();
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 0);
+        assert(f.planner.activeClaimPortal() == -1);
+    }
+    {
+        Fixture f;
+        f.pearls({27}); // one distant pearl is not worth a three-step portal detour
+        f.portal();
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 1);
+    }
+    {
+        Fixture f;
+        f.pearls({27, 28}); // a small pile justifies the detour before a nearby portal
+        f.portal();
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 0);
+        assert(f.planner.activeClaimPortal() == -1);
+    }
+    {
+        Fixture bare;
+        bare.portal(73);
+        assert(bare.search.scoutPortalRoute(15).dir == 1);
+        assert(bare.search.scoutPortalRoute(15, [](int c, int) { return c == 71 ? 100L : 0L; }).dir == 2);
+        Fixture f;
+        f.pearls({71, 72}); // south-then-east and east-then-south are equally short
+        f.portal(73);
+        assert(f.search.scoutPortalRoute(15).dir == 2);
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 2);
+        assert(f.planner.activeClaimPortal() == 23);
+    }
+    {
+        Fixture f;
+        f.pearls({61, 71}); // equal-distance pearls: score breaks the tie
+        PearlRoute p = f.search.scoutPearlRoute(15, [](int c, int) { return c == 71 ? 100L : 0L; });
+        assert(p.dir == 2 && p.distance == 1 && p.reachablePearls == 2);
+        assert(f.search.bfsFirstDir([](int c) { return c == 61 || c == 71; },
+                                    [](int c, int) { return c == 71 ? 100L : 0L; }, 6, 320) == 2);
+    }
+    {
+        Fixture f;
+        assert(f.search.bfsFirstDir([](int c) { return c == 73; }, 6, 320) == 1);
+        assert(f.search.bfsFirstDir([](int c) { return c == 73; },
+                                    [](int c, int) { return c == 71 ? 100L : 0L; }, 6, 320) == 2);
+    }
+    {
+        Fixture f;
+        f.portal(73);
+        f.world.seenRound[71] = 0; // same-length routes; the southern tile is new
+        Action a = f.planner.choose(f.ct);
+        assert(a.type == ActionType::MOVE && a.dirs[0] == 2);
+        assert(f.planner.activeClaimPortal() == 23);
+    }
+
+    std::cout.rdbuf(old);
+    std::cout << "V3 focused checks passed\n";
+}

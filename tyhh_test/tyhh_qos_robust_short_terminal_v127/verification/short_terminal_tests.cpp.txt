@@ -1,0 +1,106 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct Fixture {
+    Controller ct{75, Team::B, Direction::EAST, Vision{}, 64};
+    int h, t, pearl, alt;
+
+    void put(int c, int id, bool head, int facing = 1, bool mine = true) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine;
+        occHead[c] = head; occPart[c] = int(parts.size()); occFree[c] = head ? 3 : 2;
+        parts.push_back({c, id, facing, mine, head});
+    }
+
+    void setup() {
+        W = H = 11; NC = W * H; ROUND = 188; MYID = 75; MYTEAM = Team::B;
+        STAMP = 1; LEN = ct.length = 2; POP = ct.unit_count = 12; TARGET = 62; CT = &ct;
+        h = HERE = cid(5, 5); t = cid(4, 5); pearl = cid(5, 6); alt = cid(6, 5);
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, ROUND);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+        occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        for (int c = 0; c < NC; ++c) if (cheb(c, HERE) <= 3) visStamp[c] = STAMP;
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        trail = {t, HERE}; trailId = MYID; pendingPath.clear(); pendingPortalKey = -1;
+        occupiedPortalId = -1; v41Target = -1; v41ExplorationMode = false;
+        teamFrontier = 999; yieldStreak = 0;
+        setEdge(HERE, 0, E_KELP, -1);
+        for (int d : {1, 2, 3}) setEdge(pearl, d, E_KELP, -1);
+        put(HERE, MYID, true); put(t, MYID, false); idCount.push_back({MYID, 2});
+        visPearl[pearl] = 1; visPearls.push_back(pearl); pearlDue[pearl] = ROUND;
+        doMove(2); chosenAction.scored = true;
+    }
+
+    void expect(char const* name, bool changes) {
+        ChosenAction before = chosenAction;
+#ifndef H14_CONTROL
+        reviewShortTerminal(ct);
+#else
+        changes = false;
+#endif
+        if (changes) assert(chosenAction.dirs == std::vector<int>{1} && !chosenAction.split && !chosenAction.donation);
+        else assert(chosenAction.dirs == before.dirs && chosenAction.split == before.split && chosenAction.donation == before.donation);
+        std::cout << name << ": passed\n";
+    }
+};
+
+int main() {
+    Fixture f;
+    f.setup(); f.expect("quiet terminal", true);
+    f.setup(); chosenAction.scored = false; f.expect("unscored proposal", true);
+    f.setup(); f.expect("same repeated fixture", true);
+    f.setup(); MYID = 1; f.expect("queen excluded", false);
+    f.setup(); LEN = f.ct.length = 3; f.expect("LEN3 excluded", false);
+    f.setup(); LEN = f.ct.length = 4; f.expect("LEN4 excluded", false);
+    f.setup(); chosenAction.donation = true; f.expect("donation excluded", false);
+    f.setup(); doSplit(2); f.expect("split excluded", false);
+    f.setup(); doSprint({2, 0}); f.expect("multistep excluded", false);
+    f.setup(); chosenAction = {}; f.expect("empty excluded", false);
+    f.setup(); visPearl[f.pearl] = 0; f.expect("nonpearl excluded", false);
+    f.setup(); setEdge(f.pearl, 2, E_OPEN, -1); f.expect("safe pearl excluded", false);
+    f.setup(); setEdge(f.pearl, 2, E_UNKNOWN, -1); f.expect("unknown postexit excluded", false);
+    f.setup(); setEdge(f.pearl, 2, E_PORTAL, 4); f.expect("portal postexit excluded", false);
+    f.setup(); setEdge(HERE, 2, E_UNKNOWN, -1); f.expect("unknown action excluded", false);
+    f.setup(); setEdge(HERE, 2, E_PORTAL, 5); f.expect("portal action excluded", false);
+    f.setup(); visStamp[f.pearl] = 0; f.expect("hidden pearl excluded", false);
+    f.setup(); f.put(f.pearl, 80, false); f.expect("occupied pearl excluded", false);
+    f.setup(); parts.pop_back(); idCount[0].second = 1; f.expect("partial ownbody excluded", false);
+    f.setup(); parts.push_back(parts.back()); f.expect("duplicate ownbody excluded", false);
+    f.setup(); visStamp[f.t] = 0; f.expect("hidden tail excluded", false);
+    f.setup(); setEdge(f.t, 1, E_PORTAL, 6); f.expect("portal bridged ownbody excluded", false);
+    f.setup(); setEdge(f.t, 1, E_UNKNOWN, -1); f.expect("unknown own link excluded", false);
+    f.setup(); parts.back().facing = 0; f.expect("disconnected ownbody excluded", false);
+    f.setup(); trail[0] = cid(3, 5); f.expect("trail mismatch excluded", false);
+    f.setup(); f.put(cid(7, 7), 2, false, 0, false); f.expect("enemy body excluded", false);
+    f.setup(); f.put(cid(7, 7), 2, true, 0, false); f.expect("enemy head excluded", false);
+    f.setup(); setEdge(HERE, 1, E_KELP, -1); f.expect("no alternate preserves proposal", false);
+    f.setup(); f.put(f.alt, 80, false); f.expect("occupied alternate rejected", false);
+    f.setup(); visStamp[f.alt] = 0; f.expect("hidden alternate rejected", false);
+    f.setup(); setEdge(HERE, 1, E_UNKNOWN, -1); f.expect("unknown alternate rejected", false);
+    f.setup(); setEdge(HERE, 1, E_PORTAL, 7); f.expect("portal alternate rejected", false);
+    f.setup(); friendGuards.push_back({1, cid(7, 5), 8, f.alt, {f.alt}, 0});
+    f.expect("hard protection respected", false);
+    f.setup(); friendGuards.push_back({1, cid(7, 5), 8, f.alt, {f.alt, cid(7, 6)}, 1});
+    f.expect("soft protection respected", false);
+    f.setup(); for (int d : {0, 1, 2}) setEdge(f.alt, d, E_KELP, -1);
+    f.expect("alternate terminal rejected", false);
+    f.setup(); for (int d : {0, 1}) setEdge(f.alt, d, E_KELP, -1);
+    for (int d : {1, 2}) setEdge(cid(6, 6), d, E_KELP, -1);
+    f.expect("terminal continuation rejected", false);
+    f.setup(); setEdge(f.pearl, 2, E_OPEN, -1); f.put(cid(5, 7), 80, false);
+    f.expect("other body not terminal proof", false);
+    f.setup(); trail = {HERE}; f.expect("source occupancy tail fallback", true);
+    std::cout << "All focused terminal-review controls passed\n";
+}

@@ -1,0 +1,46 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+
+void setup() {
+    W = H = 12; NC = W * H; LEN = 2; HERE = cid(5, 5); MYID = 0; MYTEAM = Team::A;
+    ROUND = 100; POP = 8; STAMP = 1;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1); learnedExit.assign(NC * 4, -1);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occFree.assign(NC, INF); occMine.assign(NC, 0); occHead.assign(NC, 0);
+    visPearl.assign(NC, 0); trail = {cid(5,6), HERE}; parts.clear(); friendGuards.clear();
+    for (int c : trail) { occStamp[c] = STAMP; occId[c] = MYID; occMine[c] = 1; }
+}
+
+int main() {
+    Controller ct{0, Team::A, Direction::NORTH, Vision{}, 64}; CT = &ct;
+    setup();
+    assert(queenBodyDepth({{2},0,false,false}) == -1); // Neck still occupied.
+    assert(queenBodyDepth({{0},0,false,false}) == 6);
+    int north = geo(HERE,0);
+    for (int d = 0; d < 4; ++d) edgeT[north*4+d] = E_KELP;
+    edgeT[north*4+2] = E_OPEN; // Backtracking hits the current body.
+    assert(queenBodyDepth({{0},0,false,false}) == 0);
+    chosenAction = {{0},0,true,false};
+    std::fill(moveScores, moveScores+4, 0);
+    reviewQueenBody(ct);
+    assert(chosenAction.dirs[0] != 0 && queenBodyDepth(chosenAction) == 6);
+    edgeT[north*4] = E_UNKNOWN;
+    assert(queenBodyDepth({{0},0,false,false}) == 6); // Unknown is not death.
+    setup();
+    // A four-cell loop can be traversed repeatedly without eating twice.
+    std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    int a = HERE, b = geo(a,1), c = geo(b,0), d = geo(c,3);
+    edgeT[a*4+1] = edgeT[b*4] = edgeT[c*4+3] = edgeT[d*4+2] = E_OPEN;
+    visPearl[b] = 1;
+    assert(queenBodyDepth({{1},0,false,false}) == 6);
+    setup();
+    int east = geo(HERE,1);
+    for (int dir=0; dir<4; ++dir) edgeT[east*4+dir] = E_KELP;
+    edgeT[east*4+0] = E_OPEN;
+    int blocker = geo(east,0);
+    occStamp[blocker] = STAMP; occMine[blocker] = 1; occId[blocker] = 2;
+    assert(queenBodyDepth({{1},0,false,false}) == 0); // Ally does not move with us.
+    std::cout << "queen_body: 7 continuation checks passed\n";
+}

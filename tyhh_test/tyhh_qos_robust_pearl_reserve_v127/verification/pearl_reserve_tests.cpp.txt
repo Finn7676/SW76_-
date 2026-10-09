@@ -1,0 +1,148 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef PEARL_RESERVE
+#define PEARL_RESERVE 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct Fixture {
+    Controller ct{6, Team::A, Direction::EAST, Vision{}, 64};
+
+    void put(int c, int id, bool mine, bool head, int release) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = release; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+        if (mine && id != MYID) friendParts.push_back(c);
+    }
+
+    void setup(int length = 3) {
+        W = H = 32; NC = W * H; HERE = cid(16, 8); LEN = length; POP = TARGET = 62;
+        MYID = 6; MYTEAM = Team::A; ROUND = 400; STAMP = 1;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID;
+        ct.head.team = Team::A; ct.head.dir = Direction::EAST; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+        occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail.clear(); pendingPath.clear(); trailId = MYID;
+        for (int j = LEN - 1; j >= 0; --j) trail.push_back(cid(16 - j, 8));
+        for (int j = 0; j < LEN; ++j) put(trail[LEN - 1 - j], MYID, true, j == 0, LEN + 1 - j);
+        idCount.push_back({MYID, LEN});
+        v41Target = -1; v41TargetPhase = -1; v41ExplorationMode = true;
+        v41LowFrontierRounds = 0; teamFrontier = 999; queenSeededScout = true;
+        queenFeedObserver = MYID; queenFeedFirstRound = queenFeedLastEnemy = 300;
+        consolidateObserver = MYID; consolidateHoldUntil = -1; chosenAction = {};
+        yieldStreak = 0;
+        std::fill(moveScores, moveScores + 4, LONG_MIN);
+        std::fill(safeMoves, safeMoves + 4, false);
+    }
+
+    void pearl(int x = 17, int y = 8) {
+        int c = cid(x, y); visPearl[c] = 1; visPearls.push_back(c); pearlDue[c] = ROUND;
+    }
+
+    void receiver(int id = 2, int length = 8, int x = 19, int y = 8, bool partial = false) {
+        int shown = partial ? 2 : length;
+        for (int j = 0; j < shown; ++j) put(cid(x + j, y), id, true, j == 0, length + 1 - j);
+        idCount.push_back({id, shown});
+        if (partial) friendStatuses.push_back({id, cid(x, y), length, ROUND});
+    }
+
+    void turn() { takeTurn(ct); }
+    bool east() const { return chosenAction.split == 0 && chosenAction.dirs == std::vector<int>{1}; }
+};
+
+int main() {
+    Fixture f;
+    f.setup(); f.pearl(); f.receiver();
+    assert(!queenFeedAction(f.ct) && !consolidateAction(f.ct));
+    f.turn();
+    assert(f.east() == !PEARL_RESERVE);
+    auto post = projectAction(chosenAction);
+    assert(post.known && post.survives && projectedEscape(post));
+
+    f.setup(); f.pearl(); f.receiver(0, 3);
+    f.turn(); assert(f.east() == !PEARL_RESERVE);
+    f.setup(); f.pearl(); f.receiver(2, 8, 19, 8, true);
+    f.turn(); assert(f.east() == !PEARL_RESERVE);
+    f.setup(6); f.pearl(); f.receiver(2, 8, 19, 8, true);
+#if PEARL_RESERVE
+    pearlReservePrepare(); assert(pearlReserved(cid(17, 8)));
+    friendStatuses.clear(); pearlReservePrepare(); assert(!pearlReserved(cid(17, 8)));
+#endif
+
+    f.setup(); f.pearl();
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver(2, 7);
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver(); ROUND = 349;
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver(); queenFeedLastEnemy = ROUND - 7;
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver(); POP = f.ct.unit_count = 3;
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver();
+    f.put(cid(0, 0), 13, false, false, INF);
+    f.turn(); assert(f.east());
+
+    f.setup(); f.pearl(); f.receiver();
+    setEdge(HERE, 0, E_KELP, -1); setEdge(HERE, 2, E_KELP, -1);
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver();
+    visStamp[cid(19, 8)] = 0;
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver();
+    f.put(cid(18, 8), 4, true, false, INF);
+    f.turn(); assert(f.east());
+    f.setup(); f.pearl(); f.receiver();
+    setEdge(cid(19, 8), 3, E_UNKNOWN, -1);
+    f.turn(); assert(f.east());
+
+    f.setup(); f.pearl(); f.receiver();
+    setEdge(cid(19, 8), 3, E_PORTAL, 72);
+    f.turn(); assert(f.east());
+
+    // Existing routine split and adjacent-queen combat priorities are unchanged.
+    f.setup(4); f.pearl(); f.receiver(); POP = f.ct.unit_count = 20;
+    f.turn(); assert(chosenAction.split == 2);
+    f.setup(); f.put(cid(16, 7), 1, false, true, INF);
+    enemyHeads.push_back(cid(16, 7)); enemyHeadLen.push_back(2);
+    f.turn(); assert(chosenAction.dirs == std::vector<int>{0});
+
+    // Scored free harvest must not reclaim the pearl through a two-step detour.
+    f.setup(5); f.pearl(17, 7); f.receiver(2, 8, 19, 7);
+    chosenAction = {{0}, 0, true, false}; freeHarvest();
+    assert((chosenAction.dirs == std::vector<int>{0}) == bool(PEARL_RESERVE));
+    assert(projectAction(chosenAction).survives);
+    f.setup(5); f.pearl(17, 7);
+    chosenAction = {{0}, 0, true, false}; freeHarvest();
+    assert(chosenAction.dirs.size() == 2 && projectAction(chosenAction).len > LEN);
+
+    // An earlier portal/action proposal retains its original unscored priority.
+    f.setup(5); f.pearl(17, 7); f.receiver(2, 8, 19, 7);
+    chosenAction = {{0}, 0, false, false}; freeHarvest();
+    assert(chosenAction.dirs.size() == 2);
+
+    // Empty competing routes do not authorize a new emergency split or suicide.
+    f.setup(); f.pearl(); f.receiver();
+    for (int d = 0; d < 4; ++d) setEdge(cid(17, 8), d, E_KELP, -1);
+    f.turn(); assert(chosenAction.split == 0 && projectAction(chosenAction).survives);
+#if PEARL_RESERVE
+    assert(!pearlReserved(cid(17, 8)));
+#endif
+
+    std::cout << "pearl reservation " << (PEARL_RESERVE ? "candidate" : "H14 control")
+              << " assertions passed\n";
+}

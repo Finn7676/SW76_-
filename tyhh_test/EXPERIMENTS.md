@@ -16,6 +16,7 @@
 | `tyhh_flagship` | 固定旗舰候选、提高生存权重、旗舰不主动分裂 | 13 |
 | `tyhh_explore_density` | 探索龙 + 拥挤控制 + 资源分配 + 扇区方向 + 旗舰候选 | 11、12、13 |
 | `tyhh` | 当前版本基线 | baseline |
+| `tyhh_endgame_kamikaze` | 后期短龙喂养与头碰头/冲刺兑子 | 本轮机制实验 |
 
 ## 实验设置
 

@@ -1,0 +1,198 @@
+#define main bot_program_main
+#ifdef H14_CONTROL
+#include "../../tyhh_qos_counter_queen_guard_consolidate_v127/main.cpp"
+#else
+#include "../main.cpp"
+#endif
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct WitnessFixture {
+    Controller ct{0, Team::A, Direction::WEST, Vision{}, 64};
+    void put(int c, int id, bool mine, bool head, int facing, int freeAt = INF) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+    }
+    void body(std::vector<int> const& cells, int id, bool mine, int heading) {
+        idCount.push_back({id, int(cells.size())});
+        for (size_t i = 0; i < cells.size(); ++i) {
+            int facing = heading;
+            if (i) {
+                facing = -1;
+                for (int d = 0; d < 4; ++d) if (geo(cells[i], d) == cells[i - 1]) facing = d;
+                assert(facing >= 0);
+            }
+            put(cells[i], id, mine, i == 0, facing, mine ? int(cells.size()) + 1 - int(i) : INF);
+        }
+        if (!mine) { enemyHeads.push_back(cells[0]); enemyHeadLen.push_back(int(cells.size())); }
+    }
+    void setup(std::vector<int> const& own, bool teamB = false) {
+        W = 32; H = 16; NC = W * H; LEN = int(own.size()); HERE = own[0];
+        MYID = teamB ? 1 : 0; MYTEAM = teamB ? Team::B : Team::A;
+        POP = 10; ROUND = 199; STAMP = 1; TARGET = 62;
+        ct.head.dragon_id = MYID; ct.head.team = Team(MYTEAM); ct.head.dir = Direction::WEST;
+        ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        for (int dx = -3; dx <= 3; ++dx) for (int dy = -3; dy <= 3; ++dy)
+            visStamp[cid((cx(HERE) + dx + W) % W, (cy(HERE) + dy + H) % H)] = STAMP;
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        sightings.clear(); portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; yieldStreak = 0;
+        trail.assign(own.rbegin(), own.rend()); trailId = MYID;
+        body(own, MYID, true, 3);
+        chosenAction = {{0}, 0, true, false};
+    }
+    void exact84006(bool teamB = false) {
+        W = 32; H = 16;
+        setup({cid(24,3),cid(25,3),cid(26,3),cid(26,4),cid(25,4),cid(24,4),cid(24,5),cid(24,6)}, teamB);
+        body({cid(25,2),cid(25,1)}, 14, false, 2);
+        body({cid(27,3),cid(27,4)}, 16, false, 0);
+        put(cid(26,5), 38, false, false, 0); put(cid(26,6), 38, false, false, 0);
+        idCount.push_back({38, 2});
+        // The original input gives these ordinary N/NN paths and N continuation.
+        setEdge(HERE, 3, E_KELP, -1);
+        setEdge(cid(25,2), 2, E_PORTAL, 0);
+    }
+    void review() {
+        reviewQueenSurvival(ct);
+#ifndef H14_CONTROL
+        reviewQueenFirstStepWitness(ct);
+#endif
+    }
+};
+
+int main() {
+    WitnessFixture f;
+    for (bool teamB : {false, true}) {
+        f.exact84006(teamB);
+        auto original = projectAction(chosenAction);
+        assert(original.known && original.survives && original.len == 8 && original.head == cid(24,2));
+#ifndef H14_CONTROL
+        QueenVisibleBody own, enemy, unknown;
+        assert(queenWitnessBody(HERE, own));
+        assert(own.cells == std::vector<int>({cid(24,3),cid(25,3),cid(26,3),cid(26,4),cid(25,4),cid(24,4),cid(24,5),cid(24,6)}));
+        assert(queenWitnessBody(cid(25,2), enemy));
+        assert(!queenWitnessBody(cid(27,3), unknown));
+        assert(queenWitnessMask(enemy, original) == (1u << 3));
+#endif
+        f.review();
+#ifdef H14_CONTROL
+        assert(chosenAction.dirs == std::vector<int>({0}));
+#else
+        assert(chosenAction.dirs == std::vector<int>({0,0}));
+        auto post = projectAction(chosenAction);
+        assert(post.known && post.survives && post.len == 8 && post.head == cid(24,1));
+        assert(queenWitnessContinuation(post) && !queenWitnessMask(enemy, post));
+#endif
+    }
+#ifdef H14_CONTROL
+    std::cout << "H14 control: both team identities preserve legal N at the 84006 geometry\n";
+#else
+    // Ordinary bent enemy chain reconstructs by predecessors, not reverse facing.
+    W = 32; H = 16;
+    f.setup({cid(16,8),cid(17,8),cid(18,8),cid(18,9),cid(17,9)});
+    f.body({cid(16,6),cid(16,7),cid(17,7)}, 14, false, 0);
+    QueenVisibleBody bent;
+    assert(queenWitnessBody(cid(16,6), bent));
+    assert(bent.cells == std::vector<int>({cid(16,6),cid(16,7),cid(17,7)}));
+    // A visible opposite-facing rear is not enough: a hidden side may contain
+    // a bending predecessor. The enemy must remain incomplete/unknown.
+    visStamp[cid(18,7)] = 0;
+    assert(!queenWitnessBody(cid(16,6), bent));
+
+    // Ambiguous, disconnected and cyclic visible predecessor groups are rejected.
+    f.exact84006();
+    f.put(cid(24,2),14,false,false,1); idCount[1].second = 3;
+    assert(!queenWitnessBody(cid(25,2), bent));
+    f.exact84006();
+    f.put(cid(22,1),14,false,false,1); idCount[1].second = 3;
+    assert(!queenWitnessBody(cid(25,2), bent));
+    f.exact84006();
+    f.put(cid(22,1),14,false,false,1); f.put(cid(23,1),14,false,false,3);
+    idCount[1].second = 4;
+    assert(!queenWitnessBody(cid(25,2), bent));
+
+    f.exact84006();
+    QueenVisibleBody enemy;
+    assert(queenWitnessBody(cid(25,2), enemy));
+    setEdge(cid(25,1), 0, E_PORTAL, 2);
+    assert(!queenWitnessBody(cid(25,2), enemy));
+    auto keep = chosenAction.dirs; f.review(); assert(chosenAction.dirs == keep);
+
+    // Partial own body, malformed chain and unknown/portal proposals do not trigger.
+    f.exact84006(); visStamp[cid(24,6)] = 0;
+    f.review(); assert(chosenAction.dirs == std::vector<int>({0}));
+    f.exact84006(); parts[occPart[cid(26,4)]].facing = 1;
+    f.review(); assert(chosenAction.dirs == std::vector<int>({0}));
+    f.exact84006(); setEdge(HERE, 0, E_UNKNOWN, -1);
+    reviewQueenFirstStepWitness(f.ct); assert(chosenAction.dirs == std::vector<int>({0}));
+    f.exact84006(); setEdge(HERE, 0, E_PORTAL, 3); learnedExit[HERE * 4] = cid(24,2);
+    reviewQueenFirstStepWitness(f.ct); assert(chosenAction.dirs == std::vector<int>({0}));
+
+    // A proposed first head collision is already fatal; this review cannot rescue it.
+    f.exact84006(); chosenAction.dirs = {0,1};
+    reviewQueenFirstStepWitness(f.ct); assert(chosenAction.dirs == std::vector<int>({0,1}));
+    f.exact84006(); chosenAction = {{}, 2, false, false};
+    reviewQueenFirstStepWitness(f.ct); assert(chosenAction.split == 2);
+    f.exact84006(); chosenAction.donation = true;
+    reviewQueenFirstStepWitness(f.ct); assert(chosenAction.donation);
+    f.exact84006(); MYID = 2; reviewQueenFirstStepWitness(f.ct);
+    assert(chosenAction.dirs == std::vector<int>({0}));
+
+    // No newly introduced witness is allowed even when total count decreases.
+    f.exact84006();
+    f.body({cid(23,1),cid(22,1)}, 18, false, 1);
+    QueenVisibleBody fresh;
+    assert(queenWitnessBody(cid(23,1), fresh));
+    unsigned originalFresh = queenWitnessMask(fresh, projectAction(chosenAction));
+    assert(originalFresh == 0);
+    assert(queenWitnessMask(fresh, projectAction({{0,0},0,false,false})) != 0);
+    f.review();
+    assert(!queenWitnessMask(fresh, projectAction(chosenAction)));
+    assert(chosenAction.dirs == std::vector<int>({0}));
+
+    // Total count would drop from two to one at NN, but that one belongs to
+    // a previously unthreatening enemy, so the per-enemy subset rejects NN.
+    f.exact84006();
+    f.body({cid(23,2),cid(22,2)},18,false,1);
+    f.body({cid(23,1),cid(22,1)},20,false,1);
+    QueenVisibleBody left, added;
+    assert(queenWitnessBody(cid(25,2), enemy));
+    assert(queenWitnessBody(cid(23,2), left));
+    assert(queenWitnessBody(cid(23,1), added));
+    auto before = projectAction(chosenAction), tempting = projectAction({{0,0},0,false,false});
+    int beforeCount = queenWitnessCount(queenWitnessMask(enemy,before)) + queenWitnessCount(queenWitnessMask(left,before)) + queenWitnessCount(queenWitnessMask(added,before));
+    int temptingCount = queenWitnessCount(queenWitnessMask(enemy,tempting)) + queenWitnessCount(queenWitnessMask(left,tempting)) + queenWitnessCount(queenWitnessMask(added,tempting));
+    assert(beforeCount == 2 && temptingCount == 1);
+    assert(!queenWitnessMask(added,before) && queenWitnessMask(added,tempting));
+    f.review(); assert(chosenAction.dirs == std::vector<int>({0}));
+
+    // Both hard and soft friend gates reject the affected replacement.
+    f.exact84006();
+    friendGuards.push_back({2,cid(23,1),8,cid(24,1),{cid(24,1)},0});
+    f.review(); assert(chosenAction.dirs != std::vector<int>({0,0}));
+    assert(!actionRisk(chosenAction).strong && !actionRisk(chosenAction).soft);
+    f.exact84006();
+    friendGuards.push_back({2,cid(23,1),8,cid(24,1),{cid(24,1),cid(23,0)},0});
+    f.review(); assert(chosenAction.dirs != std::vector<int>({0,0}));
+    assert(!actionRisk(chosenAction).strong && !actionRisk(chosenAction).soft);
+
+    // Alternatives are restricted to initial free steps and same final length.
+    f.exact84006();
+    ChosenAction three{{0,0,3},0,false,false};
+    auto paid = projectAction(three);
+    assert(paid.known && paid.survives && paid.len == 7);
+    f.review(); assert(projectAction(chosenAction).len == 8);
+    std::cout << "queen first-step witness: 84006 N/NN, teams, bent/partial bodies, portal/unknown, new threats, friend gates and length assertions passed\n";
+#endif
+}

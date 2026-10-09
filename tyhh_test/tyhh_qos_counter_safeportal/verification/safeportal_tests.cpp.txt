@@ -1,0 +1,35 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+int main() {
+    W = H = 9; NC = W * H; HERE = cid(4, 4); LEN = 10; POP = 4; ROUND = 100;
+    MYID = 7; MYTEAM = Team::A; STAMP = 1;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); seenRound.assign(NC, ROUND);
+    pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occFree.assign(NC, INF); occPart.assign(NC, -1); occMine.assign(NC, 0);
+    occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+    bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+    int d = 1, key = HERE * 4 + d, dest = geo(HERE, d);
+    setEdge(HERE, d, E_PORTAL, 17);
+    setEdge(cid(1, 1), d, E_PORTAL, 17);
+    assert(!safePortalForLong(HERE, d)); // pair knowledge alone is insufficient
+    learnedExit[key] = dest;
+    assert(safePortalForLong(HERE, d)); // observed, visible, free, with exits
+    occStamp[dest] = STAMP; occId[dest] = 99;
+    assert(!safePortalForLong(HERE, d)); // current landing occupancy is unsafe
+    occStamp[dest] = 0;
+    LEN = 7;
+    assert(safePortalForLong(HERE, d)); // short scouts retain exploration
+    LEN = 10;
+    for (int e = 0; e < 3; ++e) setEdge(dest, e, E_KELP, -1);
+    const char *why = nullptr;
+    bool ok = safePortalForLong(HERE, d, &why);
+    assert(!ok && why != nullptr); // no continuation after landing
+    std::cout << "safe portal boundary assertions passed\n";
+}

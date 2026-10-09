@@ -1,0 +1,94 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct FeedFixture {
+    Controller ct{7, Team::A, Direction::EAST, Vision{}, 64};
+
+    void put(int c, int id, bool mine, bool head, int facing = 1) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = mine; occHead[c] = head;
+        occFree[c] = INF; occPart[c] = int(parts.size());
+        parts.push_back({c, id, facing, mine, head});
+    }
+
+    void setup(Team::Value team = Team::A, int donorLength = 6) {
+        W = H = 11; NC = W * H; HERE = 60; LEN = donorLength; POP = 4;
+        MYID = 7; MYTEAM = team; ROUND = 300; STAMP = 1; TARGET = 62;
+        ct.length = LEN; ct.unit_count = POP; ct.head.dragon_id = MYID; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear(); sightings.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear();
+        occupiedPortalId = -1; trail.clear(); trailId = MYID; chosenAction = {};
+        for (int i = LEN - 1; i >= 0; --i) trail.push_back(HERE - i);
+        for (int i = 0; i < LEN; ++i) put(HERE - i, MYID, true, i == 0);
+        idCount.push_back({MYID, LEN});
+        put(62, queenId(), true, true, 3);
+        put(63, queenId(), true, false, 3);
+        idCount.push_back({queenId(), 2});
+        queenFeedObserver = queenFeedFirstRound = queenFeedLastEnemy = -1;
+        queenFeedObserve();
+        ROUND = 308;
+        queenFeedObserve();
+    }
+};
+
+int main() {
+    FeedFixture f;
+    f.setup();
+    assert(queenFeedCollectionDistance(62) == 2);
+    assert(queenFeedAction(f.ct)); // length-six donor may feed a short fixed queen
+    assert(chosenAction.donation && chosenAction.dirs.empty() && !chosenAction.split);
+    assert(!projectAction(chosenAction).survives);
+    freeHarvest(); reviewProtection(f.ct); reviewPortalSafety(f.ct);
+    assert(chosenAction.donation && chosenAction.dirs.empty());
+
+    f.setup(Team::B);
+    assert(queenId() == 1 && queenFeedAction(f.ct));
+    f.setup(Team::A, 2);
+    assert(queenFeedAction(f.ct)); // equal-sized donation has a unique fixed recipient
+    f.setup(); MYID = queenId();
+    assert(!queenFeedAction(f.ct));
+    f.setup(); POP = 3;
+    assert(!queenFeedAction(f.ct));
+    f.setup(); ROUND = 307;
+    assert(!queenFeedAction(f.ct));
+    f.setup(); sightings.push_back({80, 302, 3}); queenFeedObserve();
+    assert(!queenFeedAction(f.ct));
+    f.setup(); ROUND = 496;
+    assert(!queenFeedAction(f.ct));
+    f.setup(); ROUND = 279;
+    assert(!queenFeedAction(f.ct));
+
+    f.setup(); visStamp[62] = 0;
+    assert(!queenFeedAction(f.ct));
+    f.setup(); occId[62] = 20;
+    assert(!queenFeedAction(f.ct));
+    f.setup(); std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(62, 3, E_UNKNOWN, -1); setEdge(61, 3, E_OPEN, -1); setEdge(60, 0, E_OPEN, -1);
+    assert(!queenFeedAction(f.ct)); // unknown geometry cannot establish collection
+    f.setup(); std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(62, 3, E_PORTAL, 90);
+    assert(!queenFeedAction(f.ct)); // an unresolved portal is not a path
+    f.setup(); std::fill(edgeT.begin(), edgeT.end(), E_KELP);
+    setEdge(62, 3, E_OPEN, -1); setEdge(61, 3, E_OPEN, -1);
+    assert(queenFeedCollectionDistance(62) == INF);
+    assert(!queenFeedAction(f.ct)); // no continuation beyond the donor head
+
+    f.setup(); f.put(49, 9, true, true, 2); idCount.push_back({9, 2});
+    assert(!queenFeedAction(f.ct)); // another collector reaches the head first
+    f.setup(); f.put(48, 9, true, true, 2); idCount.push_back({9, 2});
+    assert(!queenFeedAction(f.ct)); // tied race is not a verified queen feed
+    f.setup(); f.put(80, 9, true, true, 2); idCount.push_back({9, 2});
+    assert(queenFeedAction(f.ct)); // a remote teammate does not disable feeding
+    std::cout << "queen-feed boundary assertions passed\n";
+}

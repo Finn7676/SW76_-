@@ -1,0 +1,151 @@
+#define main bot_program_main
+#ifdef H14_CONTROL
+#include "../../tyhh_qos_counter_queen_guard_consolidate_v127/main.cpp"
+#else
+#include "../main.cpp"
+#endif
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct EvasionFixture {
+    Controller ct{0, Team::A, Direction::NORTH, Vision{}, 64};
+    int cell(int x, int y) const { return x + y * 32; }
+    void setup(std::vector<int> const& body, bool teamB = false) {
+        W = H = 32; NC = W * H; LEN = int(body.size()); HERE = body[0];
+        MYID = teamB ? 1 : 0; MYTEAM = teamB ? Team::B : Team::A;
+        POP = 8; ROUND = 110; STAMP = 1;
+        ct.length = LEN; ct.unit_count = POP; CT = &ct;
+        edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+        occFree.assign(NC, INF); occPart.assign(NC, -1);
+        occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); enemyHeads.clear(); enemyHeadLen.clear();
+        friendParts.clear(); visPearls.clear(); friendGuards.clear(); friendStatuses.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        trail.assign(body.rbegin(), body.rend()); trailId = MYID;
+        for (int i = 0; i < LEN; ++i) {
+            int c = body[i]; occStamp[c] = STAMP; occId[c] = MYID;
+            occMine[c] = true; occHead[c] = i == 0; occFree[c] = LEN + 1 - i;
+            parts.push_back({c, MYID, 0, true, i == 0});
+        }
+        chosenAction = {{1}, 0, true, false};
+    }
+    void enemy(int c, int id = 3) {
+        occStamp[c] = STAMP; occId[c] = id; occMine[c] = false;
+        occHead[c] = true; occFree[c] = INF;
+        enemyHeads.push_back(c); enemyHeadLen.push_back(2);
+        idCount.push_back({id, 2});
+    }
+    void staticBody(int c) {
+        occStamp[c] = STAMP; occId[c] = 4; occMine[c] = false;
+        occHead[c] = false; occFree[c] = INF;
+    }
+    void review() {
+        reviewQueenSurvival(ct);
+#ifndef H14_CONTROL
+        reviewQueenEvasion(ct);
+#endif
+    }
+};
+
+int main() {
+    EvasionFixture f;
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    f.enemy(f.cell(19, 8));
+    ChosenAction east{{1}, 0, true, false}, west{{3}, 0, true, false};
+    assert(queenActionSafe(east, f.ct, true));
+    assert(queenActionSafe(west, f.ct, true));
+#ifndef H14_CONTROL
+    assert(queenApproach(projectAction(east)).certified);
+    assert(queenApproach(projectAction(east)).distance == 2);
+    assert(queenApproach(projectAction(west)).distance == 5);
+#endif
+    f.review();
+#ifdef H14_CONTROL
+    assert(chosenAction.dirs == east.dirs);
+    std::cout << "H14 control: legal proximity proposal remains unchanged\n";
+#else
+    assert(chosenAction.dirs != east.dirs);
+    assert(queenApproach(projectAction(chosenAction)).distance > 2);
+    assert(queenActionSafe(chosenAction, f.ct, true));
+
+    // The projected neck blocks the direct approach, not just original occ.
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    f.enemy(f.cell(19, 8));
+    ActionProjection p{{f.cell(16, 8), f.cell(17, 8), f.cell(18, 8)},
+                       f.cell(16, 8), 3, 0, true, true};
+    assert(queenApproach(p).distance == 5);
+    p.body = {f.cell(16, 8)};
+    assert(queenApproach(p).distance == 3);
+    f.staticBody(f.cell(18, 8));
+    assert(queenApproach(p).distance == 5);
+
+    // Unknown edges and hidden boundaries must not create certified safety.
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    f.enemy(f.cell(19, 8));
+    edgeT[f.cell(19, 8) * 4] = E_UNKNOWN;
+    assert(!queenApproach(projectAction(east)).certified);
+    f.review();
+    assert(chosenAction.dirs == east.dirs);
+    edgeT[f.cell(19, 8) * 4] = E_OPEN;
+    visStamp[f.cell(19, 7)] = 0;
+    assert(!queenApproach(projectAction(west)).certified);
+
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    auto noEnemy = chosenAction.dirs;
+    f.review();
+    assert(chosenAction.dirs == noEnemy);
+    f.enemy(f.cell(19, 8));
+    MYID = 2;
+    reviewQueenEvasion(f.ct);
+    assert(chosenAction.dirs == noEnemy);
+
+    f.setup({f.cell(16, 8), f.cell(16, 9)}, true);
+    f.enemy(f.cell(19, 8), 2);
+    assert(isQueen());
+    f.review();
+    assert(chosenAction.dirs != east.dirs);
+
+    f.setup({f.cell(16, 8), f.cell(16, 9), f.cell(16, 10)});
+    ChosenAction paidTwo{{3, 3}, 0, false, false};
+    auto paid = projectAction(paidTwo);
+    assert(paid.known && paid.survives && paid.len == 2);
+    assert(queenActionSafe(paidTwo, f.ct, true));
+    f.enemy(f.cell(19, 8));
+    f.review();
+    assert(queenActionSafe(chosenAction, f.ct, true));
+    assert(projectAction(chosenAction).len >= 2);
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    assert(!projectAction(paidTwo).survives);
+
+    // Growth never changes this action's initial ceil(5/4) free-step budget.
+    f.setup({f.cell(16, 8), f.cell(16, 9), f.cell(16, 10),
+             f.cell(16, 11), f.cell(16, 12)});
+    visPearl[f.cell(17, 8)] = visPearl[f.cell(18, 8)] = visPearl[f.cell(19, 8)] = 1;
+    auto grown = projectAction({{1, 1, 1}, 0, false, false});
+    assert(grown.known && grown.survives && grown.len == 7);
+
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    f.enemy(f.cell(19, 8));
+    friendGuards.push_back({4, f.cell(14, 8), 8, f.cell(15, 8), {f.cell(15, 8)}, 0});
+    assert(!queenActionSafe(west, f.ct, true));
+    f.review();
+    assert(!actionRisk(chosenAction).strong);
+
+    f.setup({f.cell(16, 8), f.cell(16, 9)});
+    f.enemy(f.cell(19, 8));
+    setEdge(HERE, 3, E_PORTAL, 0);
+    learnedExit[HERE * 4 + 3] = f.cell(2, 2);
+    visStamp[f.cell(2, 2)] = 0;
+    assert(!queenActionSafe(west, f.ct, true));
+    f.review();
+    assert(queenActionSafe(chosenAction, f.ct, true));
+    assert(chosenAction.dirs[0] != 3);
+
+    std::cout << "queen evasion: proximity, body, uncertainty, identity, payment, friend and portal assertions passed\n";
+#endif
+}

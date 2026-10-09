@@ -1,0 +1,23 @@
+2026-09-29, cwd /home/tyhh/SW76_-
+
+clang++ -std=c++20 -O2 -Wall -Wextra -Wpedantic tyhh_test/tyhh_qos_relay_strike/main.cpp -o /tmp/tyhh_qos_relay_strike_native
+Exit 0; inherited unused enemyEscapes function warning.
+
+clang++ -std=c++20 -O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer -Wall -Wextra -x c++ tyhh_test/tyhh_qos_relay_strike/verification/strike_tests.cpp.txt -o /tmp/tyhh_qos_relay_strike_tests
+Exit 0; inherited unused enemyEscapes and renamed bot_program_main missing-return warnings.
+
+ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1 /tmp/tyhh_qos_relay_strike_tests
+Exit 0; stdout: strike payment/topology/collision/priority assertions passed
+No sanitizer diagnostic. The initially compiled test contained an unnecessary
+NUL print; that test-only print was removed, additional current/vacated-own-body
+checks were added, and the complete sanitizer test was freshly compiled/rerun.
+Production main.cpp was unchanged during this test-only correction.
+
+python3 tyhh_test/tyhh_qos_protect_antiram/verification/sprint_payment_engine.py
+Exit 0. Its stdout is retained as verification/engine_payment.json, with
+installed engine and source-map SHA-256. Only in-memory fixture terrain and
+initial units are configured; official map files are unchanged. End-of-fixture
+intentional no-actions are explicitly distinct from first-turn payment checks.
+
+Native binary SHA256: 0eec1313e1b13b8d49c52aa6ca6d3b5b95a397fa681df3a58dd307ad0ca4f6db
+Sanitizer binary SHA256: 95f28b3142fb367ec2e2998244c1ff29677ce1f7ba4619c567e740cf1216f67b

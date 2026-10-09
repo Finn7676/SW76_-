@@ -1,0 +1,188 @@
+#ifndef BOT_SOURCE
+#define BOT_SOURCE "../main.cpp"
+#endif
+#ifndef REMOTE_RALLY
+#define REMOTE_RALLY 1
+#endif
+#define main bot_program_main
+#include BOT_SOURCE
+#undef main
+#include <cassert>
+#include <iostream>
+
+struct RallyFixture {
+    Controller ct{10, Team::A, Direction::EAST, Vision{}, 64};
+    int receiver = 2, target = -1;
+
+    void put(int c, int id, bool head, bool mine, int freeAt = INF) {
+        occStamp[c] = STAMP; occMine[c] = mine; occId[c] = id; occHead[c] = head;
+        occFree[c] = freeAt; occPart[c] = int(parts.size());
+        parts.push_back({c, id, 1, mine, head});
+    }
+
+    void setup(int length = 4) {
+        W = H = 32; NC = W * H; HERE = cid(8, 8); LEN = length;
+        MYID = 10; MYTEAM = Team::A; ROUND = 360; POP = 10; STAMP = 1;
+        CT = &ct; TARGET = 62; ct.length = LEN; ct.unit_count = POP;
+        ct.head.dragon_id = MYID; ct.head.team = Team(MYTEAM);
+        edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+        learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+        pearlDue.assign(NC, INF); pearlInfo.assign(NC, ROUND);
+        visStamp.assign(NC, 0); occStamp.assign(NC, 0); occMine.assign(NC, 0);
+        occId.assign(NC, -1); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+        occPart.assign(NC, -1); occFree.assign(NC, INF);
+        for (int y = 5; y <= 11; ++y)
+            for (int x = 5; x <= 11; ++x) visStamp[cid(x, y)] = STAMP;
+        bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1);
+        bfsQ.assign(NC + 8, 0); bfsStamp = 0;
+        parts.clear(); idCount.clear(); friendStatuses.clear(); sightings.clear(); enemyHeads.clear();
+        enemyHeadLen.clear(); friendParts.clear(); visPearls.clear(); friendGuards.clear();
+        portalEnds.clear(); portalKeys.clear(); portalClaimRound.clear(); occupiedPortalId = -1;
+        queenFeedFirstRound = queenFeedLastEnemy = 350;
+        queenSeededScout = false; consolidateHoldUntil = -1;
+        trail.clear(); trailId = MYID;
+        for (int i = LEN - 1; i >= 0; --i) trail.push_back(cid(8, 8 + i));
+        for (int i = 0; i < LEN; ++i) put(cid(8, 8 + i), MYID, i == 0, true, LEN + 1 - i);
+        idCount.push_back({MYID, LEN});
+        for (int x = 8; x < 16; ++x) setEdge(cid(x, 8), 1, E_OPEN, -1);
+        target = cid(16, 8); receiver = 2; chosenAction = {};
+        v41Target = -1; v41TargetPhase = -1; v41LowFrontierRounds = 0;
+        v41ExplorationMode = true; teamFrontier = 0;
+#if REMOTE_RALLY
+        remoteRallyObserver = -1; remoteRallyObserve();
+#endif
+    }
+
+    uint64_t status(int id = 2, int length = 8, Team::Value team = Team::A) {
+        int savedId = MYID; Team::Value savedTeam = MYTEAM;
+        MYID = id; MYTEAM = team;
+        uint64_t raw = packStatus(target, length);
+        MYID = savedId; MYTEAM = savedTeam;
+        return raw;
+    }
+
+    void receiveStatus(uint64_t raw) {
+        ct.sonar_messages = {raw}; receive(ct); observeRally();
+    }
+
+    void observeRally() {
+#if REMOTE_RALLY
+        remoteRallyObserve();
+#endif
+    }
+
+    bool remote() {
+#if REMOTE_RALLY
+        return remoteRallyAction(ct);
+#else
+        return false;
+#endif
+    }
+
+    void pipeline() {
+        if (!queenFeedAction(ct) && !consolidateAction(ct) && !donorRouteAction(ct) && !remote()) takeTurn(ct);
+    }
+};
+
+int main() {
+    RallyFixture f;
+    f.setup(); f.receiveStatus(f.status());
+    assert(friendLength(2) == 0 && !verifiedStatus(friendStatuses[0]));
+    assert(!queenFeedAction(f.ct) && !consolidateAction(f.ct) && !donorRouteAction(f.ct));
+    f.pipeline();
+#if REMOTE_RALLY
+    assert(chosenAction.dirs == std::vector<int>({1}) && chosenAction.split == 0);
+#else
+    assert(chosenAction.split == 2 && chosenAction.dirs.empty());
+#endif
+    assert(!chosenAction.donation);
+
+    // No report leaves the original growth proposal unchanged.
+    f.setup(); f.pipeline(); assert(chosenAction.split == 2);
+    f.setup(); f.receiveStatus(f.status(2, 8, Team::B));
+    assert(friendStatuses.empty() && !f.remote());
+
+    // Existing decoder rejects stale/future packets before the rally sees them.
+    f.setup(); uint64_t raw = f.status(); ++ROUND; f.receiveStatus(raw);
+    assert(friendStatuses.empty() && !f.remote());
+
+    f.setup(); f.receiveStatus(f.status()); ROUND += 6; friendStatuses.clear(); f.observeRally();
+#if REMOTE_RALLY
+    assert(f.remote());
+#endif
+    f.setup(); f.receiveStatus(f.status()); ROUND += 7; friendStatuses.clear(); f.observeRally();
+    assert(!f.remote());
+
+    f.setup(); f.receiveStatus(f.status()); visStamp[f.target] = STAMP; f.observeRally();
+    assert(!f.remote()); // Visible empty terrain disproves the report.
+    f.setup(); f.receiveStatus(f.status()); visStamp[f.target] = STAMP;
+    f.put(f.target, 4, true, true); f.observeRally(); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); visStamp[f.target] = STAMP;
+    f.put(f.target, 2, false, true); f.observeRally(); assert(!f.remote());
+
+    f.setup(); f.receiveStatus(f.status(queenId(), 12)); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status(12, 12)); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status(2, 7)); assert(!f.remote());
+    f.setup(7); f.receiveStatus(f.status(2, 8)); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); MYID = queenId(); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); POP = 3; assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); ROUND = 349; assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); queenFeedLastEnemy = ROUND - 7; assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); f.put(cid(6, 6), 3, false, false); assert(!f.remote());
+
+    f.setup(); f.receiveStatus(f.status()); setEdge(cid(12, 8), 1, E_UNKNOWN, -1);
+    assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); setEdge(HERE, 1, E_PORTAL, 3);
+    assert(!f.remote()); // An unresolved portal does not supply an edge.
+    f.setup(); f.receiveStatus(f.status()); visStamp[cid(9, 8)] = 0;
+    assert(!f.remote()); // Hidden first-step occupancy is not guessed.
+    f.setup(); f.receiveStatus(f.status()); f.put(cid(9, 8), 4, false, true);
+    assert(!f.remote()); // Current visible bodies block the route.
+    f.setup(); f.receiveStatus(f.status()); trail.resize(1); parts.clear(); assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status()); setEdge(cid(9, 8), 1, E_KELP, -1);
+    assert(!f.remote()); // No proven continuation after the first step.
+    f.setup(); f.receiveStatus(f.status());
+    friendGuards.push_back({0, cid(10, 8), 2, cid(9, 8), {cid(9, 8)}, 0});
+    assert(!f.remote());
+    f.setup(); f.receiveStatus(f.status());
+    friendGuards.push_back({0, cid(10, 8), 2, cid(9, 8), {cid(9, 8), cid(10, 7)}, 0});
+    assert(!f.remote());
+
+    // Short donors can navigate a resolved portal only with a visible safe landing.
+    f.setup(); f.receiveStatus(f.status()); setEdge(HERE, 1, E_PORTAL, 3);
+    learnedExit[HERE * 4 + 1] = cid(11, 8); setEdge(cid(11, 8), 2, E_OPEN, -1);
+#if REMOTE_RALLY
+    assert(f.remote() && chosenAction.dirs.size() == 1 && !chosenAction.donation);
+#endif
+    f.setup(8); f.receiveStatus(f.status(2, 12)); setEdge(HERE, 1, E_PORTAL, 3);
+    learnedExit[HERE * 4 + 1] = cid(11, 8); setEdge(cid(11, 8), 2, E_OPEN, -1);
+    assert(!f.remote()); // Protected landing has insufficient proven room.
+
+    // Requests never become paid sprints, even with minimum-size donors.
+    f.setup(2); f.receiveStatus(f.status());
+#if REMOTE_RALLY
+    assert(f.remote() && chosenAction.dirs.size() == 1);
+    auto projection = projectAction(chosenAction);
+    assert(projection.known && projection.survives && projection.len == 2);
+
+    // Refreshed reports do not mask six rounds without graph-distance progress.
+    f.setup(); f.receiveStatus(f.status()); assert(f.remote());
+    for (int i = 1; i < 6; ++i) {
+        ++ROUND; f.receiveStatus(f.status()); assert(f.remote());
+    }
+    ++ROUND; f.receiveStatus(f.status()); assert(!f.remote());
+    assert(remoteRallyIgnoreUntil[2] == ROUND + 12);
+    chosenAction = {}; f.pipeline(); assert(chosenAction.split == 2);
+    ROUND += 11; f.receiveStatus(f.status()); assert(!f.remote());
+    ++ROUND; f.receiveStatus(f.status()); assert(f.remote());
+
+    f.setup(); f.receiveStatus(f.status()); assert(f.remote());
+    ROUND += 5; f.target = cid(13, 8); f.receiveStatus(f.status());
+    assert(f.remote() && remoteRallyBestDistance == 4);
+    assert(remoteRallyProgressRound == ROUND);
+    ++ROUND; f.receiveStatus(f.status()); assert(f.remote());
+#endif
+
+    std::cout << "remote_rally: " << (REMOTE_RALLY ? "candidate" : "R3 control")
+              << " cue-only navigation, safety, freshness, progress and fallback assertions passed\n";
+}

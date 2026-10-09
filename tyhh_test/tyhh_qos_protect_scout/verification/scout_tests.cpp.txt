@@ -1,0 +1,64 @@
+#define main scout_bot_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+void resetWorld() {
+    W = H = 12; NC = W * H; ROUND = 100; LEN = 4; POP = 8; MYID = 3;
+    HERE = cid(6, 6); STAMP = 1;
+    edgeT.assign(NC * 4, E_OPEN); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); seenRound.assign(NC, 1);
+    visStamp.assign(NC, STAMP); occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occFree.assign(NC, INF); occPart.assign(NC, -1);
+    occMine.assign(NC, 0); occHead.assign(NC, 0); visPearl.assign(NC, 0);
+    bfsMark.assign(NC, 0); bfsDist.assign(NC, 0); bfsFirst.assign(NC, -1); bfsQ.assign(NC + 8, 0);
+    bfsStamp = 0; scoutPearls.clear(); scoutScores.clear();
+    portalEnds.clear(); portalKeys.clear(); scoutExploredPortals.clear(); portalClaimRound.clear();
+    occupiedPortalId = -1; parts.clear(); friendParts.clear(); idCount.clear(); friendStatuses.clear();
+    enemyHeads.clear(); enemyHeadLen.clear(); visPearls.clear();
+    prepareScoutCrowd();
+}
+
+int main() {
+    resetWorld();
+    setEdge(cid(8, 6), 1, E_PORTAL, 7);
+    auto route = scoutRoute(safeScoutFirstSteps(), false);
+    assert(route.dir == 1 && route.distance == 3 && route.pid == 7);
+    scoutExploredPortals.insert(7);
+    assert(scoutRoute(safeScoutFirstSteps(), false).dir == -1);
+
+    resetWorld();
+    setEdge(HERE, 0, E_PORTAL, 8);
+    auto safe = safeScoutFirstSteps();
+    assert(safe & 1u);
+    assert(scoutRoute(safe, false).distance == 1);
+    assert(moveCell(HERE, 0) == -1);
+
+    resetWorld();
+    int head = geo(HERE, 1);
+    occStamp[head] = STAMP; occMine[head] = 1; occHead[head] = 1; occId[head] = 9;
+    idCount.push_back({9, 2});
+    assert(!(safeScoutFirstSteps() & (1u << 1)));
+
+    resetWorld();
+    setEdge(cid(6, 5), 0, E_PORTAL, 9);
+    setEdge(cid(7, 6), 1, E_PORTAL, 10);
+    int pearl = cid(7, 6);
+    visPearl[pearl] = 1; visPearls.push_back(pearl);
+    route = scoutRoute(safeScoutFirstSteps(), false);
+    assert(route.dir == 1 && route.distance == 2 && route.pid == 10);
+    auto nearby = scoutRoute(safeScoutFirstSteps(), true);
+    assert(nearby.dir == 1 && nearby.distance == 1 && nearby.reachablePearls == 1);
+
+    resetWorld();
+    // An observed portal outside the six-step horizon cannot create a task.
+    setEdge(cid(0, 0), 1, E_PORTAL, 11);
+    assert(scoutRoute(safeScoutFirstSteps(), false).dir == -1);
+
+    resetWorld();
+    setEdge(cid(8, 6), 1, E_PORTAL, 12);
+    portalClaimRound[12] = ROUND;
+    assert(scoutRoute(safeScoutFirstSteps(), false).dir == -1);
+    std::cout << "Scout route scenarios passed\n";
+}

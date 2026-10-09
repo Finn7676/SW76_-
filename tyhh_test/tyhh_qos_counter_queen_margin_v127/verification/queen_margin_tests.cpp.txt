@@ -1,0 +1,46 @@
+#define main bot_program_main
+#include "../main.cpp"
+#undef main
+#include <cassert>
+#include <iostream>
+
+void setup(int enemyLength = 10) {
+    W = H = 16; NC = W * H; STAMP = 1; HERE = cid(8, 8);
+    LEN = 6; MYID = 0; MYTEAM = Team::A;
+    edgeT.assign(NC * 4, E_KELP); edgePid.assign(NC * 4, -1);
+    learnedExit.assign(NC * 4, -1); visStamp.assign(NC, STAMP);
+    occStamp.assign(NC, 0); occId.assign(NC, -1);
+    occMine.assign(NC, 0); occHead.assign(NC, 0);
+    enemyHeads = {cid(1, 1)}; enemyHeadLen = {enemyLength};
+    for (int x = 1; x < 8; ++x) {
+        edgeT[cid(x, 1) * 4 + 1] = E_OPEN;
+        edgeT[cid(x + 1, 1) * 4 + 3] = E_OPEN;
+    }
+}
+
+int main() {
+    setup();
+    const int expected[] = {10000, 5000, 2500, 1200, 600, 300};
+    int previous = INT_MAX;
+    for (int d = 1; d <= 6; ++d) {
+        int p = queenEnemyMarginPenalty(cid(1 + d, 1));
+        assert(p == expected[d - 1] && p < previous);
+        previous = p;
+    }
+    assert(queenEnemyMarginPenalty(cid(8, 1)) == 0);
+    edgeT[cid(2, 1) * 4 + 1] = E_KELP;
+    assert(queenEnemyMarginPenalty(cid(3, 1)) == 0);
+    edgeT[cid(2, 1) * 4 + 1] = E_UNKNOWN;
+    assert(queenEnemyMarginPenalty(cid(3, 1)) == 0);
+    edgeT[cid(2, 1) * 4 + 1] = E_OPEN;
+    occStamp[cid(2, 1)] = STAMP;
+    assert(queenEnemyMarginPenalty(cid(3, 1)) == 0);
+    assert(queenEnemyMarginPenalty(cid(2, 1)) == 10000); // Target collision is intentional threat.
+    setup(2);
+    assert(queenEnemyMarginPenalty(cid(2, 1)) == 10000);
+    assert(queenEnemyMarginPenalty(cid(3, 1)) == 0); // Length2 cannot pay a second step.
+    setup(3);
+    assert(queenEnemyMarginPenalty(cid(3, 1)) == 5000);
+    assert(queenEnemyMarginPenalty(cid(4, 1)) == 0);
+    std::cout << "queen_margin: graded distance, kelp, unknown, occupancy and sprint budget passed\n";
+}
